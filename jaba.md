@@ -7,7 +7,8 @@ permalink: /jaba/
 Some information about you!
 
 ... which is shown in the screenshot below:
-![My helpful screenshot]("/assets/IMG_3449.jpg")
+![My helpful screenshot]("assets/IMG_3449.jpg")
+
 
 <ul>
   {% for post in site.posts %}
