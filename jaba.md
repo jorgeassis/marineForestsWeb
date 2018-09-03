@@ -15,7 +15,7 @@ Some information about you!
   {% for post in site.posts %}
     <li>
       <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt }}
+      {{ post.description }}
     </li>
   {% endfor %}
 </ul>
