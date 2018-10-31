@@ -8,13 +8,17 @@ Post page
   <h1>{{ page.title }}</h1>
 
   {% if post.image %} <img class="some_class" src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
+  {% if post.secondImage %} <img class="some_class" src="{{ site.baseurl }}/images/{{ post.secondImage }}" alt="{{ post.title }}"> {% endif %}
+
+
+
 
   <div class="entry">
     {{ content }}
   </div>
 
   <div class="date">
-    Written on {{ post.date | date: "%B %e, %Y" }}
+    Written on {{ post.date }}
   </div>
 
   {% include disqus.html %}
