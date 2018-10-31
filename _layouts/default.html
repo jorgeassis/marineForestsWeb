@@ -18,7 +18,7 @@
 
 
 
-  <ul> 
+  <ul>
   {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
   {% for post in posts %}
     <li>
@@ -60,7 +60,7 @@
       {{ content }}
 
 
-      <img src="({{ site.baseurl }}/assets/IMG_3449.jpg)">
+      <img src="{{ site.baseurl }}/assets/IMG_3449.jpg">
 
 
 
