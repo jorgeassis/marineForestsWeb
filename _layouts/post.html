@@ -5,7 +5,7 @@ Post page
 <article class="post">
   <h1>{{ page.title }}</h1>
 
-  {% if page.image %} <img class="some_class" src="{{ site.baseurl }}/images/{{ page.image }}" alt="{{ page.title }}"> {% endif %} 
+  {% if post.image %} <img class="some_class" src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}"> {% endif %} 
 
   <div class="entry">
     {{ content }}
