@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Jaba
-permalink: /jaba/
+title: Contacts
+permalink: /contacts/
 ---
 
 Some information about you!

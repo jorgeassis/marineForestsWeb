@@ -11,9 +11,11 @@ description: Our simple Nature journal
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
 
-#
+collections:
+  hiking:
+    output: true
+
 # Flags below are optional
-#
 
 # Includes an icon in the footer for each username you enter
 footer-links:

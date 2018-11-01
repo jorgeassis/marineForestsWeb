@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: About Bears Land
+permalink: /bears-land/
 ---
 
 Some information about you!

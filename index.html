@@ -16,3 +16,16 @@ layout: default
     </article>
   {% endfor %}
 </div>
+
+<div class="hiking">
+
+{% for staff_member in site.hiking %}
+  <h2>
+    <a href="{{ hiking.url }}">
+      {{ hiking.siteName }} - {{ hiking.siteCity }}
+    </a>
+  </h2>
+  <p>{{ hiking.content | markdownify }}</p>
+{% endfor %}
+
+</div>
