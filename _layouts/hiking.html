@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+Layout: hiking
+
+<article class="post">
+  <h1>{{ page.title }}</h1>
+
+  {% if post.mainImage %} <img class="some_class" src="{{ site.baseurl }}/images/{{ post.mainImage }}" alt="{{ post.title }}"> {% endif %}
+
+
+  <div class="entry">
+    {{ content }}
+  </div>
+
+  <div class="date">
+    Written on {{ post.date }}
+
+  {{ file.modified_time }}
+
+  </div>
+
+  {% include disqus.html %}
+</article>

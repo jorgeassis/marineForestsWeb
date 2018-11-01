@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: hiking
 lang: en
 permalink: /Hiking-Rocha-da-Pena-Faro-Portugal/
 
