@@ -2,12 +2,12 @@
 layout: default
 ---
 
-Layout: hiking
+Layout: hiking 2
 
 <article class="post">
   <h1>{{ page.title }}</h1>
 
-  {% if hiking.mainImage %} <img class="some_class" src="{{ site.baseurl }}/images/{{ hiking.mainImage }}" alt="{{ hiking.title }}"> {% endif %}
+  {% if page.mainImage %} <img class="some_class" src="{{ site.baseurl }}/images/{{ page.mainImage }}" alt="{{ page.title }}"> {% endif %}
 
 
   <div class="entry">
