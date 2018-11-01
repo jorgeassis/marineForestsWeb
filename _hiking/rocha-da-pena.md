@@ -1,7 +1,7 @@
 ---
 layout: hiking
 lang: en
-permalink: /Hiking-Rocha-da-Pena-Faro-Portugal/
+permalink: /hiking-rocha-da-pena-faro-portugal/
 
 siteName: "Rocha da Pena"
 siteCity: "Loulé"
