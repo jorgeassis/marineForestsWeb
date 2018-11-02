@@ -1830,8 +1830,8 @@ fieldset:disabled a.btn {
   border-color: #CADC5B; }
   .btn-primary:hover {
     color: #fff;
-    background-color: #949e56;
-    border-color: #949e56;
+    background-color: #d8ea62;
+    border-color: #d8ea62;
      }
   .btn-primary:focus, .btn-primary.focus {
     color: #fff;
