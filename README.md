@@ -1,4 +1,5 @@
 http://thetheme.io/thesaas/block/blog.html
+https://devhints.io/jekyll
 
 ## Quick Start
 
