@@ -34,6 +34,17 @@
 
 .lato { font-family: "Lato"; font-weight: "Light"; }
 
+.bgcover {
+
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+
+}
+
+
+
 *,
 *::before,
 *::after {
