@@ -91,11 +91,11 @@ layout: default
             {% for hiking in site.hiking %}
 
             <div class="col-lg-4">
-              <div class="video-btn-wrapper">
-                <a href="{{ hiking.url }}">
-                  <div class="bgcover shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}') no-repeat center center fixed; "></div>
-                </a>
+              <a href="{{ hiking.url }}">
+              <div class="bgcover shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}'); ">
+
               </div>
+            </a>
               <br>
               <h6><a href="{{ hiking.url }}">{{ hiking.title }}</a></h6>
               <p class="small text-lighter">{{ hiking.siteName }} - {{ hiking.siteCity }}</p>
