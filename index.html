@@ -93,8 +93,8 @@ var typed3 = new Typed('#typed3', {
 
       <section class="section bg-gray">
         <div class="container text-center">
-          <header class="section-header">
-            <h2>Recent Video Tutorials</h2>
+          <header class="my-2 section-header">
+            <h2>Latest hiks</h2>
             <hr>
             <p class="lead">We are so excited and proud of our product. It's really easy to create a landing page for your awesome product.</p>
           </header>
@@ -102,42 +102,27 @@ var typed3 = new Typed('#typed3', {
 
           <div class="row gap-y">
 
-            <div class="col-lg-4">
-              <div class="video-btn-wrapper">
-                <img class="shadow-2 rounded" src="assets/img/thumb/1.jpg" alt="...">
-                <a class="btn btn-glass btn-circle btn-light" href="https://www.youtube.com/watch?v=ah4pcPbRi2M" data-provide="lightbox"><i class="fa fa-play"></i></a>
-              </div>
-              <br>
-              <h6><a href="#">We relocated our office to a new designed garage</a></h6>
-              <p class="small text-lighter">News</p>
-            </div>
 
+            {% for hiking in site.hiking %}
 
             <div class="col-lg-4">
               <div class="video-btn-wrapper">
-                <img class="shadow-2 rounded" src="assets/img/thumb/2.jpg" alt="...">
-                <a class="btn btn-glass btn-circle btn-light" href="https://www.youtube.com/watch?v=ah4pcPbRi2M" data-provide="lightbox"><i class="fa fa-play"></i></a>
+                <a href="{{ hiking.url }}">
+                <img class="shadow-2 rounded" src="{{ site.baseurl }}/images/{{ hiking.mainImage }}" alt="...">
+                </a>
               </div>
               <br>
-              <h6><a href="#">Top 5 brilliant content marketing strategies</a></h6>
-              <p class="small text-lighter">Marketing</p>
+              <h6><a href="{{ hiking.url }}">{{ hiking.title }}</a></h6>
+              <p class="small text-lighter">{{ hiking.siteName }} - {{ hiking.siteCity }}</p>
             </div>
 
+            {% endfor %}
 
-            <div class="col-lg-4">
-              <div class="video-btn-wrapper">
-                <img class="shadow-2 rounded" src="assets/img/thumb/3.jpg" alt="...">
-                <a class="btn btn-glass btn-circle btn-light" href="https://www.youtube.com/watch?v=ah4pcPbRi2M" data-provide="lightbox"><i class="fa fa-play"></i></a>
-              </div>
-              <br>
-              <h6><a href="#">Best practices for minimalist design</a></h6>
-              <p class="small text-lighter">Design</p>
-            </div>
 
           </div>
 
           <div class="text-center mt-7">
-            <a class="btn btn-outline-primary px-7" href="#">View all</a>
+            <a class="btn btn-outline-primary px-7" href="#">View all hiks</a>
           </div>
 
         </div>
@@ -181,18 +166,4 @@ var typed3 = new Typed('#typed3', {
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
   {% endfor %}
-</div>
-
-hiking Bellow v2<br>
-<div class="hiking">
-
-{% for hiking in site.hiking %}
-  <h2>
-    <a href="{{ hiking.url }}">
-      {{ hiking.siteName }} - {{ hiking.siteCity }}
-    </a>
-  </h2>
-  <p>{{ hiking.content | markdownify }}</p>
-{% endfor %}
-
 </div>

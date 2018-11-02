@@ -1,19 +1,19 @@
 ---
 layout: hiking
 lang: en
-permalink: /hiking-rocha-da-pena-faro-portugal/
+permalink: /salema/
 
-title: "Rocha da Pena"
+title: "Praia da Salema"
 
-siteName: "Rocha da Pena"
-siteCity: "Loulé"
+siteName: "Salema"
+siteCity: "Sagres"
 siteDistrict: "Faro"
 siteCountry: "Portugal"
 
 coordinateLon: "-8"
 coordinateLat: "38"
 
-mainImage: 4.jpg
+mainImage: 3.jpg
 multipleImages:
 - 2.jpg
 - 3.jpg

@@ -1,19 +1,19 @@
 ---
 layout: hiking
 lang: en
-permalink: /hiking-rocha-da-pena-faro-portugal/
+permalink: /pinhal/
 
-title: "Rocha da Pena"
+title: "Pinhal novo"
 
-siteName: "Rocha da Pena"
-siteCity: "Loulé"
+siteName: "Pinhal novo"
+siteCity: "Faro"
 siteDistrict: "Faro"
 siteCountry: "Portugal"
 
 coordinateLon: "-8"
 coordinateLat: "38"
 
-mainImage: 4.jpg
+mainImage: 2.jpg
 multipleImages:
 - 2.jpg
 - 3.jpg
