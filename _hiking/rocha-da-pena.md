@@ -12,7 +12,10 @@ coordinateLon: "-8"
 coordinateLat: "38"
 
 mainImage: IMG_3449.jpg
-multipleImages: /assets/IMG_3449.jpg
+multipleImages:
+- 2.jpg
+- 3.jpg
+- 4.jpg
 
 date: 2016-03-23T10:20:00Z
 ---
