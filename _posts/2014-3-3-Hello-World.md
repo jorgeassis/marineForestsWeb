@@ -1,7 +1,23 @@
 ---
 layout: post
-title: Another Post
-lang: pt
+lang: en
+permalink: /my-permalink-2/
+
+title: "Another nice story"
+tags:
+- Lisbon
+- Hiking
+- Gastronomy
+
+description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+
+mainImage: 3.jpg
+multipleImages:
+- 2.jpg
+- 3.jpg
+- 4.jpg
+
+date: 2016-03-23T10:20:00Z
 
 ---
 
