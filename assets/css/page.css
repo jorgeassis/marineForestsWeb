@@ -19497,7 +19497,7 @@ body:not(.body-scrolled) .topbar.d-flex ~ .navbar {
           background-size: cover;
   background-repeat: no-repeat;
   padding-top: 100px;
-  padding-bottom: 70px; }
+  padding-bottom: 30px; }
   .header > .container,
   .header > .container-fluid {
     position: relative;
