@@ -11,51 +11,67 @@ layout: default
 <!-- /.header -->
 
     <!-- Main Content -->
+
     <main class="main-content">
-
-      <section class="section">
+      <section class="section p-0">
         <div class="container">
-          <div class="row gap-y align-items-center">
 
-            <div class="col-md-6 text-center text-md-left order-md-2">
-              <p class="small-2 text-uppercase text-lightest fw-500 ls-1 lato">Hicks, Stories, Gastronomy</p>
-              <h3 class="fw-500 lato">Full-Stack Development</h3>
-              <p>Instrument cultivated alteration any favourable expression law far nor. Both new like tore but year. An from mean on with when sing pain. Oh to as principles devonshire companions unsatiable an delightful. The ourselves suffering the sincerity. Inhabit her manners adapted age certain. Debating offended at branched striking be subjects.</p>
+          <div class="row">
+            <div class="col-md-8 col-xl-6 mx-auto">
+
+
+              {% for post in site.posts %}
+
+              <article class="my-8">
+                <header class="text-center mb-7">
+                  <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600" href="#">News</a></p>
+                  <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+                </header>
+
+                <a href="{{ site.baseurl }}{{ post.url }}"><img class="rounded-md" src="../assets/img/thumb/1.jpg" alt="..."></a>
+
+                <div class="card-body">
+                  <div class="row mb-5 small-2 text-lighter">
+                    <div class="col-auto">
+                      <a class="text-inherit" href="#">by Hossein</a>
+                      <span class="align-middle px-1">&bull;</span>
+                      <time datetime="2018-05-15T19:00">3 days ago</time>
+                    </div>
+
+                    <div class="col-auto ml-auto">
+                      <span><i class="fa fa-eye pr-1 opacity-60"></i> 28</span>
+                      <a class="text-inherit ml-5" href="#"><i class="fa fa-comments pr-1 opacity-60"></i> 6</a>
+                    </div>
+                  </div>
+
+                  <p class="text-justify">{{ post.excerpt }}</p>
+
+                  <p class="text-center mt-7">
+                    <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
+                  </p>
+                </div>
+              </article>
+
+              <hr>
+
+              {% endfor %}
+
+
+              <nav class="flexbox my-8">
+                <a class="btn btn-outline-secondary disabled"><i class="ti-arrow-left fs-9 mr-2"></i> Newer</a>
+                <a class="btn btn-outline-secondary" href="#">Older <i class="ti-arrow-right fs-9 ml-2"></i></a>
+              </nav>
+
             </div>
-
-            <div class="col-md-5 mx-auto">
-              <img class="rounded-md" src="assets/img/thumb/pexels-photo-372098.jpeg" alt="...">
-            </div>
-
           </div>
+
         </div>
       </section>
-
-
-      <section class="section">
-        <div class="container">
-          <div class="row gap-y align-items-center">
-
-            <div class="col-md-6 text-md-right">
-              <p class="small-2 text-uppercase text-lightest fw-500 ls-1 lato">Phone</p>
-              <h3 class="fw-500 lato">Mobile App</h3>
-              <p>Instrument cultivated alteration any favourable expression law far nor. Both new like tore but year. An from mean on with when sing pain. Oh to as principles devonshire companions unsatiable an delightful. The ourselves suffering the sincerity. Inhabit her manners adapted age certain. Debating offended at branched striking be subjects.</p>
-            </div>
-
-            <div class="col-md-5 mx-auto">
-              <img class="rounded-md" src="assets/img/thumb/hiking-467876_960_720.jpg" alt="...">
-            </div>
-
-          </div>
-        </div>
-      </section>
+    </main>
 
 
 
-
-
-
-
+    <main class="main-content">
 
       <section class="section bg-gray">
         <div class="container text-center">
