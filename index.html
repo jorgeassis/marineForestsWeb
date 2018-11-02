@@ -80,25 +80,23 @@ layout: default
         <div class="container text-center">
           <header class="my-3 section-header">
             <h2>LATEST HIKS</h2>
-          
+
             <p class="lead">We are so excited and proud of our product. It's really easy to hick.</p>
           </header>
 
-
-          <div class="row gap-y">
-
+          <div class="row gap-y my-4">
 
             {% for hiking in site.hiking %}
 
             <div class="col-lg-4">
               <a href="{{ hiking.url }}">
-              <div class="bgcover shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}'); ">
+              <div class="shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}'); background-size: cover; ">
 
               </div>
             </a>
               <br>
               <h6><a href="{{ hiking.url }}">{{ hiking.title }}</a></h6>
-              <p class="small text-lighter">{{ hiking.siteName }} - {{ hiking.siteCity }}</p>
+              <p class="small text-lighter text-uppercase">{{ hiking.siteCity }}</p>
             </div>
 
             {% endfor %}
