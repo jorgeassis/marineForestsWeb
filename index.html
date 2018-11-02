@@ -23,19 +23,19 @@ layout: default
               {% for post in site.posts %}
 
               <article class="my-8">
-                <header class="text-center mb-7">
-                  <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600" href="#">News</a></p>
+                <header class="text-center mb-3">
+                  <p><a class="small-4 text-lighter text-uppercase ls-2 fw-600" href="#">{{ post.tags }}</a></p>
                   <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
                 </header>
 
-                <a href="{{ site.baseurl }}{{ post.url }}"><img class="rounded-md" src="../assets/img/thumb/1.jpg" alt="..."></a>
+                <a href="{{ site.baseurl }}{{ post.url }}"><img class="rounded-md" src=".{{ post.image }}" alt="..."></a>
 
                 <div class="card-body">
                   <div class="row mb-5 small-2 text-lighter">
                     <div class="col-auto">
                       <a class="text-inherit" href="#">by Hossein</a>
                       <span class="align-middle px-1">&bull;</span>
-                      <time datetime="2018-05-15T19:00">3 days ago</time>
+                      <time datetime="2018-05-15T19:00">{{ post.date }}</time>
                     </div>
 
                     <div class="col-auto ml-auto">
@@ -44,7 +44,7 @@ layout: default
                     </div>
                   </div>
 
-                  <p class="text-justify">{{ post.excerpt }}</p>
+                  <p class="text-justify">{{ post.description }}</p>
 
                   <p class="text-center mt-7">
                     <a class="btn btn-primary btn-round" href="post-2.html">Read more</a>
