@@ -38,9 +38,9 @@ layout: default
             <a href="{{ site.baseurl }}{{ post.url }}"><img class="rounded-md" src="{{ site.baseurl }}/images/{{ post.mainImage }}" alt="..."></a>
 
             <div class="card-body">
-              <div class="row mb-3 small-2 text-lighter">
+              <div class="row mb-1 small-2 text-lighter">
                 <div class="col-auto">
-                  <time datetime="2018-05-15T19:00">{{ post.date }}</time>
+                  <time datetime="2018-05-15T19:00">{{ page.date | date_to_long_string }}</time>
                 </div>
 
                 <div class="col-auto ml-auto">
@@ -49,8 +49,8 @@ layout: default
 
               <p class="text-justify">{{ post.description }}</p>
 
-              <p class="text-center mt-7">
-                <a class="btn btn-primary btn-round" href="post-2.html">Read story</a>
+              <p class="text-center mt-3">
+                <a class="btn btn-primary btn-round lato" href="{{ site.baseurl }}{{ post.url }}">Read story</a>
               </p>
             </div>
           </article>
