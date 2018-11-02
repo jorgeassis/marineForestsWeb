@@ -22,7 +22,7 @@ layout: default
 
               {% for post in site.posts %}
 
-              <article class="my-6">
+              <article class="my-5">
                 <header class="text-center mb-4">
                   <p>
                     {% for tag in post.tags %}
@@ -38,7 +38,7 @@ layout: default
                 <a href="{{ site.baseurl }}{{ post.url }}"><img class="rounded-md" src="{{ site.baseurl }}/images/{{ post.mainImage }}" alt="..."></a>
 
                 <div class="card-body">
-                  <div class="row mb-5 small-2 text-lighter">
+                  <div class="row mb-3 small-2 text-lighter">
                     <div class="col-auto">
                       <time datetime="2018-05-15T19:00">{{ post.date }}</time>
                     </div>
@@ -93,7 +93,7 @@ layout: default
             <div class="col-lg-4">
               <div class="video-btn-wrapper">
                 <a href="{{ hiking.url }}">
-                  <div class="shadow-2 rounded" style="background-size: cover; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}')"></div>
+                  <div class="shadow-2 rounded" style="width: 350px; height: 240px; background-size: cover; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}')"></div>
                 </a>
               </div>
               <br>
