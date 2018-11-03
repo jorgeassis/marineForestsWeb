@@ -13,7 +13,7 @@ siteCountry: "Portugal"
 coordinateLon: "-8"
 coordinateLat: "38"
 
-mainImage: 3.jpg
+mainImage: 5.jpg
 multipleImages:
 - 2.jpg
 - 3.jpg
