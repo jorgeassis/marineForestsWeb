@@ -3,9 +3,7 @@
 
 {% include header.html %}
 
-<div id="loading">
-  <img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
-</div>
+<div id="loading"></div>
 
 {{ content }}
 
@@ -27,7 +25,8 @@
 <script>
 
 jQuery(window).on("load", function () {
-  $('#loading').hide();
+  $('#loading').fadeOut( "fast" );
+
 });
 
 </script>
