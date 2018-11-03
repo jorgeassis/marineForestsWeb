@@ -1,7 +1,7 @@
 ---
 layout: hiking
 lang: en
-permalink: /salema/
+permalink: /praia-salema/
 
 title: "Praia da Salema"
 
