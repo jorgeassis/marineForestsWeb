@@ -3,6 +3,10 @@
 
 {% include header.html %}
 
+<div id="loading">
+  <img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
+</div>
+
 {{ content }}
 
 {% comment %}
@@ -20,6 +24,11 @@
 <script src="{{ site.baseurl }}/assets/js/page.js?v=1"></script>
 <script src="{{ site.baseurl }}/assets/js/script.js?v=1"></script>
 
+<script language="javascript" type="text/javascript">
+     $(window).load(function() {
+     $('#loading').hide();
+  });
+</script>
 
 </body>
 </html>
