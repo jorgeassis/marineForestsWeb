@@ -28,6 +28,11 @@ layout: default
 
   L.tileLayer.provider('CartoDB.PositronNoLabels').addTo(map);
 
+  map.scrollWheelZoom.disable();
+
+  L.control.zoom({
+     position:'bottomright'
+}).addTo(map);
 
 </script>
 
