@@ -19,7 +19,7 @@ layout: default
       <div class="row">
         <div class="col-md-10 col-xl-6 mx-auto">
 
-          {% assign posts = site.posts | where_exp: "post", "post.tags not contains 'hiking'" %}
+          {% assign posts = site.posts | where_exp: "post", "post.tags contains 'hiking'" %}
 
           {% for post in posts %}
 
