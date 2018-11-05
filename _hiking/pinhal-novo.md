@@ -4,6 +4,10 @@ lang: en
 permalink: /pinhal/
 
 title: "Pinhal novo"
+tags:
+- california
+- hiking
+- canyon
 
 siteName: "Pinhal novo"
 siteCity: "Faro"
