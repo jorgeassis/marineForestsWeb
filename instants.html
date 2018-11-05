@@ -17,12 +17,39 @@ permalink: /instants/
 <main class="main-content">
   <section class="section p-0">
 
-    {% assign posts = site.posts | where: "tags", "instants" %}
-    {% for post in posts %}
 
-    {{ post.title }}
+    <div class="container text-center">
+      <header class="my-5 section-header">
+        <h2>Latest hiks</h2>
 
-    {% endfor %}
+        <p class="lead">We are so excited and proud of our product. It's really easy to hick.</p>
+      </header>
+
+      <div class="row gap-y my-4">
+
+        {% assign posts = site.posts | where: "tags", "instants" %}
+        {% for post in posts %}
+
+        <div class="col-lg-4">
+          <a href="{{ site.baseurl }}{{ post.url }}">
+          <div class="shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ post.mainImage }}'); background-size: cover; ">
+
+          </div>
+        </a>
+          <br>
+          <h6><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h6>
+          <p class="small text-lighter text-uppercase">{{ post.siteCity }}</p>
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+      <div class="text-center mt-5">
+        <a class="btn btn-primary btn-round" href="post-2.html">View all hiks</a>
+      </div>
+
+    </div>
 
 
   </section>
