@@ -25,6 +25,10 @@ layout: default
 
     var defaultLayer = L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
 
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
 
   </script>
 
