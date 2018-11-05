@@ -18,10 +18,11 @@ permalink: /instant-1/
   <section class="section p-0">
 
 
-          {% for instant in site.instants %}
+    {% assign posts = site.posts | where: "tags", "instants" %}
+    {% for post in posts %}
 
 
-{{ instant.title }}
+{{ posts.title }}
 
 
           {% endfor %}
