@@ -11,7 +11,7 @@ tags:
 
 siteName: "Pinhal novo"
 siteCity: "Faro"
-siteDistrict: "Faro"
+siteDistrict: "Lisbon"
 siteCountry: "Portugal"
 
 coordinateLon: "-8"
