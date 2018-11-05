@@ -5,7 +5,7 @@ layout: default
 
 <!-- Header -->
 <header class="header p-0">
-  <div class="h-500" id="map"></div>
+  <div class="h-300" id="map"></div>
 </header><!-- /.header -->
 
 <script>
@@ -20,6 +20,9 @@ layout: default
       maxZoom: 17,
       minZoom: 9
     }).addTo(map);
+
+    var marker = L.marker([ {{page.coordinateLat}} , {{page.coordinateLon}} ]).addTo(map).bindPopup("<b>{{page.siteName}}</b><br />{{page.siteCity}}").openPopup();
+
 
   </script>
 
