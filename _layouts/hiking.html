@@ -11,7 +11,7 @@ layout: default
 <script>
 
   // initialize the map
-  var map = L.map('map',{zoomControl: false}).setView([{{page.coordinateLat}}, {{page.coordinateLon}}], 10);
+  var map = L.map('map').setView([{{page.coordinateLat}}, {{page.coordinateLon}}], 10);
 
   // load a tile layer
   L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
@@ -30,9 +30,7 @@ layout: default
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
 
-    L.control.zoom({
-         position:'bottomright'
-    }).addTo(map);
+    map.zoomControl.setPosition('bottomright');
 
   </script>
 
