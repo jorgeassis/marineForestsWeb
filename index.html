@@ -19,10 +19,10 @@ layout: default
       <div class="row">
         <div class="col-md-10 col-xl-6 mx-auto">
 
-
-          {% assign posts = site.posts | where: "tags", "hiking" %}
+          {% assign posts = site.posts %}
 
           {% for post in posts limit: 5 %}
+          {% unless post.tags contains "hiking"%}
 
           <article class="my-5">
             <header class="text-center mb-4">
@@ -60,6 +60,7 @@ layout: default
 
           <hr>
 
+          {% endunless %}
           {% endfor %}
 
 
