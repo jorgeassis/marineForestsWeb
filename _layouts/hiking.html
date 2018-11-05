@@ -101,6 +101,8 @@ layout: default
 
         {% assign posts = site.posts | where: "siteDistrict", page.siteDistrict %}
         {% for post in posts limit: 3 %}
+        {% unless post.title contains page.title %}
+
 
         <div class="col-lg-4">
           <a href="{{ site.baseurl }}{{ post.url }}">
@@ -113,6 +115,7 @@ layout: default
           <p class="small text-lighter text-uppercase">{{ post.siteCity }}</p>
         </div>
 
+        {% endunless %}
         {% endfor %}
 
       </div>
