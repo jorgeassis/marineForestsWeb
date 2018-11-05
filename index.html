@@ -85,14 +85,14 @@ layout: default
       <section class="section bg-gray" style="background: #F3F3F3">
         <div class="container text-center">
           <header class="my-5 section-header">
-            <h2>LATEST HIKS</h2>
+            <h2>Latest hiks</h2>
 
             <p class="lead">We are so excited and proud of our product. It's really easy to hick.</p>
           </header>
 
           <div class="row gap-y my-4">
 
-            {% assign posts = site.posts | where: "tags", "hiking" | sample: 3 %}
+            {% assign posts = site.posts | where: "tags", "hiking" %}
             {% for post in posts %}
 
             <div class="col-lg-4">
