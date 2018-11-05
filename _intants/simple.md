@@ -1,27 +1,11 @@
 ---
-layout: instants
+layout: post
 lang: en
-permalink: /pinhal/
+permalink: /pinhal-2/
 
 title: "Pinhal novo"
-tags:
-- california
-- hiking
-- canyon
-
-siteName: "Pinhal novo"
-siteCity: "Faro"
-siteDistrict: "Faro"
-siteCountry: "Portugal"
-
-coordinateLon: "-8"
-coordinateLat: "38"
 
 mainImage: 2.jpg
-multipleImages:
-- 2.jpg
-- 3.jpg
-- 4.jpg
 
 date: 2016-03-23T10:20:00Z
 ---
