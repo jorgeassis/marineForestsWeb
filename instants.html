@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Instants
 permalink: /instants/
 ---
@@ -17,15 +17,12 @@ permalink: /instants/
 <main class="main-content">
   <section class="section p-0">
 
-
     {% assign posts = site.posts | where: "tags", "instants" %}
     {% for post in posts %}
 
+    {{ posts.title }}
 
-{{ posts.title }}
-
-
-          {% endfor %}
+    {% endfor %}
 
 
   </section>
