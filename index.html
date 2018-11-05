@@ -20,7 +20,7 @@ layout: default
         <div class="col-md-10 col-xl-6 mx-auto">
 
 
-          {% assign posts = site.posts | unless: "tags", "hiking" %}
+          {% assign posts = site.posts | where: "tags", "hiking" %}
 
           {% for post in posts limit: 5 %}
 
