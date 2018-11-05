@@ -12,7 +12,7 @@ description: Our simple Nature journal
 avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
 
 collections:
-  instants:
+  my-own-collection:
     output: true
 
 # Flags below are optional
