@@ -19,9 +19,9 @@ layout: default
       <div class="row">
         <div class="col-md-10 col-xl-6 mx-auto">
 
-          {% assign posts = site.posts | where_exp: "post", "post.tags contains 'hiking'" %}
+          {% assign posts = site.posts | where: "post", "hiking" %}
 
-          {% for post in posts %}
+          {% for post in posts limit: 5 %}
 
           <article class="my-5">
             <header class="text-center mb-4">
@@ -88,17 +88,18 @@ layout: default
 
           <div class="row gap-y my-4">
 
-            {% for hiking in site.hiking %}
+            {% assign posts = site.posts | where: "post", "hiking" %}
+            {% for post in posts limit: 3 %}
 
             <div class="col-lg-4">
               <a href="{{ hiking.url }}">
-              <div class="shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ hiking.mainImage }}'); background-size: cover; ">
+              <div class="shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ post.mainImage }}'); background-size: cover; ">
 
               </div>
             </a>
               <br>
-              <h6><a href="{{ hiking.url }}">{{ hiking.title }}</a></h6>
-              <p class="small text-lighter text-uppercase">{{ hiking.siteCity }}</p>
+              <h6><a href="{{ hiking.url }}">{{ post.title }}</a></h6>
+              <p class="small text-lighter text-uppercase">{{ post.siteCity }}</p>
             </div>
 
             {% endfor %}
