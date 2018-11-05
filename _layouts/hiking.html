@@ -20,7 +20,7 @@ layout: default
 
     var myIcon = L.icon({
           iconUrl: '{{ site.baseurl }}/assets/img/ico.svg',
-          iconSize: [15, 15], // size of the icon
+          iconSize: [10, 10], // size of the icon
           });
 
     var marker = L.marker([ {{page.coordinateLat}} , {{page.coordinateLon}} ], {icon: myIcon}).addTo(map).bindPopup("<b>{{page.siteName}}</b><br />{{page.siteCity}}");

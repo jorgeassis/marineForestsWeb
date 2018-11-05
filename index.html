@@ -19,7 +19,9 @@ layout: default
       <div class="row">
         <div class="col-md-10 col-xl-6 mx-auto">
 
-          {% for post in site.posts %}
+          {% assign posts = site.posts | where_exp: "post", "post.tags not contains 'hiking'" %}
+
+          {% for post in posts %}
 
           <article class="my-5">
             <header class="text-center mb-4">
@@ -86,7 +88,9 @@ layout: default
 
           <div class="row gap-y my-4">
 
-            {% for hiking in site.hiking %}
+            {% assign posts = site.posts | where_exp: "post", "post.tags contains 'hiking'" %}
+
+            {% for hiking in posts %}
 
             <div class="col-lg-4">
               <a href="{{ hiking.url }}">
