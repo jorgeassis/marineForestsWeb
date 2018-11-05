@@ -88,9 +88,7 @@ layout: default
 
           <div class="row gap-y my-4">
 
-            {% assign posts = site.posts | where_exp: "post", "post.tags contains 'hiking'" %}
-
-            {% for hiking in posts %}
+            {% for hiking in site.hiking %}
 
             <div class="col-lg-4">
               <a href="{{ hiking.url }}">
