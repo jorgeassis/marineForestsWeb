@@ -22,7 +22,7 @@ layout: default
           {% assign posts = site.posts %}
 
           {% for post in posts limit: 5 %}
-          {% if post.tags != "hiking" and post.tags != "instants" %}
+          {% if not post.tags contains "hiking" and not post.tags contains "instants" %}
 
           <article class="my-5">
             <header class="text-center mb-4">
@@ -94,13 +94,13 @@ layout: default
             {% for post in posts limit: 3 %}
 
             <div class="col-lg-4">
-              <a href="{{ hiking.url }}">
+              <a href="{{ post.url }}">
               <div class="shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/images/{{ post.mainImage }}'); background-size: cover; ">
 
               </div>
             </a>
               <br>
-              <h6><a href="{{ hiking.url }}">{{ post.title }}</a></h6>
+              <h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
               <p class="small text-lighter text-uppercase">{{ post.siteCity }}</p>
             </div>
 
