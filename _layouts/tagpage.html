@@ -16,3 +16,17 @@ layout: default
     </ul>
   </div>
 </article>
+<article class="page">
+
+  <h1>Tag: {{ page.tag | capitalize }}</h1>
+
+  <div class="entry">
+    <ul>
+        {% for hiking in site.tags[page.tag] %}
+        <li>
+            {{ hiking.date | date: "%B %d, %Y" }}: <a href="{{ hiking.url }}">{{ hiking.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+</article>
