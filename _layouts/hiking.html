@@ -5,7 +5,7 @@ layout: default
 
 <!-- Header -->
 <header class="header p-0">
-  <div class="h-300" id="map" style="opacity: 1"></div>
+  <div class="h-300" id="map" style="background: #fff"></div>
 </header><!-- /.header -->
 
 <script>
@@ -17,8 +17,6 @@ layout: default
   L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
     {
       attribution: '',
-      maxZoom: 17,
-      minZoom: 9
     }).addTo(map);
 
     var marker = L.marker([ {{page.coordinateLat}} , {{page.coordinateLon}} ]).addTo(map).bindPopup("<b>{{page.siteName}}</b><br />{{page.siteCity}}");
