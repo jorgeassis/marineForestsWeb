@@ -5,8 +5,11 @@ permalink: /my-permalink-2/
 
 title: "Another nice story"
 tags:
+- story
 - lisbon
 - gastronomy
+
+mainHighlights: true
 
 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
