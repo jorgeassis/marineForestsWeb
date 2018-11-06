@@ -9,10 +9,8 @@ layout: default
 
 <script>
 
-  // initialize the map
   var map = L.map('map').setView([{{page.coordinateLat}}, {{page.coordinateLon}}], 3);
 
-  // load a tile layer
   L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
     {
       attribution: '',
@@ -22,26 +20,17 @@ layout: default
           iconUrl: '{{ site.baseurl }}/assets/img/ico.svg',
           iconSize: [10, 10], // size of the icon
           });
-
     var marker = L.marker([ {{page.coordinateLat}} , {{page.coordinateLon}} ], {icon: myIcon}).addTo(map).bindPopup("<b>{{page.siteName}}</b><br />{{page.siteCity}}");
-
     var defaultLayer = L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
 
     map.dragging.disable();
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
-
     map.zoomControl.setPosition('bottomright');
-
     map.getPane('tilePane').style.opacity = 0.4;
 
-
   </script>
-
-
-
-
 
     <!-- Main Content -->
     <main class="main-content">
