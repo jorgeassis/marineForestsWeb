@@ -23,10 +23,8 @@ layout: default
           {% assign posts = site.posts | where: "mainHighlights", "true" %}
           {% for post in posts limit: 5 %}
 
-                    
-          
           <article class="my-5">
-            <header class="text-center mb-4">
+            <header class="text-center mb-5">
               <p>
                 {% for tag in post.tags %}
                 <a class="small-4 text-lighter text-uppercase ls-2 fw-600" href="/tags/{{ tag }}/">{{ tag }}</a>
@@ -39,16 +37,23 @@ layout: default
               <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
             </header>
 
-            <a href="{{ site.baseurl }}{{ post.url }}"><img class="rounded-md" src="{{ site.baseurl }}/assets/img/{{ post.mainImage }}" alt="..."></a>
+            <a href="{{ site.baseurl }}{{ post.url }}">
+
+              <div class="my-1 rounded-md" style="width: 100%; max-height: 320px; background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
+              </div>
+
+            </a>
 
             <div class="card-body">
               <div class="row mb-1 small-2 text-lighter">
                 <div class="col-auto">
-                  <time datetime="2018-05-15T19:00">{{ page.date }}</time>
+                  <time datetime="2018-05-15T19:00">{{ post.date }}</time>
                 </div>
 
                 <div class="col-auto ml-auto">
-                </div>
+                     <span><i class="fa fa-comments pr-1 opacity-60"></i> 6</span>
+                   </div>
+
               </div>
 
               <p class="text-justify">{{ post.description }}</p>
@@ -117,6 +122,72 @@ layout: default
     </main>
 
 
+
+
+    <section class="section">
+           <div class="container">
+             <header class="section-header">
+               <h2>Overlay & Scrim</h2>
+               <hr>
+               <p class="lead">Some sample of using background images in a card with different opacity of overlays and scrims. Please read the <a href="overlay.html">full documentation</a> of overlays.</p>
+             </header>
+
+
+             <div class="row gap-y">
+
+               <div class="col-12 col-lg-4">
+                 <div class="card text-white justify-content-end bg-img h-400" style="background-image: url(../assets/img/thumb/1.jpg);" data-scrim-bottom="5">
+                   <div class="card-body flex-grow-0">
+                     <h3 class="card-title fw-200"><a href="#">A scrim with 50% opacity at bottom</a></h3>
+                     <div class="media align-items-center">
+                       <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/1.jpg" alt="...">
+                       <div class="media-body">Hossein Shams</div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+
+
+               <div class="col-12 col-lg-4">
+                 <div class="card text-white bg-img h-400" style="background-image: url(../assets/img/thumb/2.jpg);" data-overlay="6">
+                   <div class="row h-100 p-5">
+                     <div class="col-12">
+                       <a class="text-white" href="#">Marketing</a>
+                     </div>
+
+                     <div class="col-12 align-self-end">
+                       <h3 class="card-title fw-200"><a href="#">An overlay with 60% opacity</a></h3>
+                       <div class="media align-items-center">
+                         <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/1.jpg" alt="...">
+                         <div class="media-body">Hossein Shams</div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+
+
+               <div class="col-12 col-lg-4">
+                 <div class="card text-white bg-img justify-content-center h-400" style="background-image: url(../assets/img/thumb/1.jpg);" data-scrim-top="7">
+                   <div class="card-body p-6 text-center flex-grow-0">
+                     <h3 class="card-title fw-200">A 70% scrim at top</h3>
+                     <p class="opacity-90">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title.</p>
+                     <br>
+                     <a class="btn btn-sm btn-primary" href="#">Read more</a>
+                   </div>
+                 </div>
+               </div>
+
+             </div>
+
+
+           </div>
+         </section>
+
+
+
       <main class="main-content">
         <section class="section p-8">
           <div class="container">
@@ -124,10 +195,10 @@ layout: default
             <div class="row">
               <div class="col-md-10 col-xl-6 mx-auto">
 
-      <div class="social social-lg social-brand text-center">
-        <a class="social-twitter" href="#"><i class="fa fa-twitter"></i></a>
-        <a class="social-instagram" href="#"><i class="fa fa-instagram"></i></a>
-        <a class="social-git" href="#"><i class="fa fa-git"></i></a>
+      <div class="social social-lg text-center">
+        <a class="social-twitter" href="#"><i class="fa fa-twitter gray"></i></a>
+        <a class="social-instagram" href="#"><i class="fa fa-instagram gray"></i></a>
+        <a class="social-git" href="#"><i class="fa fa-git gray"></i></a>
       </div>
 
     </div>
