@@ -4,6 +4,12 @@ lang: en
 permalink: /praia-salema/
 
 title: "Praia da Salema"
+tags:
+- hiking
+- portugal
+- loule
+
+description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
 siteName: "Salema"
 siteCity: "Sagres"
