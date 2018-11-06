@@ -7,7 +7,7 @@ title: "Another nice story"
 tags:
 - story
 - lisbon
-- gastronomy
+- hiking
 
 mainHighlights: true
 
