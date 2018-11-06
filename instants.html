@@ -21,10 +21,12 @@ permalink: /instants/
       {% assign posts = site.posts | where: "tags", "instants" %}
       {% for post in posts %}
 
-      <div class="card text-center text-white bg-img" style="background-image: url('{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}');">
+      <a class="gallery-item" href="#">
+      <div data-provide="lightbox" class="card text-center text-white bg-img" style="background-image: url('{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}');">
         <div class="card-body px-6 py-8">
         </div>
       </div>
+       </a>
 
       {% endfor %}
 
