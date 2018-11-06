@@ -14,33 +14,6 @@ permalink: /instants/
 
 
 
-<section class="section">
-  <div class="container">
-    <div class="card-columns">
-
-      {% assign posts = site.posts | where: "tags", "instants" %}
-      {% for post in posts %}
-
-      <a class="gallery-item" href="https://bears.land/assets/img/instants/{{ post.mainImage }}">
-
-      <div data-provide="lightbox"  class="card text-center text-white bg-img" style="background-image: url('{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}');">
-        <div class="overlay opacity-0" style="background-color: #de7ba9"></div>
-        <div class="card-body px-6 py-8">
-          <p></p>
-          <h4></h4>
-        </div>
-      </div>
-      <br>
-      <h6>{{ post.title }}</h6>
-   </a>
-      {% endfor %}
-
-    </div>
-  </div>
-</section>
-
-
-
 
 
 <main class="main-content">
