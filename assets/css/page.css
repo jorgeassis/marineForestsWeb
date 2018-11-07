@@ -34,6 +34,8 @@
 
 .lato { font-family: "Lato"; font-weight: "Light"; }
 
+.font-dark { color: #fff }
+
 #loading {
    width: 100%;
    height: 100%;
