@@ -42,7 +42,7 @@
 
 .font-small {
   font-size: 14px;
-  line-height: 1px;
+  line-height: 0;
 }
 .font-medium {
   font-size: 18px;
