@@ -11,7 +11,7 @@ credits: "Header photo by Clément M. on Unsplash"
            <div class="col-lg-8 mx-auto">
 
              <h1 class="display-4 mb-0">A Bears' Land of <span data-typing="strenght, love, awareness" data-type-speed="100" data-back-delay="2500"></span></h1>
-             <p class="lead-2 mt-5 font-dark lato-regular" >You have got the change to work and thrive with us.<br>We are a small group of developers who wants to make a family!</p>
+             <p class="lead-2 mt-4 font-dark" >You have got the change to work and thrive with us.<br>We are a small group of developers who wants to make a family!</p>
 
            </div>
          </div>
@@ -34,10 +34,10 @@ credits: "Header photo by Clément M. on Unsplash"
 
 
     <header class="section-header my-8">
-      <h2>Featured regions</h2>
+      <h2 class="lato-regular">Featured regions</h2>
       <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
 
-        <div class="row gap-y">
+        <div class="row gap-y mt-1">
 
           <div class="col-lg-4">
           <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/3.jpg); min-height: 200px" data-overlay="5">
@@ -77,8 +77,7 @@ credits: "Header photo by Clément M. on Unsplash"
 
 <main>
 
-  <section class="section my-10">
-    <div class="container">
+  <section class="section-header my-10">
 
         <h2>Featured articles</h2>
         <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
@@ -108,11 +107,11 @@ credits: "Header photo by Clément M. on Unsplash"
 
               <a href="{{ site.baseurl }}{{ post.url }}">
 
-                <div class="my-1 rounded-md" style="width: 100%; max-height: 320px; height: 320px; background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
+                <div class="rounded-md" style="width: 100%; max-height: 320px; height: 320px; background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
                 </div>
 
               </a>
-              <div class="row mb-1 small-2 text-lighter my-1">
+              <div class="row mb-1 small-2 text-lighter my-2">
                 <div class="col-auto">
                   <time datetime="2018-05-15T19:00">{{ post.date | date: "%Y-%m-%d" }}</time>
                 </div>
@@ -144,23 +143,19 @@ credits: "Header photo by Clément M. on Unsplash"
         </div>
       </div>
 
-    </div>
   </section>
-</main>
 
 
-
-    <main class="main-content">
 
       <section class="section bg-gray" style="background: #F3F3F3">
         <div class="container text-center">
-          <header class="section-header">
+          <header class="section-header  my-5">
             <h2>Featured hikes</h2>
             <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
             <p class="lead">Cards include a few options for working with images.</p>
           </header>
 
-          <div class="row gap-y my-4">
+          <div class="row gap-y my-1">
 
 
             {% assign posts = site.posts | where: "tags", "hiking" %}
