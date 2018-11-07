@@ -328,7 +328,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   /* margin-bottom: 0.5rem; */
-  font-family: "Lato";
+  /* font-family: "Lato";*/
   line-height: 1.5;
   color: #323d47; }
 
@@ -20179,6 +20179,9 @@ a.text-lightest:hover, a.text-lightest:focus {
 
 .h-400 {
   height: 400px !important; }
+
+.h-350 {
+    height: 350px !important; }
 
 .mw-400 {
   min-width: 400px !important; }
