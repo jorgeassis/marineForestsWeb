@@ -35,7 +35,8 @@ credits: "Header photo by Clément M. on Unsplash"
   <main>
 
     <header class="section-header my-8">
-      <h3 class="lato">Featured regions</h3>
+      <span class="h3 latothin">Featured regions</span>
+
       <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
 
         <div class="row gap-y mt-0">
@@ -44,7 +45,7 @@ credits: "Header photo by Clément M. on Unsplash"
           <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/3.jpg); min-height: 200px" data-overlay="5">
             <div class="card-body text-center flex-grow-0">
               <p></p>
-              <h5 class="card-title mb-0">Sagres, PT</h5>
+              <span class="card-title mb-0 h5 lato">Sagres, PT</span>
               <small>5 items</small>
             </div>
           </div>
@@ -55,7 +56,7 @@ credits: "Header photo by Clément M. on Unsplash"
         <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/1.jpg); min-height: 200px" data-overlay="5">
           <div class="card-body text-center flex-grow-0">
             <p></p>
-            <h5 class="card-title mb-0">Yellowstone, USA</h5>
+            <span class="card-title mb-0 h5 lato">Yellowstone, USA</span>
             <small>12 items</small>
           </div>
         </div>
@@ -65,7 +66,7 @@ credits: "Header photo by Clément M. on Unsplash"
             <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/2.jpg); min-height: 200px" data-overlay="5">
               <div class="card-body text-center flex-grow-0">
                 <p></p>
-                <h5 class="card-title mb-0">Loulé, PT</h5>
+                <span class="card-title mb-0 h5 lato">Loulé, PT</span>
                 <small>168 items</small>
               </div>
             </div>
@@ -98,7 +99,7 @@ credits: "Header photo by Clément M. on Unsplash"
                 {% endif %}
                 {% endfor %}
               </p>
-              <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+              <span class="h3 lato"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
             </div>
 
             <div class="card-body">
@@ -128,12 +129,12 @@ credits: "Header photo by Clément M. on Unsplash"
             </div>
           </article>
 
-          <hr>
 
           {% endfor %}
 
+          <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
 
-          <nav class="flexbox my-8">
+          <nav class="flexbox my-5">
             <a class="btn btn-outline-secondary disabled"><i class="ti-arrow-left fs-9 mr-2"></i> Newer</a>
             <a class="btn btn-outline-secondary" href="#">Older <i class="ti-arrow-right fs-9 ml-2"></i></a>
           </nav>
@@ -147,11 +148,10 @@ credits: "Header photo by Clément M. on Unsplash"
 
       <section class="section bg-gray" style="background: #F3F3F3">
         <div class="container text-center">
-          <header class="section-header mt-8">
-            <h2>Featured hikes</h2>
+            <span class="h2 lato mt-8">Featured hikes</span>
+
             <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
             <p class="lead">Cards include a few options for working with images.</p>
-          </header>
 
           <div class="row gap-y my-1">
 
@@ -195,26 +195,5 @@ credits: "Header photo by Clément M. on Unsplash"
       </section>
 
 
-
-
-
-
-        <section class="section p-8">
-          <div class="container">
-
-            <div class="row">
-              <div class="col-md-10 col-xl-6 mx-auto">
-
-      <div class="social social-lg text-center">
-        <a class="social-twitter" href="#"><i class="fa fa-twitter gray"></i></a>
-        <a class="social-instagram" href="#"><i class="fa fa-instagram gray"></i></a>
-        <a class="social-git" href="#"><i class="fa fa-git gray"></i></a>
-      </div>
-
-    </div>
-  </div>
-
-  </div>
-</section>
 
 </main>
