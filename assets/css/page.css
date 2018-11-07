@@ -35,12 +35,13 @@
 .lato { font-family: 'Lato', sans-serif; font-weight: 300; }
 .latoregular { font-family: 'Lato', sans-serif; font-weight: 400; }
 
-.opensans { font-family: 'Open Sans', sans-serif; font-weight: 300; }
 .opensansbold { font-family: 'Open Sans', sans-serif; font-weight: 600; }
 
 .fontdark { color: #000 }
 
 .fontsmall {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   font-size: 15px;
   line-height: 20px;
 }
