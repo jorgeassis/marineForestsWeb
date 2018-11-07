@@ -13,8 +13,6 @@ credits: "Header photo by Clément M. on Unsplash"
              <h1 class="display-4 mb-0">A Bears' Land of <span data-typing="strenght, love, awareness" data-type-speed="100" data-back-delay="2500"></span></h1>
              <p class="lead-2 mt-5">You have got the change to work and thrive with us. We are a small group of developers who wants to make a family!</p>
 
-             <hr class="w-60px my-7">
-
            </div>
          </div>
 
@@ -35,7 +33,7 @@ credits: "Header photo by Clément M. on Unsplash"
     <!-- Main Content -->
 
 
-    <header class="section-header topSpacer25">
+    <header class="section-header my-7">
       <h2>Featured regions</h2>
       <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
     </header>
@@ -97,9 +95,6 @@ credits: "Header photo by Clément M. on Unsplash"
 
       <div class="row">
         <div class="col-md-10 col-xl-6 mx-auto">
-
-          <h2>Featured articles</h2>
-          <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
 
           {% assign posts = site.posts | where: "mainHighlights", "true" %}
           {% for post in posts limit: 5 %}

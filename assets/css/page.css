@@ -19511,12 +19511,11 @@ body:not(.body-scrolled) .topbar.d-flex ~ .navbar {
 
 .header {
   position: relative;
-  background-position: center;
+  /* background-position: center; */
   -webkit-background-size: cover;
           background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 100px;
-  padding-bottom: 30px; }
+}
   .header > .container,
   .header > .container-fluid {
     position: relative;
