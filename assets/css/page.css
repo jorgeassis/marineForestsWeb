@@ -31,12 +31,12 @@
 .topSpacer50 { margin-top: 50px; }
 .topSpacer100 { margin-top: 100px; }
 
-.latothin { font-family: "Lato"; font-weight: "100"; }
-.lato { font-family: "Lato"; font-weight: "300"; }
-.latoregular { font-family: "Lato"; font-weight: "400"; }
+.latothin { font-family: Lato, sans-serif; font-weight: 100; }
+.lato { font-family: Lato, sans-serif; font-weight: 300; }
+.latoregular { font-family: Lato, sans-serif; font-weight: 400; }
 
-.opensans { font-family: 'Open Sans', sans-serif; font-weight: "400"; }
-.opensansbold { font-family: 'Open Sans', sans-serif; font-weight: "600"; }
+.opensans { font-family: 'Open Sans', sans-serif; font-weight: 400; }
+.opensansbold { font-family: 'Open Sans', sans-serif; font-weight: 600; }
 
 .font-dark { color: #000 }
 
@@ -82,7 +82,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif; font-weight: "400";
+  font-family: 'Open Sans', sans-serif; font-weight: 400;
   font-size: 0.9375rem;
   line-height: 1.9;
   color: #757575;
