@@ -19530,8 +19530,10 @@ body:not(.body-scrolled) .topbar.d-flex ~ .navbar {
   -webkit-background-size: cover;
           background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 1rem;
-  padding-bottom: 6rem; }
+  /* padding-top: 1rem;
+  padding-bottom: 6rem;  */
+
+}
   .section > .container,
   .section > .container-fluid,
   .section > .container-wide {
