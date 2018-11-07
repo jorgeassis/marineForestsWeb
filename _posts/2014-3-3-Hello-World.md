@@ -11,7 +11,7 @@ tags:
 
 mainHighlights: true
 
-description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
 mainImage: 3.jpg
 multipleImages:
