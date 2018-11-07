@@ -46,7 +46,7 @@ credits: "Header photo by Clément M. on Unsplash"
           <div class="col-lg-4">
           <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/3.jpg); min-height: 200px" data-overlay="5">
             <div class="card-body text-center flex-grow-0">
-              <<br><br>
+              <br><br>
               <span class="card-title mb-0 h5 lato">Sagres, Portugal</span>
               <br>
               <small>5 items</small>
@@ -58,7 +58,7 @@ credits: "Header photo by Clément M. on Unsplash"
         <div class="col-lg-4">
         <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/1.jpg); min-height: 200px" data-overlay="5">
           <div class="card-body text-center flex-grow-0">
-            <p></p>
+            <br><br>
             <span class="card-title mb-0 h5 lato">Yellowstone, USA</span>
             <br>
             <small>12 items</small>
@@ -69,7 +69,7 @@ credits: "Header photo by Clément M. on Unsplash"
           <div class="col-lg-4">
             <div class="card text-white bg-img justify-content-center" style="background-image: url(../assets/img/thumb/2.jpg); min-height: 200px" data-overlay="5">
               <div class="card-body text-center flex-grow-0">
-                <p></p>
+                <br><br>
                 <span class="card-title mb-0 h5 lato">Loulé, Portugal</span>
                 <br>
                 <small>168 items</small>
@@ -113,7 +113,7 @@ credits: "Header photo by Clément M. on Unsplash"
                 </div>
 
               </a>
-              <div class="row mb-1 small-2 text-lighter mt-2">
+              <div class="row mb-1 small-2 text-lighter mt-3 mb-2">
                 <div class="col-auto">
                   <time datetime="2018-05-15T19:00">{{ post.date | date: "%Y-%m-%d" }}</time>
                 </div>
@@ -135,11 +135,9 @@ credits: "Header photo by Clément M. on Unsplash"
 
           {% endfor %}
 
-          <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
-
           <nav class="flexbox my-5">
-            <a class="btn btn-outline-secondary disabled"><i class="ti-arrow-left fs-9 mr-2"></i> Newer</a>
-            <a class="btn btn-outline-secondary" href="#">Older <i class="ti-arrow-right fs-9 ml-2"></i></a>
+            <a class="btn btn-outline-secondary btn-round lato"><i class="ti-arrow-left fs-9 mr-2"></i> Newer</a>
+            <a class="btn btn-outline-secondary btn-round lato" href="#">Older <i class="ti-arrow-right fs-9 ml-2"></i></a>
           </nav>
 
         </div>
@@ -151,10 +149,16 @@ credits: "Header photo by Clément M. on Unsplash"
   <section class="section bg-gray">
     <div class="container text-center">
 
-            <span class="h3 lato mt-8 my-5">Featured hikes</span>
+      <div class="row">
+        <div class="col-md-10 col-xl-8 mx-auto">
+
+            <span class="h3 lato mt-8 ">Featured hikes</span>
 
             <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
             <p class="lead">Cards include a few options for working with images.</p>
+
+          </div>
+          </div>
 
           <div class="row gap-y my-4">
 
@@ -164,7 +168,7 @@ credits: "Header photo by Clément M. on Unsplash"
 
 
             <div class="col-12 col-lg-4">
-              <div class="card text-white justify-content-end bg-img h-400" style="background-image: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}');" data-scrim-bottom="4">
+              <div class="card text-white justify-content-end bg-img h-400" style="background-image: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}');" data-scrim-bottom="6">
                 <div class="card-body flex-grow-0">
                   <span class="h3 lato fw-200"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
                   <div class="media align-items-center">
@@ -190,7 +194,7 @@ credits: "Header photo by Clément M. on Unsplash"
 
           </div>
 
-          <div class="text-center mt-5 mb-5">
+          <div class="text-center mt-5 mb-8">
             <a class="btn btn-primary btn-round" href="post-2.html">View all hiks</a>
           </div>
 
