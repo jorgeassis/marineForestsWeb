@@ -3,7 +3,7 @@ layout: default
 ---
 
 
-<header class="header text-white" style="background-image: url(../assets/img/caroline-dinouard-580563-unsplash.jpg)" data-overlay="2">
+<header class="header text-white" style="background-image: url(../assets/img/clement-m-429812-unsplash-1600.jpg)" data-overlay="2">
        <div class="container text-center">
 
          <div class="row">
@@ -34,12 +34,12 @@ layout: default
     <!-- Main Content -->
 
 
-    <header class="section-header">
+    <header class="section-header topSpacer25">
       <h2>Featured regions</h2>
       <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
     </header>
 
-    <section id="image" class="section topSpacer25">
+    <section id="image" class="section">
       <div class="container">
 
         <div class="row gap-y my-0">
@@ -96,6 +96,9 @@ layout: default
 
       <div class="row">
         <div class="col-md-10 col-xl-6 mx-auto">
+
+          <h2>Featured articles</h2>
+          <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
 
           {% assign posts = site.posts | where: "mainHighlights", "true" %}
           {% for post in posts limit: 5 %}
