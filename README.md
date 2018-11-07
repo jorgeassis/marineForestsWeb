@@ -1,5 +1,8 @@
 http://thetheme.io/thesaas/block/blog.html
+<br>
 https://devhints.io/jekyll
+<br>
+https://unsplash.com/collections/1193914/landing-page-images
 
 ## Quick Start
 

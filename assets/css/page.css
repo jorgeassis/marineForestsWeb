@@ -31,9 +31,9 @@
 .topSpacer50 { margin-top: 50px; }
 .topSpacer100 { margin-top: 100px; }
 
-.latothin { font-family: Lato, sans-serif; font-weight: 100; }
-.lato { font-family: Lato, sans-serif; font-weight: 300; }
-.latoregular { font-family: Lato, sans-serif; font-weight: 400; }
+.latothin { font-family: 'Lato', sans-serif; font-weight: 100; }
+.lato { font-family: 'Lato', sans-serif; font-weight: 300; }
+.latoregular { font-family: 'Lato', sans-serif; font-weight: 400; }
 
 .opensans { font-family: 'Open Sans', sans-serif; font-weight: 300; }
 .opensansbold { font-family: 'Open Sans', sans-serif; font-weight: 600; }
@@ -41,8 +41,8 @@
 .fontdark { color: #000 }
 
 .fontsmall {
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 18px;
 }
 .fontmedium {
   font-size: 18px;
@@ -81,8 +81,8 @@
           box-sizing: border-box; }
 
 html {
-  font-family: 'Open Sans', sans-serif; font-weight: "400";
-  line-height: 1.15;
+  font-family: 'Open Sans', sans-serif; font-weight: "300";
+  /* line-height: 1.15; */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
@@ -97,8 +97,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif; font-weight: 400;
-  font-size: 0.9375rem;
-  line-height: 1.9;
+  /* font-size: 0.9375rem;
+  line-height: 1.9; */
   color: #757575;
   text-align: left;
   background-color: #ffffff; }
@@ -20518,11 +20518,9 @@ a.text-lightest:hover, a.text-lightest:focus {
     display: inline-block;
     margin: 32px; }
 
-.font-body {
-  font-family: "Open Sans", sans-serif; }
+.font-body {  }
 
-.font-title {
-  font-family: Dosis, sans-serif; }
+.font-title {  }
 
 .fs-6,
 .font-size-6 {
