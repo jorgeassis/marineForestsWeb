@@ -38,7 +38,7 @@ credits: "Header photo by Clément M. on Unsplash"
 
     <header class="section-header my-6">
 
-      <span class="h3 lato">Featured regions</span>
+      <span class="h4 lato">Featured regions</span>
 
       <hr class="shortdivider">
 
@@ -100,7 +100,7 @@ credits: "Header photo by Clément M. on Unsplash"
           {% for post in posts limit: 5 %}
 
           <article class="mt-2">
-            <div class="text-center mb-6">
+            <div class="text-center mb-8">
               <p>
                 {% for tag in post.tags %}
                 <a class="small-4 text-lighter text-uppercase ls-2 fw-600" href="/tags/{{ tag }}/">{{ tag }}</a>
@@ -110,7 +110,7 @@ credits: "Header photo by Clément M. on Unsplash"
                 {% endif %}
                 {% endfor %}
               </p>
-              <span class="h3 lato"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
+              <span class="h4 lato"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
 
 
               <a href="{{ site.baseurl }}{{ post.url }}">
