@@ -3086,7 +3086,9 @@ input[type="button"].btn-block {
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
-  list-style: none; }
+  list-style: none;
+  font-family: 'Open Sans', sans-serif; font-weight: 600;
+}
 
 .nav-link {
   display: block;
