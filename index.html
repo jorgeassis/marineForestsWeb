@@ -40,7 +40,7 @@ credits: "Header photo by Clément M. on Unsplash"
 
       <span class="h3 latothin">Featured regions</span>
 
-      <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
+      <hr class="shortdivider">
 
         <div class="row gap-y mt-0">
 
@@ -85,9 +85,9 @@ credits: "Header photo by Clément M. on Unsplash"
       </header>
 
   <section class="section-header my-8">
-    <span class="h3 latothin">Featured articles</span>
+    <!-- <span class="h3 latothin">Featured articles</span> -->
 
-        <hr style="height: 1px; border: 0; border-top: 2px solid #932412;">
+    <hr class="shortdivider">
         <!-- <p class="lead">Cards include a few options for working with images.</p> -->
 
       <div class="row">
@@ -107,12 +107,12 @@ credits: "Header photo by Clément M. on Unsplash"
                 {% endif %}
                 {% endfor %}
               </p>
-              <span class="h3 lato"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
+              <span class="h3 latothin"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
 
 
               <a href="{{ site.baseurl }}{{ post.url }}">
 
-                <div class="rounded-md mt-3" style="width: 100%; max-height: 320px; height: 320px; background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
+                <div class="rounded-md mt-4" style="width: 100%; max-height: 320px; height: 320px; background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
                 </div>
 
               </a>
@@ -129,8 +129,8 @@ credits: "Header photo by Clément M. on Unsplash"
               <div class="text-justify">
               <span class="fontsmall text-justify">{{ post.description }}</span>
             </div>
-              <p class="text-center mt-7">
-                <a class="btn btn-primary btn-xs btn-round lato" href="{{ site.baseurl }}{{ post.url }}">Read full story</a>
+              <p class="text-center mt-6">
+                <a class="btn btn-primary2 btn-xs btn-round lato" href="{{ site.baseurl }}{{ post.url }}">Read full story</a>
               </p>
             </div>
           </article>
@@ -157,7 +157,7 @@ credits: "Header photo by Clément M. on Unsplash"
 
             <span class="h3 latothin mt-8 ">Featured hikes</span>
 
-            <hr style="width: 50px; height: 1px; border: 0; border-top: 2px solid #932412;">
+            <hr class="shortdivider">
             <span class="fontsmall fontdark">Cards include a few options for working with images.</span>
 
           </div>
