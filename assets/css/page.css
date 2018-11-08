@@ -33,7 +33,7 @@
 
 .shortdivider { width: 50px;
                 height: 1px;
-                border: 0; 
+                border: 0;
                 border-top: 2px solid #932412}
 
 .latothin { font-family: 'Lato', sans-serif; font-weight: 100; }
@@ -1881,7 +1881,7 @@ fieldset:disabled a.btn {
   background-color: #CADC5B;
   border-color: #CADC5B; }
   .btn-primary:hover {
-    color: #fff;
+    color: #5a5a5a;
     background-color: #d8ea62;
     border-color: #d8ea62;
      }
