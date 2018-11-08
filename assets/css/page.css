@@ -34,7 +34,8 @@
 .shortdivider { width: 50px;
                 height: 1px;
                 border: 0;
-                border-top: 2px solid #932412}
+                border-top: 2px solid #932412
+                margin: 0px;}
 
 .latothin { font-family: 'Lato', sans-serif; font-weight: 100; }
 .lato { font-family: 'Lato', sans-serif; font-weight: 300; }
