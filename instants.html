@@ -28,17 +28,13 @@ permalink: /instants/
         {% assign posts = site.posts | where: "tags", "instants" %}
         {% for post in posts %}
 
-        <div class="col-lg-4 mb-3">
-
-          <div class="gallery gallery-4-type4" data-provide="photoswipe">
+        <div class="col-lg-4 mb-3 gallery gallery-4-type4" data-provide="photoswipe">
 
 
           <a class="gallery-item" href="https://bears.land/assets/img/instants/{{ post.mainImage }}">
           <div class="shadow-2 rounded" style="width: 100%; height: 280px; background: url('{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}'); background-size: cover; no-repeat center">
           </div>
           </a>
-
-        </div>
           <br>
           <span class="mb-1 lato text-uppercase">{{ post.title }}</span>
         </div>
