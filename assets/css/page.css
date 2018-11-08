@@ -1886,9 +1886,9 @@ fieldset:disabled a.btn {
     border-color: #d8ea62;
      }
   .btn-primary:focus, .btn-primary.focus {
-    color: #fff;
-    -webkit-box-shadow: 0 0 0 0rem rgba(80, 161, 255, 0.5);
-            box-shadow: 0 0 0 0rem rgba(80, 161, 255, 0.5); }
+    color: #5a5a5a;
+    background-color: #CADC5B;
+    border-color: #CADC5B; }
   .btn-primary.disabled, .btn-primary:disabled {
     background-color: #50a1ff;
     border-color: #50a1ff; }
