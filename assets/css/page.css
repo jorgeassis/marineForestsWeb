@@ -1889,16 +1889,6 @@ fieldset:disabled a.btn {
     color: #5a5a5a;
     background-color: #CADC5B;
     border-color: #CADC5B; }
-  .btn-primary.disabled, .btn-primary:disabled {
-    background-color: #50a1ff;
-    border-color: #50a1ff; }
-  .btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active,
-  .show > .btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #278bff;
-    border-color: #278bff;
-    -webkit-box-shadow: 0 0 0 0rem rgba(80, 161, 255, 0.5);
-            box-shadow: 0 0 0 0rem rgba(80, 161, 255, 0.5); }
 
 .btn-secondary {
   color: #757575;
@@ -16367,8 +16357,8 @@ button:focus {
 
 .social-lg a {
 
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   margin-right: 5px;
   margin-left: 5px;
   margin-top: 12px;
