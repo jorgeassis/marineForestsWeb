@@ -29,7 +29,7 @@ permalink: /hiking/
 
             {% if post.coordinateLon %}
 
-              ["{{ post.title }}", {{ post.coordinateLon }}, {{ post.coordinateLat }}, "{{ site.baseurl }}{{ post.url }}"],
+              ["{{ post.title }}", {{ post.coordinateLat }}, {{ post.coordinateLon }}, "{{ site.baseurl }}{{ post.url }}"],
 
             {% endif %}
 
@@ -61,7 +61,6 @@ permalink: /hiking/
     map.dragging.disable();
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
     map.zoomControl.setPosition('bottomright');
     map.getPane('tilePane').style.opacity = 0.4;
 
