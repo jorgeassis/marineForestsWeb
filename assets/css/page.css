@@ -48,7 +48,7 @@
 
 .opensansbold { font-family: 'Open Sans', sans-serif; font-weight: 600; }
 
-.fontdark { color: #000 }
+.fontdark { color: #323232 }
 
 .fontsmall {
   font-family: 'Open Sans', sans-serif;
@@ -59,8 +59,8 @@
 .fontmedium {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 19px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 29px;
 }
 .fontlarge {
   font-size: 18px;
