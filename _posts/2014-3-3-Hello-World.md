@@ -7,6 +7,7 @@ title: "Another nice story"
 tags:
 - story
 - lisbon
+- story
 
 featured: "true"
 
