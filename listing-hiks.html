@@ -10,7 +10,7 @@ permalink: /hiking/
 
 <script>
 
-  var map = L.map('map').setView([43.059908, -89.442229], 3);
+  var map = L.map('map').setView([20, -20], 3);
 
   L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
     {
@@ -26,7 +26,6 @@ permalink: /hiking/
 
           {% assign posts = site.posts | where: "tags", "hiking" %}
           {% for post in posts %}
-
             {% if post.coordinateLon %}
 
               ["{{ post.title }}", {{ post.coordinateLat }}, {{ post.coordinateLon }}, "{{ site.baseurl }}{{ post.url }}"]
@@ -34,9 +33,7 @@ permalink: /hiking/
               {% if forloop.last == false %}
               ,
               {% endif %}
-
             {% endif %}
-
           {% endfor %}
 
           ];
@@ -53,17 +50,12 @@ permalink: /hiking/
           };
 
     var defaultLayer = L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
-
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.zoomControl.setPosition('bottomright');
     map.getPane('tilePane').style.opacity = 0.4;
 
-    function onClick(e) {
-           //console.log(this.options.win_url);
-           window.location.href(this.options.win_url);
-
-       }
+    function onClick(e) { window.open(this.options.win_url,"_self"); }
 
   </script>
 
