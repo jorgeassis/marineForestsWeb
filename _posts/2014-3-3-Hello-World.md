@@ -7,7 +7,6 @@ title: "Another nice story"
 tags:
 - story
 - lisbon
-- hiking
 
 featured: "true"
 

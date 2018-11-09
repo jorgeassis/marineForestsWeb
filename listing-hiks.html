@@ -82,7 +82,7 @@ permalink: /hiking/
             {% assign posts = site.posts | where: "tags", "hiking" %}
             {% for post in posts %}
 
-{% if post.featured == "true" %}
+            {% if post.featured = true %}
 
             <div class="col-12 col-lg-4 bm-2">
               <a href="/tags/sagres-portugal">
@@ -97,8 +97,7 @@ permalink: /hiking/
               </a>
             </div>
 
-{% endif %}
-
+            {% endif %}
             {% endfor %}
 
           </div>
@@ -112,23 +111,19 @@ permalink: /hiking/
 
 
 
-
-
-
-
 <main class="main-content">
 
   <section class="section bg-gray" style="background: #F3F3F3">
     <div class="container text-center">
       <header class="my-5 section-header">
-        <h2>Hiks around {{page.siteDistrict}}</h2>
+        <h2>Autonomous and longer hiks</h2>
 
         <p class="lead">We are so excited and proud of our product. It's really easy to hick.</p>
       </header>
 
       <div class="row gap-y my-4">
 
-        {% assign posts = site.posts | where: "siteDistrict", page.siteDistrict %}
+        {% assign posts = site.posts | where: "tags", "hiking" | sort: 'distance' %}
         {% for post in posts limit: 3 %}
         {% unless post.title contains page.title %}
 
