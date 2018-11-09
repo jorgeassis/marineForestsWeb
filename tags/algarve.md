@@ -1,7 +1,7 @@
 ---
 layout: tagpage
-tag: sagres
-permalink: /tags/sagres-portugal/
+tag: algarve
+permalink: /tags/algarve/
 coordinateLon: "-10.1"
 coordinateLat: "38.55"
 ---
