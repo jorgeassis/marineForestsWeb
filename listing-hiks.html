@@ -82,7 +82,6 @@ permalink: /hiking/
             {% assign posts = site.posts | where: "tags", "hiking" %}
             {% for post in posts %}
 
-            {% if post.featured == "true" %}
 
             <div class="col-12 col-lg-4 bm-2">
               <a href="/tags/sagres-portugal">
@@ -97,7 +96,6 @@ permalink: /hiking/
               </a>
             </div>
 
-            {% endif %}
 
             {% endfor %}
 
