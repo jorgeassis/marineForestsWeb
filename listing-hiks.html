@@ -59,43 +59,46 @@ permalink: /hiking/
 
   </script>
 
-    <!-- Main Content -->
-    <main class="main-content">
+  <main>
 
-      <div class="section">
-        <div class="container">
-
-          <div class="text-center mt-6">
-            <h2>{{ page.title }}<h2>
-          </div>
-
-          {% if page.mainImage %}
+  <section class="section">
+      <div class="container text-center">
 
           <div class="row">
-            <div class="col-lg-8 mx-auto my-1">
+            <div class="col-md-10 col-xl-8 mx-auto mt-7">
 
-              <hr class="w-100px">
-              <img class="rounded-md" src="{{ site.baseurl }}/assets/img/{{ page.mainImage }}" alt="{{ page.title }}">
+                <span class="h4 lato mt-8 ">{{ page.title }}</span>
+                <hr class="shortdivider mt-4">
 
             </div>
           </div>
 
-          {% endif %}
+          <div class="row gap-y my-4">
 
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
+            {% assign posts = site.posts | where: "tags", "hiking" %}
+            {% for post in posts %}
 
-              <p class="lead">{{ content }}</p>
-
-              <hr class="w-100px">
-  {{ file.modified_time }}
+            <div class="col-12 col-lg-4">
+              <a href="/tags/sagres-portugal">
+              <div class="card text-white bg-img justify-content-center" style="background-image: url('{{ site.baseurl }}/assets/img/{{ page.mainImage }}'); min-height: 200px" data-overlay="5">
+                <div class="card-body text-center flex-grow-0">
+                  <br><br>
+                  <span class="card-title mb-0 h5 lato">{{ post.title }}</span>
+                  <br>
+                  <small>5 items</small>
+                </div>
+              </div>
+              </a>
             </div>
+
+            {% endfor %}
+
           </div>
-
-
 
         </div>
-      </div>
+  </section>
+
+
 
 </main>
 
