@@ -91,7 +91,7 @@ permalink: /hiking/
                   <br><br>
                   <span class="card-title mb-0 h5 lato">{{ post.title }}</span>
                   <br>
-                  <small>{{ post.distance }} km</small>
+                  <small>{{ post.siteCity }} km</small>
                 </div>
               </div>
               </a>
@@ -107,49 +107,52 @@ permalink: /hiking/
 
 
 
-</main>
+
+    <section class="section bg-gray">
+      <div class="container text-center">
+
+          <div class="row">
+            <div class="col-md-10 col-xl-8 mx-auto mt-7">
+
+                <span class="h4 lato mt-8 ">Longer hiks</span>
+                <hr class="shortdivider mt-4">
+
+                <div class="mt-4">
+                <span class="fontsmall fontdark">Cards include a few options for working with images.</span>
+                </div>
+
+            </div>
+          </div>
+
+            <div class="row gap-y my-4">
 
 
+              {% assign posts = site.posts | where: "tags", "hiking" | sort: 'distance' | reverse %}
+              {% for post in posts limit: 3 %}
 
-<main class="main-content">
+              <div class="col-12 col-lg-4">
+                <div class="card text-white justify-content-end bg-img h-400" style="background-image: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}');" data-scrim-bottom="6">
+                  <div class="card-body flex-grow-0">
+                    <span class="h3 lato fw-200"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.siteCity }}</a></span>
+                    <div class="media align-items-center">
+                      <div class="media-body">{{ post.distance }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-  <section class="section bg-gray" style="background: #F3F3F3">
-    <div class="container text-center">
-      <header class="my-5 section-header">
-        <h2>Autonomous and longer hiks</h2>
+              {% endfor %}
 
-        <p class="lead">We are so excited and proud of our product. It's really easy to hick.</p>
-      </header>
+            </div>
 
-      <div class="row gap-y my-4">
+            <div class="text-center mt-5 mb-8">
+              <a class="btn btn-primary btn-round lato" href="post-2.html">View all hiks</a>
+            </div>
 
-        {% assign posts = site.posts | where: "tags", "hiking" | sort: 'distance' %}
-        {% for post in posts limit: 3 %}
-        {% unless post.title contains page.title %}
-
-
-        <div class="col-lg-4">
-          <a href="{{ site.baseurl }}{{ post.url }}">
-          <div class="shadow-2 rounded" style="width: 100%; height: 210px; background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
 
           </div>
-        </a>
-          <br>
-          <h6><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h6>
-          <p class="small text-lighter text-uppercase">{{ post.siteCity }}</p>
-        </div>
 
-        {% endunless %}
-        {% endfor %}
-
-      </div>
-
-      <div class="text-center mt-5">
-        <a class="btn btn-primary btn-round" href="post-2.html">View all hiks</a>
-      </div>
-
-    </div>
-  </section>
+        </section>
 
 
 </main>
