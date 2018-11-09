@@ -62,7 +62,7 @@ permalink: /hiking/
   <main>
 
   <section class="section">
-      <div class="container text-center">
+      <div class="container text-center mb-10">
 
           <div class="row">
             <div class="col-md-10 col-xl-8 mx-auto mt-7">
@@ -77,7 +77,7 @@ permalink: /hiking/
             </div>
           </div>
 
-          <div class="row gap-y my-4">
+          <div class="row gap-y my-4 mb-2">
 
             {% assign posts = site.posts | where: "tags", "hiking"  %}
             {% for post in posts %}
@@ -91,7 +91,7 @@ permalink: /hiking/
                   <br><br>
                   <span class="card-title mb-0 h5 lato">{{ post.title }}</span>
                   <br>
-                  <small>{{ post.siteCity }} km</small>
+                  <small>{{ post.siteCity }}</small>
                 </div>
               </div>
               </a>
