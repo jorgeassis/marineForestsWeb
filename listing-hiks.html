@@ -5,7 +5,7 @@ permalink: /hiking/
 ---
 
 <header class="header p-0">
-  <div class="h-600" id="map" style="background: #fff"></div>
+  <div class="h-500" id="map" style="background: #fff"></div>
 </header>
 
 <script>
@@ -22,11 +22,24 @@ permalink: /hiking/
           iconSize: [10, 10], // size of the icon
           });
 
-    var points = [
-              ["P1", 43.059908, -89.442229, "http://www.url_address_01.com/"],
-              ["P2", 43.058618, -89.442032, "http://www.url_address_02.com/"],
-              ["P3", 43.058618, -86.441726, "http://www.url_address_03.com/"]
+          var points = [
+
+          {% assign posts = site.posts | where: "tags", "hiking" %}
+          {% for post in posts %}
+              ["{{ post.title }}", {{ site.coordinateLon }}, {{ site.coordinateLat }}, "{{ site.baseurl }}{{ post.url }}"],
+
+          {% endfor %}
+
+          ["P1", 43.059908, -89.442229, "http://www.url_address_01.com/"]
+
           ];
+
+          // var points = [
+          //           ["P1", 43.059908, -89.442229, "http://www.url_address_01.com/"],
+          //           ["P2", 43.058618, -89.442032, "http://www.url_address_02.com/"],
+          //           ["P3", 43.058618, -86.441726, "http://www.url_address_03.com/"]
+          //       ];
+
           var marker = [];
           var i;
           for (i = 0; i < points.length; i++) {
