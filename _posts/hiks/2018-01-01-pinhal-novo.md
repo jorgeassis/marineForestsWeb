@@ -25,6 +25,9 @@ multipleImages:
 - 3.jpg
 - 4.jpg
 
+distance: 12
+gpxfile: ""
+
 date: 2016-03-23T10:20:00Z
 ---
 
