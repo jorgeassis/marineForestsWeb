@@ -137,7 +137,6 @@ credits: "Header photo by Clément M. on Unsplash"
               <div class="text-justify">
               <span class="fontsmall text-justify">{{ post.description }}</span>
               </div>
-
               <p class="text-center mt-6">
                 <a class="btn btn-primary2 btn btn-round lato" href="{{ site.baseurl }}{{ post.url }}">Read story</a>
               </p>
@@ -146,10 +145,14 @@ credits: "Header photo by Clément M. on Unsplash"
 
           {% endfor %}
 
+        <div class="col-12 mt-2 col-lg-10 mx-auto mb-8">
+
           <nav class="flexbox mt-5">
             <a class="btn btn-outline-secondary btn-round lato"><i class="ti-arrow-left fs-9 mr-2"></i> Newer</a>
             <a class="btn btn-outline-secondary btn-round lato" href="#">Older <i class="ti-arrow-right fs-9 ml-2"></i></a>
           </nav>
+
+        </div>
 
         </div>
       </div>
