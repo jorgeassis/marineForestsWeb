@@ -89,14 +89,19 @@ credits: "Header photo by Clément M. on Unsplash"
   </section>
 
 
+  <section class="section">
+    <div class="container text-center">
+
+        <div class="row">
+          <div class="col-md-10 col-xl-8 mx-auto mt-6">
+
+              <hr class="shortdivider mt-4">
+
+          </div>
+        </div>
 
 
-  <section class="section-header mt-6">
-
-    <hr class="shortdivider">
-
-      <div class="row mt-5 mb-6">
-        <div class="col-md-10 col-xl-8 mx-auto">
+        <div class="row mt-5 mb-6">
 
           {% assign posts = site.posts | where: "mainHighlights", "true" %}
           {% for post in posts limit: 5 %}
@@ -139,7 +144,6 @@ credits: "Header photo by Clément M. on Unsplash"
               </p>
             </div>
           </article>
-
 
           {% endfor %}
 
