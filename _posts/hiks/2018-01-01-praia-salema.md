@@ -9,7 +9,7 @@ tags:
 - portugal
 - loule
 
-featured: false
+featured: "true"
 
 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
