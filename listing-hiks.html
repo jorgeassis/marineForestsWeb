@@ -67,7 +67,7 @@ permalink: /hiking/
           <div class="row">
             <div class="col-md-10 col-xl-8 mx-auto mt-7">
 
-                <span class="h4 lato mt-8 ">{{ page.title }}</span>
+                <span class="h4 lato mt-8 ">Feature hiks</span>
                 <hr class="shortdivider mt-4">
 
             </div>
@@ -76,7 +76,7 @@ permalink: /hiking/
           <div class="row gap-y my-4">
 
             {% assign posts = site.posts | where: "tags", "hiking" %}
-            {% for post in posts %}
+            {% for post in posts limit: 6 %}
 
             <div class="col-12 col-lg-4">
               <a href="/tags/sagres-portugal">
