@@ -29,21 +29,17 @@ permalink: /hiking/
 
             {% if post.coordinateLon %}
 
-              ["{{ post.title }}", {{ post.coordinateLat }}, {{ post.coordinateLon }}, "{{ site.baseurl }}{{ post.url }}"],
+              ["{{ post.title }}", {{ post.coordinateLat }}, {{ post.coordinateLon }}, "{{ site.baseurl }}{{ post.url }}"]
+
+              {% if forloop.last == false %}
+              ,
+              {% endif %}
 
             {% endif %}
 
           {% endfor %}
 
-          ["P1", 43.059908, -89.442229, "http://www.url_address_01.com/"]
-
           ];
-
-          // var points = [
-          //           ["P1", 43.059908, -89.442229, "http://www.url_address_01.com/"],
-          //           ["P2", 43.058618, -89.442032, "http://www.url_address_02.com/"],
-          //           ["P3", 43.058618, -86.441726, "http://www.url_address_03.com/"]
-          //       ];
 
           var marker = [];
           var i;
@@ -58,7 +54,6 @@ permalink: /hiking/
 
     var defaultLayer = L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
 
-    map.dragging.disable();
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.zoomControl.setPosition('bottomright');
@@ -66,7 +61,8 @@ permalink: /hiking/
 
     function onClick(e) {
            //console.log(this.options.win_url);
-           window.open(this.options.win_url);
+           window.location.href(this.options.win_url);
+
        }
 
   </script>
