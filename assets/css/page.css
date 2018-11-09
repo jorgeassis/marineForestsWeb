@@ -19835,6 +19835,9 @@ body:not(.body-scrolled) .topbar.d-flex ~ .navbar {
 .rounded-md {
   border-radius: 0.5rem !important; }
 
+.rounded-xs {
+    border-radius: 0.25rem !important; }
+
 .rounded-lg {
   border-radius: 0.75rem !important; }
 
