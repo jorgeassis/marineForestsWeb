@@ -79,10 +79,10 @@ permalink: /hiking/
 
           <div class="row gap-y my-4">
 
-            {% assign posts = site.posts | where: "tags", "hiking" %}
+            {% assign posts = site.posts | where: "tags", "hiking"  %}
             {% for post in posts %}
 
-            {% if post.featured = true %}
+            {% if post.featured == "true" %}
 
             <div class="col-12 col-lg-4 bm-2">
               <a href="/tags/sagres-portugal">
