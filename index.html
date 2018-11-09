@@ -96,6 +96,8 @@ credits: "Header photo by Clément M. on Unsplash"
           {% assign posts = site.posts | where: "featured", "true" %}
           {% for post in posts limit: 5 %}
 
+          {% if post.featured %}
+
              <div class="col-12 mt-2 col-lg-8 mx-auto mb-8">
 
               <p>

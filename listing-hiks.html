@@ -82,9 +82,9 @@ permalink: /hiking/
             {% assign posts = site.posts | where: "tags", "hiking" %}
             {% for post in posts %}
 
-            {% if post.featured %}
+            {% if post.featured == true %}
 
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 bm-2">
               <a href="/tags/sagres-portugal">
               <div class="card text-white bg-img justify-content-center" style="background-image: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); min-height: 200px" data-overlay="5">
                 <div class="card-body text-center flex-grow-0">
