@@ -71,7 +71,7 @@ credits: "Header photo by Clément M. on Unsplash"
                 <br><br>
                 <span class="card-title mb-0 h5 lato">Sagres, Portugal</span>
                 <br>
-                <small>5 items</small>
+                <small>5 items!!</small>
               </div>
             </div>
             </a>
@@ -99,10 +99,8 @@ credits: "Header photo by Clément M. on Unsplash"
 
         <div class="row mt-7 mb-6">
 
-          {% assign posts = site.posts | where: "tags", "story" %}
-          {% for post in posts %}
-
-          {% if post.featured == "true" %}
+          {% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+          {% for post in posts limit: 5 %}
 
              <div class="col-12 mt-2 col-lg-8 mx-auto mb-8">
 
@@ -140,8 +138,6 @@ credits: "Header photo by Clément M. on Unsplash"
               </p>
 
           </div>
-
-          {% endif %}
 
           {% endfor %}
 
