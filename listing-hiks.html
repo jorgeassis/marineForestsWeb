@@ -26,7 +26,12 @@ permalink: /hiking/
 
           {% assign posts = site.posts | where: "tags", "hiking" %}
           {% for post in posts %}
+
+            {% if post.coordinateLon %}
+
               ["{{ post.title }}", {{ post.coordinateLon }}, {{ post.coordinateLat }}, "{{ site.baseurl }}{{ post.url }}"],
+
+            {% endif %}
 
           {% endfor %}
 
