@@ -9,6 +9,8 @@ tags:
 - portugal
 - loule
 
+featured: false
+
 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
 siteName: "Salema"
@@ -24,6 +26,9 @@ multipleImages:
 - 2.jpg
 - 3.jpg
 - 4.jpg
+
+distance: 12
+gpxfile: ""
 
 date: 2016-03-23T10:20:00Z
 ---
