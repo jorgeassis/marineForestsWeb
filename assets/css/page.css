@@ -1885,9 +1885,9 @@ fieldset:disabled a.btn {
        }
 
 .btn-primary {
-  color: #5a5a5a;
-  background-color: #CADC5B;
-  border-color: #CADC5B; }
+  color: #15140F;
+  background-color: #EB7E1B;
+  border-color: #EB7E1B; }
   .btn-primary:hover {
     color: #5a5a5a;
     background-color: #d8ea62;
@@ -15494,13 +15494,13 @@ button:focus {
     padding-top: 0; }
 
 .nav-link {
-  color: #757575;
+  color: #636363;
   font-weight: 400; }
 
 .nav-link.active,
 .nav-item.show .nav-link {
   color: #50a1ff;
-  border-bottom: 10px solid black;
+  border-bottom: 2px solid #E15313;
 }
 
 .nav-divider {
