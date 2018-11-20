@@ -15499,7 +15499,9 @@ button:focus {
 
 .nav-link.active,
 .nav-item.show .nav-link {
-  color: #50a1ff; }
+  color: #50a1ff;
+  border-bottom: 10px solid black;
+}
 
 .nav-divider {
   display: block;
