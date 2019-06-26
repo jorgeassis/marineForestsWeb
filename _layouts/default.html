@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 {% include header.html %}
-
-<div id="loading"></div>
 
 {{ content }}
 
@@ -19,17 +17,12 @@
 {% include footer.html %}
 
 <!-- Scripts -->
-<script src="{{ site.baseurl }}/assets/js/page.js?v=1"></script>
-<script src="{{ site.baseurl }}/assets/js/script.js?v=1"></script>
 
-<script>
-
-jQuery(window).on("load", function () {
-  $('#loading').fadeOut();
-
-});
-
-</script>
+<!-- SCRIPTS -->
+<script src="{{ site.baseurl }}/js/jquery-1.12.3.min.js"></script>
+<script src="{{ site.baseurl }}/js/popper.min.js"></script>
+<script src="{{ site.baseurl }}/js/plugin.js"></script>
+<script src="{{ site.baseurl }}/js/main.js"></script>
 
 </body>
 </html>
