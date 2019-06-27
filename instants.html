@@ -4,7 +4,17 @@ title: Instants
 permalink: /instants/
 ---
 
+<style>
+  .masonry-column {
+    padding: 0 1px;
+  }
 
+  .masonry-grid > div .thumbnail {
+    margin: 5px 1px;
+  }
+
+  </style>
+  
 <!-- top header -->
 <section class="meta-title shop-title">
   <div class="col-sm-12 text-center">
@@ -21,7 +31,7 @@ permalink: /instants/
 
     <div class="row masonry-grid">
       <div class="col-md-6 col-lg-4 masonry-column">
-             
+
         {% assign posts = site.posts | where: "tags", "instants" %}
         {% for post in posts %}
 
