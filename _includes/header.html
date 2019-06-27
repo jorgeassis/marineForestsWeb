@@ -69,8 +69,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-2 col-md-12 text-left">
+
+					{% if page.url != "/index.html" %}
 					<a href="https://bears.land/"><img src="{{ site.baseurl }}/assets/img/BearsLogoMini.svg" style="width:65px" alt="logo"></a>
 					<a href="#" class="menu-click"><span></span><span></span><span></span></a>
+					{% endif %}
+
+
+
 				</div>
 				<div class="col-lg-8 col-md-12">
 					<nav id="main-menu" class="text-center">
