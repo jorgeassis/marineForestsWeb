@@ -6,6 +6,7 @@
 -------------------------------------------------------------*/
 
 /*-----------------------------------------------------------
+    0.  My custmom Styles
     1.  General Styles
     2.  Preloader
     3.  Search Section 
@@ -22,6 +23,52 @@
     14. Fullpage wrapper
     15. Shop Page
     16. Responsive Section  */
+
+
+
+/*-----------------------------------------------------------
+    0. My custmom Styles
+-------------------------------------------------------------*/
+
+ * { box-sizing: border-box; }
+
+.grid { }
+
+.grid:after {
+  display: block;
+  content: '';
+  clear: both; }
+
+.grid-col {
+ float: left;
+  width: 50%; }
+
+/* 2 columns by default, hide columns 2 & 3 */
+.grid-col--2, .grid-col--3 { display: none }
+
+/* 3 columns at medium size */
+@media ( min-width: 768px ) {
+  .grid-col { width: 33.333%; }
+  .grid-col--2 { display: block; } /* show column 2 */ }
+
+/* 3 columns at large size */
+@media ( min-width: 1080px ) {
+  .grid-col { width: 33.333%; }
+  .grid-col--2 { display: block; } /* show column 2 */ }
+  
+  /* 4 columns at large size */
+@media ( min-width: 4000px ) {
+  .grid-col { width: 25%; }
+  .grid-col--3 { display: block; } /* show column 3 */ }
+
+.grid-item {
+  min-height: 100px;
+  margin-bottom: 30px; }
+
+.grid-item img {
+  display: block;
+  width: 100%; }
+
 
 
 /*-----------------------------------------------------------
