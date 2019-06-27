@@ -38,14 +38,16 @@ permalink: /instants/
   .grid-col--2 { display: block; } /* show column 2 */
 }
   
-  /* 3 columns at large size */
-@media ( min-width: 2000px ) {
+  /* 4 columns at large size */
+@media ( min-width: 4000px ) {
   .grid-col { width: 25%; }
   .grid-col--3 { display: block; } /* show column 3 */
 }
 
 .grid-item {
   min-height: 100px;
+  margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 .grid-item img {
@@ -85,7 +87,7 @@ permalink: /instants/
      
           <a href="#">
 
-            <img style="border-radius: 4px;" src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}" alt="post-image">
+            <img style="border-radius: 4px; margin-bottom: 10px;" src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}" alt="post-image">
             
           </a>
           <span class="text-uppercase">{{ post.title }}</span>
