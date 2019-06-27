@@ -4,17 +4,9 @@ title: Instants
 permalink: /instants/
 ---
 
-<style>
-  .masonry-column {
-    padding: 0 1px;
-  }
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
-  .masonry-grid > div .thumbnail {
-    margin: 5px 1px;
-  }
 
-  </style>
-  
 <!-- top header -->
 <section class="meta-title shop-title">
   <div class="col-sm-12 text-center">
@@ -29,13 +21,13 @@ permalink: /instants/
 <section class="blog-post style-two mb75">
   <div class="container">
 
-    <div class="row masonry-grid">
-      <div class="col-md-6 col-lg-4 masonry-column">
+    <div class="row">
+      <div class="grid">
 
         {% assign posts = site.posts | where: "tags", "instants" %}
         {% for post in posts %}
 
-        <div class="item ">
+        <div class="grid-item">
 
           <a href="#">
 
@@ -52,3 +44,13 @@ permalink: /instants/
       </div>
 
     </section>
+
+
+    <script>
+
+      $('.grid').masonry({
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 200
+});
+</script>
