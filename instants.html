@@ -4,8 +4,57 @@ title: Instants
 permalink: /instants/
 ---
 
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/colcade@0/colcade.js"></script>
 
+<style>
+  
+  * { box-sizing: border-box; }
+
+.grid {
+  border: 1px solid;
+}
+
+.grid:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.grid-col {
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+  background: #DDD;
+}
+
+.grid-col--4 { margin-right: 0; }
+
+/* hide two middle */
+.grid-col--2, .grid-col--3 { display: none; }
+
+@media ( min-width: 768px ) {
+  .grid-col { width: 32%; }
+  .grid-col--2 { display: block; }
+}
+
+@media ( min-width: 1200px ) {
+  .grid-col { width: 23.5%; }
+  .grid-col--2, .grid-col--3 { display: block; }
+}
+
+.grid-item {
+  background: #333;
+  min-height: 100px;
+}
+
+.grid-item img {
+  display: block;
+  width: 100%;
+}
+
+
+  
+</style>
 
 <!-- top header -->
 <section class="meta-title shop-title">
@@ -21,36 +70,30 @@ permalink: /instants/
 <section class="blog-post style-two mb75">
   <div class="container">
 
-    <div class="row">
-      <div class="grid">
+   <div class="grid" data-colcade="columns: .grid-col, items: .grid-item">
 
+        <div class="grid-col grid-col--1"></div>
+        <div class="grid-col grid-col--2"></div>
+        <div class="grid-col grid-col--3"></div>
+        <div class="grid-col grid-col--4"></div>
+    
         {% assign posts = site.posts | where: "tags", "instants" %}
         {% for post in posts %}
 
-        <div class="grid-item" style="border-radius: 4px; width: 300px;">
-
+        <div class="grid-item">
+     
           <a href="#">
 
             <img src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}" alt="post-image">
           </a>
           <span class="text-uppercase">{{ post.title }}</span>
 
-        </div>
+         </div>
 
         {% endfor %}
 
       </div>
     </div>
-      </div>
 
     </section>
 
-
-    <script>
-
-      $('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: 200
-});
-</script>
