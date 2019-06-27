@@ -38,7 +38,7 @@ credits: "Header photo by Clément M. on Unsplash"
         					{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
                   {% for post in posts limit: 5 %}
 
-        					<article class="has-animation animate-in" data-delay="0">
+        					<article class="has-animation animate-in" data-delay="2">
         						<div class="entry-media">
 
         							<div style="border-radius: 4px; margin-bottom: 30px;width: 100%; max-height: 300px; height: 300px; background-position: center center;  background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
