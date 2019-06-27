@@ -6,12 +6,10 @@ permalink: /instants/
 
 
 <!-- top header -->
-<section class="top-header style-seven pad-150">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8 offset-sm-2 text-left">
-        <h1 class="has-animation" data-delay="10">Brief instants</h1>
-      </div>
+<section class="meta-title shop-title">
+  <div class="col-sm-12 text-center">
+    <div class="page-title pad-100 ">
+      <h1 class="has-animation" data-delay="0"><b>Brief instants</b></h1>
     </div>
   </div>
 </section>
@@ -23,12 +21,13 @@ permalink: /instants/
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
 
+        <div class="row">
 
 
         {% assign posts = site.posts | where: "tags", "instants" %}
         {% for post in posts %}
 
-        <div class="col-lg-4 mb-3 gallery-4-type4">
+        <div class="col-xl-4 col-md-6 mb40">
 
           <a class="gallery-item" href="#">
           <img data-provide="lightbox" class="shadow-2 rounded" style="width: 90%; height: 250px; margin-left: auto; margin-right: auto;" src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}">
@@ -38,7 +37,8 @@ permalink: /instants/
         </div>
 
         {% endfor %}
-        
+
+      </div>
 
       </div>
     </div>
