@@ -33,7 +33,7 @@ credits: "Header photo by Clément M. on Unsplash"
         {{ post.siteCity }}
         {% endfor %}
         {% endcomment %}
-        
+
 
         					{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
                   {% for post in posts limit: 5 %}
@@ -56,7 +56,7 @@ credits: "Header photo by Clément M. on Unsplash"
         							{% endfor %}
 
         							<span>at</span> {{ post.date | date: "%Y-%m-%d" }}</span>
-        							<h2 class="entry-title">{{ site.baseurl }}{{ post.url }}{{ post.title }}</a></h2>
+        						<a href=""{{ site.baseurl }}{{ post.url }}"><h2 class="entry-title">{{ post.title }}</h2></a>
         						</div>
 
         						<div class="entry-content-bottom">
@@ -71,14 +71,12 @@ credits: "Header photo by Clément M. on Unsplash"
 		</div>
 	</div>
 
-
-
   <!-- load more -->
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <div class="row">
         <div class="col-md-4 col-xs-2">
-          <a href="#" class="left-button"><img src="images/left-botton.png" alt="left-button"></a>
+          <a href="#" class="left-button"><img src="{{ site.baseurl }}/assets/images/left-botton.png" alt="left-button"></a>
         </div>
         <div class="col-md-4 col-xs-8 text-center">
           <ul class="page-nav text-center list-inline">
@@ -89,7 +87,7 @@ credits: "Header photo by Clément M. on Unsplash"
           </ul>
         </div>
         <div class="col-md-4 col-xs-2 text-right">
-          <a href="#" class="left-button"><img src="images/right-button.png" alt="right-button"></a>
+          <a href="#" class="left-button"><img src="{{ site.baseurl }}/assets/images/right-button.png" alt="right-button"></a>
         </div>
       </div>
     </div>
