@@ -19,26 +19,29 @@ permalink: /instants/
 }
 
 .grid-col {
-  float: left;
-  width: 49%;
-  margin-right: 2%;
+ float: left;
+  width: 50%;
 }
 
-.grid-col--4 { margin-right: 0; }
+/* 2 columns by default, hide columns 2 & 3 */
+.grid-col--2, .grid-col--3 { display: none }
 
-/* hide two middle */
-.grid-col--2, .grid-col--3 { display: none; }
-
+/* 3 columns at medium size */
 @media ( min-width: 768px ) {
-  .grid-col { width: 32%; }
-  .grid-col--2 { display: block; }
-}
-
-
-  
-@media ( min-width: 1200px ) {
   .grid-col { width: 33.333%; }
   .grid-col--2 { display: block; } /* show column 2 */
+}
+
+/* 3 columns at large size */
+@media ( min-width: 1080px ) {
+  .grid-col { width: 33.333%; }
+  .grid-col--2 { display: block; } /* show column 2 */
+}
+  
+  /* 3 columns at large size */
+@media ( min-width: 2000px ) {
+  .grid-col { width: 25%; }
+  .grid-col--3 { display: block; } /* show column 3 */
 }
 
 .grid-item {
@@ -73,7 +76,8 @@ permalink: /instants/
         <div class="grid-col grid-col--1"></div>
         <div class="grid-col grid-col--2"></div>
         <div class="grid-col grid-col--3"></div>
-    
+        <div class="grid-col grid-col--4"></div>
+
         {% assign posts = site.posts | where: "tags", "instants" %}
         {% for post in posts %}
 
