@@ -10,9 +10,7 @@ permalink: /instants/
   
   * { box-sizing: border-box; }
 
-.grid {
-  border: 1px solid;
-}
+.grid { }
 
 .grid:after {
   display: block;
@@ -24,7 +22,6 @@ permalink: /instants/
   float: left;
   width: 49%;
   margin-right: 2%;
-  background: #DDD;
 }
 
 .grid-col--4 { margin-right: 0; }
@@ -43,7 +40,6 @@ permalink: /instants/
 }
 
 .grid-item {
-  background: #333;
   min-height: 100px;
 }
 
@@ -83,7 +79,8 @@ permalink: /instants/
      
           <a href="#">
 
-            <img src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}" alt="post-image">
+            <img style="border-radius: 4px;" src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}" alt="post-image">
+            
           </a>
           <span class="text-uppercase">{{ post.title }}</span>
 
