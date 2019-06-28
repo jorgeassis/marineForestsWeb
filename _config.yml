@@ -3,6 +3,7 @@
 #
 
 paginate: 3
+paginate_path: "stories/page:num/"
 
 # Name of your site (displayed in the header)
 name: Bears Land
