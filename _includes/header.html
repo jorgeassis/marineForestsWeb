@@ -89,7 +89,11 @@
 								{% for hash in tag_hashes %}
 								{% assign keyValue = hash | split: '#' %}
 								{% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
+
+								{% if tag_word != "story" %}
 								<li><a href="/tags/{{ tag_word }}">{{ tag_word | capitalize }}</a></li>
+								{% endif %}
+
 								{% endfor %}
 								</ul>
 							</li>
