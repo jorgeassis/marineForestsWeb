@@ -77,10 +77,11 @@ pagination:
 	</div>
 
 {{ site.posts | size }}
-{{ site.categories.stories | size }}
 
 
-{% for post in site.categories.stories %}
+
+{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+{% for post in posts %}
    {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %}
 {% endfor %}
 {{ post_count }}
