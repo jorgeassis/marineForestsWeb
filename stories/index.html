@@ -55,8 +55,7 @@ title: "Stories of inner bears and lands"
         {% endcomment %}
 
 
-        					{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
-                  {% for post in posts limit: 5 %}
+                  {% for post in site.posts limit: 5 %}
 
         					<article class="has-animation" data-delay="0">
         						<div class="entry-media">
