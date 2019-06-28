@@ -1,3 +1,10 @@
+## Filtering
+
+{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+
+
+
+
 http://thetheme.io/thesaas/block/blog.html
 <br>
 https://devhints.io/jekyll

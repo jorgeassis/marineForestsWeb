@@ -15,10 +15,14 @@ title: "Stories of inner bears and lands"
         </ul>
 
 
+        {% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+        {% for post in posts %}
+           {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %}
+        {% endfor %}
 
-        <div class="col-sm-6"><p>SHOWING 1–12 OF 30 RESULTS</p></div>
+        <div class="col-sm-6"><p>SHOWING 5 OUT OF {{ post_count }} RESULTS</p></div>
         <div class="col-sm-6 product-ordering text-right">
-          <a href="" class="product-ordering-btn">DEFAULT SORTING</a>
+          <a href="" class="product-ordering-btn">YOUR TOPIC</a>
           <ul class="product-ordering-list">
                           <li class="active"><a href="#">Sort by popularity</a></li>
                           <li><a href="#">Sort by average rating</a></li>
@@ -86,14 +90,6 @@ title: "Stories of inner bears and lands"
 
 		</div>
 	</div>
-
-  {% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
-  {% for post in posts %}
-     {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %}
-  {% endfor %}
-  Showing 5 out of {{ post_count }} stories
-
-
 
   {% if paginator.previous_page %}
      <a href="{{ paginator.previous_page_path }}" class="previous">
