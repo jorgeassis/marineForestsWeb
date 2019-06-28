@@ -82,24 +82,25 @@ pagination:
 
 
 
-      {% if paginator.total_pages > 1 %}
-      <div class=”pagination”>
-       <ul>
+      <div class="pagination">
       {% if paginator.previous_page %}
-       <li class=”prev”><a href=”/posts/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}{% endif %}”>Previous</a></li>
+        <a href="{{ paginator.previous_page_path }}" class="previous">
+          Previous
+        </a>
+      {% else %}
+        <span class="previous">Previous</span>
       {% endif %}
-       <li><a {% if paginator.page == 1 %}class=”active” {% endif %}href=”/posts/”>1</a></li>
-      {% for count in (2..paginator.total_pages) %}
-       <li><a {% if paginator.page == count %}class=”active” {% endif %}href=”/posts/page{{ count }}”>{{ count }}</a></li>
-      {% endfor %}
+      <span class="page_number ">
+        Page: {{ paginator.page }} of {{ paginator.total_pages }}
+      </span>
       {% if paginator.next_page %}
-       <li class=”next”><a href=”/posts/page{{ paginator.next_page }}”>Next</a></li>
+        <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+      {% else %}
+        <span class="next ">Next</span>
       {% endif %}
-       </ul>
-      </div>
-      {% endif %}
+    </div>
 
-
+    
 
 </div>
 </div>
