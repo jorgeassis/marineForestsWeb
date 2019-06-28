@@ -19,6 +19,8 @@ collections:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
+   - jekyll-feed
 
 # Flags below are optional
 
