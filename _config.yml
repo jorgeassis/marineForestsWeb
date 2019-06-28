@@ -4,8 +4,8 @@
 
 pagination:
   enabled: true
-  per_page: 4
-  permalink: '/page/:num/'
+  per_page: 5
+  permalink: '/stories/:num/'
   title_suffix: ' - page :num'
   limit: 0
   sort_field: 'date'
@@ -15,7 +15,7 @@ pagination:
 name: Bears Land
 
 # Short bio or description (displayed in the header)
-description: Our simple Nature journal
+description: A family of four based in Faro, exploring life, nature and purpose.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
