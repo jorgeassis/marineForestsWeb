@@ -6,3 +6,128 @@ pagination:
   enabled: true
   permalink: /:num/
 ---
+
+
+<!-- top header -->
+<section class="top-header style-seven pad-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 text-left">
+        <h1 class="has-animation" data-delay="10">Our stories of inner bears and lands</h1>
+        <ul class="social-text light list-inline has-animation" data-delay="30">
+          <li class="list-inline-item"><a class="text-instagram" href="#">Instagram</a></li>
+          <li class="list-inline-item"><a class="text-twiiter" href="#">Twitter</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- top header -->
+
+<section class="blog-post style-two mb75">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+
+
+        {% comment %}
+        {% assign posts = site.posts | where: "tags", "hiking" %}
+        {% for post in posts limit: 3 %}
+        {{ post.title }}
+        {{ post.siteCity }}
+        {% endfor %}
+        {% endcomment %}
+
+
+        					{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+                  {% for post in posts limit: 5 %}
+
+        					<article class="has-animation" data-delay="0">
+        						<div class="entry-media">
+
+        							<div style="border-radius: 4px; margin-bottom: 30px;width: 100%; max-height: 300px; height: 300px; background-position: center center;  background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
+
+        						</div>
+        						<div class="entry-meta-content">
+        							<span class="entry-meta"><span>in</span>
+
+
+        							{% for tag in post.tags %}
+        							<a href="/tags/{{ tag }}/">{{ tag }}</a>
+        							{% if forloop.last == false %}
+        							,
+        							{% endif %}
+        							{% endfor %}
+
+        							<span>at</span> {{ post.date | date: "%Y-%m-%d" }}</span>
+        						<a href=""{{ site.baseurl }}{{ post.url }}"><h2 class="entry-title">{{ post.title }}</h2></a>
+        						</div>
+
+        						<div class="entry-content-bottom">
+        							<p class="entry-content">{{ post.description }} </p>
+        							<a href="{{ site.baseurl }}{{ post.url }}" class="entry-read-more"><span></span>Read More</a>
+        						</div>
+        					</article>
+
+        					{% endfor %}
+
+
+		</div>
+	</div>
+
+
+
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+
+
+
+      {% if paginator.total_pages > 1 %}
+      <div class=”pagination”>
+       <ul>
+      {% if paginator.previous_page %}
+       <li class=”prev”><a href=”/posts/{% if paginator.previous_page != 1 %}page{{ paginator.previous_page }}{% endif %}”>Previous</a></li>
+      {% endif %}
+       <li><a {% if paginator.page == 1 %}class=”active” {% endif %}href=”/posts/”>1</a></li>
+      {% for count in (2..paginator.total_pages) %}
+       <li><a {% if paginator.page == count %}class=”active” {% endif %}href=”/posts/page{{ count }}”>{{ count }}</a></li>
+      {% endfor %}
+      {% if paginator.next_page %}
+       <li class=”next”><a href=”/posts/page{{ paginator.next_page }}”>Next</a></li>
+      {% endif %}
+       </ul>
+      </div>
+      {% endif %}
+
+
+
+</div>
+</div>
+
+
+  <!-- load more -->
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="row">
+        <div class="col-md-4 col-xs-2">
+          <a href="#" class="left-button"><img src="{{ site.baseurl }}/assets/images/left-botton.png" alt="left-button"></a>
+        </div>
+        <div class="col-md-4 col-xs-8 text-center">
+          <ul class="page-nav text-center list-inline">
+            <li class="list-inline-item"><a class="active" href="#">1</a></li>
+            <li class="list-inline-item"><a href="#">2</a></li>
+            <li class="list-inline-item"><a href="#">3</a></li>
+            <li class="list-inline-item"><a href="#">4</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-xs-2 text-right">
+          <a href="#" class="left-button"><img src="{{ site.baseurl }}/assets/images/right-button.png" alt="right-button"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- load more -->
+
+</div>
+</section>
