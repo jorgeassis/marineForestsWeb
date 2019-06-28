@@ -2,14 +2,7 @@
 # This file contains configuration flags to customize your site
 #
 
-pagination:
-  enabled: true
-  per_page: 3
-  permalink: '/stories/:num/'
-  title_suffix: ' - page :num'
-  limit: 0
-  sort_field: 'date'
-  sort_reverse: true
+paginate: 3
 
 # Name of your site (displayed in the header)
 name: Bears Land
