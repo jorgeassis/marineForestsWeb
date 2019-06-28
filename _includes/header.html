@@ -79,6 +79,13 @@
 				<div class="col-lg-8 col-md-12">
 					<nav id="main-menu" class="text-center">
 						<ul>
+
+							{% if page.url == "/" %}
+
+							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
+
+
+{% else %}
 							<li><a href="{{ site.baseurl }}/stories/">Story Tags</a>
 
 
@@ -90,13 +97,17 @@
 								{% assign keyValue = hash | split: '#' %}
 								{% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
 
-								{% if tag_word != "story" %}
+								{% if tag_word != "story" and tag_word != "instants" %}
 								<li><a href="/tags/{{ tag_word }}">{{ tag_word | capitalize }}</a></li>
 								{% endif %}
 
 								{% endfor %}
+
 								</ul>
 							</li>
+
+							{% endif %}
+
 							<li><a href="{{ site.baseurl }}/instants/">Instants</a></li>
 							<li><a href="{{ site.baseurl }}/hiking/">Hiks</a></li>
 							<li><a href="{{ site.baseurl }}/about-bears-land/">About</a></li>
