@@ -4,7 +4,7 @@
 
 pagination:
   enabled: true
-  per_page: 5
+  per_page: 3
   permalink: '/stories/:num/'
   title_suffix: ' - page :num'
   limit: 0

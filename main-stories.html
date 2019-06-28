@@ -40,7 +40,7 @@ pagination:
 
 
         					{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
-                  {% for post in posts limit: 5 %}
+                  {% for post in paginator.posts %}
 
         					<article class="has-animation" data-delay="0">
         						<div class="entry-media">
@@ -80,8 +80,6 @@ pagination:
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
 
-
-
       <div class="pagination">
       {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path }}" class="previous">
@@ -100,7 +98,7 @@ pagination:
       {% endif %}
     </div>
 
-    
+
 
 </div>
 </div>
