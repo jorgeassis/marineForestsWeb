@@ -23,6 +23,33 @@ permalink: /stories/
         </ul>
       </div>
 
+
+      <div class="col-sm-8 offset-sm-2 text-left" style="margin-top: 20px">
+        <div class="product-bar">
+				<div class="row">
+        <div class="col-sm-6"><p>{{ post_count }} FEATURED STORIES</p></div>
+        <div class="col-sm-6 product-ordering text-right">
+          <a href="" class="product-ordering-btn">YOUR INTERESTS</a>
+          <ul class="product-ordering-list">
+
+
+{% capture site_tags %}{% for tag in site.tags %}{{ tag[1].size }}#{{ tag | first | downcase }}#{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tag_hashes = site_tags | split:',' | sort %}
+<ul class="product-ordering-list">
+{% for hash in tag_hashes %}
+{% assign keyValue = hash | split: '#' %}
+{% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
+<li><a href="/tags/{{ tag_word }}">{{ tag_word }}</a></li>
+{% endfor %}
+</ul>
+
+
+
+    </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -36,29 +63,6 @@ permalink: /stories/
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
 
-
-        <div class="col-sm-8 offset-sm-2 text-left" >
-          <div class="product-bar">
-  				<div class="row">
-          <div class="col-sm-6"><p>{{ post_count }} FEATURED STORIES</p></div>
-          <div class="col-sm-6 product-ordering text-right">
-            <a href="" class="product-ordering-btn">YOUR INTERESTS</a>
-            <ul class="product-ordering-list">
-
-  {% capture site_tags %}{% for tag in site.tags %}{{ tag[1].size }}#{{ tag | first | downcase }}#{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-  {% assign tag_hashes = site_tags | split:',' | sort %}
-  <ul class="product-ordering-list">
-  {% for hash in tag_hashes %}
-  {% assign keyValue = hash | split: '#' %}
-  {% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
-  <li><a href="/tags/{{ tag_word }}">{{ tag_word }}</a></li>
-  {% endfor %}
-  </ul>
-
-      </div>
-          </div>
-        </div>
-      </div>
 
         {% comment %}
         {% assign posts = site.posts | where: "tags", "hiking" %}
@@ -75,7 +79,7 @@ permalink: /stories/
         					<article class="has-animation" data-delay="0">
         						<div class="entry-media">
 <a href="{{ site.baseurl }}{{ post.url }}">
-        							<img style="border-radius: 4px; margin-bottom: 30px; overflow: hidden; width: 100%; max-height: 300px; height: 300px;" src="{{ site.baseurl }}/assets/img/{{ post.mainImage }}">
+        							<div style="border-radius: 5px; margin-bottom: 30px;width: 100%; max-height: 300px; height: 300px; background-position: center center;  background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
 </a>
         						</div>
         						<div class="entry-meta-content">
