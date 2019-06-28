@@ -17,6 +17,9 @@ collections:
   my-own-collection:
     output: true
 
+plugins:
+  - jekyll-seo-tag
+
 # Flags below are optional
 
 # Includes an icon in the footer for each username you enter
