@@ -15,7 +15,7 @@ permalink: /stories/
   <div class="container">
     <div class="row">
 
-      <div class="col-sm-8 offset-sm-2 text-left mb20">
+      <div class="col-sm-8 offset-sm-2 text-left">
         <h1 class="has-animation" data-delay="10">Our stories of inner bears and lands</h1>
         <ul class="social-text light list-inline has-animation" data-delay="30">
           <li class="list-inline-item"><a class="text-instagram" href="#">Instagram</a></li>
@@ -24,7 +24,7 @@ permalink: /stories/
       </div>
 
 
-      <div class="col-sm-8 offset-sm-2 text-left">
+      <div class="col-sm-8 offset-sm-2 text-left" style="margin-top: 20px">
         <div class="product-bar">
 				<div class="row">
         <div class="col-sm-6"><p>{{ post_count }} FEATURED STORIES</p></div>
@@ -78,9 +78,9 @@ permalink: /stories/
 
         					<article class="has-animation" data-delay="0">
         						<div class="entry-media">
-
+<a href="{{ site.baseurl }}{{ post.url }}">
         							<div style="border-radius: 4px; margin-bottom: 30px;width: 100%; max-height: 300px; height: 300px; background-position: center center;  background: url('{{ site.baseurl }}/assets/img/{{ post.mainImage }}'); background-size: cover; ">
-
+></a>
         						</div>
         						<div class="entry-meta-content">
         							<span class="entry-meta"><span>in</span>
@@ -94,7 +94,7 @@ permalink: /stories/
         							{% endfor %}
 
         							<span>at</span> {{ post.date | date: "%Y-%m-%d" }}</span>
-        						<a href=""{{ site.baseurl }}{{ post.url }}"><h2 class="entry-title">{{ post.title }}</h2></a>
+        						<a href="{{ site.baseurl }}{{ post.url }}"><h2 class="entry-title">{{ post.title }}</h2></a>
         						</div>
 
         						<div class="entry-content-bottom">
