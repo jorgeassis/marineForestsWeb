@@ -2,7 +2,7 @@
 # This file contains configuration flags to customize your site
 #
 
-paginate: 3
+paginate: 5
 paginate_path: "stories/page:num/"
 
 # Name of your site (displayed in the header)
