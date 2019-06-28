@@ -1,7 +1,14 @@
 ---
 layout: default
 title: "Stories of inner bears and lands"
+permalink: /stories/
+
 ---
+
+{% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+{% for post in posts %}
+   {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %}
+{% endfor %}
 
 <!-- top header -->
 <section class="top-header style-seven pad-150">
@@ -13,12 +20,7 @@ title: "Stories of inner bears and lands"
           <li class="list-inline-item"><a class="text-instagram" href="#">Instagram</a></li>
           <li class="list-inline-item"><a class="text-twiiter" href="#">Twitter</a></li>
         </ul>
-
-
-        {% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
-        {% for post in posts %}
-           {% capture post_count %} {{ post_count | plus: 1 }} {% endcapture %}
-        {% endfor %}
+        </div>
 
         <div class="col-sm-6"><p>SHOWING 5 OUT OF {{ post_count }} RESULTS</p></div>
         <div class="col-sm-6 product-ordering text-right">
@@ -34,7 +36,6 @@ title: "Stories of inner bears and lands"
 
 
       </div>
-    </div>
   </div>
 </section>
 <!-- top header -->
@@ -55,7 +56,8 @@ title: "Stories of inner bears and lands"
         {% endcomment %}
 
 
-                  {% for post in site.posts limit: 5 %}
+              {% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
+              {% for post in site.posts limit: 10 %}
 
         					<article class="has-animation" data-delay="0">
         						<div class="entry-media">
@@ -89,23 +91,6 @@ title: "Stories of inner bears and lands"
 
 		</div>
 	</div>
-
-  {% if paginator.previous_page %}
-     <a href="{{ paginator.previous_page_path }}" class="previous">
-       Previous
-     </a>
-   {% else %}
-     <span class="previous">Previous</span>
-   {% endif %}
-   <span class="page_number ">
-     Page: {{ paginator.page }} of {{ paginator.total_pages }}
-   </span>
-   {% if paginator.next_page %}
-     <a href="{{ paginator.next_page_path }}" class="next">Next</a>
-   {% else %}
-     <span class="next ">Next</span>
-   {% endif %}
-
 
 
 {% comment %}

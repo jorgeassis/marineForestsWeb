@@ -2,9 +2,6 @@
 # This file contains configuration flags to customize your site
 #
 
-paginate: 5
-paginate_path: "stories/page:num/"
-
 # Name of your site (displayed in the header)
 name: Bears Land
 
