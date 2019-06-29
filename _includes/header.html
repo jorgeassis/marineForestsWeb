@@ -98,7 +98,7 @@
 
 Z	{{ hastag }}
 
-							{% if page.url == "/stories/" | hastag == "true" %}
+							{% if page.url == "/stories/" or hastag == "true" %}
 
 							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
 
@@ -109,7 +109,7 @@ Z	{{ hastag }}
 								<li><a href="/tags/lisbon">Lisbon</a></li>
 							</ul>
 
-							{% elsif page.url != "/stories/" and hastag == false" %}
+							{% elsif page.url != "/stories/" and hastag == "false" %}
 
 							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
 
