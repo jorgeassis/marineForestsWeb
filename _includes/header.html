@@ -86,7 +86,7 @@
 
 							{% else %}
 
-							<li {% if page.url == "/stories/" %}style="color:#E5711D"{% endif %}><a href="{{ site.baseurl }}/stories/">Story Tags</a>
+							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#E5711D"{% endif %}>Story Tags</span></a>
 
 								{% capture site_tags %}{% for tag in site.tags %}{{ tag[1].size }}#{{ tag | first | downcase }}#{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 								{% assign tag_hashes = site_tags | split:',' | sort %}
