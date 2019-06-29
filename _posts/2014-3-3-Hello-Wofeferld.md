@@ -1,9 +1,9 @@
 ---
 layout: post
 lang: en
-permalink: /nice-story/
+permalink: /true-story/
 
-title: "Another nice story"
+title: "The true story"
 tags:
 - story
 - lisbon
