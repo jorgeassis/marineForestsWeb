@@ -70,36 +70,18 @@ layout: default
           {% endfor %}
 
           {% if sameTagCount >= minCommonTags %}
-            <div>
-            <h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h5>
-            </div>
+
+          <div class="col-lg-10 offset-lg-1 bottom-border text-center next-article top-border">
+            <p>Related story</p>
+            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h2>
+          </div>
+
             {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
             {% if maxRelatedCounter >= maxRelated %}
               {% break %}
             {% endif %}
           {% endif %}
-
         {% endfor %}
-
-
-
-        {% comment %}
-
-
-      {% assign posts = site.posts | where: "tags", page.tags %}
-      {% for post in posts limit: 3 %}
-      {% unless post.title contains page.title %}
-
-      <div class="col-lg-10 offset-lg-1 bottom-border text-center next-article top-border">
-        <p>Related story</p>
-        <h2>The only professional beauty supply resources</h2>
-      </div>
-
-      {% endunless %}
-      {% endfor %}
-
-      {% endcomment %}
-
 
 
 

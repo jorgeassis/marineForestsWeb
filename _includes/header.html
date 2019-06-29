@@ -89,23 +89,20 @@
 					<nav id="main-menu" class="text-center">
 						<ul>
 
-							{% if page.url != "/stories/" %}
-
-							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
-
-							{% else %}
+							{% if page.url == "/stories/" | page.tag contains "stories" %}
 
 							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
 
-								<ul class="level-two">
+							<ul class="level-two">
+								<li><a href="/tags/portugal">Portugal</a></li>
+								<li><a href="/tags/algarve">Algarve</a></li>
+								<li><a href="/tags/california">California</a></li>
+								<li><a href="/tags/lisbon">Lisbon</a></li>
+							</ul>
 
-									<li><a href="/tags/portugal">Portugal</a></li>
-									<li><a href="/tags/algarve">Algarve</a></li>
-									<li><a href="/tags/california">California</a></li>
-									<li><a href="/tags/lisbon">Lisbon</a></li>
+							{% else %}
 
-
-								</ul>
+							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
 
 							{% endif %}
 

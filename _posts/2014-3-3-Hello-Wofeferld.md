@@ -33,7 +33,3 @@ date: 2016-03-23T10:20:00Z
 <li><b>Ikea </b>is about cost-consciousness, simplicity and togetherness. You can see it in incredibly affordable furniture, family-oriented stores, and approachable visual design.</li>
 </ul>
 <p>Building a brand is a long-term commitment which results from thousands of interactions between a customer and the brand’s touch points over time.</p>
-
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
