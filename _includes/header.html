@@ -84,11 +84,9 @@
 
 							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
 
+							{% else %}
 
-{% else %}
-							<li><a href="{{ site.baseurl }}/stories/">Story Tags</a>
-
-
+							<li {% if page.url == "/stories/" %}style="color:#E5711D"{% endif %}><a href="{{ site.baseurl }}/stories/">Story Tags</a>
 
 								{% capture site_tags %}{% for tag in site.tags %}{{ tag[1].size }}#{{ tag | first | downcase }}#{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 								{% assign tag_hashes = site_tags | split:',' | sort %}
@@ -97,16 +95,17 @@
 								{% assign keyValue = hash | split: '#' %}
 								{% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
 
-								{% if tag_word != "story" and tag_word != "instants" %}
+								{% if tag_word != "story" & tag_word != "instants" %}
 								<li><a href="/tags/{{ tag_word }}">{{ tag_word | capitalize }}</a></li>
 								{% endif %}
 
 								{% endfor %}
 
 								</ul>
-							</li>
 
 							{% endif %}
+
+							</li>
 
 							<li><a href="{{ site.baseurl }}/instants/">Instants</a></li>
 							<li><a href="{{ site.baseurl }}/hiking/">Hiks</a></li>
