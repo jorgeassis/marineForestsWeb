@@ -4,7 +4,7 @@ lang: en
 permalink: /my-permalin33k-2/
 
 title: "Another nice story"
-tags: ['story', 'lisbon']
+tags: ['lisbon']
 
 featured: "true"
 

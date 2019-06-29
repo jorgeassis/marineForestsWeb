@@ -89,9 +89,9 @@
 					<nav id="main-menu" class="text-center">
 						<ul>
 
+							{% assign item_list = page.tags | contains:"story" %}
 
-							{{ page.tags }}
-
+{{item_list}}
 
 							{% if page.url == "/stories/" | page.tags contains "story" %}
 
