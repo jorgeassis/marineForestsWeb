@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-permalink: /my-permalink-2/
+permalink: /nice-story/
 
 title: "Another nice story"
 tags:
