@@ -2,6 +2,20 @@
 
 {% assign posts = site.posts | where: "featured", "true" | where: "tags", "story" %}
 
+## Loop Tags
+
+{% capture site_tags %}{% for tag in site.tags %}{{ tag[1].size }}#{{ tag | first | downcase }}#{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tag_hashes = site_tags | split:',' | sort %}
+<ul class="level-two">
+{% for hash in tag_hashes %}
+{% assign keyValue = hash | split: '#' %}
+{% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
+
+{% if tag_word != "story" & tag_word != "instants" %}
+<li><a href="/tags/{{ tag_word }}">{{ tag_word | capitalize }}</a></li>
+{% endif %}
+
+{% endfor %}
 
 
 

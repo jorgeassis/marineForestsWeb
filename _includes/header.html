@@ -88,18 +88,13 @@
 
 							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#E5711D"{% endif %}>Story Tags</span></a>
 
-								{% capture site_tags %}{% for tag in site.tags %}{{ tag[1].size }}#{{ tag | first | downcase }}#{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-								{% assign tag_hashes = site_tags | split:',' | sort %}
 								<ul class="level-two">
-								{% for hash in tag_hashes %}
-								{% assign keyValue = hash | split: '#' %}
-								{% capture tag_word %}{{ keyValue[2] | strip_newlines }}{% endcapture %}
 
-								{% if tag_word != "story" & tag_word != "instants" %}
-								<li><a href="/tags/{{ tag_word }}">{{ tag_word | capitalize }}</a></li>
-								{% endif %}
+									<li><a href="/tags/portugal">Portugal</a></li>
+									<li><a href="/tags/algarve">Algarve</a></li>
+									<li><a href="/tags/california">California</a></li>
+									<li><a href="/tags/lisbon">Lisbon</a></li>
 
-								{% endfor %}
 
 								</ul>
 
@@ -107,9 +102,9 @@
 
 							</li>
 
-							<li><a href="{{ site.baseurl }}/instants/">Instants</a></li>
-							<li><a href="{{ site.baseurl }}/hiking/">Hiks</a></li>
-							<li><a href="{{ site.baseurl }}/about-bears-land/">About</a></li>
+							<li><a href="{{ site.baseurl }}/instants/"><span{% if page.url == "/instants/" %} style="color:#E5711D"{% endif %}>Instants</span></a></li>
+							<li><a href="{{ site.baseurl }}/hiking/"><span{% if page.url == "/hiking/" %} style="color:#E5711D"{% endif %}>Hiks</span></a></li>
+							<li><a href="{{ site.baseurl }}/about-bears-land/"><span{% if page.url == "/about-bears-land/" %} style="color:#E5711D"{% endif %}>About</span></a></li>
 						</ul>
 					</nav>
 				</div>
