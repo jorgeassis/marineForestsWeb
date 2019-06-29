@@ -97,10 +97,7 @@
 							{% endif %}
 							{% endfor %}
 
-							{{hastag}}
-
-
-							{% if page.url == "/stories/" | page.tags contains "story" %}
+							{% if page.url == "/stories/" | hastag == true %}
 
 							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
 
