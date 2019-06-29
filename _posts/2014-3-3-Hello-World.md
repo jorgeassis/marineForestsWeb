@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-permalink: /my-permalink-2/
+permalink: /my-permalink-42/
 
 title: "Another nice story"
 tags: tags: ['story', 'lisbon']

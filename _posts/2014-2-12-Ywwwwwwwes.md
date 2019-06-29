@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-permalink: /my-permalink/
+permalink: /my-per4malink/
 comments: true
 
 title: "This is a long story"
