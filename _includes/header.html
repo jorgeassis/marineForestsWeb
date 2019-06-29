@@ -89,6 +89,10 @@
 					<nav id="main-menu" class="text-center">
 						<ul>
 
+
+							{{ page.tags }}
+
+
 							{% if page.url == "/stories/" | page.tags contains 'story' %}
 
 							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
