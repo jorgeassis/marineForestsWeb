@@ -4,9 +4,7 @@ lang: en
 permalink: /my-permalink-2/
 
 title: "Another nice story"
-tags:
-- story
-- lisbon
+tags: tags: ['story', 'lisbon']
 
 featured: "true"
 

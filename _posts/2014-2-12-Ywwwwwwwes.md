@@ -5,10 +5,7 @@ permalink: /my-permalink/
 comments: true
 
 title: "This is a long story"
-tags:
-- california
-- canyon
-- story
+tags: tags: ['california', 'canyon', 'story']
 
 featured: "true"
 

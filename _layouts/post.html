@@ -73,8 +73,8 @@ layout: default
           {% if sameTagCount >= minCommonTags %}
 
           <div class="col-lg-10 offset-lg-1 bottom-border text-center next-article top-border">
-            <p>Related story</p>
-            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h2>
+            <p>Related story [ {{ commonTags }} ]</p>
+            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
           </div>
 
             {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}

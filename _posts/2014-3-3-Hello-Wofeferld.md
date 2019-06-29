@@ -4,9 +4,7 @@ lang: en
 permalink: /true-story/
 
 title: "The true story"
-tags:
-- story
-- lisbon
+tags: ['story', 'lisbon']
 
 featured: "true"
 
