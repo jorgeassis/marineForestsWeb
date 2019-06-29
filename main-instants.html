@@ -29,11 +29,11 @@ permalink: /instants/
         {% for post in posts %}
 
         <div class="grid-item">
-     
+
           <a href="{{ post.instaURL }}">
 
-            <img style="width:90%; border-radius: 4px; margin-bottom: 10px;" src="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}" alt="post-image">
-            
+            <img style="width:90%; border-radius: 4px; margin-bottom: 10px;" src="/img/blank.png" alt="" data-echo="{{ site.baseurl }}/assets/img/instants/{{ post.mainImage }}">
+
           </a>
           <span class="text-uppercase">{{ post.title }}</span>
 
@@ -45,4 +45,3 @@ permalink: /instants/
     </div>
 
     </section>
-
