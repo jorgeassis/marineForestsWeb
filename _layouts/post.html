@@ -2,30 +2,51 @@
 layout: default
 ---
 
-Layout: post
+{% comment %}
+{% if post.image %} !!! {% endif %}
+{% if post.secondImage %} !!! {% endif %}
+{{ file.modified_time }}
+{% include disqus.html %}
+{% endcomment %}
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
 
-  {% if post.image %} <img class="some_class" src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
-  {% if post.secondImage %} <img class="some_class" src="{{ site.baseurl }}/images/{{ post.secondImage }}" alt="{{ post.title }}"> {% endif %}
+<section class="single-post pad-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="entry-header text-left">
+          <h4 class="entry-meta style2">{{ page.date }} <span></span> 5 Comments</h4>
+          <h1 class="entry-title">{{ page.title }}</h1>
+          <h5>{{ page.tags }}</h5>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="entry-media">
+          <img src="{{ site.baseurl }}/assets/img/{{ post.mainImage }}" alt="post-image">
+        </div>
+      </div>
+      <div class="col-lg-8 offset-lg-2 ">
+        <div class="entry-content">
+          <p>{{ content }}</p>
+
+        </div>
+        <div class="entry-share-div">
+          <h5>Share :</h5>
+          <ul class="social-text light list-inline">
+            <li class="list-inline-item"><a class="text-twiiter" href="#">Twitter</a></li>
+            <li class="list-inline-item"><a class="text-instagram" href="#">Instagram</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col-lg-10 offset-lg-1 bottom-border text-center next-article top-border">
+        <p>Next Article</p>
+        <h2>The only professional beauty supply resources</h2>
+      </div>
 
 
-POOST IMAGE
 
-  <div class="entry">
-    {{ content }}
+    </div>
   </div>
-
-  <div class="date">
-    Written on {{ post.date }}
-
-  {{ file.modified_time }}
-
-  </div>
-
-  {% include disqus.html %}
-
-
-
-</article>
+</section>
