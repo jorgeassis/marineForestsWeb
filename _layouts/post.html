@@ -43,13 +43,15 @@ layout: default
         <div class="entry-share-div">
           <h5>Share :</h5>
           <ul class="social-text light list-inline">
-            <li class="list-inline-item"><a class="text-twiiter" href="#">Twitter</a></li>
-            <li class="list-inline-item"><a class="text-instagram" href="#">Instagram</a></li>
+            
+            <li class="list-inline-item"><a class="text-twiiter" href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via={{ page.url }}&hashtags={{ page.tags | first }}">Twitter</a></li>
+            <li class="list-inline-item"><a class="text-pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media={{ page.mainImage }}&url={{ page.url }}&description={{ page.title }}">Pinterest</a></li>
+            <li class="list-inline-item"><a class="text-facebook" href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a></li>
+
           </ul>
         </div>
 
       </div>
-
 
       {% assign maxRelated = 4 %}
       {% assign minCommonTags =  2 %}
