@@ -89,14 +89,14 @@
 					<nav id="main-menu" class="text-center">
 						<ul>
 
-							{% assign hastag = false %}
+							{% assign hastag = "false" %}
 							{% for tag in page.tags %}
 							{% if tag == "story" %}
-							{% assign hastag = true %}
+							{% assign hastag = "true" %}
 							{% endif %}
 							{% endfor %}
 
-							{% if page.url == "/stories/" | hastag == true %}
+							{% if page.url == "/stories/" | hastag == "true" %}
 
 							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
 
@@ -107,7 +107,7 @@
 								<li><a href="/tags/lisbon">Lisbon</a></li>
 							</ul>
 
-							{% elsif page.url != "/stories/" & hastag == false %}
+							{% elsif page.url != "/stories/" & hastag == false" %}
 
 							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
 
