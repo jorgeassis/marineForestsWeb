@@ -45,17 +45,19 @@
 
 <body>
 
-	<!-- preloader -->
+	<!-- preloader only on main page -->
+	{% if page.url == "/" %}
+
     <div id="loader-wrapper">
 		<div class="loader-img"><img src="{{ site.baseurl }}/assets/img/BearsLogoMini.svg" style="width:100px" alt="preloader"></div>
 		<div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
 	</div>
+	{% endif %}
 
 
-						{% if page.url == "/" %}
 
-						<!-- search wrapper only on main page-->
+						<!-- search wrapper -->
 						<div class="section search-section">
 							<a href="#" class="close-search"><img src="{{ site.baseurl }}/assets/images/close.png" alt="close"></a>
 							<div class="centered">
@@ -65,8 +67,6 @@
 								</form>
 							</div>
 						</div>
-
-						{% endif %}
 
 
 	<!-- search wrapper -->
