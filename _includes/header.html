@@ -96,7 +96,7 @@
 							{% endif %}
 							{% endfor %}
 
-	{{ hastag }}
+Z	{{ hastag }}
 
 							{% if page.url == "/stories/" | hastag == "true" %}
 
@@ -109,7 +109,7 @@
 								<li><a href="/tags/lisbon">Lisbon</a></li>
 							</ul>
 
-							{% elsif page.url != "/stories/" & hastag == false" %}
+							{% elsif page.url != "/stories/" and hastag == false" %}
 
 							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
 
