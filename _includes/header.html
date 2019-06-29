@@ -89,9 +89,16 @@
 					<nav id="main-menu" class="text-center">
 						<ul>
 
-							{% assign item_list = page.tags | contains:"story" %}
 
-{{item_list}}
+							{% assign hastag = "false" %}
+							{% for tag in page.tags %}
+							{% if tag == "story" %}
+							{% assign hastag = "true" %}
+							{% enif %}
+							{% endfor %}
+
+							{{hastag}}
+
 
 							{% if page.url == "/stories/" | page.tags contains "story" %}
 
