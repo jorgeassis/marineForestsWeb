@@ -90,11 +90,11 @@
 						<ul>
 
 
-							{% assign hastag = "false" %}
+							{% assign hastag = false %}
 							{% for tag in page.tags %}
 							{% if tag == "story" %}
-							{% assign hastag = "true" %}
-							{% enif %}
+							{% assign hastag = true %}
+							{% endif %}
 							{% endfor %}
 
 							{{hastag}}
