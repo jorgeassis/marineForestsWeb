@@ -52,16 +52,23 @@
         <div class="loader-section section-right"></div>
 	</div>
 
-	<!-- search wrapper -->
-	<div class="section search-section">
-		<a href="#" class="close-search"><img src="{{ site.baseurl }}/assets/images/close.png" alt="close"></a>
-		<div class="centered">
-			<form action="#">
-				<input type="text" placeholder="Search here..">
-				<button>Search</button>
-			</form>
-		</div>
-	</div>
+
+						{% if page.url == "/" %}
+
+						<!-- search wrapper only on main page-->
+						<div class="section search-section">
+							<a href="#" class="close-search"><img src="{{ site.baseurl }}/assets/images/close.png" alt="close"></a>
+							<div class="centered">
+								<form action="#">
+									<input type="text" placeholder="Search here..">
+									<button>Search</button>
+								</form>
+							</div>
+						</div>
+
+						{% endif %}
+
+
 	<!-- search wrapper -->
 
 	<!-- header section -->

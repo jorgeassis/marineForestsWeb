@@ -12,7 +12,7 @@ featured: "true"
 
 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
-mainImage: 3.jpg
+mainImage: clement-m-429812-unsplash2.jpg
 multipleImages:
 - 2.jpg
 - 3.jpg
