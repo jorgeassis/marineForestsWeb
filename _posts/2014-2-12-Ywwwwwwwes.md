@@ -5,7 +5,7 @@ permalink: /my-per4malink/
 comments: true
 
 title: "This is a long story"
-tags: tags: ['california', 'canyon', 'story']
+tags: ['california', 'canyon', 'story']
 
 featured: "true"
 

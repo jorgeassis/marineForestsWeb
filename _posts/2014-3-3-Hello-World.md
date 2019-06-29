@@ -1,10 +1,10 @@
 ---
 layout: post
 lang: en
-permalink: /my-permalink-42/
+permalink: /my-permalin33k-2/
 
 title: "Another nice story"
-tags: tags: ['story', 'lisbon']
+tags: ['story', 'lisbon']
 
 featured: "true"
 
