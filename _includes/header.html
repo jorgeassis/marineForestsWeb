@@ -89,7 +89,6 @@
 					<nav id="main-menu" class="text-center">
 						<ul>
 
-
 							{% assign hastag = false %}
 							{% for tag in page.tags %}
 							{% if tag == "story" %}
@@ -108,7 +107,7 @@
 								<li><a href="/tags/lisbon">Lisbon</a></li>
 							</ul>
 
-							{% else %}
+							{% elseif page.url != "/stories/" & hastag == false %}
 
 							<li><a href="{{ site.baseurl }}/stories/">Stories</a>
 
