@@ -96,17 +96,19 @@
 							{% endif %}
 							{% endfor %}
 
-A	{{ hastag }}
-
 							{% if page.url == "/stories/" or hastag == "true" %}
 
-							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
+							<li><a href="{{ site.baseurl }}/stories/"><span{% if page.url == "/stories/" or hastag == "true" %} style="color:#CA7432"{% endif %}>Story Tags</span></a>
 
 							<ul class="level-two">
+
 								<li><a href="/tags/portugal">Portugal</a></li>
 								<li><a href="/tags/algarve">Algarve</a></li>
 								<li><a href="/tags/california">California</a></li>
 								<li><a href="/tags/lisbon">Lisbon</a></li>
+
+								{% if hastag == "true" %} <li></li> <li><a href="/stories/">Stories</a></li> {% endif %}
+
 							</ul>
 
 							{% elsif page.url != "/stories/" and hastag == "false" %}
