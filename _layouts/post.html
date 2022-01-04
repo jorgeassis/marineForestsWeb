@@ -8,6 +8,8 @@ layout: default
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1">
 
+				<div class="margin-bottom-20 margin-left-30 margin-right-30 margin-top-10">
+
         {{ page.date | date: "%Y-%m-%d" }}
         {{ page.title }}
 
@@ -27,6 +29,7 @@ layout: default
 Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
 <a class="text-facebook" href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a>
 
+</div>
 
 {% comment %}
       {% assign maxRelated = 4 %}
