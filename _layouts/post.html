@@ -2,19 +2,22 @@
 layout: default
 ---
 
-<div class="section-lg">
+<div class="section">
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-10 offset-lg-1">
 
-        <div class="margin-bottom-10">
-          <p>{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}, {% endif %}{% endfor %}</p>
-        </div>
+          <div class="margin-top-100">
 
-        <h3>{{ page.title }}</h3>
+          <div class="margin-bottom-10">
+            <p>{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}, {% endif %}{% endfor %}</p>
+          </div>
 
-        <div class="margin-top-10">
-          <p>{{ page.description }}</p>
+          <h3>{{ page.title }}</h3>
+
+          <div class="margin-top-10">
+            <p>{{ page.description }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -27,7 +30,7 @@ layout: default
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1">
 
-				<div class="margin-bottom-20 margin-left-30 margin-right-30 margin-top-10">
+				<div class="margin-bottom-20 margin-left-30 margin-right-30">
 
           <img style="border-radius: 5px;" src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" alt="post-image">
           <p>{{ page.mainImageCredits }}</p>
