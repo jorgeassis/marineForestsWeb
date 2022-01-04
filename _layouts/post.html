@@ -102,7 +102,7 @@ layout: default
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1">
 
-					<div class="margin-left-30 margin-right-30" style=" display: flex;">
+					<div class="margin-left-30 margin-right-30">
 						<div>
 							<ul class="list-inline-dash font-family-secondary">
 								<i class="fas fa-angle-double-right"></i> <li>Additional
@@ -112,15 +112,12 @@ layout: default
                   {% if page.type == "data" %} data{% endif %}</li>
 							</ul>
 						</div>
-						<div class="text-right" style="flex-grow: 1">
-
-						</div>
 					</div>
 
         </div>
       </div>
 
-      <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
+      <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 15px">
 
         {% for post in site.posts limit: 3 %}
         {% if post.type == page.type and post.title not page.title %}
@@ -129,12 +126,12 @@ layout: default
         <div>
         {% endif %}
         {% if forloop.first == false %}
-        <div class="margin-top-20 margin-bottom-10">
+        <div class="margin-bottom-10">
         {% endif %}
 
-					<div class="content padding-30">
+					<div class="content padding-20">
 						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
-						<a href="{{site.baseurl}}{{ post.url }}"><p>{{ post.description }}</p></a>
+						<p>{{ post.description }}</p>
 					</div>
 
 				</div>
