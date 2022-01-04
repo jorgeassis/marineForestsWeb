@@ -3,9 +3,9 @@ layout: default
 ---
 
 <div class="section">
-	<div class="container" style="margin-top: 40px">
+	<div class="container" style="margin-top: 30px">
 		<div class="row">
-			<div class="col-12 col-lg-11 offset-lg-1 col-xl-8 margin-top-10">
+			<div class="col-12 col-lg-10 offset-lg-1 col-xl-9">
 
         <div class="margin-bottom-10">
           <p>{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}; {% endif %}{% endfor %}</p>
@@ -32,7 +32,9 @@ layout: default
 				<div class="margin-bottom-20 margin-left-30 margin-right-30">
 
           <div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" style="height: 450px; background-position: center">
+          </div>
 
+          <div>
           <p>{{ page.mainImageCredits }}</p>
 
           <p>{{ content }}</p>
@@ -41,6 +43,7 @@ layout: default
           <a href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a></p>
 
           </div>
+        </div>
 
         </div>
       </div>
