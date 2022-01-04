@@ -55,11 +55,15 @@ layout: default
 
               {% if page.link %}
               <ul class="list-inline-dash font-family-secondary font-small">
-								<i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Read the full articles</a>
+								<i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Access full
+                {% if page.type == "journal" %} publication{% endif %}
+                {% if page.type == "project" %} project{% endif %}
+                {% if page.type == "code" %} code{% endif %}
+                {% if page.type == "data" %} data{% endif %}</a>
 							</ul>
               {% endif %}
 
-              <ul class="list-inline-dash font-family-secondary font-small">
+              <ul class="list-inline-dash font-family-secondary font-small margin-top-20">
                 <i class="fas fa-angle-double-right"></i> Share
                 {% if page.type == "journal" %} publication{% endif %}
                 {% if page.type == "project" %} project{% endif %}
@@ -88,8 +92,6 @@ layout: default
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1">
 
-				<div>
-
 					<div class="margin-left-30 margin-right-30" style=" display: flex;">
 						<div>
 							<ul class="list-inline-dash font-family-secondary">
@@ -101,13 +103,14 @@ layout: default
 							</ul>
 						</div>
 						<div class="text-right" style="flex-grow: 1">
-							<ul class="list-inline-dash font-family-secondary font-small">
-								<i class="fas fa-angle-right"></i> <a class="text-link-3" href="{{ site.baseurl }}/publications/"><li> list all publications</li></a>
-							</ul>
+
 						</div>
 					</div>
 
         </div>
+      </div>
+
+      <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
 
         {% for post in site.posts limit: 3 %}
         {% if post.type == page.type %}
@@ -121,13 +124,15 @@ layout: default
 
 					<div class="content padding-30">
 						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
-						<p>{{ post.description }}</p>
+						<a href="{{site.baseurl}}{{ post.url }}"><p>{{ post.description }}</p></a>
 					</div>
 
 				</div>
 
         {% endif %}
         {% endfor %}
+
+      </div>
 
 			</div>
 		</div>
