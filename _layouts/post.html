@@ -120,7 +120,7 @@ layout: default
       <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 15px">
 
         {% for post in site.posts limit: 3 %}
-        {% if post.type == page.type and post.title not page.title %}
+        {% if post.type == page.type  %}
 
         {% if forloop.first == true %}
         <div>
