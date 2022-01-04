@@ -53,6 +53,8 @@ credits: ""
 
         {% for post in site.posts limit: 2 %}
 
+        {% if post.featured == "true" %}
+
         {% if forloop.first == true %}
         <div>
         {% endif %}
@@ -72,6 +74,7 @@ credits: ""
 
 				</div>
 
+        {% endif %}
         {% endfor %}
 
 			</div>
