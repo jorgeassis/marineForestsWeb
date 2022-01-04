@@ -2,6 +2,25 @@
 layout: default
 ---
 
+
+<div class="section-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="margin-bottom-10">
+          <p class="uppercase letter-spacing-2">{% for tag in page.tags %}<a href="/tags/{{ tag }}/">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %}</p>
+        </div>
+
+        <h2 class="display-4 font-weight-bold">{{ page.title }}</h2>
+
+        <div class="margin-top-20">
+          <p>{{ page.description }}</p>
+        </div>
+      </div>
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+
 <div class="section">
 	<div class="container">
 
@@ -10,25 +29,19 @@ layout: default
 
 				<div class="margin-bottom-20 margin-left-30 margin-right-30 margin-top-10">
 
-        {{ page.date | date: "%Y-%m-%d" }}
-        {{ page.title }}
-
-
-            {% for tag in page.tags %}
-            <a href="/tags/{{ tag }}/">{{ tag }}</a>
-            {% if forloop.last == false %}
-            ,
-            {% endif %}
-            {% endfor %}
-
           <img style="border-radius: 5px;" src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" alt="post-image">
 
           {{ content }}
 
+          Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
+          <a class="text-facebook" href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a>
 
-Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
-<a class="text-facebook" href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a>
+          </div>
 
+        </div>
+      </div>
+
+  </div>
 </div>
 
 {% comment %}
@@ -66,9 +79,3 @@ Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url
         {% endfor %}
 
 {% endcomment %}
-
-      </div>
-    </div>
-
-  </div>
-</div>
