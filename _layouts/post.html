@@ -8,13 +8,13 @@ layout: default
 			<div class="col-12 col-lg-10 offset-lg-1 col-xl-10">
 
         <div class="margin-bottom-10">
-          <p class="font-family-secondary">{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}; {% endif %}{% endfor %}</p>
+          <p class="font-family-secondary font-small">{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}; {% endif %}{% endfor %}</p>
         </div>
 
-        <h4 class="font-weight-normal">{{ page.title }}</h4>
+        <h3>{{ page.title }}</h3>
 
         <div class="margin-top-10">
-          <p class="font-family-secondary">{{ page.description }}</p>
+          <p class="font-family-secondary font-small">{{ page.description }}</p>
         </div>
 
 			</div>
