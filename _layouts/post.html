@@ -50,22 +50,26 @@ layout: default
 
 
         <div>
-          <div class="margin-bottom-20 margin-left-30 margin-right-30" style=" display: flex;">
+          <div class="margin-bottom-20 margin-left-30 margin-right-30">
             <div>
 
               {% if page.link %}
-              <ul class="list-inline-dash font-family-secondary">
-								<i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Read the full study</a>
+              <ul class="list-inline-dash font-family-secondary font-small">
+								<i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Read the full articles</a>
 							</ul>
               {% endif %}
 
-            </div>
-            <div class="text-right" style="flex-grow: 1">
               <ul class="list-inline-dash font-family-secondary font-small">
-                <i class="fas fa-angle-double-right"></i> Share on <a href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
+                <i class="fas fa-angle-double-right"></i> Share
+                {% if page.type == "journal" %} publication{% endif %}
+                {% if page.type == "project" %} project{% endif %}
+                {% if page.type == "code" %} code{% endif %}
+                {% if page.type == "data" %} data{% endif %} on <a href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
                  or <a href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a>
-             </ul>
+              </ul>
+
             </div>
+
           </div>
         </div>
 
@@ -76,44 +80,103 @@ layout: default
   </div>
 </div>
 
-{% comment %}
-      {% assign maxRelated = 4 %}
-      {% assign minCommonTags =  2 %}
-      {% assign maxRelatedCounter = 0 %}
 
-        {% for post in site.posts %}
 
-          {% assign sameTagCount = 0 %}
-          {% assign commonTags = '' %}
+<div class="section">
+	<div class="container">
 
-          {% for tag in post.tags %}
-            {% if post.url != page.url %}
-              {% if page.tags contains tag %}
-                {% assign sameTagCount = sameTagCount | plus: 1 %}
-                {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
-                {% assign commonTags = commonTags | append: tagmarkup %}
-              {% endif %}
-            {% endif %}
-          {% endfor %}
+		<div class="row">
+			<div class="col-12 col-lg-10 offset-lg-1">
 
-          {% if sameTagCount >= minCommonTags %}
+				<div>
 
-          <div>
-            <p>Related story</p>
-            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-          </div>
+					<div class="margin-left-30 margin-right-30" style=" display: flex;">
+						<div>
+							<ul class="list-inline-dash font-family-secondary">
+								<i class="fas fa-angle-double-right"></i> <li>Additional
+                  {% if page.type == "journal" %} publications{% endif %}
+                  {% if page.type == "project" %} projects{% endif %}
+                  {% if page.type == "code" %} code{% endif %}
+                  {% if page.type == "data" %} data{% endif %}</li>
+							</ul>
+						</div>
+						<div class="text-right" style="flex-grow: 1">
+							<ul class="list-inline-dash font-family-secondary font-small">
+								<i class="fas fa-angle-right"></i> <a class="text-link-3" href="{{ site.baseurl }}/publications/"><li> list all publications</li></a>
+							</ul>
+						</div>
+					</div>
 
-            {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-            {% if maxRelatedCounter >= maxRelated %}
-              {% break %}
-            {% endif %}
-          {% endif %}
+        </div>
+
+        {% for post in site.posts limit: 3 %}
+        {% if post.type == page.type %}
+
+        {% if forloop.first == true %}
+        <div>
+        {% endif %}
+        {% if forloop.first == false %}
+        <div class="margin-top-20 margin-bottom-10">
+        {% endif %}
+
+					<div class="content padding-30">
+						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
+						<p>{{ post.description }}</p>
+					</div>
+
+				</div>
+
+        {% endif %}
         {% endfor %}
 
+			</div>
+		</div>
+
+  </div>
+</div>
 
 
+
+{% comment %}
+
+{% assign maxRelated = 4 %}
+{% assign minCommonTags =  2 %}
+{% assign maxRelatedCounter = 0 %}
+
+{% for post in site.posts %}
+
+  {% assign sameTagCount = 0 %}
+  {% assign commonTags = '' %}
+
+  {% for tag in post.tags %}
+    {% if post.url != page.url %}
+      {% if page.tags contains tag %}
+        {% assign sameTagCount = sameTagCount | plus: 1 %}
+        {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+        {% assign commonTags = commonTags | append: tagmarkup %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if sameTagCount >= minCommonTags %}
+
+  <div>
+    <p>Related story</p>
+    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+  </div>
+
+    {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+    {% if maxRelatedCounter >= maxRelated %}
+      {% break %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% endcomment %}
+
+
+{% comment %}
 
 {% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}; {% endif %}{% endfor %}
-
 
 {% endcomment %}
