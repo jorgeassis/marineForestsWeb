@@ -8,7 +8,7 @@ credits: ""
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1 col-xl-8 margin-top-10">
-				V6.<h1 class="display-6 font-weight-semi-bold">Biodiversity Data Science<span style="color: #A22A2A">.</span></h1>
+				V8.<h1 class="display-6 font-weight-semi-bold">Biodiversity Data Science<span style="color: #A22A2A">.</span></h1>
 				<p style="color: white">A team of young researchers committed to provide knowledge to well-informed
 					biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.</p>
 
@@ -52,7 +52,6 @@ credits: ""
         </div>
 
         {% for post in site.posts limit: 2 %}
-
         {% if post.featured == "true" and post.type == "journal" %}
 
         {% if forloop.first == true %}
@@ -107,18 +106,24 @@ credits: ""
 
 				<div class="owl-carousel" data-owl-autoplay="true" data-owl-nav="false" data-owl-dots="false" data-owl-items="1">
 
+          {% for post in site.posts limit: 4 %}
+          {% if post.type == "tweet" %}
+
 						<div class="testimonial-box">
 						<div class="quote">
-							<p class="font-family-secondary">Title</p>
+							<p class="font-family-secondary">{{ post.title }}</p>
 						</div>
 						<div class="avatar">
 							<img src="{{ site.baseurl }}/assets/images/jorgeassis.jpg" alt="">
 							<div>
 								<h6 class="font-family-secondary font-small text-dark">Jorge Assis</h6>
-								<span class="font-family-secondary font-extra-small text-dark">Research Assistant</span>
+								<span class="font-family-secondary font-extra-small text-dark">Research Assistant [group leader]</span>
 							</div>
 						</div>
 					</div>
+
+          {% endif %}
+          {% endfor %}
 
 			</div>
 
