@@ -35,7 +35,7 @@ layout: default
           </div>
 
           <div class="margin-top-20 maintext">
-          <p>{{ page.mainImageCredits }}</p>
+          {% if page.mainImageCredits %}<p class="font-family-secondary font-small">{{ page.mainImageCredits }}</p>{% endif %}
 
           {{ content }}
 
