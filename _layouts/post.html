@@ -42,6 +42,10 @@ layout: default
           <p><i class="fas fa-angle-double-right"></i> Share on <a href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
           <a href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a></p>
 
+          {% if page.link %}
+          <p><a href="{{ page.link }}"><i class="fas fa-angle-double-right"></i> Read the full study</a></p>
+          {% endif %}
+
           </div>
         </div>
 
