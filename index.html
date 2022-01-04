@@ -109,7 +109,7 @@ credits: ""
 
 						<div class="testimonial-box">
 						<div class="quote">
-							<p class="font-family-secondary">Biophysical modelling estimates biodiversity connectivity of deep marine species. Colours depict regions more likely connected.</p>
+							<p class="font-family-secondary">{{ post.title }}</p>
 						</div>
 						<div class="avatar">
 							<img src="{{ site.baseurl }}/assets/images/jorgeassis.jpg" alt="">
@@ -151,32 +151,23 @@ credits: ""
 
 <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
 
-	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/3.jpeg" style="height: 164px; background-position: center"></div>
+  {% for post in site.posts limit: 4 %}
+
+  {% if post.featured == "true" and post.type == "code" %}
+
+	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
 	<div class="col-lg-8 padding-15 margin-top-5">
-		<a href="#"><h5 class="font-weight-normal">Reducing spatial autocorrelation in SDMs</h5></a>
-		<p class="font-family-secondary font-small text-dark">Plotting spatial data is a common task in research, but this requires a set of technical / design tools, which sometimes are not available.</p>
+		<a href="#"><h5 class="font-weight-normal">{{ post.title }}</h5></a>
+		<p class="font-family-secondary font-small text-dark">{{ post.description }}</p>
 		<div class="margin-top-10">
-			<p class="font-family-secondary font-small text-dark">Programming language: <i class="fab fa-python"></i></p>
+			<p class="font-family-secondary font-small text-dark">Programming language: {% if post.language == "python" %}<i class="fab fa-python"></i>{% endif %}{% if post.language == "r" %}<i class="fab fa-r-project"></i>{% endif %}</p>
 		</div>
-</div>
+  </div>
 
-			<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/5.jpeg" style="height: 164px; background-position: center"></div>
-			<div class="col-lg-8 padding-15 margin-top-5">
-				<a href="#"><h5 class="font-weight-normal">Reducing spatial autocorrelation in SDMs</h5></a>
-				<p class="font-family-secondary font-small text-dark">Plotting spatial data is a common task in research, but this requires a set of technical / design tools, which sometimes are not available.</p>
-				<div class="margin-top-10">
-					<p class="font-family-secondary font-small text-dark">Programming language: <i class="fab fa-r-project"></i></p>
-				</div>
-		</div>
 
-		<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/4.jpeg" style="height: 164px; background-position: center"></div>
-		<div class="col-lg-8 padding-15 margin-top-5">
-			<a href="#"><h5 class="font-weight-normal">Reducing spatial autocorrelation in SDMs</h5></a>
-			<p class="font-family-secondary font-small text-dark">Plotting spatial data is a common task in research, but this requires a set of technical / design tools, which sometimes are not available.</p>
-			<div class="margin-top-10">
-				<p class="font-family-secondary font-small text-dark">Programming language: <i class="fab fa-python"></i></p>
-			</div>
-	</div>
+
+  {% endif %}
+  {% endfor %}
 
 </div>
 
