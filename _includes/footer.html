@@ -1,25 +1,35 @@
-
-	<!-- footer wrapper -->
-	<section class="footer-wrapper pad-75 bg-lightblue">
+	<!-- Footer -->
+	<div class="section bg-dark">
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 text-center">
-
-					{% if page.url != "/" %}
-					<ul class="social-icons-two light list-inline">
-						<li class="list-inline-item"><a href="#"><i class="icon-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="icon-twitter"></i></a></li>
-
-					</ul>
-					{% endif %}
-
-					<p class="copyright-text">Copyright © 2019 <a href="https://github.com/jorgeassis"><b>Bears Studio</b></a> Theme <br> All Rights Reserved.</p>
-
-					{% if page.url != "/" %}
-					<a href="#" class="back-top">BACK TO TOP</a>
-					{% endif %}
+			<div class="row align-items-center">
+				<div class="col-6 ">
+					<h4>biodiversityDS<span style="color: #A22A2A">.</span></h4>
+					<p class="font-small">Jorge Assis [PhD, Research Assistant]<br>
+						Centre of Marine Sciences, University of Algarve [Faro, Portugal]<br>
+					© 2022 Biodiversity Data Science, All Rights Reserved</p>
 				</div>
-			</div>
-		</div>
-	</section>
-	<!-- footer-wrapper -->
+
+				<div class="col-6 text-right">
+					<ul class="list-inline-sm">
+						<li><a class="button-circle button-circle-sm button-circle-outline-white" href="https://twitter.com/jorgemfassis"><i class="fab fa-twitter"></i></a></li>
+						<li><a class="button-circle button-circle-sm button-circle-outline-white" href="https://jorgemfa.medium.com"><i class="fab fa-medium-m"></i></a></li>
+						<li><a class="button-circle button-circle-sm button-circle-outline-white" href="https://github.com/jorgeassis/"><i class="fab fa-github"></i></a></li>
+						<li><a class="button-circle button-circle-sm button-circle-outline-white" href="mailto: jorgemfa@gmail.com"><i class="fab fas fa-at"></i></a></li>
+					</ul>
+				</div>
+
+			</div><!-- end row -->
+		</div><!-- end container -->
+	</div>
+	<!-- end Footer -->
+
+</div>
+<!-- end wrapper of header -->
+
+<!-- JAVASCRIPTS -->
+<script src="{{ site.baseurl }}/assets/plugins/jquery.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+<script src="{{ site.baseurl }}/assets/plugins/plugins.js"></script>
+<script src="{{ site.baseurl }}/assets/js/functions.js"></script>
+</body>
+</html>
