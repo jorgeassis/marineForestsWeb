@@ -1,6 +1,6 @@
 ---
 layout: default
-credits: "Header photo by Clément M. on Unsplash"
+credits: ""
 ---
 
 <!-- Hero section -->
@@ -25,6 +25,17 @@ credits: "Header photo by Clément M. on Unsplash"
 		</div>
 	</div>
 </div>
+
+
+<ul>
+  {% for post in site.posts limit: 1 %}
+    <li>
+      <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+      {{ post.description }}
+    </li>
+  {% endfor %}
+</ul>
+
 
 <!-- Featured publications -->
 
