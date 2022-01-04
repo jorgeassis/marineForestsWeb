@@ -3,13 +3,13 @@
 #
 
 # Name of your site (displayed in the header)
-name: Bears Land
+name: Biodiversity Data Science
 
 # Short bio or description (displayed in the header)
-description: A family of four based in Faro, exploring life, nature and purpose.
+description: A team of young researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
+avatar: https://avatars.githubusercontent.com/u/1438320?v=4
 
 collections:
   my-own-collection:
@@ -26,15 +26,15 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: barryclark/jekyll-now
-  instagram: bears.land
+  github:
+  instagram:
   linkedin:
   pinterest:
-  rss: # just type anything here for a working RSS icon
-  twitter: bears.land
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
+  rss:
+  twitter:
+  stackoverflow:
+  youtube:
+  googleplus:
 
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
@@ -46,7 +46,7 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: http://www.bears.land
+url: http://www.biodiversitydatascience.com
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
