@@ -53,17 +53,7 @@ layout: default
           <div class="margin-bottom-20 margin-left-30 margin-right-30">
             <div>
 
-              {% if page.link %}
               <ul class="list-inline-dash font-family-secondary font-small">
-								<i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Access full
-                {% if page.type == "journal" %} publication{% endif %}
-                {% if page.type == "project" %} project{% endif %}
-                {% if page.type == "code" %} code{% endif %}
-                {% if page.type == "data" %} data{% endif %}</a>
-							</ul>
-              {% endif %}
-
-              <ul class="list-inline-dash font-family-secondary font-small margin-top-20">
                 <i class="fas fa-angle-double-right"></i> Share
                 {% if page.type == "journal" %} publication{% endif %}
                 {% if page.type == "project" %} project{% endif %}
@@ -71,6 +61,26 @@ layout: default
                 {% if page.type == "data" %} data{% endif %} on <a href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
                  or <a href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a>
               </ul>
+
+
+              {% if page.citation %}
+              <div class="margin-top-20">
+              <h3>Main reference</h3>
+              <p>{{ page.citation }}</p>
+              </div>
+              {% endif %}
+
+
+              {% if page.link %}
+              <ul class="list-inline-dash font-family-secondary font-small margin-top-10">
+                <i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Access full
+                {% if page.type == "journal" %} publication{% endif %}
+                {% if page.type == "project" %} project{% endif %}
+                {% if page.type == "code" %} code{% endif %}
+                {% if page.type == "data" %} data{% endif %}</a>
+              </ul>
+              {% endif %}
+
 
             </div>
 
