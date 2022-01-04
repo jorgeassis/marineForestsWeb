@@ -5,7 +5,7 @@ layout: default
 <div class="section">
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
-			<div class="col-12 col-lg-10 offset-lg-1 col-xl-9">
+			<div class="col-12 col-lg-10 offset-lg-1 col-xl-10">
 
         <div class="margin-bottom-10">
           <p>{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}; {% endif %}{% endfor %}</p>
@@ -34,10 +34,10 @@ layout: default
           <div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" style="height: 450px; background-position: center">
           </div>
 
-          <div>
+          <div class="margin-top-20 maintext">
           <p>{{ page.mainImageCredits }}</p>
 
-          <p>{{ content }}</p>
+          {{ content }}
 
           <p><i class="fas fa-angle-double-right"></i> Share on <a href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
           <a href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a></p>

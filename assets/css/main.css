@@ -17,6 +17,11 @@ body {
   overflow-x: hidden;
 }
 
+.maintext p {
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
 .wrapper {
   position: relative;
   z-index: 1;
