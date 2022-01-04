@@ -45,7 +45,10 @@
 
 			<!-- Header // sticky -->
 
-			<div class="header absolute-light box-shadow" style="background: #141619">
+			{% if page.url == "/" %}<div class="header absolute-light box-shadow" style="background: #141619">{% endif %}
+
+			{% if page.url != "/" %}<div class="header">{% endif %}
+						
 				<div class="container margin-top-10">
 
 					<div class="logo">
