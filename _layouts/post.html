@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 <div class="section">
 	<div class="container">
 
@@ -20,20 +19,16 @@ layout: default
             {% endif %}
             {% endfor %}
 
+          <img style="border-radius: 5px;" src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" alt="post-image">
 
-          <img style="border-radius: 5px;" src="{{ site.baseurl }}/assets/img/{{ page.mainImage }}" alt="post-image">
-        {{ content }}
-
-
-
-{{ page.innerGalleryImages }}
+          {{ content }}
 
 
 Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url }}&text={{ page.title }}&via=bears.land&hashtags={{ page.tags | first }}">Twitter</a>
 <a class="text-facebook" href="https://www.facebook.com/sharer.php?s=100&p[url]={{ page.url }}">Facebook</a>
 
 
-
+{% comment %}
       {% assign maxRelated = 4 %}
       {% assign minCommonTags =  2 %}
       {% assign maxRelatedCounter = 0 %}
@@ -55,7 +50,7 @@ Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url
 
           {% if sameTagCount >= minCommonTags %}
 
-          <div class="col-lg-10 offset-lg-1 bottom-border text-center next-article top-border">
+          <div>
             <p>Related story</p>
             <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
           </div>
@@ -67,6 +62,7 @@ Share on <a class="text-twiiter" href="https://twitter.com/share?url={{ page.url
           {% endif %}
         {% endfor %}
 
+{% endcomment %}
 
       </div>
     </div>
