@@ -18,10 +18,14 @@ body {
 }
 
 .maintext p {
-  line-height: 40px;
+  line-height: 25px;
   margin-bottom: 30px;
-
 }
+
+.maintext img {
+  border-radius: 5px;
+}
+
 
 .wrapper {
   position: relative;
