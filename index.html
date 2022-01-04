@@ -109,7 +109,7 @@ credits: ""
 
 						<div class="testimonial-box">
 						<div class="quote">
-							<p class="font-family-secondary">{{ post.title }}</p>
+							<p class="font-family-secondary">Title</p>
 						</div>
 						<div class="avatar">
 							<img src="{{ site.baseurl }}/assets/images/jorgeassis.jpg" alt="">
@@ -152,7 +152,6 @@ credits: ""
 <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
 
   {% for post in site.posts limit: 4 %}
-
   {% if post.featured == "true" and post.type == "code" %}
 
 	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
@@ -163,7 +162,6 @@ credits: ""
 			<p class="font-family-secondary font-small text-dark">Programming language: {% if post.language == "python" %}<i class="fab fa-python"></i>{% endif %}{% if post.language == "r" %}<i class="fab fa-r-project"></i>{% endif %}</p>
 		</div>
   </div>
-
 
 
   {% endif %}
