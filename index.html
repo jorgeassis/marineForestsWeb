@@ -51,8 +51,13 @@ credits: ""
 
         </div>
 
-        {% for post in site.posts limit: 2 %}
+        {% comment %}
         {% if post.featured == "true" and post.type == "journal" %}
+        {% endif %}
+
+        {% endcomment %}
+
+        {% for post in site.posts limit: 20 %}
 
         <div {% if forloop.first == false %} class="margin-top-20 margin-bottom-10" {% endif %}>
 
@@ -68,7 +73,6 @@ credits: ""
 
 				</div>
 
-        {% endif %}
         {% endfor %}
 
 			</div>
