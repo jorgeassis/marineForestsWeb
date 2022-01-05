@@ -62,7 +62,7 @@ layout: default
 
 
               {% if page.citation %}
-              <div class="margin-top-100">
+              <div style="margin-top: 100px;">
               <h3>Main reference</h3>
               <p>{{ page.citation }}</p>
               </div>
@@ -70,7 +70,7 @@ layout: default
 
 
               {% if page.link %}
-              <ul class="list-inline-dash font-family-secondary font-small margin-top-10 text-dark">
+              <ul class="list-inline-dash font-family-secondary font-small margin-top-20 text-dark">
                 <i class="fas fa-angle-double-right"></i><a href="{{ page.link }}"> Access full
                 {% if page.type == "journal" %} publication{% endif %}
                 {% if page.type == "project" %} project{% endif %}
@@ -88,7 +88,7 @@ layout: default
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1">
 
-					<div class="margin-left-30 margin-right-30">
+					<div class="margin-left-30 margin-right-30" style="margin-top: 100px;">
 						<div>
 							<ul class="list-inline-dash font-family-secondary">
 								<i class="fas fa-angle-double-right"></i> <li>Additional
@@ -103,16 +103,16 @@ layout: default
         </div>
       </div>
 
-      <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 15px">
+      <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px">
 
         {% for post in site.posts limit: 3 %}
         {% if post.type == page.type and post.title != page.title %}
 
         <div {% if forloop.first == false %} class="margin-bottom-10" {% endif %}>
-        
+
 					<div class="content padding-20">
 						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
-						<p>{{ post.description }}</p>
+						<p class="text-dark">{{ post.description }}</p>
 					</div>
 
 				</div>
