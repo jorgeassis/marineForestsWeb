@@ -55,9 +55,13 @@ credits: ""
         {% if post.featured == "true" and post.type == "journal" %}
         {% endif %}
 
+        {% for post in site.posts limit: 20 %}
+
         {% endcomment %}
 
-        {% for post in site.posts limit: 20 %}
+        {% assign posts = site.posts | where: "featured", "true" | where: "type", "journal" %}
+        {% for post in posts limit: 100 %}
+
 
         <div {% if forloop.first == false %} class="margin-top-20 margin-bottom-10" {% endif %}>
 
