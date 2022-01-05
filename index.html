@@ -56,10 +56,10 @@ credits: ""
         {% endif %}
 
         {% for post in site.posts limit: 20 %}
-
+| where: "type", "journal" 
         {% endcomment %}
 
-        {% assign posts = site.posts | where: "featured", "true" | where: "type", "journal" %}
+        {% assign posts = site.posts | where: "featured", "true" %}
         {% for post in posts limit: 100 %}
 
 
