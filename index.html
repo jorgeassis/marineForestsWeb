@@ -36,7 +36,7 @@ credits: ""
 
 				<div>
 
-					<div class="margin-left-30 margin-right-30" style=" display: flex;">
+					<div class="margin-bottom-20 margin-left-30 margin-right-30" style=" display: flex;">
 						<div>
 							<ul class="list-inline-dash font-family-secondary">
 								<i class="fas fa-angle-double-right"></i> <li>Featured publications</li>
@@ -54,10 +54,9 @@ credits: ""
 
         {% assign postsMain = site.posts | where: "type", "journal" %}
         {% assign posts = postsMain | where: "featured", "true" %}
-        {% for post in posts limit: 100 %}
+        {% for post in posts limit: 2 %}
 
-
-        <div {% if forloop.first == false %} class="margin-top-20 margin-bottom-10" {% endif %}>
+        <div class="margin-bottom-10">
 
 					<a href="{{site.baseurl}}{{ post.url }}">
 					<div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 300px; background-position: center">
@@ -66,8 +65,6 @@ credits: ""
 
 					<div class="content padding-30">
 						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
-            <p>{{ post.featured }}</p>
-            <p>{{ post.type }}</p>
             <p>{{ post.description }}</p>
 					</div>
 
@@ -155,8 +152,9 @@ credits: ""
 
 <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
 
-  {% for post in site.posts limit: 4 %}
-  {% if post.featured == "true" and post.type == "code" %}
+  {% assign postsMain = site.posts | where: "type", "code" %}
+  {% assign posts = postsMain | where: "featured", "true" %}
+  {% for post in posts limit: 4 %}
 
 	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
 
@@ -168,8 +166,6 @@ credits: ""
 		</div>
   </div>
 
-
-  {% endif %}
   {% endfor %}
 
 </div>
