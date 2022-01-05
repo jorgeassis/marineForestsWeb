@@ -28,7 +28,7 @@ layout: default
 </div>
 
 
-<div class="section" style="margin-top: -15px">
+<div class="section" style="margin-top: -20px">
 	<div class="container">
 
 		<div class="row">
@@ -36,7 +36,7 @@ layout: default
 
 				<div class="margin-bottom-20">
 
-          <div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" style="height: 425px; background-position: center">
+          <div class="bg-image box-shadow border-radius-05 margin-bottom-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ page.mainImage }}" style="height: 425px; background-position: center">
           </div>
 
           <div class="margin-top-20 maintext margin-left-30 margin-right-30">
@@ -90,7 +90,7 @@ layout: default
 					<div class="margin-left-30 margin-right-30" style="margin-top: 85px;">
 						<div>
 							<ul class="list-inline-dash font-family-secondary">
-								<i class="fas fa-angle-double-right"></i> <li>Additional
+								<i class="fas fa-angle-double-right"></i> <li>Additional featured
                   {% if page.type == "journal" %} publications{% endif %}
                   {% if page.type == "project" %} projects{% endif %}
                   {% if page.type == "code" %} code{% endif %}
@@ -104,8 +104,11 @@ layout: default
 
     <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px">
 
-        {% for post in site.posts limit: 3 %}
-        {% if post.type == page.type and post.title != page.title %}
+      {% assign postsMain = site.posts | where: "type", page.type %}
+      {% assign posts = postsMain | where: "featured", "true" %}
+      {% for post in posts limit: 3 %}
+
+        {% if post.title != page.title %}
 
         <div {% if forloop.first == false %} class="margin-bottom-10" {% endif %}>
 
