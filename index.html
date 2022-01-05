@@ -51,9 +51,9 @@ credits: ""
 
         </div>
 
-        {% assign posts = site.posts | where: "featured", "true" %}
+        {% assign posts = site.posts | where: "type", "journal" %}
         {% for post in posts limit: 100 %}
-
+        {% if post.featured == "true" %}
 
 
         <div {% if forloop.first == false %} class="margin-top-20 margin-bottom-10" {% endif %}>
@@ -72,6 +72,7 @@ credits: ""
 
 				</div>
 
+        {% endif %}
         {% endfor %}
 
 			</div>
