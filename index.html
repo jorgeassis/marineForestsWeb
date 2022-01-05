@@ -51,11 +51,10 @@ credits: ""
 
         </div>
 
-        {% assign count = 0 | plus 1 %}
-        {{ count }}
-        {% assign posts = site.posts | where: "type", "journal" %}
+
+        {% assign postsMain = site.posts | where: "type", "journal" %}
+        {% assign posts = postsMain | where: "featured", "true" %}
         {% for post in posts limit: 100 %}
-        {% if post.featured == "true" %}
 
 
         <div {% if forloop.first == false %} class="margin-top-20 margin-bottom-10" {% endif %}>
