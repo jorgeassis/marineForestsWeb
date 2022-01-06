@@ -8890,6 +8890,14 @@ body.loaded:after {
   color: #141618;
 }
 
+.bg-yellow {
+
+  background-color: #FFFDB5;
+  
+}
+
+
+
 .bg-dark-content, .fancy-box-2 .hover-content, .fancy-box-3 .content,
 .fancy-box-3 .hover-content, div[class^='bg-dark'], div[class*=' bg-dark'], .bg-black, .bg-green, .bg-red, .bg-yellow-orange {
   color: rgba(255, 255, 255, 0.7);
@@ -8978,6 +8986,10 @@ body.loaded:after {
   margin-top: 70px;
 }
 
+.margin-right-5 {
+  margin-right: 5px;
+}
+
 .margin-right-10 {
   margin-right: 10px;
 }
@@ -9004,6 +9016,10 @@ body.loaded:after {
 
 .margin-right-70 {
   margin-right: 70px;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
 }
 
 .margin-left-10 {
