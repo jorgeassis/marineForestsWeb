@@ -106,7 +106,7 @@ layout: default
 
       {% assign postsMain = site.posts | where: "type", page.type %}
       {% assign posts = postsMain | where: "featured", "true" %}
-      {% for post in posts limit: 3 %}
+      {% for post in posts limit: 4 %}
 
         {% if post.title != page.title %}
 
