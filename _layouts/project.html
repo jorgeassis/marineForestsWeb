@@ -84,9 +84,9 @@ layout: default
           {% assign posts = postsMain | where: "featured", "false" %}
           {% for post in posts limit: 100 %}
 
-					<div style="padding-top: 10px">
+					<div style="padding-top: 20px">
 
-    					<div class="content padding-x-20 padding-y-10" >
+    					<div class="content padding-x-20" >
                 <a href="{{ post.link }}" target="_blank"><p class="font-family-secondary text-dark">{{ post.citation }}</p></a>
     					</div>
 
