@@ -52,7 +52,7 @@ layout: default
 					</a>
 
 					<div class="content padding-30">
-						<a href="{{site.baseurl}}{{ post.url }}"><h4>{{ post.title }}</h4></a>
+						<a href="{{site.baseurl}}{{ post.url }}"><h5>{{ post.title }}</h5></a>
             <p>{{ post.description }}</p>
 					</div>
 
@@ -84,7 +84,7 @@ layout: default
           {% assign posts = postsMain | where: "featured", "false" %}
           {% for post in posts limit: 100 %}
 
-            <div {% if forloop.first == false %} class="margin-bottom-10" {% endif %}>
+					<div>
 
     					<div class="content padding-20">
                 <a href="{{ post.link }}" target="_blank"><p class="text-dark">{{ post.citation }}</p></a>
