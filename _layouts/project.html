@@ -14,7 +14,7 @@ layout: default
           </p>
         </div>
 
-        <h3>Scientific publications<span style="color: #A22A2A">.</span></h3>
+        <h3>Research projects<span style="color: #A22A2A">.</span></h3>
 
         <div class="margin-top-10">
           <p class="font-family-secondary font-small">Understanding the processes driving the global distribution of biodiversity to provide high quality biodiversity impact assessments and identify priority conservation areas, safeguarding biodiversity for future generations.</p>
@@ -35,12 +35,12 @@ layout: default
 					<div class="margin-bottom-20 margin-left-30 margin-right-30">
 						<div>
 							<ul class="list-inline-dash font-family-secondary">
-								<i class="fas fa-angle-double-right"></i> <li>Featured publications</li>
+								<i class="fas fa-angle-double-right"></i> <li>Featured projects</li>
 							</ul>
 						</div>
 					</div>
 
-        {% assign postsMain = site.posts | where: "type", "journal" %}
+        {% assign postsMain = site.posts | where: "type", "project" %}
         {% assign posts = postsMain | where: "featured", "true" %}
         {% for post in posts limit: 100 %}
 
@@ -70,7 +70,7 @@ layout: default
     					<div class="margin-left-30 margin-right-30" style="margin-top: 35px;">
     						<div>
     							<ul class="list-inline-dash font-family-secondary">
-    								<i class="fas fa-angle-double-right"></i> <li>Additional featured publications</li>
+    								<i class="fas fa-angle-double-right"></i> <li>Additional featured projects</li>
     							</ul>
     						</div>
     					</div>
@@ -80,7 +80,7 @@ layout: default
 
         <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px">
 
-          {% assign postsMain = site.posts | where: "type", "journal" %}
+          {% assign postsMain = site.posts | where: "type", "project" %}
           {% assign posts = postsMain | where: "featured", "false" %}
           {% for post in posts limit: 100 %}
 
