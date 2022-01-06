@@ -65,7 +65,7 @@ credits: ""
 
 					<div class="content padding-30">
 						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
-            <p>{{ post.description }}</p>
+            <p class="font-family-secondary">{{ post.description }}</p>
 					</div>
 
 				</div>
@@ -158,8 +158,8 @@ credits: ""
 	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
 
   <div class="col-lg-8 padding-15 margin-top-5">
-		<a href="{{site.baseurl}}{{ post.url }}"><h5 class="font-weight-normal">{{ post.title }}</h5></a>
-		<p class="text-dark">{{ post.description }}</p>
+		<a href="{{site.baseurl}}{{ post.url }}"><h5 class="font-weight-bold">{{ post.title }}</h5></a>
+		<p class="font-family-secondary text-dark">{{ post.description }}</p>
 		<div class="margin-top-10">
 			<p class="font-family-secondary font-small text-dark">Programming language: {% if post.language == "python" %}<i class="fab fa-python"></i>{% endif %}{% if post.language == "r" %}<i class="fab fa-r-project"></i>{% endif %}</p>
 		</div>
