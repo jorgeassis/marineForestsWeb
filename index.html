@@ -102,8 +102,8 @@ credits: ""
 
 				<div class="owl-carousel" data-owl-autoplay="true" data-owl-nav="false" data-owl-dots="false" data-owl-items="1">
 
-          {% for post in site.posts limit: 3 %}
-          {% if post.type == "tweet" %}
+          {% assign posts = site.posts | where: "type", "tweet" %}
+          {% for post in posts limit: 3 %}
 
 						<div class="testimonial-box">
 						<div class="quote">
@@ -118,7 +118,6 @@ credits: ""
 						</div>
 					</div>
 
-          {% endif %}
           {% endfor %}
 
 			</div>
