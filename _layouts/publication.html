@@ -52,7 +52,8 @@ layout: default
 					</a>
 
 					<div class="content padding-30">
-						<a href="{{ post.link }}" target="_blank"><h4 class="font-weight-normal">{{ post.citation }}</h4></a>
+						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
+            <p>{{ post.description }}</p>
 					</div>
 
 				</div>
@@ -86,8 +87,7 @@ layout: default
             <div {% if forloop.first == false %} class="margin-bottom-10" {% endif %}>
 
     					<div class="content padding-20">
-    						<a href="{{site.baseurl}}{{ post.url }}"><h5 class="font-weight-normal">{{ post.title }}</h5></a>
-    						<p class="text-dark">{{ post.description }}</p>
+                <a href="{{ post.link }}" target="_blank"><h5 class="text-dark">{{ post.citation }}</h5></a>
     					</div>
 
     				</div>
