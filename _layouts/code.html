@@ -36,7 +36,7 @@ layout: default
 
         {% assign postsMain = site.posts | where: "type", "code" %}
         {% assign posts = postsMain | where: "featured", "true" %}
-        {% for post in posts limit: 100 %}
+        {% for post in posts limit: 3 %}
 
         <div class="margin-bottom-10">
 
