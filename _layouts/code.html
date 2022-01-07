@@ -48,6 +48,8 @@ layout: default
 					<div class="content padding-30">
 						<a href="{{site.baseurl}}{{ post.url }}"><h4>{{ post.title }}</h4></a>
             <p>{{ post.description }}</p>
+						<p class="font-family-secondary font-small text-dark">Programming language: {% if post.language == "python" %}<i class="fab fa-python"></i>{% endif %}{% if post.language == "r" %}<i class="fab fa-r-project"></i>{% endif %}</p>
+
 					</div>
 
 				</div>
@@ -72,23 +74,25 @@ layout: default
             </div>
         </div>
 
-        <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px; padding-bottom: 20px">
+				<div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
 
-          {% assign postsMain = site.posts | where: "type", "code" %}
-          {% assign posts = postsMain | where: "featured", "false" %}
-          {% for post in posts limit: 100 %}
+				  {% assign postsMain = site.posts | where: "type", "code" %}
+				  {% assign posts = postsMain | where: "featured", "false" %}
+				  {% for post in posts limit: 1000 %}
 
-          <div style="padding-top: 20px">
+					<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
 
-              <div class="content padding-x-20" >
-                <a href="{{ post.link }}" target="_blank"><p class="font-family-secondary text-dark">{{ post.citation }}</p></a>
-    					</div>
+				  <div class="col-lg-8 padding-15 margin-top-5">
+						<a href="{{site.baseurl}}{{ post.url }}"><h5>{{ post.title }}</h5></a>
+						<p class="font-family-secondary text-dark" style="font-size: 15px;">{{ post.description }}</p>
+						<div class="margin-top-10">
+							<p class="font-family-secondary font-small text-dark">Programming language: {% if post.language == "python" %}<i class="fab fa-python"></i>{% endif %}{% if post.language == "r" %}<i class="fab fa-r-project"></i>{% endif %}</p>
+						</div>
+				  </div>
 
-    				</div>
+				  {% endfor %}
 
-            {% endfor %}
-
-        </div>
+				</div>
 
 </div>
 </div>
