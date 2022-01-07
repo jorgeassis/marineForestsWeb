@@ -70,10 +70,10 @@ layout: default
 
               {% if page.link %}
               <ul class="list-inline-dash font-family-secondary font-small margin-top-20 text-dark">
-                <i class="fas fa-angle-double-right"></i><a href="{{ page.link }}" target="_blank"> Access full
+                <i class="fas fa-angle-double-right"></i><a href="{{ page.link }}" target="_blank"> Access
                 {% if page.type == "journal" %} publication{% endif %}
                 {% if page.type == "project" %} project{% endif %}
-                {% if page.type == "code" %} code{% endif %}
+                {% if page.type == "code" %} source{% endif %}
                 {% if page.type == "data" %} data{% endif %}</a>
               </ul>
               {% endif %}
@@ -102,7 +102,7 @@ layout: default
         </div>
     </div>
 
-    <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px">
+    <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px; padding-bottom: 20px">
 
       {% assign postsMain = site.posts | where: "type", page.type %}
       {% assign posts = postsMain | where: "featured", "true" %}
@@ -110,16 +110,15 @@ layout: default
 
         {% if post.title != page.title %}
 
-        <div {% if forloop.first == false %} class="margin-bottom-10" {% endif %}>
+        <div style="padding-top: 20px">
 
-					<div class="content padding-20">
+          <div class="content padding-x-20" >
 						<a href="{{site.baseurl}}{{ post.url }}"><h5>{{ post.title }}</h5></a>
 						<p class="font-family-secondary text-dark" style="font-size: 15px;">{{ post.description }}</p>
 					</div>
 
 				</div>
 
-        {% endif %}
         {% endfor %}
 
       </div>
