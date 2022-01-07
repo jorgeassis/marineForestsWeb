@@ -102,7 +102,7 @@ layout: default
         </div>
     </div>
 
-    <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px; padding-bottom: 20px">
+    <div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-top-20 margin-bottom-30" style="padding-top: 10px">
 
       {% assign postsMain = site.posts | where: "type", page.type %}
       {% assign posts = postsMain | where: "featured", "true" %}
@@ -112,13 +112,14 @@ layout: default
 
         <div style="padding-top: 20px">
 
-          <div class="content padding-x-20" >
+          <div class="content padding-x-20">
 						<a href="{{site.baseurl}}{{ post.url }}"><h5>{{ post.title }}</h5></a>
 						<p class="font-family-secondary text-dark" style="font-size: 15px;">{{ post.description }}</p>
 					</div>
 
 				</div>
 
+        {% endif %}
         {% endfor %}
 
       </div>
