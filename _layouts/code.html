@@ -38,7 +38,7 @@ layout: default
         {% assign posts = postsMain | where: "featured", "true" %}
         {% for post in posts limit: 3 %}
 
-        <div class="margin-bottom-20">
+        <div class="margin-bottom-40">
 
 					<a href="{{site.baseurl}}{{ post.url }}">
 					<div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 300px; background-position: center">

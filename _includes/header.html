@@ -4,22 +4,25 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+		<title>Biodiversity Data Science {% if page.title %}{{ page.title }} :: {% endif %}</title>
 
 		{% if page.title %}
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="twitter:title" content="{{ page.title }}" />
-    {% endif %}
-
-		{% if page.excerpt %}
-		<meta name="description" content="{{ page.excerpt| strip_html }}" />
-		<meta property="og:description" content="{{ page.excerpt| strip_html }}" />
 		{% else %}
-		<meta name="description" content="{{ site.description }}">
-		<meta property="og:description" content="{{ site.description }}" />
+		<meta property="og:title" content="Biodiversity Data Science" />
+    <meta property="twitter:title" content="Biodiversity Data Science" />
 		{% endif %}
 
-    <meta name="keywords" content="">
+		{% if page.description %}
+		<meta name="description" content="{{ page.description| strip_html }}" />
+		<meta property="og:description" content="{{ page.description| strip_html }}" />
+		{% else %}
+		<meta name="description" content="A team of researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.">
+		<meta property="og:description" content="A team of researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development." />
+		{% endif %}
+
+    <meta name="keywords" content="Biodiversity Data Science Academics Modelling">
 
 		<!-- Favicon -->
     <link href="{{ site.baseurl }}/assets/images/bears.png" rel="shortcut icon">

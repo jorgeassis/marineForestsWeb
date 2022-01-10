@@ -28,7 +28,7 @@ credits: ""
 
 <!-- Featured publications -->
 
-<div class="section">
+<div class="section" style="margin-top: -10px">
 	<div class="container">
 
 		<div class="row">
@@ -51,12 +51,11 @@ credits: ""
 
         </div>
 
-
         {% assign postsMain = site.posts | where: "type", "journal" %}
         {% assign posts = postsMain | where: "featured", "true" %}
         {% for post in posts limit: 3 %}
 
-        <div class="margin-bottom-20">
+        <div class="margin-bottom-40">
 
 					<a href="{{site.baseurl}}{{ post.url }}">
 					<div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 300px; background-position: center">
@@ -80,7 +79,7 @@ credits: ""
 
 		<div class="row">
 			<div class="col-12 col-lg-10 offset-lg-1">
-				<div style="margin-top: 70px" >
+				<div style="margin-top: 60px" >
 						<div class="margin-bottom-20 margin-left-30 margin-right-30" style=" display: flex;">
 							<div>
 								<ul class="list-inline-dash font-family-secondary">
@@ -89,7 +88,7 @@ credits: ""
 							</div>
 							<div class="text-right" style="flex-grow: 1">
 								<ul class="list-inline-dash font-family-secondary font-small">
-									<i class="fas fa-angle-right"></i> <a class="text-link-3" target="_blank" href="https://twitter.com/jorgemfassis"><li> open twitter</li></a>
+									<i class="fas fa-angle-right"></i> <a class="text-link-3" target="_blank" href="https://twitter.com/jorgemfassis"><li> open account</li></a>
 								</ul>
 							</div>
 						</div>
@@ -153,7 +152,7 @@ credits: ""
 
   {% assign postsMain = site.posts | where: "type", "code" %}
   {% assign posts = postsMain | where: "featured", "true" %}
-  {% for post in posts limit: 3 %}
+  {% for post in posts limit: 4 %}
 
 	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
 
