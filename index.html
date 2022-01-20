@@ -3,6 +3,53 @@ layout: clean
 credits: ""
 ---
 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>Biodiversity Data Science {% if page.title %}{{ page.title }} :: {% endif %}</title>
+
+		{% if page.title %}
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="twitter:title" content="{{ page.title }}" />
+		{% else %}
+		<meta property="og:title" content="Biodiversity Data Science" />
+    <meta property="twitter:title" content="Biodiversity Data Science" />
+		{% endif %}
+
+		{% if page.description %}
+		<meta name="description" content="{{ page.description| strip_html }}" />
+		<meta property="og:description" content="{{ page.description| strip_html }}" />
+		{% else %}
+		<meta name="description" content="A team of researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.">
+		<meta property="og:description" content="A team of researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development." />
+		{% endif %}
+
+    <meta name="keywords" content="Biodiversity Data Science Academics Modelling">
+
+		<!-- Favicon -->
+    <link href="{{ site.baseurl }}/assets/images/bears.png" rel="shortcut icon">
+
+		<!-- CSS -->
+		<link href="{{ site.baseurl }}/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/magnific-popup/magnific-popup.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/owl-carousel/owl.theme.default.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/justified-gallery/justified-gallery.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/sal/sal.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
+
+		<!-- Fonts/Icons -->
+		<link href="{{ site.baseurl }}/assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/themify/themify-icons.min.css" rel="stylesheet">
+		<link href="{{ site.baseurl }}/assets/plugins/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+	</head>
+
+
+	<body data-preloader="4">
+		<div class="wrapper">
+
 			<div class="section-fullscreen bg-image">
 				<div class="bg-dark-06">
 					<div class="container text-center">
@@ -25,6 +72,25 @@ credits: ""
 					</div><!-- end container -->
 				</div>
 			</div>
+
+
+			</div>
+			<!-- end wrapper of header -->
+
+			<div class="scrolltotop">
+			  <a class="button-circle button-circle-md button-circle-dark" href="#">
+			    <i class="fa fa-angle-up"></i>
+			  </a>
+			</div>
+
+			<!-- JAVASCRIPTS -->
+			<script src="{{ site.baseurl }}/assets/plugins/jquery.min.js"></script>
+			<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+			<script src="{{ site.baseurl }}/assets/plugins/plugins.js"></script>
+			<script src="{{ site.baseurl }}/assets/js/functions.js"></script>
+			</body>
+			</html>
+
 
 
 
