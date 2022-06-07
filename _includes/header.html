@@ -3,26 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-		<title>Biodiversity Data Science {% if page.title %}  :: {{ page.title }}{% endif %}</title>
-
 		<meta name="google-site-verification" content="bk_G_7OoYI8N9v856DPvFsz4-FtC0ahvjuZJXRyYHnU" />
 
-		{% if page.title %}
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="twitter:title" content="{{ page.title }}" />
-		{% else %}
-		<meta property="og:title" content="Biodiversity Data Science" />
-    <meta property="twitter:title" content="Biodiversity Data Science" />
-		{% endif %}
-
-		{% if page.description %}
-		<meta name="description" content="{{ page.description| strip_html }}" />
-		<meta property="og:description" content="{{ page.description| strip_html }}" />
-		{% else %}
-		<meta name="description" content="A team of researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.">
-		<meta property="og:description" content="A team of researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development." />
-		{% endif %}
+		<!-- SEO -->
+		{% seo %}
 
     <meta name="keywords" content="Biodiversity Data Science Academics Modelling">
 
@@ -43,9 +27,6 @@
 		<link href="{{ site.baseurl }}/assets/plugins/themify/themify-icons.min.css" rel="stylesheet">
 		<link href="{{ site.baseurl }}/assets/plugins/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
-		<!-- Jekyll SEO Tag -->
-
-		{% seo %}
 
 </head>
 
