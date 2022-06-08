@@ -9046,6 +9046,10 @@ body.loaded:after {
   margin-left: 70px;
 }
 
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
 .margin-bottom-10 {
   margin-bottom: 10px;
 }
