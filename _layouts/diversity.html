@@ -1,0 +1,224 @@
+---
+layout: default
+---
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<style>
+  .leaflet-popup-content-wrapper {
+      padding: 1px;
+      text-align: left;
+      border-radius: 8px;
+  }
+  .leaflet-popup-content {
+         margin: 0;
+         padding: 2px;
+
+     }
+</style>
+
+<link rel="stylesheet" href="https://www.biodiversitydatascience.com/marineForestsWeb/assets/css/ol.css" type="text/css">
+<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/ol.js"></script>
+<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/proj4.js"></script>
+<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/common.js"></script>
+
+<script>
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+var myName = urlParams.get('myName');
+var year = urlParams.get('year');
+var dataset = urlParams.get('dataset');
+var macroalgae = urlParams.get('macroalgae');
+var seagrass = urlParams.get('seagrass');
+var animals = urlParams.get('animals');
+var yearfrom = urlParams.get('yearfrom');
+var yearto = urlParams.get('yearto');
+
+if (yearfrom != null && yearfrom != null) {
+year = yearfrom + "," + yearto;
+}
+
+if (year == undefined || year == null || year == "") {
+year  = 1900 + "," + 2100;
+}
+
+var taxonKey = "";
+var datasetKey = "";
+
+if (macroalgae != null) {
+taxonKey = taxonKey + "&taxonKey=560&taxonKey=1182&taxonKey=593";
+}
+if (seagrass != null) {
+taxonKey = taxonKey + "&taxonKey=3725&taxonKey=7680&taxonKey=2864092&taxonKey=2864050&taxonKey=2866030&taxonKey=2864083";
+}
+if (animals != null) {
+taxonKey = taxonKey + "&taxonKey=705&taxonKey=1437&taxonKey=831&taxonKey=1242&taxonKey=1243&taxonKey=710&taxonKey=1433&taxonKey=838&taxonKey=712&taxonKey=6180736";
+}
+
+if (taxonKey == undefined || taxonKey == null || taxonKey == "") {
+var taxonKey = "&taxonKey=560&taxonKey=1182&taxonKey=593";
+macroalgae = "on";
+}
+
+if (dataset == null) { dataset = 0; };
+
+if (dataset == 1) {
+datasetKey = "&datasetKey=50c9509d-22c7-4a22-a47d-8c48425ef4a7";
+}
+if (dataset == 2) {
+datasetKey = "&datasetKey=8b1d38b0-a8bf-43b1-9ac9-d3198e694769";
+}
+
+if (datasetKey == undefined || datasetKey == null || datasetKey == "") {
+var datasetKey = '&datasetKey=8b1d38b0-a8bf-43b1-9ac9-d3198e694769';
+}
+
+if (year == undefined || year == null || year == "") {
+var year = '1000,2100';
+}
+
+if (datasetKey != null) { datasetKeyName = datasetKey.replace("&datasetKey=", "");; };
+
+</script>
+
+<script>
+
+async function load() {
+let url1 = 'https://api.gbif.org/v1/occurrence/search?' + datasetKey + taxonKey +' &limit=0' + '&year=' + year;
+let obj1 = await (await fetch(url1)).json();
+var text1 = obj1.count;
+var text1 = text1.toLocaleString();
+
+let url2 = 'https://api.gbif.org/v1/species/search?' + datasetKey + taxonKey + '&limit=0' + '&year=' + year;
+let obj2 = await (await fetch(url2)).json();
+var text2 = obj2.count;
+
+let url3 = 'https://api.gbif.org/v1/dataset/' + datasetKeyName;
+let obj3 = await (await fetch(url3)).json();
+var text3 = obj3.title;
+var text4 = obj3.description;
+var text5 = obj3.citation.text;
+var text6 = obj3.license;
+
+$(".count1").html(text1);
+$(".count2").html(text2);
+$(".count3").html(text3);
+$(".count4").html(text4);
+$(".count5").html(text5);
+$(".count6").html(text6);
+
+}
+
+load();
+
+
+</script>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Top message -->
+
+<section class="container text-center">
+<div>
+    <div class="col-md-8">
+
+        <h2 class="color--dark">
+            Diversity of Marine Forests
+        </h2>
+        <p class="lead top-spacer-10">
+            Global patterns of community and population diversity of marine forests.
+        </p>
+
+    </div>
+</div>
+
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Resume statistics -->
+
+<section class="container text-center hide-on-mobile" style="padding: 0px">
+<div class="row justify-content-center top-spacer-20">
+    <div class="col-md-10">
+      <h4><span class="count3"></span> with <span class="color--redish"><span class="count1"></span></span><span class="color--dark"> records of occurrence.</span></h4>
+
+                        <span>
+                          <script>document.write('<a class="btn btn--primary btn--primary type--uppercase" style="text-decoration: none;margin-top: 10px" target="_blank" href="https://www.gbif.org/occurrence/search?' + taxonKey + datasetKey + '">' );</script>
+                                <span class="btn__text">
+                                    Explore dataset
+                                </span>
+                          </a>
+                        </span>
+                          <span style="margin-left: 20px;">
+                          <script>document.write('<a class="btn btn--primary btn--primary type--uppercase" style="text-decoration: none; margin-top: 10px" target="_blank" href="https://www.gbif.org/occurrence/download?' + taxonKey + datasetKey + '">' );</script>
+                                <span class="btn__text">
+                                    Download dataset
+                                </span>
+                          </a>
+                            </span>
+
+    </div>
+</div>
+
+<div class="row justify-content-around top-spacer-50">
+  <div class="col-md-10">
+
+    <hr style="border-style: dashed;">
+
+  </div>
+</div>
+
+<div class="row justify-content-center top-spacer-20">
+    <div class="col-md-10">
+        <div class="tabs-container tabs--vertical">
+            <ul class="tabs">
+
+                <li class="active">
+                    <div class="tab__title">
+                        <span class="h5">Resume</span>
+                    </div>
+                    <div class="tab__content text-left">
+                        <p class="lead">
+                          <span class="count4"></span>
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tab__title">
+                        <span class="h5">Citation</span>
+                    </div>
+                    <div class="tab__content text-left">
+                        <p class="lead">
+                          <span class="count5"></span>
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="tab__title">
+                        <span class="h5">License</span>
+                    </div>
+                    <div class="tab__content text-left">
+                        <p class="lead">
+                          <span class="count6"></span>
+                        </p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-around top-spacer-100">
+  <div class="col-md-10">
+
+  </div>
+</div>
+
+</section>
