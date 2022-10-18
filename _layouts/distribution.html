@@ -254,7 +254,6 @@ load();
                           	maxZoom: 14,
                           	resolutions: resolutions,
                           	tileSize: tile_size,
-                             scrollWheelZoom: false
                           });
 
                           var tile_grid_16 = new ol.tilegrid.TileGrid({
@@ -263,7 +262,6 @@ load();
                           	maxZoom: 16,
                           	resolutions: resolutions,
                           	tileSize: tile_size,
-                             scrollWheelZoom: false
                           });
 
                           var layers = [];
@@ -281,6 +279,8 @@ load();
                           		wrapX: true
                           	}),
                           	visible: true,
+                            scrollWheelZoom: false
+
                           });
 
                           layers['OccurrenceDensity:4326'] = new ol.layer.VectorTile({
@@ -295,6 +295,8 @@ load();
                           	}),
                           	style: createDensityStyle(),
                           	visible: true,
+                            scrollWheelZoom: false
+
                           });
 
                           var map = new ol.Map({
