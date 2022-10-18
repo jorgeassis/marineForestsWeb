@@ -1,6 +1,6 @@
 ---
 layout: distribution
-title: "Distribution of Marine Forests"
-description: "Open-source data with distribution records of marine forests compiled from literature, herbaria, and the iNaturalist citizen science initiative."
+title: "Diversity of Marine Forests"
+description: "Population genetic diversity and differentiation of marine forests."
 permalink: /distribution/
 ---
