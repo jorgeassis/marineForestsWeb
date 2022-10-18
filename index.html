@@ -33,7 +33,7 @@ credits: ""
                 <div class="feature text-center">
 
                   <div class="card box-shadow-wide">
-                    <div class="thumb" style="background: url(img/main_groups_1.jpg) 50% 50% no-repeat;">
+                    <div class="thumb" style="background: url(assets/img/main_groups_1.jpg) 50% 50% no-repeat;">
                     </div>
                   </div>
 
@@ -48,7 +48,7 @@ credits: ""
                 <div class="feature text-center">
 
                   <div class="card box-shadow-wide">
-                    <div class="thumb" style="background: url(img/main_groups_2.jpg) 50% 50% no-repeat;">
+                    <div class="thumb" style="background: url(assets/img/main_groups_2.jpg) 50% 50% no-repeat;">
                     </div>
                   </div>
                     <h4>Seagrass meadows</h4>
@@ -61,7 +61,7 @@ credits: ""
             <div class="col-md-4">
                 <div class="feature text-center">
                   <div class="card box-shadow-wide">
-                    <div class="thumb" style="background: url(img/main_groups_4.jpg) 50% 50% no-repeat;">
+                    <div class="thumb" style="background: url(assets/img/main_groups_4.jpg) 50% 50% no-repeat;">
                     </div>
                   </div>
                   <h4>Animal gardens</h4>
@@ -146,7 +146,7 @@ credits: ""
                                         if( name == null || login == null ) { var name = "Citizen scientist"; }
                                         if( name == "" ) { var name = "Citizen scientist"; }
 
-                                        if( imageuser == null ) { var imageuser = "img/user-icon.jpg"; }
+                                        if( imageuser == null ) { var imageuser = "assets/img/user-icon.jpg"; }
                                         if( mainresults[i].observed_on_details == null ) { var date = "Marine Forests"; }
 
                                           markers.push({
@@ -179,7 +179,7 @@ credits: ""
                                           }).addTo( map )
 
                                           var LeafIcon = L.Icon.extend({ options: { iconSize: [15, 15],} });
-                                          var greenIcon = new LeafIcon({iconUrl: 'img/map_icon.png'});
+                                          var greenIcon = new LeafIcon({iconUrl: 'assets/img/map_icon.png'});
 
                                           var i = 0;
                                           var marker = L.marker( [markers[i].lat, markers[i].lng], {icon: greenIcon} ).addTo( map );
@@ -315,7 +315,7 @@ credits: ""
 
                 <div class="col-lg-5 col-md-6">
                   <div class="border--round box-shadow-wide"  style="height: 405px; overflow: hidden;">
-                    <img alt="Image" src="img/feed_15.jpg" style="margin-bottom: 30px" />
+                    <img alt="Image" src="assets/img/feed_15.jpg" style="margin-bottom: 30px" />
                   </div>
                 </div>
 
@@ -324,7 +324,7 @@ credits: ""
 
             <div class="row justify-content-around top-spacer-125">
                 <div class="col-lg-6 col-md-6">
-                    <img alt="Image" class="border--round box-shadow-wide" src="img/main_header.jpg" style="margin-bottom: 30px" />
+                    <img alt="Image" class="border--round box-shadow-wide" src="assets/img/main_header.jpg" style="margin-bottom: 30px" />
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div class="top-spacer-10">
