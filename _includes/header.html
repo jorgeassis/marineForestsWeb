@@ -1,85 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="google-site-verification" content="bk_G_7OoYI8N9v856DPvFsz4-FtC0ahvjuZJXRyYHnU" />
+<head>
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- SEO -->
-		{% seo %}
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
 
-		<!-- Favicon -->
-    <link href="{{ site.baseurl }}/assets/images/bears.png" rel="shortcut icon">
+<link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/leaflet.css" rel="stylesheet" />
+<link href="css/leaflet.fullscreen.css" rel="stylesheet" />
 
-		<!-- CSS -->
-		<link href="{{ site.baseurl }}/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/magnific-popup/magnific-popup.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/owl-carousel/owl.theme.default.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/justified-gallery/justified-gallery.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/sal/sal.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
+<script src="js/leaflet.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/Leaflet.fullscreen.min.js"></script>
+<script src="js/leaflet-providers.js"></script>
 
-		<!-- Fonts/Icons -->
-		<link href="{{ site.baseurl }}/assets/plugins/font-awesome/css/all.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/themify/themify-icons.min.css" rel="stylesheet">
-		<link href="{{ site.baseurl }}/assets/plugins/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
 
 </head>
 
+<body class=" ">
 
-	<body data-preloader="4">
-		<div class="wrapper">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
 
-			<!-- Header // sticky -->
+<a id="start"></a>
 
-			{% if page.url == "/" %}<div class="header absolute-light box-shadow" style="background: #141619">{% endif %}
+<div class="nav-container ">
 
-			{% if page.url != "/" %}<div class="header">{% endif %}
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-				<div class="container margin-top-10">
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="index.html">
+                            <img class="logo logo-dark" alt="logo" src="img/mf_logo.png" />
+                            <img class="logo logo-light" alt="logo" src="img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
 
-					<div class="logo">
-						<h5><a href="{{ site.baseurl }}/">biodiversityDS</a><span style="color: #A22A2A">.</span></h5>
-					</div>
+                            <li>
+                              <a href="index.html">Home</a>
+                            </li>
 
-					<div class="header-menu-wrapper">
-						<ul class="header-menu">
-							<li class="m-item">
-								<a class="m-link" href="{{ site.baseurl }}/about/">About</a>
-							</li>
-							<li class="m-item">
-								<a class="m-link" href="{{ site.baseurl }}/projects/">Projects</a>
-							</li>
-							<li class="m-item">
-								<a class="m-link" href="{{ site.baseurl }}/publications/">Publications</a>
-							</li>
-							<li class="m-item">
-								<!-- <a class="m-link" href="{{ site.baseurl }}/data-science-academy/">Data Science Academy</a> -->
-								<a class="m-link" href="#">Data Science Academy</a>
-								<ul class="m-dropdown">
-									<li class="m-dropdown-item"><a class="m-dropdown-link" href="{{ site.baseurl }}/code/">R and Python code</a></li>
-									<li class="m-dropdown-item"><a class="m-dropdown-link" href="{{ site.baseurl }}/courses/">BDS courses</a></li>
-									<li class="m-dropdown-item"><a class="m-dropdown-link" href="{{ site.baseurl }}/global-distribution-dataset-marine-forests/">Biodiversity data</a></li>
-									<li class="m-dropdown-item"><a class="m-dropdown-link" href="{{ site.baseurl }}/bio-oracle-climate-layers-ecological-distribution-modelling/">Environmental data</a></li>
-									<!--  <li class="m-dropdown-item"><a class="m-dropdown-link" href="#">Join the Academy</a></li> -->
-								</ul>
-							</li>
-						</ul>
+                            <li>
+                                <a href="distribution.html">Distribution</a>
+                            </li>
 
-						<!-- Close Button -->
-						<button class="close-button">
-							<span></span>
-						</button>
-					</div>
+                            <li>
+                                <a href="diversity.html">Diversity</a>
+                            </li>
 
-					<!-- Menu Toggle on Mobile -->
-					<button class="m-toggle">
-						<span></span>
-					</button>
+                            <li>
+                                <a href="citizen-science.html">Citizen science</a>
+                            </li>
 
-				</div>
-			</div>
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+                        <a class="btn btn--sm type--uppercase" href="data-catalogue.html">
+                            <span class="btn__text">
+                                Data catalogue
+                            </span>
+                        </a>
+                        <a class="btn btn--sm btn--primary type--uppercase" href="support.html">
+                            <span class="btn__text">
+                                Support
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-			<!-- end Header -->
+</div>

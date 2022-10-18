@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: Biodiversity Data Science
+name: Marine Forests
 
 # Short bio or description (displayed in the header)
-description: A team of young researchers committed to provide knowledge to well-informed biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.
+description: Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars.githubusercontent.com/u/1438320?v=4
@@ -48,7 +48,7 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: https://www.biodiversitydatascience.com
+url: https://www.marineforests.com
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)

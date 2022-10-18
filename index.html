@@ -3,170 +3,408 @@ layout: default
 credits: ""
 ---
 
-<!-- Hero section -->
-<div class="section-lg bg-dark">
-	<div class="container margin-top-50">
-		<div class="row">
-			<div class="col-12 col-lg-10 offset-lg-1 col-xl-8 margin-top-10">
-				<h1 class="display-6 font-weight-semi-bold">Marine Forests<span style="color: #A22A2A">.</span></h1>
-				<p class="font-family-secondary font-small" style="color: white">A team of researchers committed to provide knowledge to well-informed
-					biodiversity conservation and management, in line with the UN 2030 Agenda for Sustainable Development.</p>
 
-					<div class="margin-top-20">
-						<ul class="list-inline-sm">
-							<li><a class="button-circle button-circle-sm button-circle-outline-white" target="_blank" href="https://twitter.com/jorgemfassis"><i class="fab fa-twitter"></i></a></li>
-							<li><a class="button-circle button-circle-sm button-circle-outline-white" target="_blank" href="https://jorgemfa.medium.com"><i class="fab fa-medium-m"></i></a></li>
-							<li><a class="button-circle button-circle-sm button-circle-outline-white" target="_blank" href="https://github.com/jorgeassis/"><i class="fab fa-github"></i></a></li>
-							<li><a class="button-circle button-circle-sm button-circle-outline-white" href="mailto: jorgemfa [at] gmail.com"><i class="fab fas fa-at"></i></a></li>
-						</ul>
-					</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Top message -->
 
-			</div>
-		</div>
-	</div>
-</div>
+<section class="container text-center">
+        <div>
+            <div class="col-md-8">
 
-<!-- Featured publications -->
+                <h2 class="color--dark">
+                    Marine Forests, important habitats worldwide
+                </h2>
+                <p class="lead top-spacer-10">
+                    Macroalgae, plants and animals like corals and sponges create complex habitats that provide resources, shelter and nursery grounds for many marine organisms.
+                </p>
 
-<div class="section" style="margin-top: -10px">
-	<div class="container">
+            </div>
+        </div>
+</section>
 
-		<div class="row">
-			<div class="col-12 col-lg-10 offset-lg-1">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Top Images -->
 
-				<div>
+<section class="container text-center">
+        <div class="row top-spacer-40">
+            <div class="col-md-4">
+                <div class="feature text-center">
 
-					<div class="margin-bottom-20 margin-left-30 margin-right-30" style=" display: flex;">
-						<div>
-							<ul class="list-inline-dash font-family-secondary">
-								<i class="fas fa-angle-double-right"></i> <li>Featured publications</li>
-							</ul>
-						</div>
-						<div class="text-right" style="flex-grow: 1">
-							<ul class="list-inline-dash font-family-secondary font-small">
-								<i class="fas fa-angle-right"></i> <a class="text-link-3" href="{{ site.baseurl }}/publications/"><li> list all publications</li></a>
-							</ul>
-						</div>
-					</div>
+                  <div class="card box-shadow-wide">
+                    <div class="thumb" style="background: url(img/main_groups_1.jpg) 50% 50% no-repeat;">
+                    </div>
+                  </div>
 
+                  <h4>Macroalgae forests</h4>
+                    <p>
+                    Large brown algae such as kelp or fucoids, but also by red and green algae.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature text-center">
+
+                  <div class="card box-shadow-wide">
+                    <div class="thumb" style="background: url(img/main_groups_2.jpg) 50% 50% no-repeat;">
+                    </div>
+                  </div>
+                    <h4>Seagrass meadows</h4>
+                    <p>
+                    Plants that evolved to live in the sea. With roots, leafs, flowers and fruits.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature text-center">
+                  <div class="card box-shadow-wide">
+                    <div class="thumb" style="background: url(img/main_groups_4.jpg) 50% 50% no-repeat;">
+                    </div>
+                  </div>
+                  <h4>Animal gardens</h4>
+                    <p>
+                    <span>Invertebrates that live attached to rock, such as coral reefs and gorgonians.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Help the world monitoring -->
+
+<section class="container text-center">
+      <div class="row justify-content-center top-spacer-50">
+          <div class="col-md-8" >
+              <h2 class="color--dark">Help the world monitoring Marine Forests</h2>
+              <span class="lead">
+                Citizens are reporting the occurrence of seaweed, seagrass, corals, and other forest-forming species to reach worldwide maps with distribution records.
+              </span>
+          </div>
+      </div>
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Main Map -->
+
+<section class="unpad">
+
+      <style>
+          .leaflet-popup-content-wrapper {
+              padding: 1px;
+              text-align: left;
+              border-radius: 8px;
+          }
+          .leaflet-popup-content {
+                 margin: 0;
+                 padding: 2px;
+
+             }
+      </style>
+
+      <div id='map' class='custom-popup hide-on-mobile' style="height: 350px;"></div>
+
+                                  <script>
+
+                                  var url = 'https://api.inaturalist.org/v1/observations?project_id=marine-forests&order=desc&order_by=created_at';
+                                	const main4 = async () => {
+                                  const data4 = await fetchData(url)
+                                  var mainresults = data4.results;
+
+                                  // alert(mainresults[26].observed_on_details.date);
+
+                                  var markers = [];
+
+                                      for (let i = 0; i < 30; i++) {
+
+                                        if( mainresults[i].observation_photos == "" ) { continue; }
+                                        if( mainresults[i].user == "" ) { continue; }
+                                        if( mainresults[i].geojson == null ) { continue; }
+
+                                        var recordurl = 'https://www.inaturalist.org/observations/' + mainresults[i].id;
+                                        var scientificname = mainresults[i].taxon.name;
+                                        var lat = mainresults[i].geojson.coordinates[1];
+                                        var lng = mainresults[i].geojson.coordinates[0];
+
+                                        if( mainresults[i].observed_on_details == null ) { var date = ""; }
+                                        if( mainresults[i].observed_on_details != null ) { var date = mainresults[i].observed_on_details.date; }
+
+                                        var name = mainresults[i].user.name;
+                                        var login = mainresults[i].user.login;
+                                        var imageuser = mainresults[i].user.icon;
+                                        var urluser = 'https://www.inaturalist.org/people/' + mainresults[i].user.login;
+                                        var image = mainresults[i].observation_photos[0].photo.url;
+
+                                        if( scientificname == null ) { var scientificname = "Marine Forests"; }
+
+                                        if( name == null && login != null ) { var name = login; }
+                                        if( name == null || login == null ) { var name = "Citizen scientist"; }
+                                        if( name == "" ) { var name = "Citizen scientist"; }
+
+                                        if( imageuser == null ) { var imageuser = "img/user-icon.jpg"; }
+                                        if( mainresults[i].observed_on_details == null ) { var date = "Marine Forests"; }
+
+                                          markers.push({
+
+                                              scientificname: scientificname.substring(0, 18),
+                                              location: "Occurrence record",
+                                              lat: lat,
+                                              lng: lng,
+                                              date: date,
+                                              name: name.substring(0, 17),
+                                              imageuser: imageuser,
+                                              url: recordurl,
+                                              image: image,
+                                              urluser: urluser
+
+                                          });
+
+                                          };
+
+                                          var map = L.map( 'map', {
+                                            center: [28.5707070913, -16.3335102797],
+                                            minZoom: 2,
+                                            zoom: 2,
+                                            zoomControl:false
+                                          })
+
+                                          L.tileLayer( 'https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
+                                            attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
+                                            subdomains: ['a', 'b', 'c']
+                                          }).addTo( map )
+
+                                          var LeafIcon = L.Icon.extend({ options: { iconSize: [15, 15],} });
+                                          var greenIcon = new LeafIcon({iconUrl: 'img/map_icon.png'});
+
+                                          var i = 0;
+                                          var marker = L.marker( [markers[i].lat, markers[i].lng], {icon: greenIcon} ).addTo( map );
+                                          marker.bindPopup( '<div style="width:300px; height: 110px"> <div style="width:120px; float: left"> <div class="thumbnail"> <a href="' + markers[i].url + '" target="_blank"><img src="' + markers[i].image + '" alt="View record" /></a> </div> </div> <div style="width:177px; margin-left: 3px; float: left"> <div style="margin-bottom: 1px; margin-top: 5px; width: 100%"> <span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + markers[i].scientificname + '</i></strong></span> </div><div style="; margin-bottom: 1px; width: 100%"> <span style="font-size: 1em">' + markers[i].location + '</span> </div> <div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"> <span style="color: #666666">' + markers[i].date + '</span> </div> <div style="width: 100%; margin-top: 10px"> <div class="thumbnail2" style="margin-right: 7px"><a href="' + markers[i].urluser + '" target="_blank"><img src="' + markers[i].imageuser + '" alt="View profile" /></a></div><div style="padding-top: 24px;"><a href="' + markers[i].url + '" style="color: #666666; text-decoration: none">' + markers[i].name + '</a></div></div></div></div>' );
+                                          marker.fire('click');
+                                          setTimeout(function () { map.removeLayer(marker); }, 5000);
+
+                                          function myLoop () {
+
+                                             setTimeout(function () {
+
+                                               i++;
+                                               if (i >= markers.length) {  i = 0; }
+
+                                                var marker = L.marker( [markers[i].lat, markers[i].lng], {icon: greenIcon} ).addTo( map );
+
+                                                marker.bindPopup( '<div style="width:300px; height: 110px"> <div style="width:120px; float: left"> <div class="thumbnail"> <a href="' + markers[i].url + '"><img src="' + markers[i].image + '" alt="View record" /></a> </div> </div> <div style="width:177px; margin-left: 3px; float: left"> <div style="margin-bottom: 1px; margin-top: 5px; width: 100%"> <span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + markers[i].scientificname + '</i></strong></span> </div><div style=" margin-bottom: 1px; width: 100%"> <span style="font-size: 1em">' + markers[i].location + '</span> </div> <div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"> <span style="color: #666666">' + markers[i].date + '</span> </div> <div style="width: 100%; margin-top: 1px"> <div class="thumbnail2" style="margin-right: 7px"><a href="' + markers[i].urluser + '"><img src="' + markers[i].imageuser + '" alt="View profile" /></a></div><div style="padding-top: 24px;"><a href="' + markers[i].url + '" style="color: #666666; text-decoration: none">' + markers[i].name + '</a></div></div></div></div>' );
+
+                                                setTimeout(function () { marker.fire('click'); }, 750);
+                                                setTimeout(function () { map.removeLayer(marker); }, 4000);
+
+                                                myLoop();
+                                             }, 4000)
+                                          }
+                                          var i = -1;
+                                          myLoop();
+
+                                          map.scrollWheelZoom.disable();
+                                          map.dragging.disable();
+                                          // L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
+
+
+
+
+                                      };
+
+                                  main4();
+
+
+                              </script>
+
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Resume statistics -->
+
+<section class="container text-center hide-on-mobile" style="padding: 0px">
+        <div class="row justify-content-center top-spacer-20">
+            <div class="col-md-8">
+              <h4><span class="color--redish" id="total_results_records"></span> <span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> species </span><span class="color--dark"> were reported by citizen scientists worldwide.</span></h4>
+
+              <span class="lead block">
+
+                You can also add records using iNaturalist. Just provide a photo, the date and location, no need to identify the species. The information will be available for everyone in the world!
+
+              </span>
+
+              <a class="btn btn--primary type--uppercase" href="https://www.inaturalist.org/projects/marine-forests?tab=observations" target="_blank">
+                    <span class="btn__text">
+                        Explore all records
+                    </span>
+              </a>
+
+              <a class="btn btn--primary type--uppercase" href="https://www.inaturalist.org/projects/marine-forests" target="_blank">
+                    <span class="btn__text">
+                        Add your records</a>
+                    </span>
+              </a>
+
+            </div>
         </div>
 
-        {% assign postsMain = site.posts | where: "type", "journal" %}
-        {% assign posts = postsMain | where: "featured", "true" %}
-        {% for post in posts limit: 3 %}
+    </section>
 
-        <div class="margin-bottom-50">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Random Pictures -->
 
-					<a href="{{site.baseurl}}{{ post.url }}">
-					<div class="bg-image box-shadow border-radius-05" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 300px; background-position: center">
-					</div>
-					</a>
+<section class="container text-center top-spacer-75">
 
-					<div class="content padding-30">
-						<a href="{{site.baseurl}}{{ post.url }}"><h4 class="font-weight-normal">{{ post.title }}</h4></a>
-            <p class="font-family-secondary">{{ post.description }}</p>
-					</div>
-
-				</div>
-
-        {% endfor %}
-
-			</div>
-		</div>
-
-
-		<!-- Latest tweet -->
-
-		<div class="row">
-			<div class="col-12 col-lg-10 offset-lg-1">
-				<div style="margin-top: 50px" >
-						<div class="margin-bottom-20 margin-left-30 margin-right-30" style=" display: flex;">
-							<div>
-								<ul class="list-inline-dash font-family-secondary">
-									<i class="fas fa-angle-double-right"></i> <li>Latest tweets</li>
-								</ul>
-							</div>
-							<div class="text-right" style="flex-grow: 1">
-								<ul class="list-inline-dash font-family-secondary font-small">
-									<i class="fas fa-angle-right"></i> <a class="text-link-3" target="_blank" href="https://twitter.com/jorgemfassis"><li> list all tweets</li></a>
-								</ul>
-							</div>
-						</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-12 col-lg-10 offset-lg-1">
-
-				<div class="owl-carousel" data-owl-autoplay="true" data-owl-nav="false" data-owl-dots="false" data-owl-items="1">
-
-          {% assign posts = site.posts | where: "type", "tweet" %}
-          {% for post in posts limit: 5 %}
-
-						<div class="testimonial-box">
-						<div class="quote">
-							<a href="{{ post.link }}" target="_blank"><p class="font-family-secondary text-dark">{{ post.title }}</p></a>
-						</div>
-						<div class="avatar">
-							<img src="{{ site.baseurl }}/assets/images/{{ post.authorImage }}" alt="">
-							<div>
-								<h6 class="font-family-secondary font-small text-dark">{{ post.author }}</h6>
-								<span class="font-family-secondary font-extra-small text-dark">{{ post.authorType }}</span>
-							</div>
-						</div>
-					</div>
-
-          {% endfor %}
-
-			</div>
-
-</div>
-</div>
-
-
-<!-- Featured code -->
-
-<div class="row">
-	<div class="col-12 col-lg-10 offset-lg-1">
-
-		<div style="margin-top: 110px" >
-				<div class="margin-bottom-20 margin-left-30 margin-right-30" style=" display: flex;">
-					<div>
-						<ul class="list-inline-dash font-family-secondary">
-							<i class="fas fa-angle-double-right"></i> <li>Featured code</li>
-						</ul>
-					</div>
-					<div class="text-right" style="flex-grow: 1">
-						<ul class="list-inline-dash font-family-secondary font-small">
-							<i class="fas fa-angle-right"></i> <a class="text-link-3" href="{{ site.baseurl }}/code/"><li> list all code</li></a>
-						</ul>
-					</div>
-				</div>
-		</div>
-
-	</div>
-</div>
-
-<div class="row col-lg-10 border-radius-05 bg-gray offset-lg-1 margin-bottom-30" style="padding-top: 15px">
-
-  {% assign postsMain = site.posts | where: "type", "code" %}
-  {% assign posts = postsMain | where: "featured", "true" %}
-  {% for post in posts limit: 4 %}
-
-	<div class="bg-image col-lg-3 border-radius-05 margin-top-10 margin-left-10 margin-right-10" data-bg-src="{{ site.baseurl }}/assets/images/posts/{{ post.mainImage }}" style="height: 164px; background-position: center"></div>
-
-  <div class="col-lg-8 padding-15 margin-top-5">
-		<a href="{{site.baseurl}}{{ post.url }}"><h5>{{ post.title }}</h5></a>
-		<p class="font-family-secondary text-dark" style="font-size: 15px;">{{ post.description }}</p>
-		<div class="margin-top-10">
-			<p class="font-family-secondary font-small text-dark">Programming language: {% if post.language == "python" %}<i class="fab fa-python"></i>{% endif %}{% if post.language == "r" %}<i class="fab fa-r-project"></i>{% endif %}</p>
-		</div>
+  <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-8" >
+      <div><h2 class="color--dark">Recent records from citizens</h2></div>
+    </div>
   </div>
 
-  {% endfor %}
+  <div class="row top-spacer-20" id="random_pics">
 
-</div>
+  </div>
 
-</div>
-</div>
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Bottom message -->
+
+<section class="feature-large switchable bg--secondary-2 top-spacer-30">
+
+        <div class="container">
+            <div class="row justify-content-around">
+
+              <div class="col-lg-6 col-md-6">
+                <div class="top-spacer-10">
+                      <h2>Project Marine Forests</h2>
+                  </div>
+
+                  <div class="text-block" style="font-size: 15px">
+
+
+                          Project 'Marine Forests' aims to build and maintain a database of distribution records of structural benthic species of seaweeds, seagrasses and animal forests, at global scales, and to make this information freely available worldwide.
+
+                                <br><br>
+
+                                It also promotes education, marine literacy and the FAIR principle (to make data Findable, Accessible, Interoperable and Reusable).
+
+                  </div>
+
+
+                  <div>
+                      <h4>Why Marine Forests?</h4>
+                  </div>
+
+                  <div class="text-block" style="font-size: 15px">
+
+                Many animals live in marine forests and use them to hunt or mate.
+                <br>
+                Young animals also use marine forests as nursery grounds.
+
+                </div>
+
+              </div>
+
+                <div class="col-lg-5 col-md-6">
+                  <div class="border--round box-shadow-wide"  style="height: 405px; overflow: hidden;">
+                    <img alt="Image" src="img/feed_15.jpg" style="margin-bottom: 30px" />
+                  </div>
+                </div>
+
+
+            </div>
+
+            <div class="row justify-content-around top-spacer-125">
+                <div class="col-lg-6 col-md-6">
+                    <img alt="Image" class="border--round box-shadow-wide" src="img/main_header.jpg" style="margin-bottom: 30px" />
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="top-spacer-10">
+                        <h2>Scientific team and support</h2>
+                    </div>
+                    <div class="text-block" style="font-size: 15px">
+
+                            The team of the project is composed by scientists and volunteer citizens from all around the world.
+                            <br><br>
+
+                            Support statment about adopting marine forests.
+                            <br>
+                            <div class="text-block top-spacer-20">
+                                    <div style="float: left; margin-right: 15px">
+                                      <a class="btn btn--sm btn--primary type--uppercase" style="margin-top: 10px" href="data-catalogue.html"><span class="btn__text">Data catalogue</span></a>
+                                    </div>
+                                    <div style="float: left">
+                                      <a class="btn btn--sm btn--primary type--uppercase" style="margin-top: 10px" href="support.html"><span class="btn__text">Support</span></a>
+                                    </div>
+                          </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+</section>
+
+<script>
+
+	var url = 'https://api.inaturalist.org/v1/observations/species_counts?project_id=marine-forests';
+	const main = async () => {
+	const data = await fetchData(url)
+	var total_results = data.total_results.toLocaleString();
+	document.getElementById("total_results_species").innerHTML = total_results; };
+	main();
+
+</script>
+
+<script>
+
+	var url = 'https://api.inaturalist.org/v1/observations?project_id=marine-forests&order=desc&order_by=created_at';
+	const main2 = async () => {
+	const data2 = await fetchData(url)
+	var total_results = data2.total_results.toLocaleString();
+	document.getElementById("total_results_records").innerHTML = total_results; };
+	main2();
+
+</script>
+
+
+<script>
+
+	var url = 'https://api.inaturalist.org/v1/observations?project_id=marine-forests&order=desc&order_by=created_at';
+	const main3 = async () => {
+	const data3 = await fetchData(url)
+	var mainresults = data3.results;
+
+//  alert(mainresults[0].observed_on_details.date);
+//  alert(mainresults[0].taxon.name);
+//  alert(mainresults[0].uri);
+//  alert(mainresults[0].geojson.coordinates[0]);
+//  alert(mainresults[0].geojson.coordinates[1]);
+//  alert(mainresults[0].user.name);
+//  alert(mainresults[0].user.icon);
+
+	var gal = document.getElementById('random_pics');
+	var counter = 0;
+
+			for (let i = 0; i < 30; i++) {
+
+					if( mainresults[i].observation_photos.length != 0 ){
+						gal.innerHTML += "<div class='col-md-4'><div class='feature text-center'><a href='https://www.inaturalist.org/observations/" + mainresults[i].id + "' target='_blank'><div class='card box-shadow-wide'><div class='thumb' style='background: url(" + mainresults[i].observation_photos[0].photo.url.replace("square", "large") + ") 50% 50% no-repeat;'></div></div></a> <h4>" + mainresults[i].taxon.name + "</h4> </div></div>";
+						counter = counter + 1;
+					};
+					if (counter == 9) { break; }
+
+			};
+
+	};
+	main3();
+
+</script>
