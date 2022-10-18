@@ -6,6 +6,24 @@ layout: default
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+<style>
+  .leaflet-popup-content-wrapper {
+      padding: 1px;
+      text-align: left;
+      border-radius: 8px;
+  }
+  .leaflet-popup-content {
+         margin: 0;
+         padding: 2px;
+
+     }
+</style>
+
+<link rel="stylesheet" href="https://www.biodiversitydatascience.com/marineForestsWeb/assets/css/ol.css" type="text/css">
+<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/ol.js"></script>
+<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/proj4.js"></script>
+<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/common.js"></script>
+
 <script>
 
 const queryString = window.location.search;
@@ -218,25 +236,7 @@ load();
 
 <section class="unpad">
 
-<style>
-  .leaflet-popup-content-wrapper {
-      padding: 1px;
-      text-align: left;
-      border-radius: 8px;
-  }
-  .leaflet-popup-content {
-         margin: 0;
-         padding: 2px;
-
-     }
-</style>
-
 <div id='map' class='custom-popup hide-on-mobile' style="height: 375px;"></div>
-
-                          <link rel="stylesheet" href="css/ol.css" type="text/css">
-                      		<script src="js/ol.js"></script>
-                          <script src="js/proj4.js"></script>
-                          <script src="js/common.js"></script>
 
                           <script>
 
