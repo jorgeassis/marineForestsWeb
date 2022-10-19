@@ -113,14 +113,14 @@ $(".count6").html(text6);
 
 load();
 
-document.querySelector('#map').addEventListener('wheel', preventScroll, {passive: false});
-
 function preventScroll(e){
     e.preventDefault();
     e.stopPropagation();
-
     return false;
 }
+
+document.querySelector('#map').addEventListener('wheel', preventScroll, {passive: false});
+
 </script>
 
 
