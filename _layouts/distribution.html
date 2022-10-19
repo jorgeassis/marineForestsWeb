@@ -113,13 +113,13 @@ $(".count6").html(text6);
 
 load();
 
-function preventScroll(e){
+function preventKeyBoardScroll(e) {
     e.preventDefault();
     e.stopPropagation();
     return false;
 }
 
-document.querySelector('#map').addEventListener('wheel', preventScroll, {passive: false});
+document.querySelector('#map').addEventListener('touchmove', preventKeyBoardScroll);
 
 </script>
 
