@@ -297,9 +297,6 @@ load();
 
                           });
 
-
-
-
                           var map = new ol.Map({
                             interactions: ol.interaction.defaults({mouseWheelZoom:false}),
                           	layers: [
@@ -312,9 +309,7 @@ load();
                           			collapsible: false,
 
                           		}
-                          	}).extend([
-                                new ol.control.FullScreen()
-                              ]),
+                          	}),
                           	view: new ol.View({
                           		center: [-40, 50],
                           		projection: 'EPSG:4326',
