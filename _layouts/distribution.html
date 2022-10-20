@@ -298,6 +298,7 @@ load();
                           });
 
                           var map = new ol.Map({
+                            interactions: ol.interaction.defaults({mouseWheelZoom:false}),
                           	layers: [
                           		layers['EPSG:4326-R'],
                           		layers['OccurrenceDensity:4326']
@@ -315,8 +316,6 @@ load();
                           		zoom: 3
                           	}),
                           });
-
-ol.interaction.MouseWheelZoom.disable();
 
                       </script>
 
