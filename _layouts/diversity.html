@@ -4,121 +4,6 @@ layout: default
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-<style>
-  .leaflet-popup-content-wrapper {
-      padding: 1px;
-      text-align: left;
-      border-radius: 8px;
-  }
-  .leaflet-popup-content {
-         margin: 0;
-         padding: 2px;
-
-     }
-</style>
-
-<link rel="stylesheet" href="https://www.biodiversitydatascience.com/marineForestsWeb/assets/css/ol.css" type="text/css">
-<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/ol.js"></script>
-<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/proj4.js"></script>
-<script src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/js/common.js"></script>
-
-<script>
-
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-var myName = urlParams.get('myName');
-var year = urlParams.get('year');
-var dataset = urlParams.get('dataset');
-var macroalgae = urlParams.get('macroalgae');
-var seagrass = urlParams.get('seagrass');
-var animals = urlParams.get('animals');
-var yearfrom = urlParams.get('yearfrom');
-var yearto = urlParams.get('yearto');
-
-if (yearfrom != null && yearfrom != null) {
-year = yearfrom + "," + yearto;
-}
-
-if (year == undefined || year == null || year == "") {
-year  = 1900 + "," + 2100;
-}
-
-var taxonKey = "";
-var datasetKey = "";
-
-if (macroalgae != null) {
-taxonKey = taxonKey + "&taxonKey=560&taxonKey=1182&taxonKey=593";
-}
-if (seagrass != null) {
-taxonKey = taxonKey + "&taxonKey=3725&taxonKey=7680&taxonKey=2864092&taxonKey=2864050&taxonKey=2866030&taxonKey=2864083";
-}
-if (animals != null) {
-taxonKey = taxonKey + "&taxonKey=705&taxonKey=1437&taxonKey=831&taxonKey=1242&taxonKey=1243&taxonKey=710&taxonKey=1433&taxonKey=838&taxonKey=712&taxonKey=6180736";
-}
-
-if (taxonKey == undefined || taxonKey == null || taxonKey == "") {
-var taxonKey = "&taxonKey=560&taxonKey=1182&taxonKey=593";
-macroalgae = "on";
-}
-
-if (dataset == null) { dataset = 0; };
-
-if (dataset == 1) {
-datasetKey = "&datasetKey=50c9509d-22c7-4a22-a47d-8c48425ef4a7";
-}
-if (dataset == 2) {
-datasetKey = "&datasetKey=8b1d38b0-a8bf-43b1-9ac9-d3198e694769";
-}
-
-if (datasetKey == undefined || datasetKey == null || datasetKey == "") {
-var datasetKey = '&datasetKey=8b1d38b0-a8bf-43b1-9ac9-d3198e694769';
-}
-
-if (year == undefined || year == null || year == "") {
-var year = '1000,2100';
-}
-
-if (datasetKey != null) { datasetKeyName = datasetKey.replace("&datasetKey=", "");; };
-
-</script>
-
-<script>
-
-async function load() {
-let url1 = 'https://api.gbif.org/v1/occurrence/search?' + datasetKey + taxonKey +' &limit=0' + '&year=' + year;
-let obj1 = await (await fetch(url1)).json();
-var text1 = obj1.count;
-var text1 = text1.toLocaleString();
-
-let url2 = 'https://api.gbif.org/v1/species/search?' + datasetKey + taxonKey + '&limit=0' + '&year=' + year;
-let obj2 = await (await fetch(url2)).json();
-var text2 = obj2.count;
-
-let url3 = 'https://api.gbif.org/v1/dataset/' + datasetKeyName;
-let obj3 = await (await fetch(url3)).json();
-var text3 = obj3.title;
-var text4 = obj3.description;
-var text5 = obj3.citation.text;
-var text6 = obj3.license;
-
-$(".count1").html(text1);
-$(".count2").html(text2);
-$(".count3").html(text3);
-$(".count4").html(text4);
-$(".count5").html(text5);
-$(".count6").html(text6);
-
-}
-
-load();
-
-
-</script>
-
-
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- Top message -->
 
 <section class="container text-center">
@@ -147,11 +32,21 @@ load();
 
   <div class="col-md-10">
     <h4>Globl species richness estimates of kelp forests</h4>
-    <div class="border--round box-shadow-wide"  style="height: 405px; overflow: hidden; padding: 40px"> 
+    <div class="border--round box-shadow-wide"  style="height: 450px; overflow: hidden; padding: 25px">
       <img alt="Image" src="https://www.biodiversitydatascience.com/marineForestsWeb/assets/img/diversity-kelp.png" style="margin-bottom: 30px" />
     </div>
   </div>
 </div>
+
+<div class="row justify-content-center top-spacer-50">
+    <div class="col-md-10">
+
+      The dataset provides a fine-tuned dataset of marine ecosystem-structuring species of large brown algae and seagrasses with dereplicated occurrence records, taxonomically standardized, and considering important physiological and biogeographical traits. The dataset is documented in the peer reviewed article "Assis, J., Fragkopoulou, E., Frade, D. et al. A fine-tuned global distribution dataset of marine forests. Sci Data 7, 119 (2020). https://doi.org/10.1038/s41597-020-0459-x"
+      <br><br>
+      The dataset provides a fine-tuned dataset of marine ecosystem-structuring species of large brown algae and seagrasses with dereplicated occurrence records, taxonomically standardized, and considering important physiological and biogeographical traits.
+
+    </div>
+  </div>
 
 <div class="row justify-content-center top-spacer-50">
     <div class="col-md-10">
