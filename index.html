@@ -227,7 +227,7 @@ credits: ""
 <section class="container text-center hide-on-mobile" style="padding: 0px">
         <div class="row justify-content-center top-spacer-20">
             <div class="col-md-8">
-              <h4><span class="color--redish" id="total_results_records"></span> <span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> species </span><span class="color--dark"> were reported by citizen scientists worldwide.</span></h4>
+              <h4><span class="color--redish" id="total_results_records"></span><span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> <span class="color--dark">species </span><span class="color--dark">were reported by <span class="color--redish" id="total_users"></span><span class="color--dark"> citizen scientists worldwide.</span></h4>
 
               <span class="lead block">
 
@@ -277,6 +277,13 @@ credits: ""
 
 <script>
 
+	var url = 'https://api.inaturalist.org/v1/observations/identifiers?project_id=marine-forests';
+	const mainUsers = async () => {
+	const dataUsers = await fetchData(url)
+	var total_users = dataUsers.total_results.toLocaleString();
+	document.getElementById("total_users").innerHTML = total_users; };
+	mainUsers();
+
 	var url = 'https://api.inaturalist.org/v1/observations/species_counts?project_id=marine-forests';
 	const main = async () => {
 	const data = await fetchData(url)
@@ -284,21 +291,12 @@ credits: ""
 	document.getElementById("total_results_species").innerHTML = total_results; };
 	main();
 
-</script>
-
-<script>
-
 	var url = 'https://api.inaturalist.org/v1/observations?project_id=marine-forests&order=desc&order_by=created_at';
 	const main2 = async () => {
 	const data2 = await fetchData(url)
 	var total_results = data2.total_results.toLocaleString();
 	document.getElementById("total_results_records").innerHTML = total_results; };
 	main2();
-
-</script>
-
-
-<script>
 
 	var url = 'https://api.inaturalist.org/v1/observations?project_id=marine-forests&order=desc&order_by=created_at';
 	const main3 = async () => {
