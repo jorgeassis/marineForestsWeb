@@ -60,7 +60,7 @@ layout: default
 
         <div class="row justify-content-center top-spacer-20">
             <div class="col-md-8">
-              <h4><span class="color--redish" id="total_results_records"></span> <span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> species </span><span class="color--dark"> were reported by citizen scientists worldwide.</span></h4>
+              <h4><span class="color--redish" id="total_results_records"></span> <span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> species </span><span class="color--dark"> were reported by <span class="color--redish" id="total_users"></span> citizen scientists worldwide.</span></h4>
 
               <span class="lead block">
 
@@ -94,6 +94,15 @@ layout: default
 
 
 <script>
+
+  //  - - - - - - - - -
+
+	var url = 'https://api.inaturalist.org/v1/observations/species_counts?project_id=marine-forests';
+	const mainUsers = async () => {
+	const data4 = await fetchData(url)
+	var total_users = data4.total_results.toLocaleString();
+	document.getElementById("total_users").innerHTML = total_users; };
+	mainUsers();
 
   //  - - - - - - - - -
 
