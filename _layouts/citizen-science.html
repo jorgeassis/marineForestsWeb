@@ -60,8 +60,10 @@ var peopleIcon = document.getElementById('peopleIcon');
 
 for (let i = 0; i < 499; i++) {
 
-    if( mainresults[i].user == "" ) { continue; }
+  if( mainresults[i].user == "" ) { continue; }
+  if( mainresults[i].user == null ) { continue; }
     if( mainresults[i].user.icon_url == "" ) { continue; }
+    if( mainresults[i].user.icon_url == null ) { continue; }
 
     var nUsers = nUsers + 1;
     if( nUsers == 61 ) {  break; }
@@ -71,7 +73,7 @@ for (let i = 0; i < 499; i++) {
     var imageuser = mainresults[i].user.icon_url;
     var urluser = 'https://www.inaturalist.org/people/' + login;
 
-    peopleIcon.innerHTML += "<div class='col-md-4'><div class='feature feature-8'><a target='_blank' href='" + urluser + "'><img alt='Image' src='" + imageuser + "' /></a><h5>" + name + "</h5></div></div>";
+    peopleIcon.innerHTML += "<div class='col-md-1'><div class='feature feature-8'><a target='_blank' href='" + urluser + "'><img style='border-radius: 50%;' alt='Image' src='" + imageuser + "' /></a><h5>" + name + "</h5></div></div>";
 
 
       };
