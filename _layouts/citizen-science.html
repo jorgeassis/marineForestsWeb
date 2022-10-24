@@ -46,39 +46,92 @@ layout: default
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Resume statistics -->
+
+<section class="container text-center hide-on-mobile" style="padding: 0px">
+        <div class="row justify-content-center top-spacer-20">
+            <div class="col-md-8">
+              <h4><span class="color--redish" id="total_results_records"></span> <span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> species </span><span class="color--dark"> were reported by citizen scientists worldwide.</span></h4>
+
+              <span class="lead block">
+
+                You can also add records using iNaturalist. Just provide a photo, the date and location, no need to identify the species. The information will be available for everyone in the world!
+
+              </span>
+
+              <a class="btn btn--primary type--uppercase" href="https://www.inaturalist.org/projects/marine-forests?tab=observations" target="_blank">
+                    <span class="btn__text">
+                        Explore all records
+                    </span>
+              </a>
+
+              <a class="btn btn--primary type--uppercase" href="https://www.inaturalist.org/projects/marine-forests" target="_blank">
+                    <span class="btn__text">
+                        Add your records</a>
+                    </span>
+              </a>
+
+            </div>
+        </div>
+
+    </section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
 
 <script>
 
-var url = 'https://api.inaturalist.org/v1/observations/observers?project_id=marine-forests';
-const mainFunct = async () => {
-const data = await fetchData(url)
-var mainresults = data.results;
+  //  - - - - - - - - -
 
-var nUsers = 0;
+	var url = 'https://api.inaturalist.org/v1/observations/species_counts?project_id=marine-forests';
+	const main = async () => {
+	const data3 = await fetchData(url)
+	var total_results = data3.total_results.toLocaleString();
+	document.getElementById("total_results_species").innerHTML = total_results; };
+	main();
 
-var peopleIcon = document.getElementById('peopleIcon');
+  //  - - - - - - - - -
 
-for (let i = 0; i < 499; i++) {
+	var url = 'https://api.inaturalist.org/v1/observations?project_id=marine-forests&order=desc&order_by=created_at';
+	const main2 = async () => {
+	const data2 = await fetchData(url)
+	var total_results = data2.total_results.toLocaleString();
+	document.getElementById("total_results_records").innerHTML = total_results; };
+	main2();
 
-  if( mainresults[i].user == "" ) { continue; }
-  if( mainresults[i].user == null ) { continue; }
-    if( mainresults[i].user.icon_url == "" ) { continue; }
-    if( mainresults[i].user.icon_url == null ) { continue; }
+  //  - - - - - - - - -
 
-    var nUsers = nUsers + 1;
-    if( nUsers == 61 ) {  break; }
+  var url = 'https://api.inaturalist.org/v1/observations/observers?project_id=marine-forests';
+  const mainFunct = async () => {
+  const data = await fetchData(url)
+  var mainresults = data.results;
 
-    var name = mainresults[i].user.name;
-    var login = mainresults[i].user.login;
-    var imageuser = mainresults[i].user.icon_url;
-    var urluser = 'https://www.inaturalist.org/people/' + login;
+  var nUsers = 0;
 
-    peopleIcon.innerHTML += "<div class='col-md-1'><div class='feature feature-8'><a target='_blank' href='" + urluser + "'><img style='border-radius: 50%;' alt='Image' src='" + imageuser + "' /></a><h5>" + name + "</h5></div></div>";
+  var peopleIcon = document.getElementById('peopleIcon');
+
+  for (let i = 0; i < 499; i++) {
+
+    if( mainresults[i].user == "" ) { continue; }
+    if( mainresults[i].user == null ) { continue; }
+      if( mainresults[i].user.icon_url == "" ) { continue; }
+      if( mainresults[i].user.icon_url == null ) { continue; }
+
+      var nUsers = nUsers + 1;
+      if( nUsers == 61 ) {  break; }
+
+      var name = mainresults[i].user.name;
+      var login = mainresults[i].user.login;
+      var imageuser = mainresults[i].user.icon_url;
+      var urluser = 'https://www.inaturalist.org/people/' + login;
+
+      peopleIcon.innerHTML += "<div class='col-md-1'><div class='feature feature-8'><a target='_blank' href='" + urluser + "'><img style='border-radius: 50%;' alt='Image' src='" + imageuser + "' /></a><h5>" + name + "</h5></div></div>";
 
 
-      };
-};
+        };
+  };
 
-mainFunct();
+  mainFunct();
 
 </script>
