@@ -33,6 +33,40 @@ layout: default
 
 
 
+
+              <script>
+
+              var url = 'https://api.inaturalist.org/v1/observations/observers?project_id=marine-forests';
+            	const mainFunct = async () => {
+              const data = await fetchData(url)
+              var mainresults = data.results;
+
+              var nUsers = 0;
+
+              for (let i = 0; i < 499; i++) {
+
+                  if( mainresults[i].user == "" ) { continue; }
+                  if( mainresults[i].user.icon_url == "" ) { continue; }
+
+                  var nUsers = nUsers + 1;
+                  if( nUsers == 61 ) {  break; }
+
+                  var name = mainresults[i].user.name;
+                  var login = mainresults[i].user.login;
+                  var imageuser = mainresults[i].user.icon_url;
+                  var urluser = 'https://www.inaturalist.org/people/' + login;
+
+                    };
+              };
+
+              mainFunct();
+
+              alert(nUsers);
+
+
+          </script>
+
+
     </div>
 </div>
 
