@@ -132,14 +132,14 @@ layout: default
       if( mainresults[i].user.icon_url == null ) { continue; }
 
       var nUsers = nUsers + 1;
-      if( nUsers == 61 ) {  break; }
+      if( nUsers == 91 ) {  break; }
 
       var name = mainresults[i].user.name;
       var login = mainresults[i].user.login;
       var imageuser = mainresults[i].user.icon_url;
       var urluser = 'https://www.inaturalist.org/people/' + login;
 
-      peopleIcon.innerHTML += "<div class='col-md-2'><a target='_blank' href='" + urluser + "'><div style='margin-bottom: 40px; width:150px; height:150px; background-image: url( " + imageuser + "); background-size:cover; background-position:center; border-radius:50%;'></div></a></div>";
+      peopleIcon.innerHTML += "<div class='col-md-2'><a target='_blank' href='" + urluser + "'><div style='margin-bottom: 40px; width:130px; height:130px; background-image: url( " + imageuser + "); background-size:cover; background-position:center; border-radius:50%;'></div></a></div>";
 
 
         };
