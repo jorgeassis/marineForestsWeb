@@ -1,6 +1,6 @@
 ---
-layout: diversity
+layout: future-climate-imapcts-on-marine-forests
 title: "Diversity of Marine Forests"
 description: "Population genetic diversity and differentiation of marine forests."
-permalink: /diversity/
+permalink: /future-climate-imapcts-on-marine-forests/
 ---
