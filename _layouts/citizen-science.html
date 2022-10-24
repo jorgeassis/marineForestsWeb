@@ -27,47 +27,59 @@ layout: default
 <!-- Thumb people -->
 
 <section class="container text-center">
-<div>
-    <div class="col-md-10">
+
+  <div>
+      <div class="col-md-10">
+
+
+
+        <div class="row top-spacer-20" id="peopleIcon">
 
 
 
 
 
-              <script>
-
-              var url = 'https://api.inaturalist.org/v1/observations/observers?project_id=marine-forests';
-            	const mainFunct = async () => {
-              const data = await fetchData(url)
-              var mainresults = data.results;
-
-              var nUsers = 0;
-
-              for (let i = 0; i < 499; i++) {
-
-                  if( mainresults[i].user == "" ) { continue; }
-                  if( mainresults[i].user.icon_url == "" ) { continue; }
-
-                  var nUsers = nUsers + 1;
-                  if( nUsers == 61 ) {  break; }
-
-                  var name = mainresults[i].user.name;
-                  var login = mainresults[i].user.login;
-                  var imageuser = mainresults[i].user.icon_url;
-                  var urluser = 'https://www.inaturalist.org/people/' + login;
-
-                    };
-              };
-
-              mainFunct();
-
-              alert(nUsers);
-
-
-          </script>
-
-
-    </div>
-</div>
+      </div>
+  </div>
 
 </section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<script>
+
+var url = 'https://api.inaturalist.org/v1/observations/observers?project_id=marine-forests';
+const mainFunct = async () => {
+const data = await fetchData(url)
+var mainresults = data.results;
+
+var nUsers = 0;
+
+var peopleIcon = document.getElementById('peopleIcon');
+
+for (let i = 0; i < 499; i++) {
+
+    if( mainresults[i].user == "" ) { continue; }
+    if( mainresults[i].user.icon_url == "" ) { continue; }
+
+    var nUsers = nUsers + 1;
+    if( nUsers == 61 ) {  break; }
+
+    var name = mainresults[i].user.name;
+    var login = mainresults[i].user.login;
+    var imageuser = mainresults[i].user.icon_url;
+    var urluser = 'https://www.inaturalist.org/people/' + login;
+
+    peopleIcon.innerHTML += "<div class='col-md-4'><div class='feature feature-8'><img alt='Image' src='" + imageuser + "' /><h5>name</h5></div></div>";
+
+
+      };
+};
+
+mainFunct();
+
+alert(nUsers);
+
+
+</script>
