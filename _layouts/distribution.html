@@ -89,6 +89,11 @@ async function load() {
 let url1 = 'https://api.gbif.org/v1/occurrence/search?' + datasetKey + taxonKey +' &limit=0' + '&year=' + year;
 let obj1 = await (await fetch(url1)).json();
 var text1 = obj1.count;
+
+if (text1 == null || text1 == 0) {
+alert("There were no marine forest records matching your query.");
+}
+
 var text1 = text1.toLocaleString();
 
 let url2 = 'https://api.gbif.org/v1/species/search?' + datasetKey + taxonKey + '&limit=0' + '&year=' + year;
