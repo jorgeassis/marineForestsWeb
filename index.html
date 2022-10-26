@@ -116,8 +116,6 @@ credits: ""
                                   const data4 = await fetchData(url)
                                   var mainresults = data4.results;
 
-                                  // alert(mainresults[26].observed_on_details.date);
-
                                   var markers = [];
 
                                       for (let i = 0; i < 30; i++) {
@@ -150,7 +148,6 @@ credits: ""
                                         if( mainresults[i].observed_on_details == null ) { var date = "Marine Forests"; }
 
                                           markers.push({
-
                                               scientificname: scientificname.substring(0, 18),
                                               location: "Occurrence record",
                                               lat: lat,
@@ -161,10 +158,9 @@ credits: ""
                                               url: recordurl,
                                               image: image,
                                               urluser: urluser
-
                                           });
 
-                                          };
+                                        };
 
                                           var map = L.map( 'map', {
                                             center: [28.5707070913, -16.3335102797],
@@ -209,15 +205,11 @@ credits: ""
 
                                           map.scrollWheelZoom.disable();
                                           map.dragging.disable();
-                                          // L.tileLayer.provider('OpenStreetMap.BlackAndWhite').addTo(map);
 
-
-
-                                        //   window.addEventListener('load', function () {
+                                        //  -----------------------------------------------------
+                                        //  Hide loading loadingPanel
                                             document.getElementById('loadingPanel').style.visibility="hidden";
-                                        //   });
-
-
+                                        //  -----------------------------------------------------
 
                                       };
 
