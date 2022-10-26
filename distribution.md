@@ -1,6 +1,6 @@
 ---
 layout: distribution
-title: "Diversity of Marine Forests"
-description: "Population genetic diversity and differentiation of marine forests."
+title: "Distribution of Marine Forests"
+description: "Distribution of marine forests."
 permalink: /distribution/
 ---

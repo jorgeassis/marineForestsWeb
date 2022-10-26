@@ -1,6 +1,6 @@
 ---
 layout: citizen-science
 title: "Citizens monitoring Marine Forests"
-description: "Population genetic diversity and differentiation of marine forests."
+description: "Citizen scientists monitoring marine forests."
 permalink: /citizen-science/
 ---
