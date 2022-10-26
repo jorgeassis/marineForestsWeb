@@ -37,50 +37,54 @@ var yearfrom = urlParams.get('yearfrom');
 var yearto = urlParams.get('yearto');
 
 if (yearfrom != null && yearfrom != null) {
-year = yearfrom + "," + yearto;
+  year = yearfrom + "," + yearto;
 }
 
 if (year == undefined || year == null || year == "") {
-year  = 1900 + "," + 2100;
+  year  = 1900 + "," + 2100;
 }
 
 var taxonKey = "";
 var datasetKey = "";
 
 if (macroalgae != null) {
-taxonKey = taxonKey + "&taxonKey=560&taxonKey=1182&taxonKey=593";
+  taxonKey = taxonKey + "&taxonKey=560&taxonKey=1182&taxonKey=593";
 }
 if (seagrass != null) {
-taxonKey = taxonKey + "&taxonKey=3725&taxonKey=7680&taxonKey=2864092&taxonKey=2864050&taxonKey=2866030&taxonKey=2864083";
+  taxonKey = taxonKey + "&taxonKey=3725&taxonKey=7680&taxonKey=2864092&taxonKey=2864050&taxonKey=2866030&taxonKey=2864083";
 }
 if (animals != null) {
-taxonKey = taxonKey + "&taxonKey=705&taxonKey=1437&taxonKey=831&taxonKey=1242&taxonKey=1243&taxonKey=710&taxonKey=1433&taxonKey=838&taxonKey=712&taxonKey=6180736";
+  taxonKey = taxonKey + "&taxonKey=705&taxonKey=1437&taxonKey=831&taxonKey=1242&taxonKey=1243&taxonKey=710&taxonKey=1433&taxonKey=838&taxonKey=712&taxonKey=6180736";
 }
 
-if (taxonKey == undefined || taxonKey == null || taxonKey == "") {
-var taxonKey = "&taxonKey=560&taxonKey=1182&taxonKey=593";
-macroalgae = "on";
+if ( taxonKey == undefined || taxonKey == null || taxonKey == "" ) {
+  var taxonKey = "&taxonKey=560&taxonKey=1182&taxonKey=593";
+  macroalgae = "on";
 }
 
-if (dataset == null) { dataset = 0; };
+if (dataset == null) {
+  dataset = 0;
+}
 
 if (dataset == 1) {
-datasetKey = "&datasetKey=50c9509d-22c7-4a22-a47d-8c48425ef4a7";
+  // literature
+  datasetKey = "&datasetKey=dc9dc0fe-517f-460f-a649-eae2340ba108";
 }
 if (dataset == 2) {
-datasetKey = "&datasetKey=8b1d38b0-a8bf-43b1-9ac9-d3198e694769";
+  // herbaria
+  datasetKey = "&datasetKey=dc9dc0fe-517f-460f-a649-eae2340ba108";
+}
+if (dataset == 3) {
+  // iNaturalist
+  datasetKey = "&datasetKey=50c9509d-22c7-4a22-a47d-8c48425ef4a7";
 }
 
 if (datasetKey == undefined || datasetKey == null || datasetKey == "") {
-var datasetKey = '&datasetKey=8b1d38b0-a8bf-43b1-9ac9-d3198e694769';
-dataset = '2';
+  dataset = '1';
+  var datasetKey = "&datasetKey=dc9dc0fe-517f-460f-a649-eae2340ba108";
 }
 
-if (year == undefined || year == null || year == "") {
-var year = '1000,2100';
-}
-
-if (datasetKey != null) { datasetKeyName = datasetKey.replace("&datasetKey=", "");; };
+if (datasetKey != null) { datasetKeyName = datasetKey.replace("&datasetKey=", ""); };
 
 </script>
 
@@ -152,13 +156,19 @@ load();
                         <script>
                         document.write('<option value="1" ');
                         if (dataset == "1") { document.write(" selected"); };
-                        document.write('>Citizen Science</option>');
+                        document.write('>Literature</option>');
                         </script>
 
                         <script>
                         document.write('<option value="2" ');
                         if (dataset == "2") { document.write(" selected"); };
-                        document.write('>Literature & herbaria</option>');
+                        document.write('>Herbaria</option>');
+                        </script>
+
+                        <script>
+                        document.write('<option value="3" ');
+                        if (dataset == "3") { document.write(" selected"); };
+                        document.write('>Citizen science</option>');
                         </script>
 
                       </select>
