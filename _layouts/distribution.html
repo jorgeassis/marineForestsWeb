@@ -364,18 +364,18 @@ load();
             }
 
             if ( (taxonKeyUsedNames.split(",").length - 1) == 1 ) {
-              datasetKeyName = datasetKey.replace(", ", "");
+              taxonKeyUsedNames = taxonKeyUsedNames.replace(", ", "");
             }
 
             if ( (taxonKeyUsedNames.split(",").length - 1) == 2 ) {
-              datasetKeyName = datasetKey.replace(", ", " and ");
+              taxonKeyUsedNames = taxonKeyUsedNames.replace(", ", " and ");
             }
 
             if ( (taxonKeyUsedNames.split(",").length - 1) == 3 ) {
-              datasetKeyName = "macroalgae, seagrass and animals";
+              taxonKeyUsedNames = "macroalgae, seagrass and animals";
             }
 
-            document.write(datasetKeyName);
+            document.write(taxonKeyUsedNames);
 
             </script>.
         </span></h4>
