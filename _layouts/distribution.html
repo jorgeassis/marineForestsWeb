@@ -363,15 +363,15 @@ load();
               taxonKeyUsedNames = taxonKeyUsedNames + ", animals";
             }
 
-            if ( taxonKeyUsedNames.match(/,/g) || []).length == 1 ) {
+            if ( (taxonKeyUsedNames.split(",").length - 1) == 1 ) {
               datasetKeyName = datasetKey.replace(", ", "");
             }
 
-            if ( taxonKeyUsedNames.match(/,/g) || []).length == 2 ) {
+            if ( (taxonKeyUsedNames.split(",").length - 1)h == 2 ) {
               datasetKeyName = datasetKey.replace(", ", " and ");
             }
 
-            if ( taxonKeyUsedNames.match(/,/g) || []).length == 3 ) {
+            if ( (taxonKeyUsedNames.split(",").length - 1) == 3 ) {
               datasetKeyName = "macroalgae, seagrass and animals";
             }
 
