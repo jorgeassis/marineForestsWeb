@@ -353,35 +353,31 @@ load();
 
             var taxonKeyUsedNames = "";
 
-            if (macroalgae != null) {
-
-              if ( taxonKeyUsedNames != "" ) {
-                taxonKeyUsedNames = taxonKeyUsedNames + ", ";
-              }
-              taxonKeyUsedNames = taxonKeyUsedNames + "macroalgae";
-            }
-            if (seagrass != null) {
-
-              if ( taxonKeyUsedNames != "" ) {
-                taxonKeyUsedNames = taxonKeyUsedNames + ", ";
-              }
-              taxonKeyUsedNames = taxonKeyUsedNames + "seagrass";
+            if (macroalgae == null && seagrass == null && animals == null ) {
+              taxonKeyUsedNames = "no ecological group";
             }
 
-            if (animals != null) {
-
-              if ( taxonKeyUsedNames != "" ) {
-                taxonKeyUsedNames = taxonKeyUsedNames + ", ";
-              }
-              taxonKeyUsedNames = taxonKeyUsedNames + "animals";
+            if (macroalgae != null ) {
+              taxonKeyUsedNames = "macroalgae";
+            }
+            if (seagrass != null ) {
+              taxonKeyUsedNames = "seagrass";
+            }
+            if (animals != null ) {
+              taxonKeyUsedNames = "animals";
             }
 
-            if ( (taxonKeyUsedNames.split(",").length - 1) == 2 ) {
-              taxonKeyUsedNames = taxonKeyUsedNames.replace(", ", " and ");
-            }
-
-            if ( (taxonKeyUsedNames.split(",").length - 1) == 3 ) {
+            if (macroalgae != null && seagrass != null && animals != null ) {
               taxonKeyUsedNames = "macroalgae, seagrass and animals";
+            }
+            if (macroalgae != null && seagrass != null && animals == null ) {
+              taxonKeyUsedNames = "macroalgae and seagrass";
+            }
+            if (macroalgae != null && seagrass == null && animals != null ) {
+              taxonKeyUsedNames = "macroalgae and animals";
+            }
+            if (macroalgae == null && seagrass != null && animals != null ) {
+              taxonKeyUsedNames = "seagrass and animals";
             }
 
             document.write(taxonKeyUsedNames);
