@@ -96,7 +96,7 @@ let obj1 = await (await fetch(url1)).json();
 var text1 = obj1.count;
 
 if (text1 == null || text1 == 0) {
-alert("There were no marine forest records matching your query.");
+  alert("There were no marine forest records matching your query.");
 }
 
 var text1 = text1.toLocaleString();
@@ -348,7 +348,37 @@ load();
 <section class="container text-center hide-on-mobile" style="padding: 0px">
 <div class="row justify-content-center top-spacer-20">
     <div class="col-md-10">
-      <h4><span class="count3"></span> with <span class="color--redish"><span class="count1"></span></span><span class="color--dark"> records of occurrence.</span></h4>
+      <h4><span class="count3"></span> with <span class="color--redish"><span class="count1"></span></span><span class="color--dark"> records of occurrence of
+            <script>
+
+            var taxonKeyUsedNames = "";
+
+            if (macroalgae != null) {
+              taxonKeyUsedNames = taxonKeyUsedNames + ", macroalgae";
+            }
+            if (seagrass != null) {
+              taxonKeyUsedNames = taxonKeyUsedNames + ", seagrass";
+            }
+            if (animals != null) {
+              taxonKeyUsedNames = taxonKeyUsedNames + ", animals";
+            }
+
+            if ( taxonKeyUsedNames.match(/,/g) || []).length == 1 ) {
+              datasetKeyName = datasetKey.replace(", ", "");
+            }
+
+            if ( taxonKeyUsedNames.match(/,/g) || []).length == 2 ) {
+              datasetKeyName = datasetKey.replace(", ", " and ");
+            }
+
+            if ( taxonKeyUsedNames.match(/,/g) || []).length == 3 ) {
+              datasetKeyName = "macroalgae, seagrass and animals";
+            }
+
+            document.write(datasetKeyName);
+
+            </script>.
+        </span></h4>
 
                         <span>
                           <script>document.write('<a class="btn btn--primary btn--primary type--uppercase" style="text-decoration: none;" target="_blank" href="https://www.gbif.org/occurrence/search?' + taxonKey + datasetKey + '">' );</script>
