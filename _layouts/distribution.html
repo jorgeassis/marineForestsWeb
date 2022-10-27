@@ -348,7 +348,25 @@ load();
 <section class="container text-center hide-on-mobile" style="padding: 0px">
 <div class="row justify-content-center top-spacer-20">
     <div class="col-md-10">
-      <h4><span class="count3"></span> with <span class="color--redish"><span class="count1"></span></span><span class="color--dark"> records of occurrence of
+      <h4>  <span class="color--redish"><span class="count1"></span></span><span class="color--dark">
+        <script>
+
+      var taxonKeyUsedNames = "";
+
+      if (dataset == 1 ) {
+        taxonKeyUsedNames = "literature";
+      }
+      if (dataset == 2 ) {
+        taxonKeyUsedNames = "herbaria";
+      }
+      if (dataset == 3 ) {
+        taxonKeyUsedNames = "citizen science";
+      }
+
+      document.write(taxonKeyUsedNames);
+
+      </script>
+      records of occurrence of
             <script>
 
             var taxonKeyUsedNames = "";
