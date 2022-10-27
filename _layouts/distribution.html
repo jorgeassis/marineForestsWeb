@@ -354,17 +354,26 @@ load();
             var taxonKeyUsedNames = "";
 
             if (macroalgae != null) {
-              taxonKeyUsedNames = taxonKeyUsedNames + ", macroalgae";
+
+              if ( (taxonKeyUsedNames != "" ) {
+                taxonKeyUsedNames = taxonKeyUsedNames + ", ";
+              }
+              taxonKeyUsedNames = taxonKeyUsedNames + "macroalgae";
             }
             if (seagrass != null) {
-              taxonKeyUsedNames = taxonKeyUsedNames + ", seagrass";
-            }
-            if (animals != null) {
-              taxonKeyUsedNames = taxonKeyUsedNames + ", animals";
+
+              if ( (taxonKeyUsedNames != "" ) {
+                taxonKeyUsedNames = taxonKeyUsedNames + ", ";
+              }
+              taxonKeyUsedNames = taxonKeyUsedNames + "seagrass";
             }
 
-            if ( (taxonKeyUsedNames.split(",").length - 1) == 1 ) {
-              taxonKeyUsedNames = taxonKeyUsedNames.replace(", ", "");
+            if (animals != null) {
+
+              if ( (taxonKeyUsedNames != "" ) {
+                taxonKeyUsedNames = taxonKeyUsedNames + ", ";
+              }
+              taxonKeyUsedNames = taxonKeyUsedNames + "animals";
             }
 
             if ( (taxonKeyUsedNames.split(",").length - 1) == 2 ) {
