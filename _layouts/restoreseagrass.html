@@ -35,9 +35,9 @@ layout: default
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-<section class="container text-center hide-on-mobile" style="padding: 0px">
+<section class="container text-center" style="padding: 0px">
 
-<div class="row justify-content-center top-spacer-40">
+<div class="row justify-content-center top-spacer-20">
   <div class="col-md-10">
     <div class="border--round box-shadow-wide"  style="height: 450px; overflow: hidden;">
       <img alt="Image" src="https://www.marineforests.com/assets/img/Picture1.jpg" style="margin-bottom: 30px" />
@@ -45,35 +45,118 @@ layout: default
   </div>
 </div>
 
-<div class="row justify-content-center top-spacer-20">
+<div class="row justify-content-center top-spacer-40">
     <div class="col-md-8">
 
       <p class="lead top-spacer-10 text-left">
-        RESTORESEAGRASS aims to remove threats from existing seagrasses, such as mechanical damage and invasive species, promote citizen awareness and leadership in conservation, recover damaged seagrass áreas, promote seagrass conservation and restoration in salt pans. The benefits for biodiversity and climate change mitigation will be quantified and demonstrated to the public.
+
+        <br>RESTORESEAGRASS<br> aims to remove threats from existing seagrasses, such as mechanical damage and invasive species, promote citizen awareness and leadership in conservation, recover damaged seagrass areas, promote seagrass conservation and restoration in salt pans.
 
         <br><br>
 
-        The project will implement solutions to the problematic loss of two priority habitats: (1) Non-Macaronesian seagrass beds on Atlantic infralittoral sand (A5.53), a ‘Critically Endangered’ habitat by the European Red List of Habitats, and (2) Brackish or saline coastal lagoons, a priority habitat under Habitat Directive Annex II (1150).
+        The benefits for biodiversity and climate change mitigation will be quantified and demonstrated to the public.
+
+        <br><br>
+
+        The project will implement solutions to the problematic loss of two priority habitats:<br>
+        (1) Non-Macaronesian seagrass beds on Atlantic infralittoral sand (A5.53), a ‘Critically Endangered’ habitat by the European Red List of Habitats, and <br>
+        (2) Brackish or saline coastal lagoons, a priority habitat under Habitat Directive Annex II (1150).
 
       </p>
 
     </div>
 </div>
 
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<section class="unpad">
+
+      <style>
+          .leaflet-popup-content-wrapper {
+              padding: 1px;
+              text-align: left;
+              border-radius: 8px;
+          }
+          .leaflet-popup-content {
+                 margin: 0;
+                 padding: 2px;
+
+             }
+      </style>
+
+      <div id='map' class='custom-popup hide-on-mobile' style="height: 350px;"></div>
+
+                                  <script>
+
+                                	const main4 = async () => {
+
+                                      var map = L.map( 'map', {
+                                        center: [-5.5707070913, 30.3335102797],
+                                        minZoom: 2,
+                                        zoom: 2,
+                                        zoomControl:false
+                                      });
+
+                                      L.tileLayer( 'https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
+                                        attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
+                                        subdomains: ['a', 'b', 'c']
+                                      }).addTo( map );
+
+                                      var marker = L.marker([35.737448286487595, 51.39876293182373]).addTo(map);
+                                      var popup = marker.bindPopup('<b>Hello world!</b><br />I am a popup.');
+
+                                      map.scrollWheelZoom.disable();
+                                      map.dragging.disable();
+
+                                            //  -----------------------------------------------------
+                                            //  Hide loading loadingPanel
+                                                document.getElementById('loadingPanel').style.visibility="hidden";
+                                            //  -----------------------------------------------------
+
+                                  };
+
+                                  main4();
+
+
+                              </script>
+
+</section>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<section class="container text-center" style="padding: 0px">
+
+
 <div class="row justify-content-center top-spacer-20">
     <div class="col-md-8">
 
+      <h2 class="color--dark">
+          The problems and threats
+      </h2>
+
       <p class="lead top-spacer-10 text-left">
-        Seagrass beds are highly biodiverse marine ecosystems that sustain local fisheries, provide coastal protection, increase water and sediment quality, and function as important Blue Carbon stocks.<br>
-        Southwestern Europe contains the most diverse seagrass populations of Atlantic mainland Europe, with severalred-list classified species (Zostera marina, Cymodocea nodosa, several Ruppia spp., Zostera noltei) co-occurring together in the sublittoral zone. Despite their importance, they are under high threat.<br>
-        The problem addressed are the large losses of infralittoral seagrass that have occurred on the Atlantic coasts of southwestern continental Europe (mainland Portugal).
+        Seagrass beds are highly biodiverse marine ecosystems that sustain local fisheries, provide coastal protection, increase water and sediment quality, and function as important Blue Carbon stocks.
+
+        <br><br>
+
+        Southwestern Europe contains the most diverse seagrass populations of Atlantic mainland Europe, with severalred-list classified species (Zostera marina, Cymodocea nodosa, several Ruppia spp., Zostera noltei) co-occurring together in the sublittoral zone. Despite their importance, they are under high threat.
+
+        <br><br>
+
+        The problems is:<br>
+        (1) The large losses of infralittoral seagrass that have occurred on the Atlantic coasts of southwestern continental Europe (mainland Portugal).
 
         <br><br>
 
         The threats are:<br>
-        Mechanical removal: human actions that removed seagrasses mechanically, such as boat anchors, boat moorings, channel dredging, fishing with toothed dredges (Cunha et al. 2013, Carapeto et al. 2020).<br>
-        Competing invasive species preventing recovery: Following mechanical removal, invasive seaweeds occupy the disturbed empty habitat faster than seagrass and are thus a threat to natural recovery.<br>
-        Information gaps: activities that mechanically remove seagrasses areinsufficiently spatially managed due to lack of information available to the stakeholders, both direct users (boat users, fishers) and managers.
+        (1) Mechanical removal: human actions that removed seagrasses mechanically, such as boat anchors, boat moorings, channel dredging, fishing with toothed dredges (Cunha et al. 2013, Carapeto et al. 2020);<br>
+        (2) Competing invasive species preventing recovery: Following mechanical removal, invasive seaweeds occupy the disturbed empty habitat faster than seagrass and are thus a threat to natural recovery;<br>
+        (3) Information gaps: activities that mechanically remove seagrasses areinsufficiently spatially managed due to lack of information available to the stakeholders, both direct users (boat users, fishers) and managers.
 
       </p>
 
@@ -83,22 +166,35 @@ layout: default
 <div class="row justify-content-center top-spacer-20">
     <div class="col-md-8">
 
+      <h2 class="color--dark">
+          Solutions and objectives
+      </h2>
+
       <p class="lead top-spacer-10 text-left">
-        SOLUTIONS - OBJECTIVES:<br>
 
-The problems identified require these solutions (project objectives):<br><br>
+      The problems identified require these solutions (project objectives):
 
-1) Conservation of ancient existing seagrass meadows under risk of being lost: stopping the actions that mechanically remove seagrasses via action with managers and site users by:<br><br>
-1.1) information, education, sensibilization and local vigilance by local stakeholders that are direct users of the sites, by implementing a program ADOPT-a-seagrass, and a range of diverse education and dissemination actions;<br>
-1.2) collecting information for managers (which are partners in this project) with geographical information of locations of the seagrasses and predictions of their future natural growth considering environmental / climate variables, including sea-level rise;<br>
-1.3) controlling invasive species in a hotspot of subtidal Atlantic seagrass cover and diversity of SW Iberia, to a level where they do not prevent natural seagrass recovery and persistence, once seagrasses are re-established.<br><br>
+      <br><br>
 
-2) Restoration of seagrass: <br><br>
-the project will replant seagrass in suitable habitats, where threats have been removed but natural dispersal and establishment has not happened to allow initial recovery and stable persistence to continue by natural growth. We
-have demonstrated that seagrass restoration in the regions here targeted requires large spatial scale of transplanting to reach a minimum critical seagrass bed size that becomes resistant to storms (Paulo et al. 2019). <br>
+      <b>1) Conservation of ancient existing seagrass meadows under risk of being lost: stopping the actions that mechanically remove seagrasses via action with managers and site users by:</b>
 
-The conservation of salt pans is essential for seagrass habitat conservation for threatened and critically endangered species, and this project will implement a seagrass restoration demonstration park that will remain in the long-
-term a main promoter of all the ecosystem and societal benefits of seagrass conservation in saltpans and the demonstration, training and education opportunities that it creates.
+      <br><br>
+
+      1.1) information, education, sensibilization and local vigilance by local stakeholders that are direct users of the sites, by implementing a program ADOPT-a-seagrass, and a range of diverse education and dissemination actions;<br>
+      1.2) collecting information for managers (which are partners in this project) with geographical information of locations of the seagrasses and predictions of their future natural growth considering environmental / climate variables, including sea-level rise;<br>
+      1.3) controlling invasive species in a hotspot of subtidal Atlantic seagrass cover and diversity of SW Iberia, to a level where they do not prevent natural seagrass recovery and persistence, once seagrasses are re-established.
+
+      <br><br>
+
+      <b>2) Restoration of seagrass:</b>
+
+      <br><br>
+
+      (1) the project will replant seagrass in suitable habitats, where threats have been removed but natural dispersal and establishment has not happened to allow initial recovery and stable persistence to continue by natural growth. We
+      have demonstrated that seagrass restoration in the regions here targeted requires large spatial scale of transplanting to reach a minimum critical seagrass bed size that becomes resistant to storms (Paulo et al. 2019);<br>
+
+      The conservation of salt pans is essential for seagrass habitat conservation for threatened and critically endangered species, and this project will implement a seagrass restoration demonstration park that will remain in the long-
+      term a main promoter of all the ecosystem and societal benefits of seagrass conservation in saltpans and the demonstration, training and education opportunities that it creates.
 
 
       </p>
@@ -109,9 +205,10 @@ term a main promoter of all the ecosystem and societal benefits of seagrass cons
 <div class="row justify-content-center top-spacer-100">
     <div class="col-md-8 boxed boxed--border  bg--secondary boxed--lg box-shadow">
 
-      <p class="lead">
+      <p class="lead text-left">
 
-        Team:<br><br>
+        <b>Team:</b>
+        <br>
   CCMAR – Centro de Ciências do Mar do Algarve<br>
   ISPA - Instituto Universitário de Ciências Psicológicas, Sociais e da Vida, CRL<br>
   ICNF – Instituto da Conservação da Natureza e Florestas<br>
@@ -119,9 +216,11 @@ term a main promoter of all the ecosystem and societal benefits of seagrass cons
   SPEA – Sociedade Portuguesa para o Estudo das Aves<br>
   OCEAN ALIVE – Cooperativa para a Educação Criativa Marinha, CRL<br>
   PVL - Piscicultura do Vale da Lama, Lda<br>
-  NECTON - Companhia Portuguesa de Culturas Marinhas, SA<br><br>
+  NECTON - Companhia Portuguesa de Culturas Marinhas, SA
 
-  Funding:<br><br>
+  <br><br>
+
+  <b>Funding:</b><br>
    EU LIFE program,  SECIL, ANA
 
 
@@ -131,24 +230,6 @@ term a main promoter of all the ecosystem and societal benefits of seagrass cons
     </div>
 </div>
 
-<div class="row justify-content-center top-spacer-100">
-  <div class="col-md-10">
-    <h4>Adoptive parents monitoring Marine Forests</h4>
-    <div class="border--round box-shadow-wide"  style="height: 450px; overflow: hidden;">
-      <img alt="Image" src="https://www.marineforests.com/assets/img/adopt-3.jpg" style="margin-bottom: 30px" />
-    </div>
-  </div>
-</div>
-
-<div class="row justify-content-center top-spacer-20">
-    <div class="col-md-8">
-
-      <p class="lead top-spacer-10 text-left">
-      Plastic Punch, in collaboration with the United Nations Development Programme (UNDP) and the European Union in Ghana marked the 2022 World Ocean Day with a beach clean-up exercise, calling on citizens to take action to save the oceans from plastic pollution for a sustainable future.
-      </p>
-
-    </div>
-</div>
 
 </section>
 
