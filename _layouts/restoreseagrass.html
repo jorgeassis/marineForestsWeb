@@ -52,14 +52,12 @@ layout: default
 
         <b>RESTORESEAGRASS</b> aims to remove threats from existing seagrasses, such as mechanical damage and invasive species, promote citizen awareness and leadership in conservation, recover damaged seagrass areas, promote seagrass conservation and restoration in salt pans.
 
-        <br><br>
-
         The benefits for biodiversity and climate change mitigation will be quantified and demonstrated to the public.
 
         <br><br>
 
         The project will implement solutions to the problematic loss of two priority habitats:<br><br>
-        <b>(1)</b> Non-Macaronesian seagrass beds on Atlantic infralittoral sand (A5.53), a ‘Critically Endangered’ habitat by the European Red List of Habitats, and <br>
+        <b>(1)</b> Non-Macaronesian seagrass beds on Atlantic infralittoral sand (A5.53), a ‘Critically Endangered’ habitat by the European Red List of Habitats;<br>
         <b>(2)</b> Brackish or saline coastal lagoons, a priority habitat under Habitat Directive Annex II (1150).
 
       </p>
@@ -94,9 +92,9 @@ layout: default
                                 	const main4 = async () => {
 
                                       var map = L.map( 'map', {
-                                        center: [-7.5707070913, 35.3335102797],
-                                        minZoom: 5,
-                                        zoom: 5,
+                                        center: [35, -8],
+                                        minZoom: 4,
+                                        zoom: 4,
                                         zoomControl:false
                                       });
 
@@ -105,16 +103,16 @@ layout: default
                                         subdomains: ['a', 'b', 'c']
                                       }).addTo( map );
 
-                                      var marker = L.marker([35.737448286487595, 51.39876293182373]).addTo(map);
+                                      var marker = L.marker([35, -8]).addTo(map);
                                       var popup = marker.bindPopup('<b>Hello world!</b><br />I am a popup.');
 
                                       map.scrollWheelZoom.disable();
                                       map.dragging.disable();
 
-                                            //  -----------------------------------------------------
-                                            //  Hide loading loadingPanel
-                                                document.getElementById('loadingPanel').style.visibility="hidden";
-                                            //  -----------------------------------------------------
+                                      //  -----------------------------------------------------
+                                      //  Hide loading loadingPanel
+                                          document.getElementById('loadingPanel').style.visibility="hidden";
+                                      //  -----------------------------------------------------
 
                                   };
 
@@ -126,7 +124,7 @@ layout: default
             <div class="row justify-content-center top-spacer-0">
                 <div class="col-md-8">
 
-                  <p class="lead">
+                  <p class="lead justify-content-center">
                     Sites: Arrábida, Tróia, Ria Formosa, Ria de Alvor
                   </p>
 
@@ -144,7 +142,7 @@ layout: default
 <section class="container text-center" style="padding: 0px">
 
 
-<div class="row justify-content-center top-spacer-40">
+<div class="row justify-content-center top-spacer-100">
     <div class="col-md-8">
 
       <h2 class="color--dark">
@@ -173,7 +171,7 @@ layout: default
     </div>
 </div>
 
-<div class="row justify-content-center top-spacer-40">
+<div class="row justify-content-center top-spacer-100">
     <div class="col-md-8">
 
       <h2 class="color--dark">
@@ -186,7 +184,7 @@ layout: default
 
       <br><br>
 
-      <b>1)</b> Conservation of ancient existing seagrass meadows under risk of being lost: stopping the actions that mechanically remove seagrasses via action with managers and site users by:
+      <b>1)</b> Conservation of ancient existing seagrass meadows under risk of lost: stopping actions that mechanically remove seagrasses via action with managers and site users by:
 
       <br><br>
 
@@ -216,33 +214,6 @@ layout: default
 
 
 
-<div class="row justify-content-center top-spacer-50">
-    <div class="col-md-8 boxed boxed--border  bg--secondary boxed--lg box-shadow">
-
-      <p class="lead text-left">
-
-        <b>Team:</b>
-        <br>
-  CCMAR – Centro de Ciências do Mar do Algarve<br>
-  ISPA - Instituto Universitário de Ciências Psicológicas, Sociais e da Vida, CRL<br>
-  ICNF – Instituto da Conservação da Natureza e Florestas<br>
-  CSIC - Consejo Superior de Investigaciones Cientificas, Spain<br>
-  SPEA – Sociedade Portuguesa para o Estudo das Aves<br>
-  OCEAN ALIVE – Cooperativa para a Educação Criativa Marinha, CRL<br>
-  PVL - Piscicultura do Vale da Lama, Lda<br>
-  NECTON - Companhia Portuguesa de Culturas Marinhas, SA
-
-  <br><br>
-
-  <b>Funding:</b><br>
-   EU LIFE program,  SECIL, ANA
-
-
-
-      </p>
-
-    </div>
-</div>
 
 
 
@@ -250,7 +221,7 @@ layout: default
     <div class="col-md-8">
 
       <h2 class="color--dark">
-          The team
+          Team
       </h2>
 
     </div>
@@ -269,6 +240,32 @@ layout: default
   OCEAN ALIVE – Cooperativa para a Educação Criativa Marinha, CRL<br>
   PVL - Piscicultura do Vale da Lama, Lda<br>
   NECTON - Companhia Portuguesa de Culturas Marinhas, SA
+
+      </p>
+
+    </div>
+</div>
+
+
+<div class="row justify-content-center top-spacer-40">
+    <div class="col-md-8">
+
+      <h2 class="color--dark">
+          Funding
+      </h2>
+
+    </div>
+</div>
+
+
+<div class="row justify-content-center top-spacer-10">
+    <div class="col-md-8 boxed boxed--border  bg--secondary boxed--lg box-shadow">
+
+      <p class="lead text-left">
+
+  EU LIFE program<br>
+  SECIL<br>
+  ANA
 
       </p>
 
