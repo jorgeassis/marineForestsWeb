@@ -94,8 +94,7 @@ layout: default
                                       var map = L.map( 'map', {
                                         center: [35, -8],
                                         minZoom: 5,
-                                        zoom: 5,
-                                        zoomControl:false
+                                        zoom: 5
                                       });
 
                                       L.tileLayer( 'https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
@@ -105,18 +104,23 @@ layout: default
 
                                       var tMarker = {
                                         radius:6,
-                                        fillColor: '#09f9df',
-                                        color:'#ff0000',
+                                        fillColor: '#9EBBFF',
+                                        color:'#113EA6',
                                         weight:1,
                                         opacity: 1,
                                         fillOpacity:1
                                     };
 
-                                      var marker = L.circleMarker([35, -8]).addTo(map);
-                                      var popup = marker.bindPopup('<b>Hello world!</b><br />I am a popup.');
+                                      var marker = L.circleMarker([38.433, -9.03]).addTo(map);
+                                      var popup = marker.bindPopup('<b>Site: Arrábida</b>');
+
+                                      var marker = L.circleMarker([36.99, -7.84]).addTo(map);
+                                      var popup = marker.bindPopup('<b>Site: Ria Formosa</b>');
+
+                                      var marker = L.circleMarker([37.12, -8.61]).addTo(map);
+                                      var popup = marker.bindPopup('<b>Site: Ria de Alvor</b>');
 
                                       map.scrollWheelZoom.disable();
-                                      map.dragging.disable();
 
                                       //  -----------------------------------------------------
                                       //  Hide loading loadingPanel
