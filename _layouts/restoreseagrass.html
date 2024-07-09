@@ -93,8 +93,8 @@ layout: default
 
                                       var map = L.map( 'map', {
                                         center: [35, -8],
-                                        minZoom: 4,
-                                        zoom: 4,
+                                        minZoom: 5,
+                                        zoom: 5,
                                         zoomControl:false
                                       });
 
@@ -103,7 +103,16 @@ layout: default
                                         subdomains: ['a', 'b', 'c']
                                       }).addTo( map );
 
-                                      var marker = L.marker([35, -8]).addTo(map);
+                                      var tMarker = {
+                                        radius:6,
+                                        fillColor: '#09f9df',
+                                        color:'#ff0000',
+                                        weight:1,
+                                        opacity: 1,
+                                        fillOpacity:1
+                                    };
+
+                                      var marker = L.circleMarker([35, -8]).addTo(map);
                                       var popup = marker.bindPopup('<b>Hello world!</b><br />I am a popup.');
 
                                       map.scrollWheelZoom.disable();
@@ -217,7 +226,7 @@ layout: default
 
 
 
-<div class="row justify-content-center top-spacer-40">
+<div class="row justify-content-center top-spacer-100">
     <div class="col-md-8">
 
       <h2 class="color--dark">
@@ -247,7 +256,7 @@ layout: default
 </div>
 
 
-<div class="row justify-content-center top-spacer-40">
+<div class="row justify-content-center top-spacer-100">
     <div class="col-md-8">
 
       <h2 class="color--dark">
@@ -264,8 +273,8 @@ layout: default
       <p class="lead text-left">
 
   EU LIFE program<br>
-  SECIL<br>
-  ANA
+  SECIL - Companhia geral de cal e cimento, SA<br>
+  ANA - Aeroportos de Portugal
 
       </p>
 
