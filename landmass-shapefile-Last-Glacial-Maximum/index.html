@@ -1,0 +1,45 @@
+<p>The major cause of global sea-level change is the exchange of water between ice and ocean during ice ages. The Last Glacial Maximum (LGM) was the most recent period with ice sheets at their greatest extent (maximum coverage between 26,500 and 19,000 years ago).</p>
+
+<p>Massive ice sheets covered much of Northern Europe, North America and Asia and significantly affected global climate with increasing drought and desertification. Sea levels dropped about 120 meters (about 410 feet) when compared to today. This lead to exposed continental shelves, joined land masses and extensive coastal plains.</p>
+
+<p>Here are a few lines of R code to produce a landmass shapefile of the Last Glacial Maximum for Geographic Information Systems. The code uses a bathymetry raster layer extracted from Bio-ORACLE, an open source dataset of GIS layers that provides geophysical, biotic and environmental data for surface and benthic marine realms.</p>
+
+<p>The first section of the code reclassifies bathymetry to a binomial layer where depths above -120m are considered as landmass.</p>
+
+<div style="padding: 20px" class="border-radius-05 bg-gray font-family-secondary font-small text-dark">
+
+library(raster)<br />
+library(rgdal)<br />
+library(rgeos)<br />
+bathymetryFile &lt;- "https://github.com/jorgeassis/rGIS/blob/master/Data/BathymetryDepthMean.tif"<br />
+bathymetry &lt;- raster(bathymetryFile)<br />
+rclmat &lt;- matrix(c(-Inf,-121,NA,-120,0,1,NA,NA,1), ncol=3, byrow=TRUE)<br />
+bathymetry &lt;- reclassify(bathymetry, rclmat)<br />
+plot(bathymetry)<br />
+
+</div>
+
+<p>The second section uses a simple function to transform the binomial layer into a polygon. This is saved as a shapefile for Geographic Information Systems.</p>
+
+<div style="padding: 20px" class="border-radius-05 bg-gray font-family-secondary font-small text-dark">
+
+bathymetryPoly &lt;- rasterToPolygons(bathymetry, fun=NULL, n=4, na.rm=TRUE, digits=6, dissolve=TRUE)<br />
+plot(bathymetryPoly)<br />
+writeOGR(bathymetryPoly, ".", "landmassLGMPolygon", driver="ESRI Shapefile")<br />
+
+</div>
+
+<p>The third section uses ggplot package to produce a map with landmass of the Last Glacial Maximum.</p>
+
+<p><img src="/assets/images/posts/C6_1.png" alt="Map" /></p>
+
+<div style="padding: 20px" class="border-radius-05 bg-gray font-family-secondary font-small text-dark">
+
+ggplot() +<br />
+  geom_polygon(data = bathymetryPoly, aes(x = long, y = lat, group = group), fill="#848484", colour = NA) +<br />
+ geom_path(data = bathymetryPoly, aes(x = long, y = lat, group = group), color = "#848484", size = 0.1) +<br />
+  coord_equal() +<br />
+  theme_minimal() +<br />
+  theme( axis.text = element_blank(),axis.ticks = element_blank(),axis.title = element_blank() )
+
+</div>

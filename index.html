@@ -1,7 +1,217 @@
----
-layout: default
-credits: ""
----
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R001XE93DG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R001XE93DG');
+</script>
+
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/leaflet.css" rel="stylesheet" />
+<link href="/assets/css/leaflet.fullscreen.css" rel="stylesheet" />
+
+<script src="/assets/js/leaflet.js"></script>
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/js/leaflet-providers.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
+
+</head>
+
+<body class=" ">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
+
+<div id="loadingPanel"></div>
+
+<style>
+
+#loadingPanel{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:9999;
+    background: #fff url("/assets/img/loading.gif") no-repeat center center
+}
+
+</style>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<a id="start"></a>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="nav-container ">
+
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="/assets/img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="/assets/img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="/">
+                            <img class="logo logo-dark" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                            <img class="logo logo-light" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+
+                            <li>
+                                <a href="/distribution">Distribution</a>
+                            </li>
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Diversity</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-3 col-md-4">
+                                                <ul class="menu-vertical">
+                                                    <!-- <li class="dropdown">
+                                                      <span class="dropdown__trigger color--black" >Species richness</span>
+                                                        <div class="dropdown__container">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="dropdown__content col-lg-2">
+                                                                        <ul class="menu-vertical">
+                                                                          <li>
+                                                                                <a href="species.html">
+                                                                                    Distribution records
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="species.html">
+                                                                                    Physiology
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="species.html">
+                                                                                    Populations
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/species-richness-marine-forests">Species richness</a>
+                                                  </li>
+
+                                                    <li>
+                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
+                                                    </li>
+
+                                                    <li>
+                                                      <a href="/future-climate-impacts-on-marine-forests">
+                                                        <span class="dropdown__trigger">Future climate-driven impacts</span>
+                                                      </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/citizen-science">Citizen science</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+                      <!--  <a class="btn btn--sm type--uppercase" href="/data-catalogue">
+                            <span class="btn__text">
+                                Data catalogue
+                            </span>
+                        </a>-->
+                        <a class="btn btn--sm btn--primary-3 type--uppercase" href="/restoreseagrass">
+                            <span class="btn__text">
+                                LIFE-RESTORESEAGRASS
+                            </span>
+                        </a>
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt-marine-forest">
+                            <span class="btn__text">
+                                Adopt a forest
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</div>
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -10,7 +220,7 @@ credits: ""
 
 <section class="container text-center">
         <div>
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <h2 class="color--dark">
                     Marine Forests, important habitats worldwide
@@ -67,7 +277,7 @@ credits: ""
                   </div>
                   <h4>Animal gardens</h4>
                     <p>
-                    <span>Invertebrates that live attached to rock, such as coral reefs and gorgonians (&copy; NOAA).</span>
+                    <span>Invertebrates that live attached to rock, such as corals, sponges and bivalve reefs (&copy; NOAA).</span>
                     </p>
                 </div>
             </div>
@@ -80,7 +290,7 @@ credits: ""
 
 <section class="container text-center">
       <div class="row justify-content-center top-spacer-50">
-          <div class="col-md-8" >
+          <div class="col-md-9" >
               <h2 class="color--dark">Help the world monitoring Marine Forests</h2>
               <span class="lead">
                 Citizens are reporting the occurrence of seaweed, seagrass, corals, and other forest-forming species to reach worldwide maps with distribution records.
@@ -108,7 +318,7 @@ credits: ""
              }
       </style>
 
-      <div id='map' class='custom-popup hide-on-mobile' style="height: 350px;"></div>
+      <div id='map' class='custom-popup' style="height: 350px;"></div>
 
                                   <script>
 
@@ -175,8 +385,8 @@ credits: ""
                                             subdomains: ['a', 'b', 'c']
                                           }).addTo( map )
 
-                                          var LeafIcon = L.Icon.extend({ options: { iconSize: [15, 15],} });
-                                          var greenIcon = new LeafIcon({iconUrl: 'assets/img/map_icon.png'});
+                                          var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
+                                          var greenIcon = new LeafIcon({iconUrl: '/assets/img/map_icon-2.png'});
 
                                           var i = 0;
                                           var marker = L.marker( [markers[i].lat, markers[i].lng], {icon: greenIcon} ).addTo( map );
@@ -227,7 +437,7 @@ credits: ""
 
 <section class="container text-center hide-on-mobile" style="padding: 0px">
         <div class="row justify-content-center top-spacer-20">
-            <div class="col-md-8">
+            <div class="col-md-10">
               <h4><span class="color--redish" id="total_results_records"></span><span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> <span class="color--dark">species </span><span class="color--dark">reported by <span class="color--redish" id="total_users"></span><span class="color--dark"> citizen scientists.</span></h4>
 
               <span class="lead block">
@@ -236,13 +446,13 @@ credits: ""
 
               </span>
 
-              <a class="btn btn--primary type--uppercase" href="https://www.inaturalist.org/projects/marine-forests?tab=observations" target="_blank">
+              <a class="btn btn--primary-2 type--uppercase" href="https://www.inaturalist.org/projects/marine-forests?tab=observations" target="_blank">
                     <span class="btn__text">
                         Explore all records
                     </span>
               </a>
 
-              <a class="btn btn--primary type--uppercase" href="https://www.inaturalist.org/projects/marine-forests" target="_blank">
+              <a class="btn btn--primary-2 type--uppercase" href="https://www.inaturalist.org/projects/marine-forests" target="_blank">
                     <span class="btn__text">
                         Add your records</a>
                     </span>
@@ -260,12 +470,12 @@ credits: ""
 <section class="container text-center top-spacer-75">
 
   <div class="row justify-content-center">
-      <div class="col-md-10" > <!-- 8 col-lg-8 -->
+      <div class="col-md-10" style="margin-bottom: 20px"> <!-- 8 col-lg-8 -->
       <div><h3 class="color--dark">Recent records from citizens</h3></div>
     </div>
   </div>
 
-  <div class="row" style="padding-left: 25px; padding-right: 25px" id="random_pics">
+  <div class="row" style="padding-left: 25px; padding-right: 25px;" id="random_pics">
 
   </div>
 
@@ -274,15 +484,88 @@ credits: ""
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-<section class="container text-center top-spacer-40">
 
-  <div class="row justify-content-center">
-      <div class="col-md-10" ></div>
-  </div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Bottom message -->
+
+<section class="feature-large switchable bg--secondary-2" style="margin-top: -20px">
+
+        <div class="container">
+
+
+            <div class="row justify-content-around">
+                <div class="col-lg-6 col-md-6">
+                    <div class="border--round box-shadow-wide" style="height: 350px; width: 100%; overflow: hidden; margin-bottom: 30px; background-image: url('/assets/img/feed_15.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;"></div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="top-spacer-10">
+                        <h2>Adopt a Marine Forest</h2>
+                    </div>
+
+                    <div class="text-block" style="font-size: 15px">
+
+                      By adopting a marine forest, you take part in a collective effort to observe, understand, and protect these habitats. Your contribution is simple but powerful: by returning to the same place and documenting what you see, you help build a long-term record of ecological change that would otherwise be impossible to capture.
+
+                    </div>
+
+                    <div class="text-block" style="font-size: 15px">
+
+                    <div class="text-block ">
+
+                        <div style="float: left">
+                          <a class="btn btn--sm btn--primary type--uppercase" style="margin-top: 10px" href="/adopt-marine-forest"><span class="btn__text">Adopt a forest</span></a>
+                        </div>
+
+                   </div>
+
+                 </div>
+
+                </div>
+            </div>
+
+
+            <div class="row justify-content-around" style="margin-bottom: 40px; margin-top: 80px;">
+
+              <div class="col-lg-6 col-md-6">
+                <div class="top-spacer-10">
+                      <h2>Project Marine Forests</h2>
+                  </div>
+
+                  <div class="text-block" style="font-size: 15px">
+
+
+                          Project 'Marine Forests' aims to build and maintain a database of distribution records of structural benthic species of seaweeds, seagrasses and animal forests, at global scales, and to make this information freely available worldwide.
+
+                                <br><br>
+
+                                It also promotes education, marine literacy and the FAIR principle (to make data Findable, Accessible, Interoperable and Reusable).
+
+                  </div>
+
+
+             
+              </div>
+
+                <div class="col-lg-5 col-md-6">
+                  <div class="border--round box-shadow-wide" style="height: 330px; overflow: hidden;">
+                    <div class="border--round box-shadow-wide" style="height: 350px; width: 100%; overflow: hidden; margin-bottom: 30px; background-image: url('/assets/img/main_header.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;"></div>
+                  </div>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
 
 </section>
 
-{% include bottom-message-1.html %}
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -329,7 +612,7 @@ credits: ""
 			for (let i = 0; i < 30; i++) {
 
 					if( mainresults[i].observation_photos.length != 0 ){
-						gal.innerHTML += "<div class='col-md-4'><div class='feature text-center'><a href='https://www.inaturalist.org/observations/" + mainresults[i].id + "' target='_blank'><div class='card box-shadow-wide'><div class='thumb' style='background: url(" + mainresults[i].observation_photos[0].photo.url.replace("square", "large") + ") 50% 50% no-repeat;'></div></div></a> <h4>" + mainresults[i].taxon.name + "</h4> </div></div>";
+						gal.innerHTML += "<div class='col-md-4' style='margin-top: -20px;'><div class='feature text-center'><a href='https://www.inaturalist.org/observations/" + mainresults[i].id + "' target='_blank'><div class='card box-shadow-wide'><div class='thumb' style='background: url(" + mainresults[i].observation_photos[0].photo.url.replace("square", "large") + ") 50% 50% no-repeat;'></div></div></a> <b>" + mainresults[i].taxon.name + "</b> </div></div>";
 						counter = counter + 1;
 					};
 					if (counter == 9) { break; }
@@ -340,3 +623,45 @@ credits: ""
 	main3();
 
 </script>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Footer -->
+
+<footer class="space--sm footer-2 bg--dark">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <span class="type--fine-print">
+
+                              &copy;<span class="update-year"></span> Centre of Marine Sciences \\ web developed by <a href="https://www.biodiversitydatascience.com" target="_blank" style="text-decoration: none;">biodiversityDataScience</a>
+                             <!--  <a class="type--fine-print" href="#">Privacy Policy</a> -->
+                            <!--     <a class="type--fine-print" href="#">Legal</a> -->
+
+                            <br>
+                            Funding from the Pew Charitable Trusts (USA), EU LIFE program, Biodiversa (EU), Euromarine and by various projects of the Foundation for Science and Technology (FCT).
+                          </div>
+
+                      </div>
+                  </div>
+              </footer>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Scripts -->
+
+        <script src="/assets/js/flickity.min.js"></script>
+        <script src="/assets/js/easypiechart.min.js"></script>
+        <script src="/assets/js/datepicker.js"></script>
+        <script src="/assets/js/lightbox.min.js"></script>
+        <script src="/assets/js/jquery.steps.min.js"></script>
+        <script src="/assets/js/smooth-scroll.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/read-more.min.js"></script>
+        <script src="/assets/js/pack-of-scripts.js"></script>
+
+    </body>
+</html>
+

@@ -1,4 +1,20 @@
 
+/* Global typography override */
+html, body,
+h1, h2, h3, h4, h5, h6,
+p, li, a, span, div,
+input, textarea, select, button {
+  font-family: "DM Sans", "Open Sans", "Mulish", "Montserrat", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Darker content text for better readability */
+body,
+p,
+.lead,
+li {
+  color: #222222;
+}
+
 
 .card {  margin-bottom: 20px;
     overflow: hidden;
@@ -379,6 +395,11 @@ max-height: 50px;
 }
 
 
+/* All Leaflet maps: popups 4px higher than stock (leaflet.css uses margin-bottom: 20px) */
+.leaflet-container .leaflet-popup {
+  margin-bottom: 24px;
+}
+
 .custom-popup .leaflet-popup-content-wrapper {
   border-radius: 7px;
   }
@@ -391,3 +412,53 @@ max-height: 50px;
 .custom-popup .leaflet-popup-tip {
 
   }
+
+/* Main navigation (#menu2): always black and larger */
+nav#menu2.bar-2 .menu-horizontal > li {
+  opacity: 1 !important;
+}
+
+nav#menu2.bar-2 .menu-horizontal > li > a,
+nav#menu2.bar-2 .menu-horizontal > li > span,
+nav#menu2.bar-2 .menu-horizontal > li > span.dropdown__trigger {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+nav#menu2.bar-2 .menu-horizontal > li:not(:hover) > a,
+nav#menu2.bar-2 .menu-horizontal > li:not(:hover) > span,
+nav#menu2.bar-2 .menu-horizontal > li:not(:hover) > span.dropdown__trigger {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+nav#menu2.bar-2 .menu-horizontal > li > a:hover,
+nav#menu2.bar-2 .menu-horizontal > li > span:hover,
+nav#menu2.bar-2 .menu-horizontal > li > span.dropdown__trigger:hover {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+nav#menu2.bar-2 .menu-vertical li a {
+  font-size: 1.12rem;
+  line-height: 1.4;
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* Hard override for theme idle dimming */
+.menu-horizontal > li:not(:hover) > a,
+.menu-horizontal > li:not(:hover) > span,
+.menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger,
+.menu-horizontal > li > a,
+.menu-horizontal > li > span,
+.menu-horizontal > li > .modal-instance > .modal-trigger,
+.menu-horizontal > li > a:hover,
+.menu-horizontal > li > span:hover,
+.menu-horizontal > li > .modal-instance > .modal-trigger:hover {
+  color: #000000 !important;
+  opacity: 1 !important;
+}

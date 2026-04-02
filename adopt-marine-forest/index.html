@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R001XE93DG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R001XE93DG');
+</script>
+
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/leaflet.css" rel="stylesheet" />
+<link href="/assets/css/leaflet.fullscreen.css" rel="stylesheet" />
+
+<script src="/assets/js/leaflet.js"></script>
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/js/leaflet-providers.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
+
+</head>
+
+<body class=" ">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
+
+<div id="loadingPanel"></div>
+
+<style>
+
+#loadingPanel{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:9999;
+    background: #fff url("/assets/img/loading.gif") no-repeat center center
+}
+
+</style>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<a id="start"></a>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="nav-container ">
+
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="/assets/img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="/assets/img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="/">
+                            <img class="logo logo-dark" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                            <img class="logo logo-light" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+
+                            <li>
+                                <a href="/distribution">Distribution</a>
+                            </li>
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Diversity</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-3 col-md-4">
+                                                <ul class="menu-vertical">
+                                                    <!-- <li class="dropdown">
+                                                      <span class="dropdown__trigger color--black" >Species richness</span>
+                                                        <div class="dropdown__container">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="dropdown__content col-lg-2">
+                                                                        <ul class="menu-vertical">
+                                                                          <li>
+                                                                                <a href="species.html">
+                                                                                    Distribution records
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="species.html">
+                                                                                    Physiology
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="species.html">
+                                                                                    Populations
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/species-richness-marine-forests">Species richness</a>
+                                                  </li>
+
+                                                    <li>
+                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
+                                                    </li>
+
+                                                    <li>
+                                                      <a href="/future-climate-impacts-on-marine-forests">
+                                                        <span class="dropdown__trigger">Future climate-driven impacts</span>
+                                                      </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/citizen-science">Citizen science</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+                      <!--  <a class="btn btn--sm type--uppercase" href="/data-catalogue">
+                            <span class="btn__text">
+                                Data catalogue
+                            </span>
+                        </a>-->
+                        <a class="btn btn--sm btn--primary-3 type--uppercase" href="/restoreseagrass">
+                            <span class="btn__text">
+                                LIFE-RESTORESEAGRASS
+                            </span>
+                        </a>
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt-marine-forest">
+                            <span class="btn__text">
+                                Adopt a forest
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--  Hide loading loadingPanel -->
+
+<script>
+   window.addEventListener('load', function () {
+    document.getElementById('loadingPanel').style.visibility="hidden";
+   });
+</script>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Top message -->
+
+<section class="container text-center">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+
+        <h2 class="color--dark">
+            Adopt a marine forest
+        </h2>
+
+        <p class="lead top-spacer-10">
+          Take part in a collective effort to understand and protect these habitats. By returning to the same place and documenting what you see, you help build a long-term record that would otherwise be impossible to capture.
+        </p>
+
+    </div>
+</div>
+
+
+  <div class="row justify-content-center top-spacer-30">
+  
+      <div class="col-md-3">
+        <div class="totals-card">
+          <div class="totals-label"><b>Adopters</b></div>
+          <div class="totals-value" id="total-adopters">0</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="totals-card">
+          <div class="totals-label"><b>Records</b></div>
+          <div class="totals-value" id="total-records">0</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="totals-card">
+          <div class="totals-label"><b>Species</b></div>
+          <div class="totals-value" id="total-species">0</div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </section>
+  
+
+<section class="unpad">
+
+  <style>
+    .leaflet-popup-content-wrapper {
+      padding: 1px;
+      text-align: left;
+      border-radius: 8px;
+    }
+    .leaflet-popup-content {
+      margin: 0;
+      padding: 2px;
+    }
+    .adopters-table-wrap {
+      overflow-x: auto;
+    }
+    .adopters-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: #edf1ff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .adopters-table th,
+    .adopters-table td {
+      border-bottom: 1px solid #efefef;
+      padding: 8px 10px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .adopters-table a {
+      color: #e9525c;
+    }
+    .adopters-table a:hover {
+      color: #e9525c;
+    }
+    .all-adopters-status {
+      margin-top: 10px;
+      color: #666666;
+    }
+    .totals-card {
+      border: 1px solid #ececec;
+      border-radius: 8px;
+      padding: 20px;
+      background: #edf1ff;
+      margin-bottom: 12px;
+    }
+    .totals-label {
+      color: #666666;
+      font-size: 0.95em;
+      margin-bottom: 4px;
+    }
+    .totals-value {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: #000000;
+      line-height: 1.1;
+    }
+    .chart-wrap {
+      border: 1px solid #ececec;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 18px;
+      background: #fff;
+    }
+    .chart-wrap canvas {
+      width: 100%;
+      height: 160px;
+      display: block;
+    }
+    .chart-subtitle {
+      font-weight: 400;
+      font-size: 0.85em;
+      color: #666666;
+    }
+  </style>
+  <div id="adopt-map" class="custom-popup " style="height: 400px;"></div>
+
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<section class="container text-center" style="margin-top: -50px;">
+
+  <div class="row justify-content-center ">
+    <div class="col-md-10">
+      <h3>What you'll help discover</h3>
+      <p class="lead text-left">
+        With each visit, seasonal cycles, species shifts, and post-storm changes become visible.
+        A simple routine becomes a personal exploration of ecological dynamics.
+        These data support ongoing research on marine biodiversity, ecosystem resilience, and climate impacts.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center top-spacer-50">
+
+    <div class="col-md-5">
+      <div class="chart-wrap">
+        <h5>Monitoring per year <span class="chart-subtitle"></span></h5>
+        <canvas id="project-records-per-year-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="chart-wrap">
+        <h5>Monitoring per month <span class="chart-subtitle"></span></h5>
+        <canvas id="project-records-per-month-chart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="container text-center">
+
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h4>Our most valued adopters</h4>
+      <div id="all-adopters-status" class="all-adopters-status"></div>
+      <div class="adopters-table-wrap">
+        <table class="adopters-table">
+          <thead>
+            <tr>
+              <th>Adopter</th>
+              <th>Records</th>
+              <th>Milestone</th>
+              <th>Region</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="all-adopters-table-body">
+            <tr><td colspan="5"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+<section class="container text-center top-spacer-30">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h3>How to adopt and monitor</h3>
+      <div class="boxed boxed--border bg--secondary boxed--lg box-shadow text-left">
+
+          <div>
+            <h4><strong>Your simple tasks</strong></h4>
+          </div>
+
+          <div style="margin-top: -10px;" class="lead">
+          <b>1</b> Select a safe coastal site you can revisit consistently.
+          <br>
+          <b>2</b> Using iNaturalist project <a href="https://www.inaturalist.org/projects/adopt-a-marine_forest_portugal" target="_blank">'Adopt a marine forest'</a>, upload your photos from fixed viewpoints and take notes about the local conditions (e.g., anchoring, tidal height, etc.).
+          <br>
+          <b>3</b> Visit the site regularly to build a reliable time series.
+        </div>
+
+        <div style="margin-top: 30px;">
+          <h4><strong>Request to adopt a marine forest</strong></h4>
+        </div>
+
+        <div style="margin-top: -10px;">
+
+
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="5832b46f-829e-4db1-9e1e-f1d7aeb0fb97">
+          <input type="hidden" name="subject" value="Adopt a Marine Forest request">
+          <input type="hidden" class="validate-required" name="from_name" value="Marine Forests website">
+
+          <label for="adopt-request-name">Name</label>
+          <br>
+          <input id="adopt-request-name" style="width: 80%;" class="validate-required" type="text" name="name" required>
+          <br>
+          <label for="adopt-request-email">Email</label>
+          <br>
+          <input id="adopt-request-email" style="width: 80%;"  class="validate-required validate-email" type="email" name="email" required>
+          <br>
+          <label for="adopt-request-message">Message</label>
+          <br>
+          <textarea id="adopt-request-message" style="width: 80%;"  class="validate-required" name="message" rows="5" required></textarea>
+          <br>
+
+          <button type="submit" style="width: 30%;" class="btn btn--primary-2 type--uppercase">
+            <span class="btn__text">Submit request</span>
+          </button>
+        </form>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<script>
+  (function () {
+    var baseUrl = 'https://api.inaturalist.org/v1/observations?project_id=adopt-a-marine_forest_portugal&order=desc&order_by=created_at&per_page=30';
+    var statusEl = document.getElementById('observers-status');
+    var mapElement = document.getElementById('adopt-map');
+
+    function setStatus(message) {
+      if (statusEl) {
+        statusEl.textContent = message;
+      }
+    }
+
+    function shuffleArrayInPlace(arr) {
+      for (var i = arr.length - 1; i > 0; i -= 1) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+      return arr;
+    }
+
+    function fetchObservations() {
+      return fetch(baseUrl)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Request failed with status ' + response.status);
+          }
+          return response.json();
+        })
+        .then(function (data) {
+          return Array.isArray(data.results) ? data.results : [];
+        });
+    }
+
+    fetchObservations()
+      .then(function (results) {
+        var markers = [];
+
+        if (!mapElement) {
+          throw new Error('Map element not found');
+        }
+
+        if (!results.length) {
+          setStatus('No observations with coordinates found for this project.');
+          return;
+        }
+
+        for (var i = 0; i < results.length; i += 1) {
+          var item = results[i];
+
+          if (!item || !item.observation_photos || !item.observation_photos.length) { continue; }
+          if (!item.user || !item.user.login) { continue; }
+          if (!item.geojson || !item.geojson.coordinates) { continue; }
+
+          var recordUrl = 'https://www.inaturalist.org/observations/' + item.id;
+          var scientificName = (item.taxon && item.taxon.name) ? item.taxon.name : 'Marine Forests';
+          var lat = item.geojson.coordinates[1];
+          var lng = item.geojson.coordinates[0];
+          var date = item.observed_on_details && item.observed_on_details.date ? item.observed_on_details.date : 'Marine Forests';
+          var name = item.user.name || item.user.login || 'Citizen scientist';
+          var imageUser = item.user.icon || '/assets/img/user-icon.jpg';
+          var userUrl = 'https://www.inaturalist.org/people/' + item.user.login;
+          var image = item.observation_photos[0].photo.url;
+
+          markers.push({
+            scientificname: scientificName.substring(0, 18),
+            location: 'Adopted site',
+            lat: lat,
+            lng: lng,
+            date: date,
+            name: name.substring(0, 17),
+            imageuser: imageUser,
+            url: recordUrl,
+            image: image,
+            urluser: userUrl
+          });
+        }
+
+        if (!markers.length) {
+          setStatus('No observations with coordinates found for this project.');
+          return;
+        }
+
+        shuffleArrayInPlace(markers);
+
+        setStatus('');
+
+        var map = L.map('adopt-map', {
+          minZoom: 2,
+          zoomControl: true
+        });
+
+        L.tileLayer('https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
+          attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
+          subdomains: ['a', 'b', 'c']
+        }).addTo(map);
+
+        var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
+        var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
+        var bounds = L.latLngBounds(markers.map(function (markerData) {
+          return [markerData.lat, markerData.lng];
+        }));
+
+        map.fitBounds(bounds, { padding: [30, 30] });
+
+        function bindPopup(markerData, marker) {
+          marker.bindPopup(
+            '<div style="width:300px; height: 110px">' +
+              '<div style="width:120px; float: left">' +
+                '<div class="thumbnail">' +
+                  '<a href="' + markerData.url + '" target="_blank"><img src="' + markerData.image + '" alt="View record" /></a>' +
+                '</div>' +
+              '</div>' +
+              '<div style="width:177px; margin-left: 3px; float: left">' +
+                '<div style="margin-bottom: 1px; margin-top: 5px; width: 100%">' +
+                  '<span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + markerData.scientificname + '</i></strong></span>' +
+                '</div>' +
+                '<div style="margin-bottom: 1px; width: 100%"><span style="font-size: 1em">' + markerData.location + '</span></div>' +
+                '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + markerData.date + '</span></div>' +
+                '<div style="width: 100%; margin-top: 10px">' +
+                  '<div class="thumbnail2" style="margin-right: 7px"><a href="' + markerData.urluser + '" target="_blank"><img src="' + markerData.imageuser + '" alt="View profile" /></a></div>' +
+                  '<div style="padding-top: 24px;"><a href="' + markerData.url + '" style="color: #666666; text-decoration: none">' + markerData.name + '</a></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        var currentIndex = 0;
+        var firstMarker = L.marker([markers[currentIndex].lat, markers[currentIndex].lng], { icon: greenIcon }).addTo(map);
+        bindPopup(markers[currentIndex], firstMarker);
+        firstMarker.fire('click');
+        setTimeout(function () { map.removeLayer(firstMarker); }, 5000);
+
+        function loopMarkers() {
+          setTimeout(function () {
+            currentIndex += 1;
+            if (currentIndex >= markers.length) {
+              currentIndex = 0;
+              shuffleArrayInPlace(markers);
+            }
+
+            var nextMarker = L.marker([markers[currentIndex].lat, markers[currentIndex].lng], { icon: greenIcon }).addTo(map);
+            bindPopup(markers[currentIndex], nextMarker);
+
+            setTimeout(function () { nextMarker.fire('click'); }, 750);
+            setTimeout(function () { map.removeLayer(nextMarker); }, 4000);
+
+            loopMarkers();
+          }, 4000);
+        }
+
+        loopMarkers();
+        map.scrollWheelZoom.disable();
+        map.dragging.disable();
+      })
+      .catch(function (error) {
+        setStatus('Could not load map observations. Please try again later.');
+        console.error('iNaturalist map fetch error:', error);
+      });
+  })();
+</script>
+
+<script>
+  (function () {
+    var projectId = 'adopt-a-marine_forest_portugal';
+    var allAdoptersStatusEl = document.getElementById('all-adopters-status');
+    var allAdoptersTableBodyEl = document.getElementById('all-adopters-table-body');
+    var totalAdoptersEl = document.getElementById('total-adopters');
+    var totalRecordsEl = document.getElementById('total-records');
+    var totalSpeciesEl = document.getElementById('total-species');
+    var yearlyChartEl = document.getElementById('project-records-per-year-chart');
+    var monthlyChartEl = document.getElementById('project-records-per-month-chart');
+
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function setAllAdoptersStatus(message) {
+      if (allAdoptersStatusEl) {
+        allAdoptersStatusEl.textContent = message;
+      }
+    }
+
+    function getLevel(recordCount) {
+      if (recordCount >= 12) { return 'Steward'; }
+      if (recordCount >= 8) { return 'Guardian'; }
+      if (recordCount >= 4) { return 'Monitor'; }
+      if (recordCount >= 1) { return 'Scout'; }
+      return 'None';
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function toCityCountry(placeGuess) {
+      if (!placeGuess) { return ''; }
+      var cleaned = String(placeGuess)
+        .replace(/\d+/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/\s+,/g, ',')
+        .trim();
+
+      var parts = cleaned.split(',').map(function (part) {
+        return part.trim();
+      }).filter(function (part) {
+        return part.length > 0;
+      });
+
+      if (!parts.length) { return ''; }
+      if (parts.length === 1) { return parts[0]; }
+      return parts[0] + ', ' + parts[parts.length - 1];
+    }
+
+    function inferMainRegionFromObservations(observations) {
+      if (!observations || !observations.length) { return 'Unknown'; }
+
+      var regionCounts = {};
+      for (var i = 0; i < observations.length; i += 1) {
+        var obs = observations[i];
+        var placeGuess = obs && obs.place_guess ? toCityCountry(obs.place_guess) : '';
+        if (!placeGuess) { continue; }
+        regionCounts[placeGuess] = (regionCounts[placeGuess] || 0) + 1;
+      }
+
+      var mainRegion = 'Unknown';
+      var maxCount = 0;
+      var regions = Object.keys(regionCounts);
+      for (var j = 0; j < regions.length; j += 1) {
+        var region = regions[j];
+        if (regionCounts[region] > maxCount) {
+          maxCount = regionCounts[region];
+          mainRegion = region;
+        }
+      }
+      return mainRegion;
+    }
+
+    function drawRoundedRect(ctx, x, y, width, height, radius, color) {
+      var r = Math.min(radius, width / 2, height / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + width - r, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+      ctx.lineTo(x + width, y + height - r);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+      ctx.lineTo(x + r, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    function drawVerticalBarChart(canvas, labels, values, options) {
+      if (!canvas) { return; }
+
+      var ctx = canvas.getContext('2d');
+      var dpr = window.devicePixelRatio || 1;
+      var cssWidth = canvas.clientWidth || 520;
+      var cssHeight = canvas.clientHeight || 320;
+
+      canvas.style.width = cssWidth + 'px';
+      canvas.style.height = cssHeight + 'px';
+      canvas.width = Math.round(cssWidth * dpr);
+      canvas.height = Math.round(cssHeight * dpr);
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      var width = cssWidth;
+      var height = cssHeight;
+      var leftPad = 42;
+      var rightPad = 14;
+      var topPad = 16;
+      var bottomPad = 34;
+      var barGap = 6;
+      var plotWidth = width - leftPad - rightPad;
+      var plotHeight = height - topPad - bottomPad;
+      var maxValue = 1;
+      var i;
+
+      for (i = 0; i < values.length; i += 1) {
+        if (values[i] > maxValue) { maxValue = values[i]; }
+      }
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, width, height);
+
+      if (!labels.length) {
+        ctx.fillStyle = '#666666';
+        ctx.font = '14px Open Sans, Arial, sans-serif';
+        ctx.fillText('No data available', 20, 40);
+        return;
+      }
+
+      var slotWidth = plotWidth / labels.length;
+      var barWidth = Math.max(8, slotWidth - barGap);
+
+      for (i = 0; i < labels.length; i += 1) {
+        var x = leftPad + i * slotWidth + (slotWidth - barWidth) / 2;
+        var barHeight = (values[i] / maxValue) * plotHeight;
+        var y = topPad + (plotHeight - barHeight);
+
+        ctx.fillStyle = '#edf1ff';
+        ctx.fillRect(x, topPad, barWidth, plotHeight);
+
+        drawRoundedRect(ctx, x, y, barWidth, barHeight, 4, options.barColor || '#e9525c');
+
+        ctx.fillStyle = '#333333';
+        ctx.font = '10px Open Sans, Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(String(labels[i]), x + barWidth / 2, height - 10);
+
+        ctx.fillStyle = '#222222';
+        ctx.font = '11px Open Sans, Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(String(values[i]), x + barWidth / 2, y - 6);
+        ctx.textAlign = 'left';
+      }
+    }
+
+    function getObservationDate(observation) {
+      if (!observation) { return null; }
+      if (observation.observed_on) {
+        var dateFromObservedOn = new Date(observation.observed_on);
+        if (!isNaN(dateFromObservedOn.getTime())) { return dateFromObservedOn; }
+      }
+      if (observation.time_observed_at) {
+        var dateFromTimeObservedAt = new Date(observation.time_observed_at);
+        if (!isNaN(dateFromTimeObservedAt.getTime())) { return dateFromTimeObservedAt; }
+      }
+      return null;
+    }
+
+    var MONTH_LABELS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    function getFixedYearLabels(currentYearUtc) {
+      var labels = [];
+      var start = currentYearUtc - 9;
+      var y;
+      for (y = start; y <= currentYearUtc; y += 1) {
+        labels.push(String(y));
+      }
+      return labels;
+    }
+
+    function renderProjectTimeCharts(observations) {
+      var now = new Date();
+      var currentYearUtc = now.getUTCFullYear();
+      var yearLabels = getFixedYearLabels(currentYearUtc);
+      var yearCounts = {};
+      var monthCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var i;
+
+      for (i = 0; i < observations.length; i += 1) {
+        var obsDate = getObservationDate(observations[i]);
+        if (!obsDate) { continue; }
+        var yNum = obsDate.getUTCFullYear();
+        var yearKey = String(yNum);
+        var month = obsDate.getUTCMonth();
+
+        if (!yearCounts[yearKey]) { yearCounts[yearKey] = 0; }
+        yearCounts[yearKey] += 1;
+
+        if (month >= 0 && month <= 11) {
+          monthCounts[month] += 1;
+        }
+      }
+
+      var yearValues = yearLabels.map(function (label) {
+        return yearCounts[label] || 0;
+      });
+
+      drawVerticalBarChart(yearlyChartEl, yearLabels, yearValues, { barColor: '#e9525c' });
+      drawVerticalBarChart(monthlyChartEl, MONTH_LABELS_SHORT, monthCounts, { barColor: '#4183d7' });
+    }
+
+    function fetchAllProjectObservations() {
+      var perPage = 200;
+      var page = 1;
+      var allObservations = [];
+      var baseUrl = 'https://api.inaturalist.org/v1/observations?project_id=' + projectId + '&order=desc&order_by=created_at';
+
+      function fetchPage() {
+        var url = baseUrl + '&per_page=' + perPage + '&page=' + page;
+        return fetch(url)
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            var pageResults = Array.isArray(data.results) ? data.results : [];
+            allObservations = allObservations.concat(pageResults);
+
+            if (pageResults.length === perPage) {
+              page += 1;
+              return fetchPage();
+            }
+            return {
+              observations: allObservations,
+              totalRecords: Number(data.total_results || allObservations.length || 0)
+            };
+          });
+      }
+
+      return fetchPage();
+    }
+
+    function fetchProjectSpeciesTotal() {
+      var url = 'https://api.inaturalist.org/v1/observations/species_counts?project_id=' + projectId + '&per_page=1';
+      return fetch(url)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          return Number(data.total_results || 0);
+        })
+        .catch(function () {
+          return 0;
+        });
+    }
+
+    var totalsAnimationToken = 0;
+
+    function updateTotalsCards(adoptersTotal, recordsTotal, speciesTotal) {
+      var targetA = Number(adoptersTotal || 0);
+      var targetR = Number(recordsTotal || 0);
+      var targetS = Number(speciesTotal || 0);
+
+      if (targetA === 0 && targetR === 0 && targetS === 0) {
+        totalsAnimationToken += 1;
+        if (totalAdoptersEl) {
+          totalAdoptersEl.textContent = formatNumber(0);
+        }
+        if (totalRecordsEl) {
+          totalRecordsEl.textContent = formatNumber(0);
+        }
+        if (totalSpeciesEl) {
+          totalSpeciesEl.textContent = formatNumber(0);
+        }
+        return;
+      }
+
+      totalsAnimationToken += 1;
+      var token = totalsAnimationToken;
+      var durationMs = 1700;
+      var startTime = null;
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function tick(now) {
+        if (token !== totalsAnimationToken) {
+          return;
+        }
+        if (startTime === null) {
+          startTime = now;
+        }
+        var elapsed = now - startTime;
+        var t = Math.min(1, elapsed / durationMs);
+        var eased = easeOutCubic(t);
+
+        var currentA = Math.round(targetA * eased);
+        var currentR = Math.round(targetR * eased);
+        var currentS = Math.round(targetS * eased);
+
+        if (totalAdoptersEl) {
+          totalAdoptersEl.textContent = formatNumber(currentA);
+        }
+        if (totalRecordsEl) {
+          totalRecordsEl.textContent = formatNumber(currentR);
+        }
+        if (totalSpeciesEl) {
+          totalSpeciesEl.textContent = formatNumber(currentS);
+        }
+
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          if (token === totalsAnimationToken) {
+            if (totalAdoptersEl) {
+              totalAdoptersEl.textContent = formatNumber(targetA);
+            }
+            if (totalRecordsEl) {
+              totalRecordsEl.textContent = formatNumber(targetR);
+            }
+            if (totalSpeciesEl) {
+              totalSpeciesEl.textContent = formatNumber(targetS);
+            }
+          }
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    function fetchAllProjectObservers() {
+      var perPage = 200;
+      var page = 1;
+      var allObservers = [];
+      var baseUrl = 'https://api.inaturalist.org/v1/observations/observers?project_id=' + projectId;
+
+      function fetchPage() {
+        var url = baseUrl + '&per_page=' + perPage + '&page=' + page;
+        return fetch(url)
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            var pageResults = Array.isArray(data.results) ? data.results : [];
+            allObservers = allObservers.concat(pageResults);
+
+            if (pageResults.length === perPage) {
+              page += 1;
+              return fetchPage();
+            }
+            return allObservers;
+          });
+      }
+
+      return fetchPage();
+    }
+
+    function fetchUserMainRegion(userLogin) {
+      if (!userLogin) { return Promise.resolve('Unknown'); }
+
+      var url = 'https://api.inaturalist.org/v1/observations?project_id=' + projectId + '&user_login=' + encodeURIComponent(userLogin) + '&per_page=200&order=desc&order_by=created_at';
+      return fetch(url)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var results = Array.isArray(data.results) ? data.results : [];
+          return inferMainRegionFromObservations(results);
+        })
+        .catch(function () {
+          return 'Unknown';
+        });
+    }
+
+    function renderAllAdoptersTable(rows) {
+      if (!allAdoptersTableBodyEl) { return; }
+      if (!rows.length) {
+        allAdoptersTableBodyEl.innerHTML = '<tr><td colspan="5">No adopters found for this project.</td></tr>';
+        return;
+      }
+
+      var html = '';
+      for (var i = 0; i < rows.length; i += 1) {
+        var row = rows[i];
+        var dashboardUrl = 'http://127.0.0.1:4000/inaturalist-project-observers/?user=' + encodeURIComponent(row.login);
+        html += '<tr>' +
+          '<td>' + escapeHtml(row.displayName) + '</td>' +
+          '<td>' + formatNumber(row.recordCount) + '</td>' +
+          '<td>' + escapeHtml(row.milestone) + '</td>' +
+          '<td>' + escapeHtml(row.mainRegion) + '</td>' +
+          '<td><a href="' + dashboardUrl + '">Dashboard</a></td>' +
+          '</tr>';
+      }
+      allAdoptersTableBodyEl.innerHTML = html;
+    }
+
+    function loadAllAdoptersOverview() {
+      setAllAdoptersStatus('Loading adopters list...');
+
+      Promise.all([fetchAllProjectObservers(), fetchAllProjectObservations(), fetchProjectSpeciesTotal()])
+        .then(function (payload) {
+          var observers = payload[0];
+          var observationsPayload = payload[1];
+          var speciesTotal = payload[2];
+          var validObservers = [];
+          for (var i = 0; i < observers.length; i += 1) {
+            var observer = observers[i];
+            var user = observer && observer.user ? observer.user : null;
+            var login = user && user.login ? user.login : '';
+            if (!login) { continue; }
+            validObservers.push({
+              login: login,
+              displayName: user.name || login,
+              recordCount: Number(observer.observation_count || 0),
+              milestone: getLevel(Number(observer.observation_count || 0))
+            });
+          }
+
+          validObservers.sort(function (a, b) {
+            return b.recordCount - a.recordCount;
+          });
+
+          updateTotalsCards(validObservers.length, observationsPayload.totalRecords, speciesTotal);
+          renderProjectTimeCharts(observationsPayload.observations);
+
+          return Promise.all(validObservers.map(function (entry) {
+            return fetchUserMainRegion(entry.login).then(function (mainRegion) {
+              entry.mainRegion = mainRegion;
+              return entry;
+            });
+          }));
+        })
+        .then(function (rows) {
+          renderAllAdoptersTable(rows);
+          setAllAdoptersStatus('');
+        })
+        .catch(function (error) {
+          setAllAdoptersStatus('Could not load adopters list. Please try again later.');
+          updateTotalsCards(0, 0, 0);
+          renderProjectTimeCharts([]);
+          if (allAdoptersTableBodyEl) {
+            allAdoptersTableBodyEl.innerHTML = '<tr><td colspan="5">Could not load adopters list.</td></tr>';
+          }
+          console.error('All adopters overview fetch error:', error);
+        });
+    }
+
+    loadAllAdoptersOverview();
+  })();
+</script>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Footer -->
+
+<footer class="space--sm footer-2 bg--dark">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <span class="type--fine-print">
+
+                              &copy;<span class="update-year"></span> Centre of Marine Sciences \\ web developed by <a href="https://www.biodiversitydatascience.com" target="_blank" style="text-decoration: none;">biodiversityDataScience</a>
+                             <!--  <a class="type--fine-print" href="#">Privacy Policy</a> -->
+                            <!--     <a class="type--fine-print" href="#">Legal</a> -->
+
+                            <br>
+                            Funding from the Pew Charitable Trusts (USA), EU LIFE program, Biodiversa (EU), Euromarine and by various projects of the Foundation for Science and Technology (FCT).
+                          </div>
+
+                      </div>
+                  </div>
+              </footer>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Scripts -->
+
+        <script src="/assets/js/flickity.min.js"></script>
+        <script src="/assets/js/easypiechart.min.js"></script>
+        <script src="/assets/js/datepicker.js"></script>
+        <script src="/assets/js/lightbox.min.js"></script>
+        <script src="/assets/js/jquery.steps.min.js"></script>
+        <script src="/assets/js/smooth-scroll.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/read-more.min.js"></script>
+        <script src="/assets/js/pack-of-scripts.js"></script>
+
+    </body>
+</html>
+

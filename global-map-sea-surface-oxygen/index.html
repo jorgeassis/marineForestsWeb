@@ -1,0 +1,73 @@
+<p>Plotting spatial data is a common task in research, but this requires a set of technical / design tools that are not always available to all. Here we provide step-by-step instructions for creating a map representing global sea surface oxygen.</p>
+
+<p>The code provided can be used to map additional spatial information in the same raster format. The Robinson projection used is a good compromise for the problem of representing the entire globe as a flat image.</p>
+
+<p>First, you need a shapefile defining global landmasses and a raster file containing the oxygen conditions. These are available at:</p>
+
+<p><a target="_blank" href="https://github.com/jorgeassis/dataVisualization/tree/master/Projects/seaSurfaceOxygen/Data">https://github.com/jorgeassis/dataVisualization/tree/master/Projects/seaSurfaceOxygen/Data</a></p>
+
+<div style="padding: 20px" class="border-radius-05 bg-gray font-family-secondary font-small text-dark">
+
+# Set the working directory in R and load the packages.<br />
+setwd("Projects/seaSurfaceOxygen")<br />
+library(ggplot2)<br />
+library(raster)<br />
+library(rnaturalearth)<br />
+library(sf)<br />
+library(geosphere)<br />
+library(rgeos)<br /><br />
+
+# Choose the projection and load the spatial data.<br />
+The Robinson projection is a projection of the world that attempts to find a good compromise of showing the whole globe as a flat image.<br />
+projection &lt;- CRS("+proj=robin +over")<br />
+oxygenLayer &lt;- raster("Data/DissolvedMolecularOxygen.tif")<br />
+worldMap &lt;- shapefile("Data/LandMass Polygon.shp")<br /><br />
+
+# Generate a bounding box and clip spatial data.<br />
+bb &lt;- sf::st_union(sf::st_make_grid(
+  st_bbox(c(xmin = -180,
+            xmax = 180,
+            ymax = 90,
+            ymin = -90), crs = st_crs(4326)), n = 100))<br />
+bb &lt;- st_transform(bb, projection)<br />
+oxygenLayer &lt;- projectRaster(oxygenLayer, crs = projection)<br />
+oxygenLayer &lt;- mask(oxygenLayer, as(bb, "Spatial"))<br />
+oxygenLayer &lt;- as.data.frame(oxygenLayer,xy=TRUE,na.rm=T)<br />
+colnames(oxygenLayer) &lt;- c("Lon","Lat","Val")<br />
+worldMap &lt;- spTransform(worldMap, CRSobj = projection)<br />
+worldMap &lt;- gBuffer(worldMap, byid=TRUE, width=0.001)<br />
+worldMap &lt;- crop(worldMap, as(bb, "Spatial"))<br /><br />
+
+# 5. Define the theme for the final plot.<br />
+theme_map &lt;-
+  theme(
+    text = element_text(family = "Helvetica", color = "#22211d"),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.major = element_line(color = "black", size = 0.1),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "#FFFFFF", color = NA),
+    panel.background = element_rect(fill = "#FFFFFF", color = NA),
+    panel.border = element_blank(),
+    legend.background = element_rect(fill = "#FFFFFF", color = NA),
+    legend.position="bottom",
+    legend.box = "horizontal",
+    legend.margin=margin(0,0,0,0),
+    legend.box.margin=margin(-10,-10,-10,-10),
+    legend.key.height= unit(0.25, 'cm'),
+    legend.key.width= unit(0.75, 'cm') )<br /><br />
+
+# Define a color ramp for the oxygen gradient and plot the map.<br />
+myColors &lt;- c("#6FBBE8","#A1ECD8","#F6F9AB","#FCB46D","#B21414","#D278E4","#9914B3")<br />
+plot &lt;- ggplot() +
+  geom_tile(data = oxygenLayer, aes(x=Lon,y=Lat,fill=Val)) +
+  scale_fill_gradientn(guide = guide_legend(title="Sea surface dissolved oxygen [mmol.m3]", direction = "horizontal", title.position = "top", title.hjust = 0.5), colours=myColors, na.value='transparent') +
+  geom_polygon(data = worldMap, aes(x = long, y = lat, group = group), fill="#A1A1A1", colour = "#A1A1A1" , size=0.25 ) +
+  geom_sf(data = bb,fill=NA, colour = "white" , linetype='solid', size=2 ) +
+  theme_map<br /><br />
+plot
+
+</div>

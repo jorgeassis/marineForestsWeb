@@ -1018,6 +1018,23 @@ div[data-overlay] ul {
 .btn--primary-2:active {
   background: #e9525c;
 }
+
+.btn--primary-3,
+.btn--primary-3:visited {
+  background: #edf1ff;
+  border-color: #edf1ff;
+}
+.btn--primary-3 .btn__text,
+.btn--primary-3:visited .btn__text {
+  color: #000000;
+}
+.btn--primary-3:hover {
+  background: #edf1ff;
+}
+.btn--primary-3:active {
+  background: #edf1ff;
+}
+
 .btn--secondary {
   background: #fafafa;
   border-color: #fafafa;

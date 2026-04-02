@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R001XE93DG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R001XE93DG');
+</script>
+
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/leaflet.css" rel="stylesheet" />
+<link href="/assets/css/leaflet.fullscreen.css" rel="stylesheet" />
+
+<script src="/assets/js/leaflet.js"></script>
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/js/leaflet-providers.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
+
+</head>
+
+<body class=" ">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
+
+<div id="loadingPanel"></div>
+
+<style>
+
+#loadingPanel{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:9999;
+    background: #fff url("/assets/img/loading.gif") no-repeat center center
+}
+
+</style>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<a id="start"></a>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="nav-container ">
+
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="/assets/img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="/assets/img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="/">
+                            <img class="logo logo-dark" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                            <img class="logo logo-light" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+
+                            <li>
+                                <a href="/distribution">Distribution</a>
+                            </li>
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Diversity</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-3 col-md-4">
+                                                <ul class="menu-vertical">
+                                                    <!-- <li class="dropdown">
+                                                      <span class="dropdown__trigger color--black" >Species richness</span>
+                                                        <div class="dropdown__container">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="dropdown__content col-lg-2">
+                                                                        <ul class="menu-vertical">
+                                                                          <li>
+                                                                                <a href="species.html">
+                                                                                    Distribution records
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="species.html">
+                                                                                    Physiology
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="species.html">
+                                                                                    Populations
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/species-richness-marine-forests">Species richness</a>
+                                                  </li>
+
+                                                    <li>
+                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
+                                                    </li>
+
+                                                    <li>
+                                                      <a href="/future-climate-impacts-on-marine-forests">
+                                                        <span class="dropdown__trigger">Future climate-driven impacts</span>
+                                                      </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/citizen-science">Citizen science</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+                      <!--  <a class="btn btn--sm type--uppercase" href="/data-catalogue">
+                            <span class="btn__text">
+                                Data catalogue
+                            </span>
+                        </a>-->
+                        <a class="btn btn--sm btn--primary-3 type--uppercase" href="/restoreseagrass">
+                            <span class="btn__text">
+                                LIFE-RESTORESEAGRASS
+                            </span>
+                        </a>
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt-marine-forest">
+                            <span class="btn__text">
+                                Adopt a forest
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Top message -->
+
+<section class="container text-center">
+        <div>
+            <div class="col-md-8">
+
+                <h2 class="color--dark">
+                    Data catalogue
+                </h2>
+                <p class="lead top-spacer-10">
+                    Open-source data covering the global distribution and diversity of Marine Forests.
+                </p>
+
+            </div>
+        </div>
+
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Main contents -->
+
+<section class="container text-center hide-on-mobile" style="padding: 0px">
+
+  <div class="row justify-content-center top-spacer-20">
+
+            <div class="col-md-8">
+              <a target="_blank" href="https://www.gbif.org/occurrence/search?taxon_key=560&taxon_key=1182&taxon_key=593&taxon_key=3725&taxon_key=7680&taxon_key=2864092&taxon_key=2864050&taxon_key=2866030&taxon_key=2864083&dataset_key=8b1d38b0-a8bf-43b1-9ac9-d3198e694769">
+                <div class="feature feature--featured feature-5 boxed boxed--lg boxed--border">
+                    <i class="icon icon-Map2 icon--lg"></i>
+                    <div class="feature__body text-left">
+                        <h5>Literature and herbaria records</h5>
+                        <span style="font-weight: normal;">
+                            Fine-tuned dataset of marine forests compiled from literature and herbaria, with dereplicated occurrence records, taxonomically standardized, and considering important physiological and biogeographical traits.
+                        </span>
+                    </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-8">
+              <a target="_blank" href="https://www.gbif.org/occurrence/search?taxon_key=560&taxon_key=1182&taxon_key=593&taxon_key=3725&taxon_key=7680&taxon_key=2864092&taxon_key=2864050&taxon_key=2866030&taxon_key=2864083&taxon_key=705&taxon_key=1437&taxon_key=831&taxon_key=1242&taxon_key=1243&taxon_key=710&taxon_key=1433&taxon_key=838&taxon_key=712&taxon_key=6180736&dataset_key=50c9509d-22c7-4a22-a47d-8c48425ef4a7">
+                <div class="feature feature--featured feature-5 boxed boxed--lg boxed--border">
+                    <i class="icon icon-Superman icon--lg"></i>
+                    <div class="feature__body text-left">
+                        <h5>iNaturalist records</h5>
+                        <span style="font-weight: normal;">
+                            Distribution records of marine forests compiled from iNaturalist.org, an online social network of people sharing biodiversity information to help each other learn about nature.
+                        </span>
+                    </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-8">
+                <a href="">
+                  <div class="feature feature--featured feature-5 boxed boxed--lg boxed--border">
+                  <span class="label">New</span>
+                    <i class="icon icon-DNA icon--lg"></i>
+                    <div class="feature__body text-left">
+                        <h5>Genetic diversity data</h5>
+                        <span style="font-weight: normal;">
+                            Population genetic diversity and differentiation data of marine forests compiled from the available literature.
+                        </span>
+                    </div>
+                </div>
+              </a>
+            </div>
+
+
+            <div class="col-md-6">
+            </div>
+
+    </div>
+
+    <div class="row justify-content-around top-spacer-100">
+      <div class="col-md-10">
+
+      </div>
+    </div>
+
+
+</section>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Footer -->
+
+<footer class="space--sm footer-2 bg--dark">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <span class="type--fine-print">
+
+                              &copy;<span class="update-year"></span> Centre of Marine Sciences \\ web developed by <a href="https://www.biodiversitydatascience.com" target="_blank" style="text-decoration: none;">biodiversityDataScience</a>
+                             <!--  <a class="type--fine-print" href="#">Privacy Policy</a> -->
+                            <!--     <a class="type--fine-print" href="#">Legal</a> -->
+
+                            <br>
+                            Funding from the Pew Charitable Trusts (USA), EU LIFE program, Biodiversa (EU), Euromarine and by various projects of the Foundation for Science and Technology (FCT).
+                          </div>
+
+                      </div>
+                  </div>
+              </footer>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Scripts -->
+
+        <script src="/assets/js/flickity.min.js"></script>
+        <script src="/assets/js/easypiechart.min.js"></script>
+        <script src="/assets/js/datepicker.js"></script>
+        <script src="/assets/js/lightbox.min.js"></script>
+        <script src="/assets/js/jquery.steps.min.js"></script>
+        <script src="/assets/js/smooth-scroll.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/read-more.min.js"></script>
+        <script src="/assets/js/pack-of-scripts.js"></script>
+
+    </body>
+</html>
+
