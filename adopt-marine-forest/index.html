@@ -1030,7 +1030,7 @@ const fetchData = async url => {
       var html = '';
       for (var i = 0; i < rows.length; i += 1) {
         var row = rows[i];
-        var dashboardUrl = 'https://www.inaturalist.org/inaturalist-project-observers/?user=' + encodeURIComponent(row.login);
+        var dashboardUrl = 'https://www.marineforests.com/inaturalist-project-observers/?user=' + encodeURIComponent(row.login);
         html += '<tr>' +
           '<td>' + escapeHtml(row.displayName) + '</td>' +
           '<td>' + formatNumber(row.recordCount) + '</td>' +
