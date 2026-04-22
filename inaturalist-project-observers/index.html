@@ -118,46 +118,20 @@ const fetchData = async url => {
                     <div class="bar__module">
                         <ul class="menu-horizontal text-left">
 
-                            <li>
-                                <a href="/distribution">Distribution</a>
-                            </li>
-
+        
                             <li class="dropdown">
-                                <span class="dropdown__trigger color--black" style="color: #000;">Diversity</span> <!-- type--uppercase -->
+                                <span class="dropdown__trigger color--black" style="color: #000;">Distribution</span> <!-- type--uppercase -->
                                 <div class="dropdown__container">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="dropdown__content col-lg-3 col-md-4">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
                                                 <ul class="menu-vertical">
-                                                    <!-- <li class="dropdown">
-                                                      <span class="dropdown__trigger color--black" >Species richness</span>
-                                                        <div class="dropdown__container">
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="dropdown__content col-lg-2">
-                                                                        <ul class="menu-vertical">
-                                                                          <li>
-                                                                                <a href="species.html">
-                                                                                    Distribution records
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="species.html">
-                                                                                    Physiology
-                                                                                </a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="species.html">
-                                                                                    Populations
-                                                                                </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
+                           
+                                                    <li>
+                                                        <a href="/distribution">Distribution records</a>
                                                     </li>
 
+                                                    <hr style="margin-top: 5px; margin-bottom: 7px; border: none; height: 1px; background: #b5b5b5; background: repeating-linear-gradient(90deg,#b5b5b5,#b5b5b5 3px,transparent 3px,transparent 6px);">
                                                     <li>
                                                     <a href="/species-richness-marine-forests">Species richness</a>
                                                   </li>
@@ -168,9 +142,33 @@ const fetchData = async url => {
 
                                                     <li>
                                                       <a href="/future-climate-impacts-on-marine-forests">
-                                                        <span class="dropdown__trigger">Future climate-driven impacts</span>
+                                                        <span class="dropdown__trigger">Future impacts</span>
                                                       </a>
                                                     </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Project links</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
+                                                <ul class="menu-vertical">
+                                                   
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/restoreseagrass">Restoreseagrass</a>
+                                                  </li>
+
+        
                                                 </ul>
                                             </div>
                                         </div>
@@ -190,16 +188,7 @@ const fetchData = async url => {
                 </div>
                 <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
                     <div class="bar__module">
-                      <!--  <a class="btn btn--sm type--uppercase" href="/data-catalogue">
-                            <span class="btn__text">
-                                Data catalogue
-                            </span>
-                        </a>-->
-                        <a class="btn btn--sm btn--primary-3 type--uppercase" href="/restoreseagrass">
-                            <span class="btn__text">
-                                LIFE-RESTORESEAGRASS
-                            </span>
-                        </a>
+              
                         <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt-marine-forest">
                             <span class="btn__text">
                                 Adopt a forest
@@ -223,7 +212,7 @@ const fetchData = async url => {
 <section class="container text-center">
   <div>
     <div class="col-md-8">
-      <h2 class="color--dark"><span>Adopted marine forest at </span><span id="dashboard-region">Adopt a marine forest</span></h2>
+      <h2 class="color--dark" id="dashboard-adoption-heading"></h2>
       <p class="lead top-spacer-10">
         <span id="adopter-summary">Loading adopter summary...</span>
       </p>
@@ -348,7 +337,7 @@ const fetchData = async url => {
 <section class="container text-center top-spacer-30">
   <div class="row justify-content-left">
     <div class="col-md-10">
-      <h4>Pictures from this adopter</h4>
+      <h4>Pictures from <span id="pictures-section-username"></span></h4>
     </div>
   </div>
   <div class="row justify-content-center top-spacer-20">
@@ -362,26 +351,41 @@ const fetchData = async url => {
 
 <script>
   (function () {
-    var projectId = 'adopt-a-marine_forest_portugal';
+    var adoptionSearchQuery = '#adoptmf';
     var params = new URLSearchParams(window.location.search);
     var userLogin = params.get('user');
-    var normalizedUserLogin = userLogin ? userLogin.trim() : '';
-    var observationsUrl = 'https://api.inaturalist.org/v1/observations?project_id=' + projectId + '&user_login=' + encodeURIComponent(normalizedUserLogin) + '&order=desc&order_by=created_at&per_page=200';
+    var normalizedUserLogin = userLogin ? userLogin.trim().replace(/^@+/, '') : '';
+    var adoptionQParam = encodeURIComponent(adoptionSearchQuery);
+    var observationsBaseUrl =
+      'https://api.inaturalist.org/v2/observations' +
+      '?q=' + adoptionQParam +
+      '&order=desc&order_by=created_at&per_page=200&fields=all';
+    var observersLookupUrl =
+      'https://api.inaturalist.org/v2/observations/observers' +
+      '?q=' + adoptionQParam + '&fields=all&per_page=200';
 
     var mapStatusEl = document.getElementById('adopters-map-status');
     var mapEl = document.getElementById('adopters-map');
     var totalRecordsEl = document.getElementById('adopters-total-records');
     var tableBodyEl = document.getElementById('adopters-table-body');
     var adopterSummaryEl = document.getElementById('adopter-summary');
-    var dashboardRegionEl = document.getElementById('dashboard-region');
+    var dashboardAdoptionHeadingEl = document.getElementById('dashboard-adoption-heading');
+    var siteClusterBufferKm = 50;
     var currentMilestoneEl = document.getElementById('current-milestone');
     var userRecordImagesEl = document.getElementById('user-record-images');
+    var picturesSectionUsernameEl = document.getElementById('pictures-section-username');
     var yearlyChartEl = document.getElementById('records-per-year-chart');
     var monthlyChartEl = document.getElementById('records-per-month-chart');
 
     function setMapStatus(message) {
       if (mapStatusEl) {
         mapStatusEl.textContent = message;
+      }
+    }
+
+    function setPicturesSectionUsername(login) {
+      if (picturesSectionUsernameEl) {
+        picturesSectionUsernameEl.textContent = login ? String(login).trim() : '';
       }
     }
 
@@ -394,6 +398,150 @@ const fetchData = async url => {
       var cleaned = String(login).trim().replace(/^adopt_/i, '');
       var firstPart = cleaned.split('_')[0];
       return firstPart || cleaned;
+    }
+
+    function getObservationLatLng(item) {
+      if (!item) { return null; }
+      if (item.geojson && item.geojson.coordinates && item.geojson.coordinates.length >= 2) {
+        var latG = parseFloat(item.geojson.coordinates[1], 10);
+        var lngG = parseFloat(item.geojson.coordinates[0], 10);
+        if (isFinite(latG) && isFinite(lngG)) {
+          return { lat: latG, lng: lngG };
+        }
+      }
+      var lat = parseFloat(item.latitude, 10);
+      var lng = parseFloat(item.longitude, 10);
+      if (isFinite(lat) && isFinite(lng)) {
+        return { lat: lat, lng: lng };
+      }
+      return null;
+    }
+
+    function haversineKm(lat1, lng1, lat2, lng2) {
+      var toRad = Math.PI / 180;
+      var dLat = (lat2 - lat1) * toRad;
+      var dLng = (lng2 - lng1) * toRad;
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+      a = Math.min(1, Math.max(0, a));
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return 6371 * c;
+    }
+
+    function clusterObservationsByDistance(observations, bufferKm) {
+      bufferKm = Number(bufferKm);
+      if (!isFinite(bufferKm) || bufferKm < 0) {
+        bufferKm = 1;
+      }
+      var points = [];
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        if (getObservationLatLng(observations[i])) {
+          points.push(observations[i]);
+        }
+      }
+
+      var n = points.length;
+      if (n === 0) {
+        return [];
+      }
+
+      var parent = [];
+      for (i = 0; i < n; i += 1) {
+        parent[i] = i;
+      }
+
+      function findSet(x) {
+        if (parent[x] !== x) {
+          parent[x] = findSet(parent[x]);
+        }
+        return parent[x];
+      }
+
+      function unionSets(a, b) {
+        var ra = findSet(a);
+        var rb = findSet(b);
+        if (ra !== rb) {
+          parent[rb] = ra;
+        }
+      }
+
+      var j;
+      for (i = 0; i < n; i += 1) {
+        var pi = getObservationLatLng(points[i]);
+        for (j = i + 1; j < n; j += 1) {
+          var pj = getObservationLatLng(points[j]);
+          if (haversineKm(pi.lat, pi.lng, pj.lat, pj.lng) <= bufferKm) {
+            unionSets(i, j);
+          }
+        }
+      }
+
+      var rootToMembers = {};
+      for (i = 0; i < n; i += 1) {
+        var root = findSet(i);
+        if (!rootToMembers[root]) {
+          rootToMembers[root] = [];
+        }
+        rootToMembers[root].push(points[i]);
+      }
+
+      var clusters = [];
+      var roots = Object.keys(rootToMembers);
+      for (i = 0; i < roots.length; i += 1) {
+        var members = rootToMembers[roots[i]];
+        var sumLat = 0;
+        var sumLng = 0;
+        var validCount = 0;
+        for (j = 0; j < members.length; j += 1) {
+          var mp = getObservationLatLng(members[j]);
+          if (!mp) { continue; }
+          sumLat += mp.lat;
+          sumLng += mp.lng;
+          validCount += 1;
+        }
+        if (!validCount) { continue; }
+        clusters.push({
+          lat: sumLat / validCount,
+          lng: sumLng / validCount,
+          observations: members
+        });
+      }
+
+      return clusters;
+    }
+
+    function getMarineForestSites(observations) {
+      return clusterObservationsByDistance(observations, siteClusterBufferKm);
+    }
+
+    function countMarineForestSites(observations) {
+      return getMarineForestSites(observations).length;
+    }
+
+    function getDashboardDisplayName(observations, login) {
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var obs = observations[i];
+        var user = obs && obs.user ? obs.user : null;
+        if (user && user.name && String(user.name).trim()) {
+          return String(user.name).trim();
+        }
+        if (user && user.login && String(user.login).trim()) {
+          return String(user.login).trim();
+        }
+      }
+      return formatAdopterName(login);
+    }
+
+    function updateDashboardAdoptionHeading(observations, login) {
+      if (!dashboardAdoptionHeadingEl) { return; }
+      var displayName = getDashboardDisplayName(observations, login);
+      var siteCount = countMarineForestSites(observations);
+      var forestLabel = siteCount === 1 ? 'marine forest' : 'marine forests';
+      dashboardAdoptionHeadingEl.textContent =
+        displayName + ' adopted ' + formatNumber(siteCount) + ' ' + forestLabel + '.';
     }
 
     function getObservationDate(observation) {
@@ -416,28 +564,35 @@ const fetchData = async url => {
       return d.getUTCDate() + ' ' + monthShort[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
     }
 
-    function inferMainSpecies(observations) {
-      if (!observations || !observations.length) { return 'marine forests'; }
-      var speciesCounts = {};
+    function countDistinctSpecies(observations) {
+      if (!observations || !observations.length) { return 0; }
+      var names = {};
       var i;
       for (i = 0; i < observations.length; i += 1) {
         var obs = observations[i];
-        var species = (obs && obs.taxon && obs.taxon.name) ? String(obs.taxon.name).trim() : '';
-        if (!species) { continue; }
-        speciesCounts[species] = (speciesCounts[species] || 0) + 1;
+        var sp = (obs && obs.taxon && obs.taxon.name) ? String(obs.taxon.name).trim() : '';
+        if (!sp) { continue; }
+        names[sp] = true;
       }
-      var speciesList = Object.keys(speciesCounts);
-      if (!speciesList.length) { return 'marine forests'; }
-      var mainSpecies = speciesList[0];
-      var maxCount = speciesCounts[mainSpecies];
-      for (i = 1; i < speciesList.length; i += 1) {
-        var candidate = speciesList[i];
-        if (speciesCounts[candidate] > maxCount) {
-          mainSpecies = candidate;
-          maxCount = speciesCounts[candidate];
-        }
+      return Object.keys(names).length;
+    }
+
+    function formatAllSpecies(observations) {
+      if (!observations || !observations.length) { return 'marine forests'; }
+      var names = {};
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var obs = observations[i];
+        var sp = (obs && obs.taxon && obs.taxon.name) ? String(obs.taxon.name).trim() : '';
+        if (!sp) { continue; }
+        names[sp] = true;
       }
-      return mainSpecies;
+      var list = Object.keys(names).sort();
+      if (!list.length) { return 'marine forests'; }
+      if (list.length === 1) { return list[0]; }
+      if (list.length === 2) { return list[0] + ' and ' + list[1]; }
+      var last = list.pop();
+      return list.join(', ') + ', and ' + last;
     }
 
     function inferFirstMonitoringDate(observations) {
@@ -462,17 +617,19 @@ const fetchData = async url => {
     function updateAdopterSummary(login, totalRecords, observations) {
       if (!adopterSummaryEl) { return; }
       var adopterName = formatAdopterName(login);
-      var species = inferMainSpecies(observations);
+      var allSpecies = formatAllSpecies(observations);
+      var distinctSpecies = countDistinctSpecies(observations);
       var firstDate = inferFirstMonitoringDate(observations);
       var datePart = firstDate || 'unknown date';
       var count = Number(totalRecords || 0);
       var countText = formatNumber(count);
       var timeWord = count === 1 ? 'time' : 'times';
+      var forestWord = distinctSpecies === 1 ? 'forest' : 'forests';
 
       adopterSummaryEl.innerHTML =
         'Since ' + datePart + ', ' + adopterName +
-        ' adopter has monitored <span style="color:#e9525c;"><b>' + countText + ' ' + timeWord + '</b></span>' +
-        ' the forest of ' + species + '.';
+        ' has monitored <span style="color:#e9525c;"><b>' + countText + ' ' + timeWord + '</b></span>' +
+        ' the ' + forestWord + ' of ' + allSpecies + '.';
     }
 
     function getLevel(recordCount) {
@@ -759,18 +916,21 @@ const fetchData = async url => {
         return;
       }
 
+      var sites = getMarineForestSites(results);
       var points = [];
-      for (var i = 0; i < results.length; i += 1) {
-        var item = results[i];
-        if (!item || !item.geojson || !item.geojson.coordinates) { continue; }
-        var lat = item.geojson.coordinates[1];
-        var lng = item.geojson.coordinates[0];
-        if (typeof lat !== 'number' || typeof lng !== 'number') { continue; }
-        points.push(item);
+      for (var i = 0; i < sites.length; i += 1) {
+        var k;
+        for (k = 0; k < sites[i].observations.length; k += 1) {
+          points.push(sites[i].observations[k]);
+        }
       }
 
       if (!points.length) {
         setMapStatus('No observations with coordinates found.');
+        return;
+      }
+      if (!sites.length) {
+        setMapStatus('No mappable sites found.');
         return;
       }
 
@@ -788,8 +948,9 @@ const fetchData = async url => {
       var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
 
       var leafletMarkers = [];
-      for (var j = 0; j < points.length; j += 1) {
-        var obs = points[j];
+      for (var j = 0; j < sites.length; j += 1) {
+        var site = sites[j];
+        var obs = site.observations[0];
         var obsUrl = 'https://www.inaturalist.org/observations/' + obs.id;
         var taxonName = (obs.taxon && obs.taxon.name) ? obs.taxon.name : 'Marine Forests';
         var observerName = (obs.user && (obs.user.name || obs.user.login)) ? (obs.user.name || obs.user.login) : 'Citizen scientist';
@@ -800,7 +961,7 @@ const fetchData = async url => {
         var recordImage = (obs.observation_photos && obs.observation_photos.length && obs.observation_photos[0].photo && obs.observation_photos[0].photo.url)
           ? obs.observation_photos[0].photo.url
           : '/assets/img/main_header.jpg';
-        var marker = L.marker([obs.geojson.coordinates[1], obs.geojson.coordinates[0]], { icon: greenIcon }).addTo(map);
+        var marker = L.marker([site.lat, site.lng], { icon: greenIcon }).addTo(map);
         marker.bindPopup(
           '<div style="width:300px; height: 110px">' +
             '<div style="width:120px; float: left">' +
@@ -813,10 +974,10 @@ const fetchData = async url => {
                 '<span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + taxonName.substring(0, 18) + '</i></strong></span>' +
               '</div>' +
               '<div style="margin-bottom: 1px; width: 100%"><span style="font-size: 1em">Adopted site</span></div>' +
-              '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + observedDate + '</span></div>' +
+              '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + site.observations.length + ' records in this ' + siteClusterBufferKm + ' km site</span></div>' +
               '<div style="width: 100%; margin-top: 10px">' +
                 '<div class="thumbnail2" style="margin-right: 7px"><a href="' + observerUrl + '" target="_blank"><img src="' + observerIcon + '" alt="View profile" /></a></div>' +
-                '<div style="padding-top: 24px;"><a href="' + obsUrl + '" style="color: #666666; text-decoration: none">' + observerName.substring(0, 17) + '</a></div>' +
+                '<div style="padding-top: 24px;"><a href="' + obsUrl + '" style="color: #666666; text-decoration: none">' + observerName.substring(0, 17) + ' · ' + observedDate + '</a></div>' +
               '</div>' +
             '</div>' +
           '</div>'
@@ -829,14 +990,89 @@ const fetchData = async url => {
       var fittedZoom = map.getZoom();
       map.setZoom(Math.max(map.getMinZoom(), fittedZoom - 7));
       map.scrollWheelZoom.disable();
-      map.dragging.disable();
-      setMapStatus('Showing ' + formatNumber(leafletMarkers.length) + ' records on the map for ' + normalizedUserLogin + '.');
+      setMapStatus(
+        'Showing ' + formatNumber(sites.length) + ' sites from ' +
+        formatNumber(points.length) + ' records (' + siteClusterBufferKm + ' km clustering) for ' + normalizedUserLogin + '.'
+      );
+    }
+
+    function fetchObservationsForLogin(login) {
+      var safeLogin = (login || '').trim();
+      if (!safeLogin) {
+        return Promise.resolve({ results: [], total_results: 0 });
+      }
+      var perPage = 200;
+      var page = 1;
+      var allObservations = [];
+
+      function fetchPage() {
+        var url =
+          observationsBaseUrl +
+          '&user_login=' + encodeURIComponent(safeLogin) +
+          '&page=' + page;
+        return fetch(url)
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            data = data || {};
+            var pageResults = Array.isArray(data.results) ? data.results : [];
+            allObservations = allObservations.concat(pageResults);
+            var totalResults = Number(data.total_results || 0);
+            var more =
+              pageResults.length === perPage &&
+              (totalResults === 0 || allObservations.length < totalResults);
+            if (more) {
+              page += 1;
+              return fetchPage();
+            }
+            return {
+              results: allObservations,
+              total_results: totalResults || allObservations.length
+            };
+          });
+      }
+
+      return fetchPage();
+    }
+
+    function resolveLoginFromObservers(rawUserValue) {
+      var target = String(rawUserValue || '').trim().replace(/^@+/, '').toLowerCase();
+      if (!target) { return Promise.resolve(''); }
+
+      return fetch(observersLookupUrl)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var results = Array.isArray(data.results) ? data.results : [];
+          var i;
+          for (i = 0; i < results.length; i += 1) {
+            var user = results[i] && results[i].user ? results[i].user : null;
+            var login = user && user.login ? String(user.login).trim() : '';
+            if (login && login.toLowerCase() === target) {
+              return login;
+            }
+          }
+          for (i = 0; i < results.length; i += 1) {
+            var candidateUser = results[i] && results[i].user ? results[i].user : null;
+            var candidateLogin = candidateUser && candidateUser.login ? String(candidateUser.login).trim() : '';
+            var candidateName = candidateUser && candidateUser.name ? String(candidateUser.name).trim() : '';
+            if (candidateName && candidateName.toLowerCase() === target) {
+              return candidateLogin;
+            }
+          }
+          return '';
+        })
+        .catch(function () {
+          return '';
+        });
     }
 
     updateAdopterSummary(normalizedUserLogin, 0, []);
 
     if (!normalizedUserLogin) {
       setMapStatus('Please provide a user login in the URL, for example: ?user=marineforests');
+      if (dashboardAdoptionHeadingEl) {
+        dashboardAdoptionHeadingEl.textContent = '';
+      }
+      setPicturesSectionUsername('');
       if (tableBodyEl) {
         tableBodyEl.innerHTML = '<tr><td colspan="3">Missing parameter: add ?user=<iNaturalist login> to the URL.</td></tr>';
       }
@@ -853,10 +1089,37 @@ const fetchData = async url => {
       return;
     }
 
-    fetch(observationsUrl)
-      .then(function (res) { return res.json(); })
+    fetchObservationsForLogin(normalizedUserLogin)
       .then(function (observationsData) {
         observationsData = observationsData || {};
+        var observations = Array.isArray(observationsData.results) ? observationsData.results : [];
+        var totalRecords = Number(observationsData.total_results || observations.length || 0);
+
+        if (totalRecords > 0) {
+          return {
+            login: normalizedUserLogin,
+            observationsData: observationsData
+          };
+        }
+
+        return resolveLoginFromObservers(normalizedUserLogin).then(function (resolvedLogin) {
+          if (!resolvedLogin || resolvedLogin.toLowerCase() === normalizedUserLogin.toLowerCase()) {
+            return {
+              login: normalizedUserLogin,
+              observationsData: observationsData
+            };
+          }
+          return fetchObservationsForLogin(resolvedLogin).then(function (resolvedData) {
+            normalizedUserLogin = resolvedLogin;
+            return {
+              login: resolvedLogin,
+              observationsData: resolvedData || {}
+            };
+          });
+        });
+      })
+      .then(function (payload) {
+        var observationsData = payload && payload.observationsData ? payload.observationsData : {};
         var observations = Array.isArray(observationsData.results) ? observationsData.results : [];
         var totalRecords = Number(observationsData.total_results || observations.length || 0);
 
@@ -865,10 +1128,8 @@ const fetchData = async url => {
         }
         updateAdopterSummary(normalizedUserLogin, totalRecords, observations);
 
-        var mainRegion = inferMainRegionFromObservations(observations);
-        if (dashboardRegionEl) {
-          dashboardRegionEl.textContent = mainRegion || 'Adopt a marine forest';
-        }
+        updateDashboardAdoptionHeading(observations, normalizedUserLogin);
+        setPicturesSectionUsername(normalizedUserLogin);
 
         renderMap(observations);
         updateCurrentMilestone(totalRecords);
@@ -888,6 +1149,11 @@ const fetchData = async url => {
           userRecordImagesEl.innerHTML = '<div class="col-md-12">Could not load record images.</div>';
         }
         updateAdopterSummary(normalizedUserLogin, 0, []);
+        if (dashboardAdoptionHeadingEl) {
+          dashboardAdoptionHeadingEl.textContent =
+            getDashboardDisplayName([], normalizedUserLogin) + ' adopted ' + formatNumber(0) + ' marine forests.';
+        }
+        setPicturesSectionUsername(normalizedUserLogin);
         drawEmptyTimeCharts();
         console.error('Adopter personal dashboard fetch error:', error);
       });
