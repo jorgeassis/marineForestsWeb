@@ -383,9 +383,24 @@ const fetchData = async url => {
       }
     }
 
+    function formatNameFromUnderscorePattern(value) {
+      var cleaned = String(value || '').trim();
+      if (!cleaned) { return ''; }
+      try {
+        cleaned = decodeURIComponent(cleaned);
+      } catch (e) {}
+      var parts = cleaned.split('_').filter(function (part) {
+        return String(part || '').trim();
+      });
+      if (parts.length >= 3) {
+        return parts[1];
+      }
+      return cleaned;
+    }
+
     function setPicturesSectionUsername(login) {
       if (picturesSectionUsernameEl) {
-        picturesSectionUsernameEl.textContent = login ? String(login).trim() : '';
+        picturesSectionUsernameEl.textContent = formatNameFromUnderscorePattern(login);
       }
     }
 
@@ -395,9 +410,7 @@ const fetchData = async url => {
 
     function formatAdopterName(login) {
       if (!login) { return 'This adopter'; }
-      var cleaned = String(login).trim().replace(/^adopt_/i, '');
-      var firstPart = cleaned.split('_')[0];
-      return firstPart || cleaned;
+      return formatNameFromUnderscorePattern(login);
     }
 
     function getObservationLatLng(item) {
@@ -526,10 +539,10 @@ const fetchData = async url => {
         var obs = observations[i];
         var user = obs && obs.user ? obs.user : null;
         if (user && user.name && String(user.name).trim()) {
-          return String(user.name).trim();
+          return formatNameFromUnderscorePattern(user.name);
         }
         if (user && user.login && String(user.login).trim()) {
-          return String(user.login).trim();
+          return formatNameFromUnderscorePattern(user.login);
         }
       }
       return formatAdopterName(login);
@@ -953,7 +966,9 @@ const fetchData = async url => {
         var obs = site.observations[0];
         var obsUrl = 'https://www.inaturalist.org/observations/' + obs.id;
         var taxonName = (obs.taxon && obs.taxon.name) ? obs.taxon.name : 'Marine Forests';
-        var observerName = (obs.user && (obs.user.name || obs.user.login)) ? (obs.user.name || obs.user.login) : 'Citizen scientist';
+        var observerName = (obs.user && (obs.user.name || obs.user.login))
+          ? formatNameFromUnderscorePattern(obs.user.name || obs.user.login)
+          : 'Citizen scientist';
         var observedDate = (obs.observed_on_details && obs.observed_on_details.date) ? obs.observed_on_details.date : 'Marine Forests';
         var observerLogin = (obs.user && obs.user.login) ? obs.user.login : '';
         var observerUrl = observerLogin ? ('https://www.inaturalist.org/people/' + observerLogin) : obsUrl;
@@ -992,7 +1007,7 @@ const fetchData = async url => {
       map.scrollWheelZoom.disable();
       setMapStatus(
         'Showing ' + formatNumber(sites.length) + ' sites from ' +
-        formatNumber(points.length) + ' records (' + siteClusterBufferKm + ' km clustering) for ' + normalizedUserLogin + '.'
+        formatNumber(points.length) + ' records (' + siteClusterBufferKm + ' km clustering) for ' + formatNameFromUnderscorePattern(normalizedUserLogin) + '.'
       );
     }
 
@@ -1138,7 +1153,7 @@ const fetchData = async url => {
         renderRecordImages(observations);
       })
       .catch(function (error) {
-        setMapStatus('Could not load adopter data for ' + normalizedUserLogin + '. Please try again later.');
+        setMapStatus('Could not load adopter data for ' + formatNameFromUnderscorePattern(normalizedUserLogin) + '. Please try again later.');
         if (tableBodyEl) {
           tableBodyEl.innerHTML = '<tr><td colspan="3">Could not load adopter data.</td></tr>';
         }

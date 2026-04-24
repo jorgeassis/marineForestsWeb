@@ -563,7 +563,7 @@ const fetchData = async url => {
           var lng = parseFloat(item.geojson.coordinates[0], 10);
           if (!isFinite(lat) || !isFinite(lng)) { continue; }
           var date = item.observed_on_details && item.observed_on_details.date ? item.observed_on_details.date : 'Marine Forests';
-          var name = item.user.name || item.user.login || 'Citizen scientist';
+          var name = formatNameFromUnderscorePattern(item.user.name || item.user.login || 'Citizen scientist');
           var imageUser = item.user.icon || '/assets/img/user-icon.jpg';
           var userUrl = 'https://www.inaturalist.org/people/' + item.user.login;
           var image = item.observation_photos[0].photo.url;
@@ -709,6 +709,21 @@ const fetchData = async url => {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
+    }
+
+    function formatNameFromUnderscorePattern(value) {
+      var cleaned = String(value || '').trim();
+      if (!cleaned) { return ''; }
+      try {
+        cleaned = decodeURIComponent(cleaned);
+      } catch (e) {}
+      var parts = cleaned.split('_').filter(function (part) {
+        return String(part || '').trim();
+      });
+      if (parts.length >= 3) {
+        return parts[1];
+      }
+      return cleaned;
     }
 
     function toCityCountry(placeGuess) {
@@ -1282,7 +1297,7 @@ const fetchData = async url => {
             if (!login) { continue; }
             validObservers.push({
               login: login,
-              displayName: user.name || login,
+              displayName: formatNameFromUnderscorePattern(user.name || login),
               recordCount: Number(observer.observation_count || 0),
               milestone: getLevel(Number(observer.observation_count || 0))
             });
