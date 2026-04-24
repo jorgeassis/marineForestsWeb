@@ -189,9 +189,9 @@ const fetchData = async url => {
                 <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
                     <div class="bar__module">
               
-                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt-marine-forest">
-                            <span class="btn__text">
-                                Adopt a forest
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt">
+                             <span class="btn__text">
+                                Adopt
                             </span>
                         </a>
                     </div>
@@ -442,6 +442,13 @@ const fetchData = async url => {
       return 6371 * c;
     }
 
+    function getObservationSpeciesName(item) {
+      var rawName = (item && item.taxon && item.taxon.name)
+        ? String(item.taxon.name).trim().toLowerCase()
+        : '';
+      return rawName;
+    }
+
     function clusterObservationsByDistance(observations, bufferKm) {
       bufferKm = Number(bufferKm);
       if (!isFinite(bufferKm) || bufferKm < 0) {
@@ -483,9 +490,16 @@ const fetchData = async url => {
       var j;
       for (i = 0; i < n; i += 1) {
         var pi = getObservationLatLng(points[i]);
+        var speciesI = getObservationSpeciesName(points[i]);
         for (j = i + 1; j < n; j += 1) {
           var pj = getObservationLatLng(points[j]);
-          if (haversineKm(pi.lat, pi.lng, pj.lat, pj.lng) <= bufferKm) {
+          var speciesJ = getObservationSpeciesName(points[j]);
+          if (
+            haversineKm(pi.lat, pi.lng, pj.lat, pj.lng) <= bufferKm &&
+            speciesI &&
+            speciesJ &&
+            speciesI === speciesJ
+          ) {
             unionSets(i, j);
           }
         }
@@ -621,10 +635,32 @@ const fetchData = async url => {
       if (!earliest) { return ''; }
       var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
         'August', 'September', 'October', 'November', 'December'];
-      var day = earliest.getUTCDate();
       var month = monthNames[earliest.getUTCMonth()];
       var year = earliest.getUTCFullYear();
-      return day + ' ' + month + ' ' + year;
+      return month + ' ' + year;
+    }
+
+    function areAllObservationsInSameMonthYear(observations) {
+      if (!observations || !observations.length) { return false; }
+      var referenceMonth = null;
+      var referenceYear = null;
+      var validCount = 0;
+
+      for (var i = 0; i < observations.length; i += 1) {
+        var d = getObservationDate(observations[i]);
+        if (!d) { continue; }
+        var m = d.getUTCMonth();
+        var y = d.getUTCFullYear();
+        if (referenceMonth === null) {
+          referenceMonth = m;
+          referenceYear = y;
+        } else if (m !== referenceMonth || y !== referenceYear) {
+          return false;
+        }
+        validCount += 1;
+      }
+
+      return validCount > 0;
     }
 
     function updateAdopterSummary(login, totalRecords, observations) {
@@ -638,10 +674,11 @@ const fetchData = async url => {
       var countText = formatNumber(count);
       var timeWord = count === 1 ? 'time' : 'times';
       var forestWord = distinctSpecies === 1 ? 'forest' : 'forests';
+      var introWord = areAllObservationsInSameMonthYear(observations) ? 'In' : 'Since';
 
       adopterSummaryEl.innerHTML =
-        'Since ' + datePart + ', ' + adopterName +
-        ' has monitored <span style="color:#e9525c;"><b>' + countText + ' ' + timeWord + '</b></span>' +
+        introWord + ' ' + datePart + ', ' + adopterName +
+        ' monitored <span style="color:#e9525c;"><b>' + countText + ' ' + timeWord + '</b></span>' +
         ' the ' + forestWord + ' of ' + allSpecies + '.';
     }
 
@@ -989,10 +1026,10 @@ const fetchData = async url => {
                 '<span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + taxonName.substring(0, 18) + '</i></strong></span>' +
               '</div>' +
               '<div style="margin-bottom: 1px; width: 100%"><span style="font-size: 1em">Adopted site</span></div>' +
-              '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + site.observations.length + ' records in this ' + siteClusterBufferKm + ' km site</span></div>' +
+              '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + site.observations.length + ' observations in thie forest</span></div>' +
               '<div style="width: 100%; margin-top: 10px">' +
                 '<div class="thumbnail2" style="margin-right: 7px"><a href="' + observerUrl + '" target="_blank"><img src="' + observerIcon + '" alt="View profile" /></a></div>' +
-                '<div style="padding-top: 24px;"><a href="' + obsUrl + '" style="color: #666666; text-decoration: none">' + observerName.substring(0, 17) + ' · ' + observedDate + '</a></div>' +
+                '<div style="padding-top: 24px;"><a href="' + obsUrl + '" style="color: #666666; text-decoration: none">' + formatNameFromUnderscorePattern(observerName).substring(0, 17) + ' · ' + observedDate + '</a></div>' +
               '</div>' +
             '</div>' +
           '</div>'
