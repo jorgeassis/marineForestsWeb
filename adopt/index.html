@@ -562,13 +562,30 @@ const fetchData = async url => {
         });
     }
 
+    if (!mapElement) {
+      setStatus('Map container not found.');
+      return;
+    }
+
+    var map = L.map('adopt-map', {
+      minZoom: 2,
+      zoomControl: true
+    });
+
+    L.tileLayer('https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
+      attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
+      subdomains: ['a', 'b', 'c']
+    }).addTo(map);
+    map.setView([20, 0], 2);
+    map.scrollWheelZoom.disable();
+    map.dragging.disable();
+
+    var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
+    var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
+
     fetchObservations()
       .then(function (results) {
         var markers = [];
-
-        if (!mapElement) {
-          throw new Error('Map element not found');
-        }
 
         if (!results.length) {
           setStatus('No observations with coordinates found for records tagged ' + adoptionSearchQuery + '.');
@@ -615,19 +632,6 @@ const fetchData = async url => {
         shuffleArrayInPlace(markers);
 
         setStatus('');
-
-        var map = L.map('adopt-map', {
-          minZoom: 2,
-          zoomControl: true
-        });
-
-        L.tileLayer('https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
-          attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
-          subdomains: ['a', 'b', 'c']
-        }).addTo(map);
-
-        var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
-        var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
         var bounds = L.latLngBounds(markers.map(function (markerData) {
           return [markerData.lat, markerData.lng];
         }));
@@ -682,8 +686,6 @@ const fetchData = async url => {
         }
 
         loopMarkers();
-        map.scrollWheelZoom.disable();
-        map.dragging.disable();
       })
       .catch(function (error) {
         setStatus('Could not load map observations. Please try again later.');
