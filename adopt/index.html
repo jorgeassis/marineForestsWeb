@@ -454,7 +454,7 @@ const fetchData = async url => {
           <br>
           <b><span class="color--redish" href="">3</span></b> In the notes field, type <b><span class="color--redish" href="">#adoptmf</span></b> to tag your observation.
           <br>
-          <b><span class="color--redish" href="">4</span></b> Visit the site once a month (idealy) to a reliable time series.
+          <b><span class="color--redish" href="">4</span></b> Visit the site once a month (idealy) to produce a reliable time series.
         </div>
 <!-- 
         <div style="margin-top: 30px;">
@@ -579,6 +579,11 @@ const fetchData = async url => {
     map.setView([20, 0], 2);
     map.scrollWheelZoom.disable();
     map.dragging.disable();
+    setTimeout(function () { map.invalidateSize(); }, 0);
+    setTimeout(function () { map.invalidateSize(); }, 300);
+    window.addEventListener('load', function () {
+      map.invalidateSize();
+    });
 
     var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
     var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
