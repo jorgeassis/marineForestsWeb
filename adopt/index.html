@@ -209,7 +209,10 @@ const fetchData = async url => {
 
 <script>
    window.addEventListener('load', function () {
-    document.getElementById('loadingPanel').style.visibility="hidden";
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = "hidden";
+    }
    });
 </script>
 
@@ -566,6 +569,10 @@ const fetchData = async url => {
       setStatus('Map container not found.');
       return;
     }
+    if (!window.L || typeof window.L.map !== 'function') {
+      setStatus('Map library not available.');
+      return;
+    }
 
     var map = L.map('adopt-map', {
       minZoom: 2,
@@ -582,6 +589,9 @@ const fetchData = async url => {
     setTimeout(function () { map.invalidateSize(); }, 0);
     setTimeout(function () { map.invalidateSize(); }, 300);
     window.addEventListener('load', function () {
+      map.invalidateSize();
+    });
+    window.addEventListener('pageshow', function () {
       map.invalidateSize();
     });
 
