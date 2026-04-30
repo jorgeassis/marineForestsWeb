@@ -1040,7 +1040,7 @@ const fetchData = async url => {
       var group = L.featureGroup(leafletMarkers);
       map.fitBounds(group.getBounds(), { padding: [25, 25] });
       var fittedZoom = map.getZoom();
-      map.setZoom(Math.max(map.getMinZoom(), fittedZoom - 7));
+      map.setZoom(Math.max(map.getMinZoom(), fittedZoom - 1));
       map.scrollWheelZoom.disable();
       setMapStatus(
         'Showing ' + formatNumber(sites.length) + ' sites from ' +
