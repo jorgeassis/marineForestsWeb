@@ -280,6 +280,17 @@ const fetchData = async url => {
       height: 220px;
       border-radius: 8px;
     }
+    .records-gallery-item .gallery-species {
+      margin: 10px 0 0 0;
+      font-style: italic;
+      font-weight: 700;
+      color: #222222;
+    }
+    .records-gallery-item .gallery-date {
+      margin: 2px 0 0 0;
+      color: #666666;
+      font-size: 0.9em;
+    }
     .chart-wrap {
       border: 1px solid #ececec;
       border-radius: 8px;
@@ -393,7 +404,7 @@ const fetchData = async url => {
       <h4>Pictures from <span id="pictures-section-username"></span></h4>
     </div>
   </div>
-  <div class="row justify-content-center top-spacer-20">
+  <div class="row justify-content-center top-spacer-0" style="margin-top: -10px;">
     <div class="col-md-10">
       <div class="row" id="user-record-images">
         <div class="col-md-12">Loading record images...</div>
@@ -859,11 +870,10 @@ const fetchData = async url => {
         html +=       "<div class='thumb' style='background: url(" + photoUrl + ") 50% 50% no-repeat; background-size: cover;'></div>";
         html +=     '</div>';
         html +=   '</a>';
-        html +=   '<p class="top-spacer-10">' + taxonName;
+        html +=   '<p class="gallery-species" style="margin-top: -10px;">' + taxonName + '</p>';
         if (galleryDate) {
-          html += " <span class='chart-subtitle'>· " + galleryDate + '</span>';
+          html += '<p class="gallery-date" style="margin-top: -5px;">' + galleryDate + '</p>';
         }
-        html += '</p>';
         html += '</div>';
 
         shown += 1;
