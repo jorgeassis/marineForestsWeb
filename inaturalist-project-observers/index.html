@@ -227,6 +227,21 @@ const fetchData = async url => {
       text-align: left;
       border-radius: 8px;
     }
+    .forest-marker-icon {
+      --forest-marker-color: #e9525c;
+      --forest-marker-stroke: #ffffff;
+      background: transparent;
+      border: 0;
+    }
+    .forest-marker-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .forest-marker-icon svg circle {
+      fill: var(--forest-marker-color);
+      stroke: var(--forest-marker-stroke);
+    }
     .leaflet-popup-content {
       margin: 0;
       padding: 2px;
@@ -281,6 +296,44 @@ const fetchData = async url => {
       font-weight: 400;
       font-size: 0.85em;
       color: #666666;
+    }
+
+    .forest-popup {
+      width: 240px;
+    }
+    .forest-popup .forest-popup-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px 6px 6px 6px;
+      display: block;
+      background: #f5f5f5;
+    }
+    .forest-popup .forest-popup-body {
+      padding: 0px 4px 4px 10px;
+    }
+    .forest-popup .forest-popup-species {
+      margin: 0 0 4px 0;
+      font-style: italic;
+      font-weight: 700;
+      color: #e9525c;
+      font-size: 1.3em;
+    }
+    .forest-popup .forest-popup-meta {
+      margin: 0 0 3px 0;
+      color: #444;
+      font-size: 1.05em;
+    }
+    .forest-popup .forest-popup-meta.muted {
+      color: #888;
+    }
+    .forest-popup .forest-popup-link {
+      display: inline-block;
+      margin-top: 2px;
+      color: #e9525c;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.05em;
     }
   </style>
 
@@ -994,45 +1047,100 @@ const fetchData = async url => {
         subdomains: ['a', 'b', 'c']
       }).addTo(map);
 
-      var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
-      var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
+      var forestIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" aria-hidden="true">' +
+        '<circle cx="7" cy="7" r="5.5" stroke-width="1.5"/>' +
+        '</svg>';
+      var forestIcon = L.divIcon({
+        className: 'forest-marker-icon',
+        html: forestIconSvg,
+        iconSize: [14, 14],
+        iconAnchor: [7, 14]
+      });
+
+      function escapeHtmlPopup(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function getPopupPhotoUrl(observation) {
+        if (!observation || !observation.observation_photos || !observation.observation_photos.length) {
+          return '';
+        }
+        var photo = observation.observation_photos[0] && observation.observation_photos[0].photo;
+        if (!photo) { return ''; }
+        if (photo.original_url) { return photo.original_url; }
+        if (photo.large_url) { return photo.large_url; }
+        if (photo.medium_url) { return photo.medium_url; }
+        if (photo.url) {
+          return String(photo.url)
+            .replace('/square.', '/large.')
+            .replace('/small.', '/large.')
+            .replace('/medium.', '/large.');
+        }
+        return '';
+      }
+
+      function getSiteFirstYear(siteObservations) {
+        var earliest = null;
+        for (var s = 0; s < siteObservations.length; s += 1) {
+          var d = getObservationDate(siteObservations[s]);
+          if (!d) { continue; }
+          if (!earliest || d < earliest) { earliest = d; }
+        }
+        return earliest ? earliest.getUTCFullYear() : null;
+      }
+
+      function getSiteCoverObservation(siteObservations) {
+        for (var c = 0; c < siteObservations.length; c += 1) {
+          if (getPopupPhotoUrl(siteObservations[c])) {
+            return siteObservations[c];
+          }
+        }
+        return siteObservations[0] || null;
+      }
+
+      function getSiteTimelineUrl(site) {
+        if (!site || !site.observations || !site.observations.length) { return '#'; }
+        var speciesKey = getObservationSpeciesName(site.observations[0]);
+        var qs = 'species=' + encodeURIComponent(speciesKey || '') +
+          '&lat=' + encodeURIComponent(String(site.lat)) +
+          '&lng=' + encodeURIComponent(String(site.lng));
+        return '/adopted-marine-forest-timeline/?' + qs;
+      }
 
       var leafletMarkers = [];
       for (var j = 0; j < sites.length; j += 1) {
         var site = sites[j];
-        var obs = site.observations[0];
-        var obsUrl = 'https://www.inaturalist.org/observations/' + obs.id;
-        var taxonName = (obs.taxon && obs.taxon.name) ? obs.taxon.name : 'Marine Forests';
-        var observerName = (obs.user && (obs.user.name || obs.user.login))
-          ? formatNameFromUnderscorePattern(obs.user.name || obs.user.login)
-          : 'Citizen scientist';
-        var observedDate = (obs.observed_on_details && obs.observed_on_details.date) ? obs.observed_on_details.date : 'Marine Forests';
-        var observerLogin = (obs.user && obs.user.login) ? obs.user.login : '';
-        var observerUrl = observerLogin ? ('https://www.inaturalist.org/people/' + observerLogin) : obsUrl;
-        var observerIcon = (obs.user && obs.user.icon) ? obs.user.icon : '/assets/img/user-icon.jpg';
-        var recordImage = (obs.observation_photos && obs.observation_photos.length && obs.observation_photos[0].photo && obs.observation_photos[0].photo.url)
-          ? obs.observation_photos[0].photo.url
-          : '/assets/img/main_header.jpg';
-        var marker = L.marker([site.lat, site.lng], { icon: greenIcon }).addTo(map);
+        var cover = getSiteCoverObservation(site.observations);
+        var taxonName = (cover && cover.taxon && cover.taxon.name) ? cover.taxon.name : 'Marine Forests';
+        var coverImageUrl = getPopupPhotoUrl(cover);
+        var siteCount = site.observations.length;
+        var firstYear = getSiteFirstYear(site.observations);
+        var timelineUrl = getSiteTimelineUrl(site);
+
+        var imgHtml = coverImageUrl
+          ? '<img class="forest-popup-img" src="' + escapeHtmlPopup(coverImageUrl) + '" alt="' + escapeHtmlPopup(taxonName) + '">'
+          : '';
+        var sinceLine = firstYear
+          ? '<p class="forest-popup-meta muted">Adopted in ' + escapeHtmlPopup(firstYear) + '</p>'
+          : '';
+
+        var marker = L.marker([site.lat, site.lng], { icon: forestIcon }).addTo(map);
         marker.bindPopup(
-          '<div style="width:300px; height: 110px">' +
-            '<div style="width:120px; float: left">' +
-              '<div class="thumbnail">' +
-                '<a href="' + obsUrl + '" target="_blank"><img src="' + recordImage + '" alt="View record" /></a>' +
-              '</div>' +
+          '<div class="forest-popup">' +
+            imgHtml +
+            '<div class="forest-popup-body">' +
+              '<p class="forest-popup-species">' + escapeHtmlPopup(taxonName) + '</p>' +
+              '<p class="forest-popup-meta">' + formatNumber(siteCount) + ' observation' + (siteCount === 1 ? '' : 's') + '</p>' +
+              sinceLine +
+              '<a class="forest-popup-link" href="' + escapeHtmlPopup(timelineUrl) + '">View timeline &rarr;</a>' +
             '</div>' +
-            '<div style="width:177px; margin-left: 3px; float: left">' +
-              '<div style="margin-bottom: 1px; margin-top: 5px; width: 100%">' +
-                '<span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + taxonName.substring(0, 18) + '</i></strong></span>' +
-              '</div>' +
-              '<div style="margin-bottom: 1px; width: 100%"><span style="font-size: 1em">Adopted site</span></div>' +
-              '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + site.observations.length + ' observations in thie forest</span></div>' +
-              '<div style="width: 100%; margin-top: 10px">' +
-                '<div class="thumbnail2" style="margin-right: 7px"><a href="' + observerUrl + '" target="_blank"><img src="' + observerIcon + '" alt="View profile" /></a></div>' +
-                '<div style="padding-top: 24px;"><a href="' + obsUrl + '" style="color: #666666; text-decoration: none">' + formatNameFromUnderscorePattern(observerName).substring(0, 17) + ' · ' + observedDate + '</a></div>' +
-              '</div>' +
-            '</div>' +
-          '</div>'
+          '</div>',
+          { maxWidth: 320 }
         );
         leafletMarkers.push(marker);
       }
