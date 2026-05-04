@@ -305,6 +305,21 @@ const fetchData = async url => {
                  padding: 2px;
 
              }
+          .forest-marker-icon {
+              --forest-marker-color: #e9525c;
+              --forest-marker-stroke: #ffffff;
+              background: transparent;
+              border: 0;
+          }
+          .forest-marker-icon svg {
+              display: block;
+              width: 100%;
+              height: 100%;
+          }
+          .forest-marker-icon svg circle {
+              fill: var(--forest-marker-color);
+              stroke: var(--forest-marker-stroke);
+          }
       </style>
 
       <div id='map' class='custom-popup' style="height: 350px;"></div>
@@ -374,8 +389,15 @@ const fetchData = async url => {
                                             subdomains: ['a', 'b', 'c']
                                           }).addTo( map )
 
-                                          var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
-                                          var greenIcon = new LeafIcon({iconUrl: '/assets/img/map_icon-2.png'});
+                                          var forestIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" aria-hidden="true">' +
+                                            '<circle cx="6" cy="6" r="4.5" stroke-width="1.5"/>' +
+                                            '</svg>';
+                                          var greenIcon = L.divIcon({
+                                            className: 'forest-marker-icon',
+                                            html: forestIconSvg,
+                                            iconSize: [16, 16],
+                                            iconAnchor: [8, 12]
+                                          });
 
                                           var i = 0;
                                           var marker = L.marker( [markers[i].lat, markers[i].lng], {icon: greenIcon} ).addTo( map );

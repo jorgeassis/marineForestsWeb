@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66ZBZDBMP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q66ZBZDBMP');
+</script>
+
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/leaflet.css" rel="stylesheet" />
+<link href="/assets/css/leaflet.fullscreen.css" rel="stylesheet" />
+
+<script src="/assets/js/leaflet.js"></script>
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/js/leaflet-providers.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
+
+</head>
+
+<body class=" ">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
+
+<div id="loadingPanel"></div>
+
+<style>
+
+#loadingPanel{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:9999;
+    background: #fff url("/assets/img/loading.gif") no-repeat center center
+}
+
+</style>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<a id="start"></a>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="nav-container ">
+
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="/assets/img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="/assets/img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="/">
+                            <img class="logo logo-dark" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                            <img class="logo logo-light" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+
+        
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Distribution</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
+                                                <ul class="menu-vertical">
+                           
+                                                    <li>
+                                                        <a href="/distribution">Distribution records</a>
+                                                    </li>
+
+                                                    <hr style="margin-top: 5px; margin-bottom: 7px; border: none; height: 1px; background: #b5b5b5; background: repeating-linear-gradient(90deg,#b5b5b5,#b5b5b5 3px,transparent 3px,transparent 6px);">
+                                                    <li>
+                                                    <a href="/species-richness-marine-forests">Species richness</a>
+                                                  </li>
+
+                                                    <li>
+                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
+                                                    </li>
+
+                                                    <li>
+                                                      <a href="/future-climate-impacts-on-marine-forests">
+                                                        <span class="dropdown__trigger">Future impacts</span>
+                                                      </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Project links</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
+                                                <ul class="menu-vertical">
+                                                   
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/restoreseagrass">Restoreseagrass</a>
+                                                  </li>
+
+        
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/citizen-science">Citizen science</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+              
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt">
+                             <span class="btn__text">
+                                Adopt
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+<script>
+  window.addEventListener('load', function () {
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = 'hidden';
+    }
+  });
+</script>
+
+<section class="container text-center">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h2 class="color--dark">Adopted Marine Forests</h2>
+      <p class="lead top-spacer-10">
+        Distinct marine forests grouped by species and location within a 5 km distance.
+      </p>
+      <div id="adopted-forests-status" class="text-muted"></div>
+    </div>
+  </div>
+</section>
+
+<section class="unpad">
+  <style>
+    .adopted-map-wrap {
+      margin-bottom: 28px;
+    }
+    .adopted-forest-map {
+      height: 430px;
+    }
+    .adopted-forest-grid .forest-card {
+      margin-bottom: 26px;
+      border: 1px solid #ececec;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .adopted-forest-grid .forest-photo {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+    .adopted-forest-grid .forest-meta {
+      padding: 10px 12px 12px 12px;
+      text-align: left;
+    }
+    .adopted-forest-grid .forest-species {
+      margin: 0 0 5px 0;
+      font-size: 1.02em;
+      font-weight: 700;
+      color: #222222;
+    }
+    .adopted-forest-grid .forest-count {
+      margin: 0;
+      color: #666666;
+      font-size: 0.95em;
+    }
+    .adopted-forest-grid .forest-region {
+      margin: 3px 0 0 0;
+      color: #666666;
+      font-size: 0.9em;
+    }
+    .adopted-forest-grid .forest-link {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+    }
+  </style>
+
+  <div class="container adopted-map-wrap">
+    <div id="adopted-forest-map" class="custom-popup adopted-forest-map"></div>
+  </div>
+</section>
+
+<section class="container text-center adopted-forest-grid">
+  <div class="row" id="adopted-forest-grid">
+    <div class="col-md-12">Loading adopted marine forests...</div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var adoptionSearchQuery = '#adoptmf';
+    var adoptionQParam = encodeURIComponent(adoptionSearchQuery);
+    var statusEl = document.getElementById('adopted-forests-status');
+    var mapElement = document.getElementById('adopted-forest-map');
+    var gridEl = document.getElementById('adopted-forest-grid');
+    var map = null;
+    var mapMarkerIcon = null;
+
+    function setStatus(message) {
+      if (statusEl) {
+        statusEl.textContent = message || '';
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getObservationSpeciesKey(observation) {
+      if (!observation || !observation.taxon || !observation.taxon.name) {
+        return '';
+      }
+      return String(observation.taxon.name).trim().toLowerCase();
+    }
+
+    function buildForestTimelineUrl(forest) {
+      var params = new URLSearchParams();
+      params.set('species', forest.speciesKey || '');
+      params.set('lat', String(forest.lat));
+      params.set('lng', String(forest.lng));
+      return '/adopted-marine-forest-timeline/?' + params.toString();
+    }
+
+    function getObservationSpeciesLabel(observation) {
+      if (!observation || !observation.taxon) {
+        return 'Unknown species';
+      }
+      var label = observation.taxon.name || 'Unknown species';
+      return String(label).trim();
+    }
+
+    function getRegionFromObservation(observation) {
+      if (!observation) { return 'Unknown region'; }
+      var raw = observation.place_guess || observation.private_place_guess || '';
+      if (raw) {
+        var parts = String(raw).split(',').map(function (part) {
+          return String(part || '').trim();
+        }).filter(function (part) {
+          return part.length > 0;
+        });
+        if (parts.length >= 2) {
+          return parts[0] + ', ' + parts[parts.length - 1];
+        }
+        if (parts.length === 1) {
+          return parts[0];
+        }
+      }
+      if (observation.observed_on_details && observation.observed_on_details.place_guess) {
+        return String(observation.observed_on_details.place_guess).trim();
+      }
+      return 'Unknown region';
+    }
+
+    function getLatLngFromObservation(observation) {
+      if (!observation) { return null; }
+      if (observation.geojson && Array.isArray(observation.geojson.coordinates) && observation.geojson.coordinates.length >= 2) {
+        var latA = parseFloat(observation.geojson.coordinates[1], 10);
+        var lngA = parseFloat(observation.geojson.coordinates[0], 10);
+        if (isFinite(latA) && isFinite(lngA)) {
+          return { lat: latA, lng: lngA };
+        }
+      }
+      var latB = parseFloat(observation.latitude, 10);
+      var lngB = parseFloat(observation.longitude, 10);
+      if (isFinite(latB) && isFinite(lngB)) {
+        return { lat: latB, lng: lngB };
+      }
+      return null;
+    }
+
+    function haversineDistanceKm(lat1, lng1, lat2, lng2) {
+      var toRad = Math.PI / 180;
+      var dLat = (lat2 - lat1) * toRad;
+      var dLng = (lng2 - lng1) * toRad;
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+      a = Math.min(1, Math.max(0, a));
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return 6371 * c;
+    }
+
+    function clusterObservationsByDistanceAndSpecies(observations, bufferKm) {
+      var points = [];
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var point = getLatLngFromObservation(observations[i]);
+        var speciesKey = getObservationSpeciesKey(observations[i]);
+        if (point && speciesKey) {
+          points.push(observations[i]);
+        }
+      }
+
+      var n = points.length;
+      if (!n) { return []; }
+
+      var parent = [];
+      for (i = 0; i < n; i += 1) {
+        parent[i] = i;
+      }
+
+      function findSet(x) {
+        if (parent[x] !== x) {
+          parent[x] = findSet(parent[x]);
+        }
+        return parent[x];
+      }
+
+      function unionSets(a, b) {
+        var rootA = findSet(a);
+        var rootB = findSet(b);
+        if (rootA !== rootB) {
+          parent[rootB] = rootA;
+        }
+      }
+
+      var j;
+      for (i = 0; i < n; i += 1) {
+        var pi = getLatLngFromObservation(points[i]);
+        var speciesI = getObservationSpeciesKey(points[i]);
+        for (j = i + 1; j < n; j += 1) {
+          var pj = getLatLngFromObservation(points[j]);
+          var speciesJ = getObservationSpeciesKey(points[j]);
+          if (speciesI === speciesJ && haversineDistanceKm(pi.lat, pi.lng, pj.lat, pj.lng) <= bufferKm) {
+            unionSets(i, j);
+          }
+        }
+      }
+
+      var rootToMembers = {};
+      for (i = 0; i < n; i += 1) {
+        var root = findSet(i);
+        if (!rootToMembers[root]) {
+          rootToMembers[root] = [];
+        }
+        rootToMembers[root].push(points[i]);
+      }
+
+      var clusters = [];
+      var roots = Object.keys(rootToMembers);
+      for (i = 0; i < roots.length; i += 1) {
+        var members = rootToMembers[roots[i]];
+        var sumLat = 0;
+        var sumLng = 0;
+        var count = 0;
+        for (j = 0; j < members.length; j += 1) {
+          var memberPoint = getLatLngFromObservation(members[j]);
+          if (!memberPoint) { continue; }
+          sumLat += memberPoint.lat;
+          sumLng += memberPoint.lng;
+          count += 1;
+        }
+        if (!count) { continue; }
+        clusters.push({
+          lat: sumLat / count,
+          lng: sumLng / count,
+          observations: members
+        });
+      }
+
+      return clusters;
+    }
+
+    function getObservationDateValue(observation) {
+      if (!observation) { return 0; }
+      var raw = observation.time_observed_at || observation.observed_on || '';
+      var parsed = new Date(raw).getTime();
+      return isFinite(parsed) ? parsed : 0;
+    }
+
+    function getObservationPhotoUrl(observation) {
+      if (!observation || !Array.isArray(observation.observation_photos) || !observation.observation_photos.length) {
+        return '';
+      }
+      var photo = observation.observation_photos[0] && observation.observation_photos[0].photo;
+      if (!photo) {
+        return '';
+      }
+      if (photo.original_url) { return photo.original_url; }
+      if (photo.large_url) { return photo.large_url; }
+      if (photo.medium_url) { return photo.medium_url; }
+      if (photo.url) {
+        return String(photo.url)
+          .replace('/square.', '/original.')
+          .replace('/small.', '/original.')
+          .replace('/medium.', '/original.')
+          .replace('/large.', '/original.');
+      }
+      return '';
+    }
+
+    function pickCoverObservation(observations) {
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        if (getObservationPhotoUrl(observations[i])) {
+          return observations[i];
+        }
+      }
+      return observations.length ? observations[0] : null;
+    }
+
+    function fetchAllProjectObservations() {
+      var perPage = 200;
+      var page = 1;
+      var allObservations = [];
+      var baseUrl = 'https://api.inaturalist.org/v2/observations?q=' + adoptionQParam + '&order=desc&order_by=created_at&fields=all';
+
+      function fetchPage() {
+        var url = baseUrl + '&per_page=' + perPage + '&page=' + page;
+        return fetch(url)
+          .then(function (res) {
+            if (!res.ok) {
+              throw new Error('Request failed with status ' + res.status);
+            }
+            return res.json();
+          })
+          .then(function (data) {
+            var pageResults = Array.isArray(data.results) ? data.results : [];
+            allObservations = allObservations.concat(pageResults);
+
+            if (pageResults.length === perPage) {
+              page += 1;
+              return fetchPage();
+            }
+            return allObservations;
+          });
+      }
+
+      return fetchPage();
+    }
+
+    function initMap() {
+      if (!mapElement || !window.L || typeof window.L.map !== 'function') {
+        return false;
+      }
+
+      map = L.map('adopted-forest-map', {
+        minZoom: 2,
+        zoomControl: true
+      });
+      L.tileLayer('https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
+        attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
+        subdomains: ['a', 'b', 'c']
+      }).addTo(map);
+      map.setView([20, 0], 2);
+      map.scrollWheelZoom.disable();
+      map.dragging.disable();
+
+      setTimeout(function () { map.invalidateSize(); }, 0);
+      setTimeout(function () { map.invalidateSize(); }, 300);
+      window.addEventListener('load', function () {
+        map.invalidateSize();
+      });
+      window.addEventListener('pageshow', function () {
+        map.invalidateSize();
+      });
+
+      var ForestIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
+      mapMarkerIcon = new ForestIcon({ iconUrl: '/assets/img/map_icon-2.png' });
+      return true;
+    }
+
+    function renderForests(forests) {
+      if (!gridEl) { return; }
+      if (!forests.length) {
+        gridEl.innerHTML = '<div class="col-md-12">No adopted marine forests found.</div>';
+        return;
+      }
+
+      var html = '';
+      var i;
+      for (i = 0; i < forests.length; i += 1) {
+        var forest = forests[i];
+        html += '' +
+          '<div class="col-md-4 col-sm-6">' +
+            '<div class="forest-card">' +
+              '<a class="forest-link" href="' + escapeHtml(buildForestTimelineUrl(forest)) + '">' +
+                '<img class="forest-photo" src="' + escapeHtml(forest.imageUrl) + '" alt="' + escapeHtml(forest.speciesLabel) + '">' +
+                '<div class="forest-meta">' +
+                  '<p class="forest-species">' + escapeHtml(forest.speciesLabel) + '</p>' +
+                  '<p class="forest-count">' + forest.observationCount + ' observations</p>' +
+                  '<p class="forest-region">' + escapeHtml(forest.regionLabel) + '</p>' +
+                '</div>' +
+              '</a>' +
+            '</div>' +
+          '</div>';
+      }
+      gridEl.innerHTML = html;
+    }
+
+    function renderMapMarkers(forests) {
+      if (!map || !forests.length) { return; }
+      var bounds = L.latLngBounds();
+      var i;
+      for (i = 0; i < forests.length; i += 1) {
+        var forest = forests[i];
+        L.marker([forest.lat, forest.lng], { icon: mapMarkerIcon })
+          .addTo(map)
+          .bindPopup(
+            '<strong>' + escapeHtml(forest.speciesLabel) + '</strong><br>' +
+            escapeHtml(String(forest.observationCount)) + ' observations<br>' +
+            escapeHtml(forest.regionLabel)
+          );
+        bounds.extend([forest.lat, forest.lng]);
+      }
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [30, 30] });
+      }
+    }
+
+    setStatus('Loading adopted marine forests...');
+    var mapReady = initMap();
+    if (!mapReady) {
+      setStatus('Map library or container not available.');
+    }
+
+    fetchAllProjectObservations()
+      .then(function (allObservations) {
+        var forestsRaw = clusterObservationsByDistanceAndSpecies(allObservations, 5);
+        var forests = forestsRaw.map(function (cluster) {
+          var members = cluster.observations.slice().sort(function (a, b) {
+            return getObservationDateValue(b) - getObservationDateValue(a);
+          });
+          var cover = pickCoverObservation(members);
+          return {
+            lat: cluster.lat,
+            lng: cluster.lng,
+            speciesKey: getObservationSpeciesKey(cover),
+            speciesLabel: getObservationSpeciesLabel(cover),
+            imageUrl: getObservationPhotoUrl(cover),
+            observationCount: members.length,
+            regionLabel: getRegionFromObservation(cover)
+          };
+        }).filter(function (forest) {
+          return !!forest.imageUrl;
+        }).sort(function (a, b) {
+          return b.observationCount - a.observationCount;
+        });
+
+        renderForests(forests);
+        renderMapMarkers(forests);
+        setStatus(forests.length + ' adopted marine forests found (species + 5 km clustering).');
+      })
+      .catch(function (error) {
+        if (gridEl) {
+          gridEl.innerHTML = '<div class="col-md-12">Could not load adopted marine forests right now.</div>';
+        }
+        setStatus('Could not load adopted marine forests. Please try again later.');
+        console.error('Adopted marine forests error:', error);
+      });
+  })();
+</script>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Footer -->
+
+<footer class="space--sm footer-2 bg--dark">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <span class="type--fine-print">
+
+                              &copy;<span class="update-year"></span> Centre of Marine Sciences \\ web developed by <a href="https://www.biodiversitydatascience.com" target="_blank" style="text-decoration: none;">biodiversityDataScience</a>
+                             <!--  <a class="type--fine-print" href="#">Privacy Policy</a> -->
+                            <!--     <a class="type--fine-print" href="#">Legal</a> -->
+
+                            <br>
+                            Funding from the Pew Charitable Trusts (USA), EU LIFE program, Biodiversa (EU), Euromarine and by various projects of the Foundation for Science and Technology (FCT).
+                          </div>
+
+                      </div>
+                  </div>
+              </footer>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Scripts -->
+
+        <script src="/assets/js/flickity.min.js"></script>
+        <script src="/assets/js/easypiechart.min.js"></script>
+        <script src="/assets/js/datepicker.js"></script>
+        <script src="/assets/js/lightbox.min.js"></script>
+        <script src="/assets/js/jquery.steps.min.js"></script>
+        <script src="/assets/js/smooth-scroll.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/read-more.min.js"></script>
+        <script src="/assets/js/pack-of-scripts.js"></script>
+
+    </body>
+</html>
+

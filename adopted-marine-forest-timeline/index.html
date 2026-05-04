@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66ZBZDBMP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q66ZBZDBMP');
+</script>
+
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/leaflet.css" rel="stylesheet" />
+<link href="/assets/css/leaflet.fullscreen.css" rel="stylesheet" />
+
+<script src="/assets/js/leaflet.js"></script>
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/js/leaflet-providers.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
+
+</head>
+
+<body class=" ">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
+
+<div id="loadingPanel"></div>
+
+<style>
+
+#loadingPanel{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:9999;
+    background: #fff url("/assets/img/loading.gif") no-repeat center center
+}
+
+</style>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<a id="start"></a>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="nav-container ">
+
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="/assets/img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="/assets/img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="/">
+                            <img class="logo logo-dark" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                            <img class="logo logo-light" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+
+        
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Distribution</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
+                                                <ul class="menu-vertical">
+                           
+                                                    <li>
+                                                        <a href="/distribution">Distribution records</a>
+                                                    </li>
+
+                                                    <hr style="margin-top: 5px; margin-bottom: 7px; border: none; height: 1px; background: #b5b5b5; background: repeating-linear-gradient(90deg,#b5b5b5,#b5b5b5 3px,transparent 3px,transparent 6px);">
+                                                    <li>
+                                                    <a href="/species-richness-marine-forests">Species richness</a>
+                                                  </li>
+
+                                                    <li>
+                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
+                                                    </li>
+
+                                                    <li>
+                                                      <a href="/future-climate-impacts-on-marine-forests">
+                                                        <span class="dropdown__trigger">Future impacts</span>
+                                                      </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Project links</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
+                                                <ul class="menu-vertical">
+                                                   
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/restoreseagrass">Restoreseagrass</a>
+                                                  </li>
+
+        
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/citizen-science">Citizen science</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+              
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt">
+                             <span class="btn__text">
+                                Adopt
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+<script>
+  window.addEventListener('load', function () {
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = 'hidden';
+    }
+  });
+</script>
+
+<style>
+  .forest-header {
+    text-align: center;
+  }
+  .forest-header .forest-species-name {
+    margin: 0;
+    font-style: italic;
+    color: #222222;
+  }
+  .forest-header .forest-location {
+    margin: 6px 0 0 0;
+    color: #666666;
+    font-size: 1.05em;
+  }
+  .forest-adopters {
+    margin: 22px auto 0 auto;
+    max-width: 760px;
+    padding: 14px 18px;
+    background: #edf1ff;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .forest-adopters-label {
+    font-weight: 700;
+    color: #222222;
+    margin: 0 0 6px 0;
+    font-size: 0.95em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .forest-adopters-list {
+    margin: 0;
+    color: #444444;
+    font-size: 1em;
+    line-height: 1.55;
+  }
+  .forest-adopters-list a {
+    color: #e9525c;
+    text-decoration: none;
+  }
+
+  .timeline-track {
+    position: relative;
+    max-width: 980px;
+    margin: 30px auto 0 auto;
+    padding: 30px 0 10px 0;
+    overflow: visible;
+  }
+  .timeline-line {
+    display: none !important;
+  }
+  .timeline-row {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+    background: transparent;
+  }
+  .timeline-row::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    bottom: -25px;
+    left: 50%;
+    width: 4px;
+    margin-left: -2px;
+    background-color: #e9525c;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .timeline-row:first-of-type::before {
+    top: -30px;
+  }
+  .timeline-row:last-of-type::before {
+    bottom: -10px;
+  }
+  .timeline-row.left { justify-content: flex-start; }
+  .timeline-row.right { justify-content: flex-end; }
+  .timeline-card {
+    width: calc(50% - 50px);
+    border: 1px solid #ececec;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .timeline-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+  .timeline-date-label {
+    text-align: center;
+    margin: 0;
+    padding: 8px 10px;
+    background: #f7f8fb;
+    border-bottom: 1px solid #ececec;
+    font-weight: 700;
+    color: #222222;
+    font-size: 0.95em;
+  }
+  .timeline-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    background: #f5f5f5;
+  }
+  .timeline-meta {
+    display: block;
+    padding: 10px 12px 12px 12px;
+    color: #666666;
+    font-size: 0.92em;
+    margin: 0;
+  }
+  .timeline-date-label {
+    display: block;
+  }
+  .timeline-clear {
+    clear: both;
+    width: 100%;
+    height: 0;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #e9525c;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-line { left: 20px !important; margin-left: 0 !important; }
+    .timeline-row { justify-content: flex-start; }
+    .timeline-card {
+      width: calc(100% - 50px);
+      margin-left: 50px;
+    }
+    .timeline-dot { left: 20px; }
+  }
+</style>
+
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10 forest-header">
+      <h2 class="forest-species-name" id="forest-species-name">Marine Forest Timeline</h2>
+      <p class="forest-location" id="forest-location"></p>
+      <div id="forest-timeline-status" class="text-muted top-spacer-10"></div>
+
+      <div class="forest-adopters" id="forest-adopters" style="display:none;">
+        <p class="forest-adopters-label">Adopters</p>
+        <p class="forest-adopters-list" id="forest-adopters-list"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="timeline-track" id="forest-timeline-list">
+    <div class="timeline-line"></div>
+    <div style="text-align:center; color:#666;">Loading observations...</div>
+  </div>
+</section>
+<div class="timeline-clear"></div>
+
+<script>
+  (function () {
+    var adoptionSearchQuery = '#adoptmf';
+    var adoptionQParam = encodeURIComponent(adoptionSearchQuery);
+    var statusEl = document.getElementById('forest-timeline-status');
+    var speciesNameEl = document.getElementById('forest-species-name');
+    var locationEl = document.getElementById('forest-location');
+    var adoptersWrapEl = document.getElementById('forest-adopters');
+    var adoptersListEl = document.getElementById('forest-adopters-list');
+    var listEl = document.getElementById('forest-timeline-list');
+
+    function setStatus(message) {
+      if (statusEl) {
+        statusEl.textContent = message || '';
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name) || '';
+    }
+
+    function getObservationSpeciesKey(observation) {
+      if (!observation || !observation.taxon || !observation.taxon.name) {
+        return '';
+      }
+      return String(observation.taxon.name).trim().toLowerCase();
+    }
+
+    function getObservationSpeciesLabel(observation) {
+      if (!observation || !observation.taxon || !observation.taxon.name) {
+        return 'Unknown species';
+      }
+      return String(observation.taxon.name).trim();
+    }
+
+    function getRegionFromObservation(observation) {
+      if (!observation) { return 'Unknown region'; }
+      var raw = observation.place_guess || observation.private_place_guess || '';
+      if (raw) {
+        var parts = String(raw).split(',').map(function (part) {
+          return String(part || '').trim();
+        }).filter(function (part) {
+          return part.length > 0;
+        });
+        if (parts.length >= 2) {
+          return parts[0] + ', ' + parts[parts.length - 1];
+        }
+        if (parts.length === 1) {
+          return parts[0];
+        }
+      }
+      return 'Unknown region';
+    }
+
+    function getLatLngFromObservation(observation) {
+      if (!observation) { return null; }
+      if (observation.geojson && Array.isArray(observation.geojson.coordinates) && observation.geojson.coordinates.length >= 2) {
+        var latA = parseFloat(observation.geojson.coordinates[1], 10);
+        var lngA = parseFloat(observation.geojson.coordinates[0], 10);
+        if (isFinite(latA) && isFinite(lngA)) {
+          return { lat: latA, lng: lngA };
+        }
+      }
+      var latB = parseFloat(observation.latitude, 10);
+      var lngB = parseFloat(observation.longitude, 10);
+      if (isFinite(latB) && isFinite(lngB)) {
+        return { lat: latB, lng: lngB };
+      }
+      return null;
+    }
+
+    function haversineDistanceKm(lat1, lng1, lat2, lng2) {
+      var toRad = Math.PI / 180;
+      var dLat = (lat2 - lat1) * toRad;
+      var dLng = (lng2 - lng1) * toRad;
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+      a = Math.min(1, Math.max(0, a));
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return 6371 * c;
+    }
+
+    function clusterObservationsByDistanceAndSpecies(observations, bufferKm) {
+      var points = [];
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var point = getLatLngFromObservation(observations[i]);
+        var speciesKey = getObservationSpeciesKey(observations[i]);
+        if (point && speciesKey) {
+          points.push(observations[i]);
+        }
+      }
+
+      var n = points.length;
+      if (!n) { return []; }
+
+      var parent = [];
+      for (i = 0; i < n; i += 1) {
+        parent[i] = i;
+      }
+
+      function findSet(x) {
+        if (parent[x] !== x) {
+          parent[x] = findSet(parent[x]);
+        }
+        return parent[x];
+      }
+
+      function unionSets(a, b) {
+        var rootA = findSet(a);
+        var rootB = findSet(b);
+        if (rootA !== rootB) {
+          parent[rootB] = rootA;
+        }
+      }
+
+      var j;
+      for (i = 0; i < n; i += 1) {
+        var pi = getLatLngFromObservation(points[i]);
+        var speciesI = getObservationSpeciesKey(points[i]);
+        for (j = i + 1; j < n; j += 1) {
+          var pj = getLatLngFromObservation(points[j]);
+          var speciesJ = getObservationSpeciesKey(points[j]);
+          if (speciesI === speciesJ && haversineDistanceKm(pi.lat, pi.lng, pj.lat, pj.lng) <= bufferKm) {
+            unionSets(i, j);
+          }
+        }
+      }
+
+      var rootToMembers = {};
+      for (i = 0; i < n; i += 1) {
+        var root = findSet(i);
+        if (!rootToMembers[root]) {
+          rootToMembers[root] = [];
+        }
+        rootToMembers[root].push(points[i]);
+      }
+
+      var clusters = [];
+      var roots = Object.keys(rootToMembers);
+      for (i = 0; i < roots.length; i += 1) {
+        var members = rootToMembers[roots[i]];
+        var sumLat = 0;
+        var sumLng = 0;
+        var count = 0;
+        for (j = 0; j < members.length; j += 1) {
+          var memberPoint = getLatLngFromObservation(members[j]);
+          if (!memberPoint) { continue; }
+          sumLat += memberPoint.lat;
+          sumLng += memberPoint.lng;
+          count += 1;
+        }
+        if (!count) { continue; }
+        clusters.push({
+          lat: sumLat / count,
+          lng: sumLng / count,
+          observations: members
+        });
+      }
+
+      return clusters;
+    }
+
+    function getObservationDateValue(observation) {
+      if (!observation) { return 0; }
+      var raw = observation.time_observed_at || observation.observed_on || '';
+      var parsed = new Date(raw).getTime();
+      return isFinite(parsed) ? parsed : 0;
+    }
+
+    function formatObservationDate(observation) {
+      var raw = observation.time_observed_at || observation.observed_on || '';
+      var date = new Date(raw);
+      if (isNaN(date.getTime())) {
+        return 'Unknown date';
+      }
+      return date.toISOString().slice(0, 10);
+    }
+
+    function getObservationPhotoUrl(observation) {
+      if (!observation || !Array.isArray(observation.observation_photos) || !observation.observation_photos.length) {
+        return '';
+      }
+      var photo = observation.observation_photos[0] && observation.observation_photos[0].photo;
+      if (!photo) {
+        return '';
+      }
+      if (photo.original_url) { return photo.original_url; }
+      if (photo.large_url) { return photo.large_url; }
+      if (photo.medium_url) { return photo.medium_url; }
+      if (photo.url) {
+        return String(photo.url)
+          .replace('/square.', '/original.')
+          .replace('/small.', '/original.')
+          .replace('/medium.', '/original.')
+          .replace('/large.', '/original.');
+      }
+      return '';
+    }
+
+    function fetchAllProjectObservations() {
+      var perPage = 200;
+      var page = 1;
+      var allObservations = [];
+      var baseUrl = 'https://api.inaturalist.org/v2/observations?q=' + adoptionQParam + '&order=desc&order_by=created_at&fields=all';
+
+      function fetchPage() {
+        var url = baseUrl + '&per_page=' + perPage + '&page=' + page;
+        return fetch(url)
+          .then(function (res) {
+            if (!res.ok) {
+              throw new Error('Request failed with status ' + res.status);
+            }
+            return res.json();
+          })
+          .then(function (data) {
+            var pageResults = Array.isArray(data.results) ? data.results : [];
+            allObservations = allObservations.concat(pageResults);
+            if (pageResults.length === perPage) {
+              page += 1;
+              return fetchPage();
+            }
+            return allObservations;
+          });
+      }
+
+      return fetchPage();
+    }
+
+    function getObserverDisplayName(observation) {
+      if (!observation || !observation.user) { return ''; }
+      return observation.user.name || observation.user.login || '';
+    }
+
+    function getObserverLogin(observation) {
+      if (!observation || !observation.user) { return ''; }
+      return observation.user.login || '';
+    }
+
+    function renderAdopters(observations) {
+      if (!adoptersWrapEl || !adoptersListEl) { return; }
+      var seen = {};
+      var adopters = [];
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var login = getObserverLogin(observations[i]);
+        var displayName = getObserverDisplayName(observations[i]);
+        var key = login || displayName;
+        if (!key || seen[key]) { continue; }
+        seen[key] = true;
+        adopters.push({ login: login, name: displayName || login });
+      }
+      if (!adopters.length) {
+        adoptersWrapEl.style.display = 'none';
+        return;
+      }
+      var html = adopters.map(function (a) {
+        if (a.login) {
+          return '<a href="https://www.inaturalist.org/people/' + encodeURIComponent(a.login) + '" target="_blank">' + escapeHtml(a.name) + '</a>';
+        }
+        return escapeHtml(a.name);
+      }).join(' &middot; ');
+      adoptersListEl.innerHTML = html;
+      adoptersWrapEl.style.display = '';
+    }
+
+    function renderTimeline(cluster) {
+      if (!listEl) { return; }
+      var observations = cluster.observations.slice().sort(function (a, b) {
+        return getObservationDateValue(a) - getObservationDateValue(b);
+      });
+
+      if (!observations.length) {
+        listEl.innerHTML = '<div class="timeline-line"></div><div style="text-align:center; color:#666;">No observations found for this marine forest.</div>';
+        return;
+      }
+
+      var html = '<div class="timeline-line"></div>';
+      var rendered = 0;
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var obs = observations[i];
+        var imageUrl = getObservationPhotoUrl(obs);
+        if (!imageUrl) { continue; }
+        var observerName = getObserverDisplayName(obs) || 'Unknown observer';
+        var obsUrl = obs.id ? 'https://www.inaturalist.org/observations/' + obs.id : '#';
+        var side = (rendered % 2 === 0) ? 'left' : 'right';
+        html += '' +
+          '<div class="timeline-row ' + side + '">' +
+            '<span class="timeline-dot"></span>' +
+            '<a class="timeline-card" href="' + escapeHtml(obsUrl) + '" target="_blank" rel="noopener">' +
+              '<span class="timeline-date-label">' + escapeHtml(formatObservationDate(obs)) + '</span>' +
+              '<img class="timeline-image" src="' + escapeHtml(imageUrl) + '" alt="' + escapeHtml(getObservationSpeciesLabel(obs)) + '">' +
+              '<span class="timeline-meta">Observer: ' + escapeHtml(observerName) + '</span>' +
+            '</a>' +
+          '</div>';
+        rendered += 1;
+      }
+
+      if (!rendered) {
+        html = '<div class="timeline-line"></div><div style="text-align:center; color:#666;">No observations with images found for this marine forest.</div>';
+      }
+      listEl.innerHTML = html;
+    }
+
+    function findTargetCluster(clusters, speciesKey, lat, lng) {
+      var best = null;
+      var bestDistance = Infinity;
+      var i;
+      for (i = 0; i < clusters.length; i += 1) {
+        var cluster = clusters[i];
+        var representative = cluster.observations[0] || null;
+        if (getObservationSpeciesKey(representative) !== speciesKey) {
+          continue;
+        }
+        var d = haversineDistanceKm(lat, lng, cluster.lat, cluster.lng);
+        if (d < bestDistance) {
+          bestDistance = d;
+          best = cluster;
+        }
+      }
+      return best;
+    }
+
+    var speciesParam = String(getParam('species') || '').trim().toLowerCase();
+    var latParam = parseFloat(getParam('lat'), 10);
+    var lngParam = parseFloat(getParam('lng'), 10);
+    if (!speciesParam || !isFinite(latParam) || !isFinite(lngParam)) {
+      setStatus('Invalid marine forest link parameters.');
+      if (listEl) {
+        listEl.innerHTML = '<div class="col-md-12">Invalid marine forest link.</div>';
+      }
+      return;
+    }
+
+    setStatus('Loading marine forest timeline...');
+    fetchAllProjectObservations()
+      .then(function (allObservations) {
+        var clusters = clusterObservationsByDistanceAndSpecies(allObservations, 5);
+        var target = findTargetCluster(clusters, speciesParam, latParam, lngParam);
+        if (!target) {
+          setStatus('Marine forest not found for this link.');
+          if (listEl) {
+            listEl.innerHTML = '<div class="col-md-12">This marine forest could not be found.</div>';
+          }
+          return;
+        }
+
+        var cover = target.observations[0] || null;
+        if (cover) {
+          if (speciesNameEl) {
+            speciesNameEl.textContent = getObservationSpeciesLabel(cover);
+          }
+          if (locationEl) {
+            locationEl.textContent = getRegionFromObservation(cover);
+          }
+        }
+        setStatus(target.observations.length + ' observations found.');
+        renderAdopters(target.observations);
+        renderTimeline(target);
+      })
+      .catch(function (error) {
+        setStatus('Could not load timeline data. Please try again later.');
+        if (listEl) {
+          listEl.innerHTML = '<div class="col-md-12">Could not load observations.</div>';
+        }
+        console.error('Marine forest timeline error:', error);
+      });
+  })();
+</script>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Footer -->
+
+<footer class="space--sm footer-2 bg--dark">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <span class="type--fine-print">
+
+                              &copy;<span class="update-year"></span> Centre of Marine Sciences \\ web developed by <a href="https://www.biodiversitydatascience.com" target="_blank" style="text-decoration: none;">biodiversityDataScience</a>
+                             <!--  <a class="type--fine-print" href="#">Privacy Policy</a> -->
+                            <!--     <a class="type--fine-print" href="#">Legal</a> -->
+
+                            <br>
+                            Funding from the Pew Charitable Trusts (USA), EU LIFE program, Biodiversa (EU), Euromarine and by various projects of the Foundation for Science and Technology (FCT).
+                          </div>
+
+                      </div>
+                  </div>
+              </footer>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Scripts -->
+
+        <script src="/assets/js/flickity.min.js"></script>
+        <script src="/assets/js/easypiechart.min.js"></script>
+        <script src="/assets/js/datepicker.js"></script>
+        <script src="/assets/js/lightbox.min.js"></script>
+        <script src="/assets/js/jquery.steps.min.js"></script>
+        <script src="/assets/js/smooth-scroll.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/read-more.min.js"></script>
+        <script src="/assets/js/pack-of-scripts.js"></script>
+
+    </body>
+</html>
+

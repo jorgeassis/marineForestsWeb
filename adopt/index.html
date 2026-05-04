@@ -277,6 +277,21 @@ const fetchData = async url => {
       text-align: left;
       border-radius: 8px;
     }
+    .forest-marker-icon {
+      --forest-marker-color: #e9525c;
+      --forest-marker-stroke: #ffffff;
+      background: transparent;
+      border: 0;
+    }
+    .forest-marker-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .forest-marker-icon svg circle {
+      fill: var(--forest-marker-color);
+      stroke: var(--forest-marker-stroke);
+    }
     .leaflet-popup-content {
       margin: 0;
       padding: 2px;
@@ -344,12 +359,99 @@ const fetchData = async url => {
       font-size: 0.85em;
       color: #666666;
     }
-    .recent-observations-item {
-      margin-bottom: 20px;
+    .featured-mini-timeline {
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+      margin: 0 0 18px 0;
     }
-    .recent-observations-item .thumb {
+    .featured-mini-item {
+      flex: 1 1 0;
+      min-width: 0;
+      display: block;
+      text-decoration: none;
+    }
+    .featured-mini-thumb {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+      background: #f5f5f5;
+    }
+    .featured-mini-date {
+      display: block;
+      text-align: center;
+      font-size: 0.72em;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .forest-grid-item {
+      margin-bottom: 35px;
+    }
+    .forest-grid-item .thumb {
       height: 210px;
       border-radius: 8px;
+    }
+    .forest-grid-item .forest-grid-species {
+      margin: 0;
+      font-style: italic;
+      font-weight: 700;
+      color: #222222;
+    }
+    .forest-grid-item .forest-grid-region {
+      margin: 0px 0 0 0;
+      color: #666666;
+      font-size: 0.92em;
+    }
+    .forest-grid-item .forest-grid-count {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 1px 10px;
+      background: #f1f1f1;
+      color: #e9525c;
+      font-size: 0.78em;
+      font-weight: 700;
+      border-radius: 999px;
+    }
+
+    .forest-popup {
+      width: 240px;
+    }
+    .forest-popup .forest-popup-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px 6px 6px 6px;
+      display: block;
+      background: #f5f5f5;
+    }
+    .forest-popup .forest-popup-body {
+      padding: 0px 4px 4px 10px;
+    }
+    .forest-popup .forest-popup-species {
+      margin: 0 0 4px 0;
+      font-style: italic;
+      font-weight: 700;
+      color: #e9525c;
+      font-size: 1.3em;
+    }
+    .forest-popup .forest-popup-meta {
+      margin: 0 0 3px 0;
+      color: #444;
+      font-size: 1.05em;
+    }
+    .forest-popup .forest-popup-meta.muted {
+      color: #888;
+    }
+    .forest-popup .forest-popup-link {
+      display: inline-block;
+      margin-top: 2px;
+      color: #e9525c;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.05em;
     }
   </style>
   <div id="adopt-map" class="custom-popup " style="height: 400px;"></div>
@@ -357,9 +459,8 @@ const fetchData = async url => {
 </section>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-<section class="container text-center" style="margin-top: -50px;">
+<section class="container text-center top-spacer-0" style="margin-top: -50px;">
 
   <div class="row justify-content-center ">
     <div class="col-md-10">
@@ -400,11 +501,76 @@ const fetchData = async url => {
 
 </section>
 
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Adopted forests grid                                               -->
+
+<section class="container text-center top-spacer-50" id="forest-grid-section">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h3>Adopted forests</h3>
+      <p class="lead">The marine forests currently being monitored by our active adopters. Browse the diversity.</p>
+    </div>
+  </div>
+  <div class="row top-spacer-20" id="forest-grid">
+    <div class="col-md-12">Loading adopted forests&hellip;</div>
+  </div>
+</section>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Featured marine forest of the month                                -->
+
+<section class="feature-large switchable bg--secondary-2" style="margin-top: -20px" id="featured-forest-section">
+
+  <div class="container">
+
+    <div class="row justify-content-around">
+
+      <div class="col-lg-6 col-md-6">
+        <div id="featured-forest-photo" class="border--round box-shadow-wide" style="height: 350px; width: 100%; overflow: hidden; margin-bottom: 30px; background-image: url('/assets/img/loading.gif'); background-size: contain; background-position: center center; background-repeat: no-repeat; background-color: #ffffff;"></div>
+      </div>
+
+      <div class="col-lg-5 col-md-6">
+
+        <div class="top-spacer-10">
+          <h2>Marine forest of the month</h2>
+        </div>
+
+        <div class="text-block" style="font-size: 15px">
+
+          <p style="margin-bottom: 4px; margin-top: 15px; font-size: 18px; font-weight: 700; color: #e9525c;"><em id="featured-forest-species">Loading the spotlight forest&hellip;</em></p>
+          <p style="margin-bottom: 14px; color: #666666;" id="featured-forest-region">&nbsp;</p>
+          <p style="margin-bottom: 14px; margin-top: -12px;">
+            <strong id="featured-forest-records">&mdash;</strong> records &middot;
+            <strong id="featured-forest-observers">&mdash;</strong> adopters &middot;
+            first observed in <strong id="featured-forest-since">&mdash;</strong>
+          </p>
+          <div class="featured-mini-timeline" id="featured-forest-mini-timeline"></div>
+       
+          <div style="float: left">
+            <a class="btn btn--sm btn--primary-2 type--uppercase" href="#" id="featured-forest-link">
+              <span class="btn__text">View timeline</span>
+            </a>
+    
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
 <section class="container text-center">
 
-  <div class="row justify-content-center top-spacer-20">
+  <div class="row justify-content-center top-spacer-0">
     <div class="col-md-10">
-      <h3>Our most active adopters</h3>
+      <h3>Our active adopters</h3>
       <div id="all-adopters-status" class="all-adopters-status"></div>
       <div class="adopters-table-wrap">
         <table class="adopters-table">
@@ -412,9 +578,9 @@ const fetchData = async url => {
             <tr>
               <th>Adopter</th>
               <th>Records</th>
+              <th>Forests adopted</th>
               <th>Milestone</th>
               <th>Region</th>
-              <th>Details</th>
             </tr>
           </thead>
           <tbody id="all-adopters-table-body">
@@ -424,21 +590,8 @@ const fetchData = async url => {
       </div>
     </div>
   </div>
-
-
-
 </section>
 
-<section class="container text-center top-spacer-40">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-      <h3>Recent observations</h3>
-    </div>
-  </div>
-  <div class="row top-spacer-20" id="recent-observations-grid">
-    <div class="col-md-12">Loading recent observations...</div>
-  </div>
-</section>
 
 <section class="container text-center top-spacer-30">
   <div class="row justify-content-center">
@@ -459,39 +612,6 @@ const fetchData = async url => {
           <br>
           <b><span class="color--redish" href="">4</span></b> Visit the site once a month (idealy) to produce a reliable time series.
         </div>
-<!-- 
-        <div style="margin-top: 30px;">
-          <h4><strong>Request to adopt a marine forest</strong></h4>
-        </div> -->
-<!-- 
-        <div style="margin-top: -10px;">
-
-
-        <form action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="5832b46f-829e-4db1-9e1e-f1d7aeb0fb97">
-          <input type="hidden" name="subject" value="Adopt a Marine Forest request">
-          <input type="hidden" class="validate-required" name="from_name" value="Marine Forests website">
-
-          <label for="adopt-request-name">Name</label>
-          <br>
-          <input id="adopt-request-name" style="width: 80%;" class="validate-required" type="text" name="name" required>
-          <br>
-          <label for="adopt-request-email">Email</label>
-          <br>
-          <input id="adopt-request-email" style="width: 80%;"  class="validate-required validate-email" type="email" name="email" required>
-          <br>
-          <label for="adopt-request-message">Message</label>
-          <br>
-          <textarea id="adopt-request-message" style="width: 80%;"  class="validate-required" name="message" rows="5" required></textarea>
-          <br>
-
-          <button type="submit" style="width: 30%;" class="btn btn--primary-2 type--uppercase">
-            <span class="btn__text">Submit request</span>
-          </button>
-        </form>
-
-      </div> -->
-
       </div>
     </div>
   </div>
@@ -501,78 +621,16 @@ const fetchData = async url => {
 
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 
 <script>
   (function () {
-    var adoptionSearchQuery = '#adoptmf';
-    var baseUrl = 'https://api.inaturalist.org/v2/observations?q=' + encodeURIComponent(adoptionSearchQuery) + '&order=desc&order_by=created_at&per_page=30&fields=all';
-    var statusEl = document.getElementById('observers-status');
     var mapElement = document.getElementById('adopt-map');
-
-    function setStatus(message) {
-      if (statusEl) {
-        statusEl.textContent = message;
-      }
-    }
-
-    function shuffleArrayInPlace(arr) {
-      for (var i = arr.length - 1; i > 0; i -= 1) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-      }
-      return arr;
-    }
-
-    function formatNameFromUnderscorePattern(value) {
-      var cleaned = String(value || '').trim();
-      if (!cleaned) { return ''; }
-      try {
-        cleaned = decodeURIComponent(cleaned);
-      } catch (e) {}
-      var parts = cleaned.split('_').filter(function (part) {
-        return String(part || '').trim();
-      });
-      if (parts.length >= 3) {
-        return parts[1];
-      }
-      return cleaned;
-    }
-
-    function formatScientificNameShort(value) {
-      var cleaned = String(value || '').trim();
-      if (!cleaned) { return ''; }
-      var parts = cleaned.split(/\s+/);
-      if (parts.length >= 2 && parts[0].length) {
-        return parts[0].charAt(0).toUpperCase() + '. ' + parts[1];
-      }
-      return cleaned;
-    }
-
-    function fetchObservations() {
-      return fetch(baseUrl)
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error('Request failed with status ' + response.status);
-          }
-          return response.json();
-        })
-        .then(function (data) {
-          return Array.isArray(data.results) ? data.results : [];
-        });
-    }
-
-    if (!mapElement) {
-      setStatus('Map container not found.');
-      return;
-    }
-    if (!window.L || typeof window.L.map !== 'function') {
-      setStatus('Map library not available.');
-      return;
-    }
+    if (!mapElement) { return; }
+    if (!window.L || typeof window.L.map !== 'function') { return; }
 
     var map = L.map('adopt-map', {
       minZoom: 2,
@@ -585,7 +643,6 @@ const fetchData = async url => {
     }).addTo(map);
     map.setView([20, 0], 2);
     map.scrollWheelZoom.disable();
-    map.dragging.disable();
     setTimeout(function () { map.invalidateSize(); }, 0);
     setTimeout(function () { map.invalidateSize(); }, 300);
     window.addEventListener('load', function () {
@@ -595,117 +652,7 @@ const fetchData = async url => {
       map.invalidateSize();
     });
 
-    var LeafIcon = L.Icon.extend({ options: { iconSize: [12, 12], iconAnchor: [6, 12] } });
-    var greenIcon = new LeafIcon({ iconUrl: '/assets/img/map_icon-2.png' });
-
-    fetchObservations()
-      .then(function (results) {
-        var markers = [];
-
-        if (!results.length) {
-          setStatus('No observations with coordinates found for records tagged ' + adoptionSearchQuery + '.');
-          return;
-        }
-
-        for (var i = 0; i < results.length; i += 1) {
-          var item = results[i];
-
-          if (!item || !item.observation_photos || !item.observation_photos.length) { continue; }
-          if (!item.user || !item.user.login) { continue; }
-          if (!item.geojson || !item.geojson.coordinates || item.geojson.coordinates.length < 2) { continue; }
-
-          var recordUrl = 'https://www.inaturalist.org/observations/' + item.id;
-          var scientificName = (item.taxon && item.taxon.name) ? item.taxon.name : 'Marine Forests';
-          var lat = parseFloat(item.geojson.coordinates[1], 10);
-          var lng = parseFloat(item.geojson.coordinates[0], 10);
-          if (!isFinite(lat) || !isFinite(lng)) { continue; }
-          var date = item.observed_on_details && item.observed_on_details.date ? item.observed_on_details.date : 'Marine Forests';
-          var name = formatNameFromUnderscorePattern(item.user.name || item.user.login || 'Citizen scientist');
-          var imageUser = item.user.icon || '/assets/img/user-icon.jpg';
-          var userUrl = 'https://www.inaturalist.org/people/' + item.user.login;
-          var image = item.observation_photos[0].photo.url;
-
-          markers.push({
-            scientificname: formatScientificNameShort(scientificName),
-            location: 'Adopted site',
-            lat: lat,
-            lng: lng,
-            date: date,
-            name: name.substring(0, 17),
-            imageuser: imageUser,
-            url: recordUrl,
-            image: image,
-            urluser: userUrl
-          });
-        }
-
-        if (!markers.length) {
-          setStatus('No observations with coordinates found for records tagged ' + adoptionSearchQuery + '.');
-          return;
-        }
-
-        shuffleArrayInPlace(markers);
-
-        setStatus('');
-        var bounds = L.latLngBounds(markers.map(function (markerData) {
-          return [markerData.lat, markerData.lng];
-        }));
-
-        map.fitBounds(bounds, { padding: [30, 30] });
-
-        function bindPopup(markerData, marker) {
-          marker.bindPopup(
-            '<div style="width:300px; height: 110px">' +
-              '<div style="width:120px; float: left">' +
-                '<div class="thumbnail">' +
-                  '<a href="' + markerData.url + '" target="_blank"><img src="' + markerData.image + '" alt="View record" /></a>' +
-                '</div>' +
-              '</div>' +
-              '<div style="width:177px; margin-left: 3px; float: left">' +
-                '<div style="margin-bottom: 1px; margin-top: 5px; width: 100%">' +
-                  '<span style="color: #e9525c; font-size: 1.15em;"><strong><i>' + markerData.scientificname + '</i></strong></span>' +
-                '</div>' +
-                '<div style="margin-bottom: 1px; width: 100%"><span style="font-size: 1em">' + markerData.location + '</span></div>' +
-                '<div style="font-size: 0.95em; margin-bottom: 7px; width: 100%"><span style="color: #666666">' + markerData.date + '</span></div>' +
-                '<div style="width: 100%; margin-top: 10px">' +
-                  '<div class="thumbnail2" style="margin-right: 7px"><a href="' + markerData.urluser + '" target="_blank"><img src="' + markerData.imageuser + '" alt="View profile" /></a></div>' +
-                  '<div style="padding-top: 24px;"><a href="' + markerData.url + '" style="color: #666666; text-decoration: none">' + markerData.name + '</a></div>' +
-                '</div>' +
-              '</div>' +
-            '</div>'
-          );
-        }
-
-        var currentIndex = 0;
-        var firstMarker = L.marker([markers[currentIndex].lat, markers[currentIndex].lng], { icon: greenIcon }).addTo(map);
-        bindPopup(markers[currentIndex], firstMarker);
-        firstMarker.fire('click');
-        setTimeout(function () { map.removeLayer(firstMarker); }, 5000);
-
-        function loopMarkers() {
-          setTimeout(function () {
-            currentIndex += 1;
-            if (currentIndex >= markers.length) {
-              currentIndex = 0;
-              shuffleArrayInPlace(markers);
-            }
-
-            var nextMarker = L.marker([markers[currentIndex].lat, markers[currentIndex].lng], { icon: greenIcon }).addTo(map);
-            bindPopup(markers[currentIndex], nextMarker);
-
-            setTimeout(function () { nextMarker.fire('click'); }, 750);
-            setTimeout(function () { map.removeLayer(nextMarker); }, 4000);
-
-            loopMarkers();
-          }, 4000);
-        }
-
-        loopMarkers();
-      })
-      .catch(function (error) {
-        setStatus('Could not load map observations. Please try again later.');
-        console.error('iNaturalist map fetch error:', error);
-      });
+    window._adoptMap = map;
   })();
 </script>
 
@@ -722,8 +669,16 @@ const fetchData = async url => {
     var yearlyChartEl = document.getElementById('project-records-per-year-chart');
     var monthlyChartEl = document.getElementById('project-records-per-month-chart');
     var observationsPeakSummaryEl = document.getElementById('observations-peak-summary');
-    var recentObservationsGridEl = document.getElementById('recent-observations-grid');
     var marineForestsClusterNoteEl = document.getElementById('marine-forests-cluster-note');
+    var forestGridEl = document.getElementById('forest-grid');
+    var featuredForestPhotoEl = document.getElementById('featured-forest-photo');
+    var featuredForestSpeciesEl = document.getElementById('featured-forest-species');
+    var featuredForestRegionEl = document.getElementById('featured-forest-region');
+    var featuredForestRecordsEl = document.getElementById('featured-forest-records');
+    var featuredForestObserversEl = document.getElementById('featured-forest-observers');
+    var featuredForestSinceEl = document.getElementById('featured-forest-since');
+    var featuredForestMiniTimelineEl = document.getElementById('featured-forest-mini-timeline');
+    var featuredForestLinkEl = document.getElementById('featured-forest-link');
     var projectMarineForestClusterBufferKm = 5;
 
     function formatNumber(value) {
@@ -935,6 +890,210 @@ const fetchData = async url => {
       }
 
       return clusters;
+    }
+
+    function getObservationPhotoUrl(observation) {
+      if (!observation || !Array.isArray(observation.observation_photos) || !observation.observation_photos.length) {
+        return '';
+      }
+      var photo = observation.observation_photos[0] && observation.observation_photos[0].photo;
+      if (!photo) { return ''; }
+      if (photo.original_url) { return photo.original_url; }
+      if (photo.large_url) { return photo.large_url; }
+      if (photo.medium_url) { return photo.medium_url; }
+      if (photo.url) {
+        return String(photo.url)
+          .replace('/square.', '/large.')
+          .replace('/small.', '/large.')
+          .replace('/medium.', '/large.');
+      }
+      return '';
+    }
+
+    function pickCoverObservation(observations) {
+      if (!observations) { return null; }
+      for (var i = 0; i < observations.length; i += 1) {
+        if (getObservationPhotoUrl(observations[i])) {
+          return observations[i];
+        }
+      }
+      return null;
+    }
+
+    function getObservationDisplaySpecies(observation) {
+      if (!observation || !observation.taxon) { return ''; }
+      return String(observation.taxon.name || '').trim();
+    }
+
+    function getObservationYear(observation) {
+      var d = getObservationDate(observation);
+      return d ? d.getUTCFullYear() : null;
+    }
+
+    function getObservationDateLabel(observation) {
+      var d = getObservationDate(observation);
+      if (!d) { return ''; }
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return months[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
+    }
+
+    function enrichForestCluster(cluster) {
+      var observations = (cluster && cluster.observations) ? cluster.observations.slice() : [];
+      observations.sort(function (a, b) {
+        var da = getObservationDate(a);
+        var db = getObservationDate(b);
+        var ta = da ? da.getTime() : 0;
+        var tb = db ? db.getTime() : 0;
+        return ta - tb;
+      });
+
+      var cover = pickCoverObservation(observations) || observations[0] || null;
+      var speciesName = cover ? getObservationDisplaySpecies(cover) : '';
+      var speciesKey = String(speciesName).toLowerCase();
+      var region = '';
+      var i;
+      for (i = 0; i < observations.length; i += 1) {
+        var obsRegion = observations[i] && observations[i].place_guess
+          ? toCityCountry(observations[i].place_guess) : '';
+        if (obsRegion) { region = obsRegion; break; }
+      }
+      if (!region) { region = 'Unknown region'; }
+
+      var observerLogins = [];
+      var observerNames = [];
+      var seenLogins = {};
+      for (i = 0; i < observations.length; i += 1) {
+        var obs = observations[i];
+        if (!obs || !obs.user || !obs.user.login) { continue; }
+        var login = obs.user.login;
+        if (seenLogins[login]) { continue; }
+        seenLogins[login] = true;
+        observerLogins.push(login);
+        observerNames.push(formatNameFromUnderscorePattern(obs.user.name || login));
+      }
+
+      var firstYear = null;
+      for (i = 0; i < observations.length; i += 1) {
+        var y = getObservationYear(observations[i]);
+        if (y !== null && (firstYear === null || y < firstYear)) {
+          firstYear = y;
+        }
+      }
+
+      return {
+        lat: cluster.lat,
+        lng: cluster.lng,
+        speciesName: speciesName,
+        speciesKey: speciesKey,
+        region: region,
+        observations: observations,
+        observationCount: observations.length,
+        coverObservation: cover,
+        coverImageUrl: cover ? getObservationPhotoUrl(cover) : '',
+        observerLogins: observerLogins,
+        observerNames: observerNames,
+        firstYear: firstYear
+      };
+    }
+
+    function buildEnrichedForests(observations, bufferKm) {
+      var clusters = clusterObservationsByDistance(observations, bufferKm);
+      var enriched = [];
+      for (var i = 0; i < clusters.length; i += 1) {
+        var f = enrichForestCluster(clusters[i]);
+        if (f.speciesName) {
+          enriched.push(f);
+        }
+      }
+      return enriched;
+    }
+
+    function alternateForestsBySpecies(forests) {
+      if (!forests || !forests.length) { return []; }
+      var bySpecies = {};
+      var orderedKeys = [];
+      var i;
+      for (i = 0; i < forests.length; i += 1) {
+        var key = forests[i].speciesKey || '';
+        if (!bySpecies[key]) {
+          bySpecies[key] = [];
+          orderedKeys.push(key);
+        }
+        bySpecies[key].push(forests[i]);
+      }
+
+      orderedKeys.sort(function (a, b) {
+        return bySpecies[b].length - bySpecies[a].length;
+      });
+
+      var inBucketSorter = function (a, b) {
+        return (b.observationCount || 0) - (a.observationCount || 0);
+      };
+      for (i = 0; i < orderedKeys.length; i += 1) {
+        bySpecies[orderedKeys[i]].sort(inBucketSorter);
+      }
+
+      var result = [];
+      var added = true;
+      while (added) {
+        added = false;
+        for (i = 0; i < orderedKeys.length; i += 1) {
+          var bucket = bySpecies[orderedKeys[i]];
+          if (bucket && bucket.length) {
+            result.push(bucket.shift());
+            added = true;
+          }
+        }
+      }
+      return result;
+    }
+
+    function getForestTimelineUrl(forest) {
+      if (!forest) { return '#'; }
+      var qs = 'species=' + encodeURIComponent(forest.speciesKey || '') +
+        '&lat=' + encodeURIComponent(String(forest.lat)) +
+        '&lng=' + encodeURIComponent(String(forest.lng));
+      return '/adopted-marine-forest-timeline/?' + qs;
+    }
+
+    function pickFeaturedForestOfTheMonth(forests) {
+      if (!forests || !forests.length) { return null; }
+      var eligible = [];
+      var i;
+      for (i = 0; i < forests.length; i += 1) {
+        if (forests[i].coverImageUrl) {
+          eligible.push(forests[i]);
+        }
+      }
+      var pool = eligible.length ? eligible : forests;
+      pool = pool.slice().sort(function (a, b) {
+        return (b.observationCount || 0) - (a.observationCount || 0);
+      });
+
+      var topPool = pool.slice(0, Math.min(pool.length, 6));
+      var now = new Date();
+      var monthIndex = now.getUTCFullYear() * 12 + now.getUTCMonth();
+      return topPool[monthIndex % topPool.length];
+    }
+
+    function countForestsPerObserver(forests) {
+      var counts = {};
+      if (!forests) { return counts; }
+      for (var i = 0; i < forests.length; i += 1) {
+        var logins = forests[i].observerLogins || [];
+        for (var j = 0; j < logins.length; j += 1) {
+          var login = logins[j];
+          counts[login] = (counts[login] || 0) + 1;
+        }
+      }
+      return counts;
+    }
+
+    function formatObserverList(names) {
+      if (!names || !names.length) { return 'Unknown observer'; }
+      if (names.length === 1) { return names[0]; }
+      if (names.length === 2) { return names[0] + ' and ' + names[1]; }
+      return names[0] + ', ' + names[1] + ' and ' + (names.length - 2) + ' more';
     }
 
     function drawRoundedRect(ctx, x, y, width, height, radius, color) {
@@ -1291,50 +1450,272 @@ const fetchData = async url => {
       for (var i = 0; i < rows.length; i += 1) {
         var row = rows[i];
         var dashboardUrl = 'https://www.marineforests.com/inaturalist-project-observers/?user=' + encodeURIComponent(row.login);
+        var forestsAdopted = Number(row.forestsAdopted || 0);
         html += '<tr>' +
-          '<td>' + escapeHtml(row.displayName) + '</td>' +
+          '<td><a href="' + escapeHtml(dashboardUrl) + '">' + escapeHtml(row.displayName) + '</a></td>' +
           '<td>' + formatNumber(row.recordCount) + '</td>' +
+          '<td>' + formatNumber(forestsAdopted) + '</td>' +
           '<td>' + escapeHtml(row.milestone) + '</td>' +
           '<td>' + escapeHtml(row.mainRegion) + '</td>' +
-          '<td><a href="' + dashboardUrl + '">Dashboard</a></td>' +
           '</tr>';
       }
       allAdoptersTableBodyEl.innerHTML = html;
     }
 
-    function renderRecentObservations(observations) {
-      if (!recentObservationsGridEl) { return; }
-      if (!observations || !observations.length) {
-        recentObservationsGridEl.innerHTML = '<div class="col-md-12">No recent observations found.</div>';
+    function buildForestPopupHtml(forest) {
+      if (!forest) { return ''; }
+      var imgHtml = forest.coverImageUrl
+        ? '<img class="forest-popup-img" src="' + escapeHtml(forest.coverImageUrl) + '" alt="' + escapeHtml(forest.speciesName) + '">'
+        : '';
+      var since = forest.firstYear ? ('Adopted in ' + forest.firstYear) : '';
+      var observers = formatObserverList(forest.observerNames);
+      var timelineUrl = getForestTimelineUrl(forest);
+      return '' +
+        '<div class="forest-popup">' +
+          imgHtml +
+          '<div class="forest-popup-body">' +
+            '<p class="forest-popup-species">' + escapeHtml(forest.speciesName) + '</p>' +
+            '<p class="forest-popup-meta">' + formatNumber(forest.observationCount) + ' observation' + (forest.observationCount === 1 ? '' : 's') + '</p>' +
+            '<p class="forest-popup-meta muted">By ' + escapeHtml(observers) + '</p>' +
+            (since ? '<p class="forest-popup-meta muted">' + escapeHtml(since) + '</p>' : '') +
+            '<a class="forest-popup-link" href="' + escapeHtml(timelineUrl) + '">View timeline &rarr;</a>' +
+          '</div>' +
+        '</div>';
+    }
+
+    var forestMarkerLayer = null;
+    var forestPopupCycleTimer = null;
+    var forestPopupUserInteractionHandler = null;
+    var forestPopupUserInteractionTarget = null;
+    var forestCyclePageReady = false;
+    var pendingForestCycleStart = null;
+
+    (function setupForestCycleReadyGate() {
+      function markReady() {
+        forestCyclePageReady = true;
+        if (pendingForestCycleStart) {
+          var fn = pendingForestCycleStart;
+          pendingForestCycleStart = null;
+          try { fn(); } catch (e) {}
+        }
+      }
+      function scheduleAfterLoad() {
+        setTimeout(markReady, 2000);
+      }
+      if (document.readyState === 'complete') {
+        scheduleAfterLoad();
+      } else {
+        window.addEventListener('load', scheduleAfterLoad);
+      }
+    })();
+
+    function stopForestPopupCycle() {
+      pendingForestCycleStart = null;
+      if (forestPopupCycleTimer) {
+        clearInterval(forestPopupCycleTimer);
+        forestPopupCycleTimer = null;
+      }
+    }
+
+    function detachForestUserInteraction() {
+      if (forestPopupUserInteractionHandler && forestPopupUserInteractionTarget) {
+        forestPopupUserInteractionTarget.removeEventListener('mousedown', forestPopupUserInteractionHandler);
+        forestPopupUserInteractionTarget.removeEventListener('wheel', forestPopupUserInteractionHandler);
+        forestPopupUserInteractionTarget.removeEventListener('touchstart', forestPopupUserInteractionHandler);
+      }
+      forestPopupUserInteractionHandler = null;
+      forestPopupUserInteractionTarget = null;
+    }
+
+    function renderForestMapMarkers(forests) {
+      var map = window._adoptMap;
+      if (!map || !window.L) { return; }
+
+      if (forestMarkerLayer) {
+        map.removeLayer(forestMarkerLayer);
+        forestMarkerLayer = null;
+      }
+      stopForestPopupCycle();
+      detachForestUserInteraction();
+      if (!forests || !forests.length) { return; }
+
+      var forestIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" aria-hidden="true">' +
+        '<circle cx="7" cy="7" r="5.5" stroke-width="1.5"/>' +
+        '</svg>';
+      var forestIcon = L.divIcon({
+        className: 'forest-marker-icon',
+        html: forestIconSvg,
+        iconSize: [14, 14],
+        iconAnchor: [7, 14]
+      });
+
+      forestMarkerLayer = L.layerGroup();
+      var markers = [];
+      var bounds = [];
+      var i;
+      for (i = 0; i < forests.length; i += 1) {
+        var forest = forests[i];
+        if (!isFinite(forest.lat) || !isFinite(forest.lng)) { continue; }
+        var marker = L.marker([forest.lat, forest.lng], { icon: forestIcon });
+        marker.bindPopup(buildForestPopupHtml(forest), { maxWidth: 320 });
+        marker.on('click', stopForestPopupCycle);
+        forestMarkerLayer.addLayer(marker);
+        markers.push(marker);
+        bounds.push([forest.lat, forest.lng]);
+      }
+      forestMarkerLayer.addTo(map);
+      if (bounds.length) {
+        map.fitBounds(L.latLngBounds(bounds), { padding: [30, 30], maxZoom: 6 });
+      }
+
+      var mapContainer = map.getContainer();
+      forestPopupUserInteractionTarget = mapContainer;
+      forestPopupUserInteractionHandler = function () {
+        stopForestPopupCycle();
+        detachForestUserInteraction();
+      };
+      mapContainer.addEventListener('mousedown', forestPopupUserInteractionHandler, { passive: true });
+      mapContainer.addEventListener('wheel', forestPopupUserInteractionHandler, { passive: true });
+      mapContainer.addEventListener('touchstart', forestPopupUserInteractionHandler, { passive: true });
+
+      var startCycle = function () {
+        if (forestPopupCycleTimer) { return; }
+        if (forestPopupUserInteractionHandler === null) { return; }
+
+        if (markers.length > 1) {
+          var shuffleQueue = function () {
+            var queue = [];
+            var k;
+            for (k = 0; k < markers.length; k += 1) { queue.push(k); }
+            for (k = queue.length - 1; k > 0; k -= 1) {
+              var swap = Math.floor(Math.random() * (k + 1));
+              var tmp = queue[k];
+              queue[k] = queue[swap];
+              queue[swap] = tmp;
+            }
+            return queue;
+          };
+
+          var pendingOrder = shuffleQueue();
+          var lastIndex = pendingOrder.shift();
+          markers[lastIndex].openPopup();
+
+          forestPopupCycleTimer = setInterval(function () {
+            if (!pendingOrder.length) {
+              pendingOrder = shuffleQueue();
+              if (pendingOrder.length > 1 && pendingOrder[0] === lastIndex) {
+                var swapTarget = 1 + Math.floor(Math.random() * (pendingOrder.length - 1));
+                var swap = pendingOrder[0];
+                pendingOrder[0] = pendingOrder[swapTarget];
+                pendingOrder[swapTarget] = swap;
+              }
+            }
+            var nextIndex = pendingOrder.shift();
+            lastIndex = nextIndex;
+            markers[nextIndex].openPopup();
+          }, 5000);
+        } else if (markers.length === 1) {
+          markers[0].openPopup();
+        }
+      };
+
+      if (forestCyclePageReady) {
+        startCycle();
+      } else {
+        pendingForestCycleStart = startCycle;
+      }
+    }
+
+    function renderFeaturedForest(forest) {
+      if (!featuredForestSpeciesEl) { return; }
+      if (!forest) {
+        featuredForestSpeciesEl.textContent = 'No featured forest available yet.';
+        if (featuredForestRegionEl) { featuredForestRegionEl.textContent = ''; }
+        if (featuredForestRecordsEl) { featuredForestRecordsEl.textContent = '0'; }
+        if (featuredForestObserversEl) { featuredForestObserversEl.textContent = '0'; }
+        if (featuredForestSinceEl) { featuredForestSinceEl.textContent = '—'; }
+        if (featuredForestMiniTimelineEl) { featuredForestMiniTimelineEl.innerHTML = ''; }
+        if (featuredForestLinkEl) { featuredForestLinkEl.setAttribute('href', '/adopted-marine-forests/'); }
         return;
       }
 
-      var html = '';
-      var shown = 0;
-      var maxItems = 9;
-
-      for (var i = 0; i < observations.length; i += 1) {
-        var obs = observations[i];
-        if (!obs || !obs.observation_photos || !obs.observation_photos.length) { continue; }
-
-        var photoUrl = obs.observation_photos[0].photo.url.replace('square', 'large');
-        var obsUrl = 'https://www.inaturalist.org/observations/' + obs.id;
-        var taxonName = (obs.taxon && obs.taxon.name) ? obs.taxon.name : 'Marine Forests';
-
-        html += "<div class='col-md-4 recent-observations-item'>";
-        html +=   "<a href='" + obsUrl + "' target='_blank'>";
-        html +=     "<div class='card box-shadow-wide'>";
-        html +=       "<div class='thumb' style='background: url(" + photoUrl + ") 50% 50% no-repeat; background-size: cover;'></div>";
-        html +=     '</div>';
-        html +=   '</a>';
-        html +=   '<p class="top-spacer-10">' + escapeHtml(taxonName) + '</p>';
-        html += '</div>';
-
-        shown += 1;
-        if (shown >= maxItems) { break; }
+      featuredForestSpeciesEl.textContent = forest.speciesName;
+      if (featuredForestRegionEl) {
+        featuredForestRegionEl.textContent = forest.region || '';
+      }
+      if (featuredForestRecordsEl) {
+        featuredForestRecordsEl.textContent = formatNumber(forest.observationCount);
+      }
+      if (featuredForestObserversEl) {
+        featuredForestObserversEl.textContent = formatNumber(forest.observerLogins.length);
+      }
+      if (featuredForestSinceEl) {
+        featuredForestSinceEl.textContent = forest.firstYear ? String(forest.firstYear) : '—';
+      }
+      if (featuredForestPhotoEl && forest.coverImageUrl) {
+        featuredForestPhotoEl.style.backgroundImage = "url('" + forest.coverImageUrl.replace(/'/g, "%27") + "')";
+        featuredForestPhotoEl.style.backgroundSize = 'cover';
+        featuredForestPhotoEl.style.backgroundPosition = 'center center';
+        featuredForestPhotoEl.style.backgroundRepeat = 'no-repeat';
+        featuredForestPhotoEl.setAttribute('aria-label', forest.speciesName);
+      }
+      if (featuredForestLinkEl) {
+        featuredForestLinkEl.setAttribute('href', getForestTimelineUrl(forest));
       }
 
-      recentObservationsGridEl.innerHTML = html || '<div class="col-md-12">No recent observation photos available.</div>';
+      if (featuredForestMiniTimelineEl) {
+        var picks = [];
+        var observations = forest.observations || [];
+        var i;
+        for (i = observations.length - 1; i >= 0 && picks.length < 5; i -= 1) {
+          if (getObservationPhotoUrl(observations[i])) {
+            picks.push(observations[i]);
+          }
+        }
+        var html = '';
+        for (i = 0; i < picks.length; i += 1) {
+          var url = getObservationPhotoUrl(picks[i]);
+          var label = getObservationDateLabel(picks[i]);
+          var obsLink = picks[i] && picks[i].id
+            ? 'https://www.inaturalist.org/observations/' + picks[i].id
+            : '#';
+          html += '<a class="featured-mini-item" href="' + escapeHtml(obsLink) + '" target="_blank" rel="noopener" style="text-decoration: none;">' +
+            '<img class="featured-mini-thumb" src="' + escapeHtml(url) + '" alt="Observation">' +
+            '<span class="featured-mini-date" style="margin-top: -20px">' + escapeHtml(label) + '</span>' +
+          '</a>';
+        }
+        featuredForestMiniTimelineEl.innerHTML = html;
+      }
+    }
+
+    function renderForestGrid(forests) {
+      if (!forestGridEl) { return; }
+
+      if (!forests || !forests.length) {
+        forestGridEl.innerHTML = '<div class="col-md-12">No adopted forests yet.</div>';
+        return;
+      }
+
+      var ordered = alternateForestsBySpecies(forests);
+      var html = '';
+      var i;
+      for (i = 0; i < ordered.length; i += 1) {
+        var forest = ordered[i];
+        var url = getForestTimelineUrl(forest);
+        var imgUrl = forest.coverImageUrl || '/assets/img/loading.gif';
+        var observationCountText = formatNumber(forest.observationCount) + ' observation' + (forest.observationCount === 1 ? '' : 's');
+        html += "<div class='col-md-4 forest-grid-item'>" +
+          "<a href='" + escapeHtml(url) + "'>" +
+            "<div class='card box-shadow-wide'>" +
+              "<div class='thumb' style=\"background: url(" + escapeHtml(imgUrl) + ") 50% 50% no-repeat; background-size: cover;\"></div>" +
+            '</div>' +
+          '</a>' +
+          '<p class="forest-grid-species">' + escapeHtml(forest.speciesName) + '</p>' +
+          '<p class="forest-grid-region">' + escapeHtml(forest.region || '') + '</p>' +
+          '<span class="forest-grid-count">' + escapeHtml(observationCountText) + '</span>' +
+        '</div>';
+      }
+      forestGridEl.innerHTML = html;
     }
 
     function loadAllAdoptersOverview() {
@@ -1366,13 +1747,22 @@ const fetchData = async url => {
           var obsList = Array.isArray(observationsPayload.observations)
             ? observationsPayload.observations
             : [];
-          var marineForestsTotal = clusterObservationsByDistance(
+          var enrichedForests = buildEnrichedForests(
             obsList,
             projectMarineForestClusterBufferKm
-          ).length;
+          );
+          var marineForestsTotal = enrichedForests.length;
+          var forestsByObserver = countForestsPerObserver(enrichedForests);
+
+          for (var k = 0; k < validObservers.length; k += 1) {
+            validObservers[k].forestsAdopted = forestsByObserver[validObservers[k].login] || 0;
+          }
+
           updateTotalsCards(validObservers.length, marineForestsTotal, observationsPayload.totalRecords, speciesTotal);
           renderProjectTimeCharts(observationsPayload.observations);
-          renderRecentObservations(observationsPayload.observations);
+          renderForestMapMarkers(enrichedForests);
+          renderFeaturedForest(pickFeaturedForestOfTheMonth(enrichedForests));
+          renderForestGrid(enrichedForests);
 
           return Promise.all(validObservers.map(function (entry) {
             return fetchUserMainRegion(entry.login).then(function (mainRegion) {
@@ -1389,7 +1779,9 @@ const fetchData = async url => {
           setAllAdoptersStatus('Could not load adopters list. Please try again later.');
           updateTotalsCards(0, 0, 0, 0);
           renderProjectTimeCharts([]);
-          renderRecentObservations([]);
+          renderForestMapMarkers([]);
+          renderFeaturedForest(null);
+          renderForestGrid([]);
           if (allAdoptersTableBodyEl) {
             allAdoptersTableBodyEl.innerHTML = '<tr><td colspan="5">Could not load adopters list.</td></tr>';
           }
