@@ -304,16 +304,6 @@ const fetchData = async url => {
   .timeline-card:hover {
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   }
-  .timeline-date-label {
-    text-align: center;
-    margin: 0;
-    padding: 8px 10px;
-    background: #f7f8fb;
-    border-bottom: 1px solid #ececec;
-    font-weight: 700;
-    color: #222222;
-    font-size: 0.95em;
-  }
   .timeline-image {
     width: 100%;
     height: 260px;
@@ -321,15 +311,28 @@ const fetchData = async url => {
     display: block;
     background: #f5f5f5;
   }
+  .timeline-date-label {
+    display: block;
+    margin: 0;
+    padding: 10px 12px 0 12px;
+    color: #222222;
+    font-weight: 700;
+    font-size: 0.92em;
+    line-height: 1.35;
+    background: transparent;
+    border-bottom: none;
+    text-align: left;
+  }
   .timeline-meta {
     display: block;
-    padding: 10px 12px 12px 12px;
+    padding: 4px 12px 12px 12px;
     color: #666666;
     font-size: 0.92em;
     margin: 0;
   }
-  .timeline-date-label {
-    display: block;
+  .timeline-row.left .timeline-date-label,
+  .timeline-row.left .timeline-meta {
+    text-align: right;
   }
   .timeline-clear {
     clear: both;
@@ -368,14 +371,14 @@ const fetchData = async url => {
       <div id="forest-timeline-status" class="text-muted top-spacer-10"></div>
 
       <div class="forest-adopters" id="forest-adopters" style="display:none;">
-        <p class="forest-adopters-label">Adopters</p>
+        <p class="forest-adopters-label">Marine forest adopters</p>
         <p class="forest-adopters-list" id="forest-adopters-list"></p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="container">
+<section class="container" style="margin-top: -40px;">
   <div class="timeline-track" id="forest-timeline-list">
     <div class="timeline-line"></div>
     <div style="text-align:center; color:#666;">Loading observations...</div>
@@ -684,8 +687,8 @@ const fetchData = async url => {
           '<div class="timeline-row ' + side + '">' +
             '<span class="timeline-dot"></span>' +
             '<a class="timeline-card" href="' + escapeHtml(obsUrl) + '" target="_blank" rel="noopener">' +
-              '<span class="timeline-date-label">' + escapeHtml(formatObservationDate(obs)) + '</span>' +
               '<img class="timeline-image" src="' + escapeHtml(imageUrl) + '" alt="' + escapeHtml(getObservationSpeciesLabel(obs)) + '">' +
+              '<span class="timeline-date-label">' + escapeHtml(formatObservationDate(obs)) + '</span>' +
               '<span class="timeline-meta">Observer: ' + escapeHtml(observerName) + '</span>' +
             '</a>' +
           '</div>';
@@ -750,7 +753,7 @@ const fetchData = async url => {
             locationEl.textContent = getRegionFromObservation(cover);
           }
         }
-        setStatus(target.observations.length + ' observations found.');
+        setStatus(target.observations.length + ' observations performed so far.');
         renderAdopters(target.observations);
         renderTimeline(target);
       })
