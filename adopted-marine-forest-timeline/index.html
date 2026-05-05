@@ -355,11 +355,19 @@ const fetchData = async url => {
   @media (max-width: 768px) {
     .timeline-line { left: 20px !important; margin-left: 0 !important; }
     .timeline-row { justify-content: flex-start; }
+    .timeline-row::before {
+      left: 20px;
+      margin-left: 0;
+    }
     .timeline-card {
       width: calc(100% - 50px);
       margin-left: 50px;
     }
     .timeline-dot { left: 20px; }
+    .timeline-row.left .timeline-date-label,
+    .timeline-row.left .timeline-meta {
+      text-align: left;
+    }
   }
 </style>
 
