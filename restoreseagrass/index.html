@@ -77,6 +77,21 @@ const fetchData = async url => {
 
 </style>
 
+<script>
+  function hideLoadingPanel() {
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = 'hidden';
+    }
+  }
+
+  window.addEventListener('load', function () {
+    if (!window.keepLoadingPanel) {
+      hideLoadingPanel();
+    }
+  });
+</script>
+
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <a id="start"></a>
@@ -119,37 +134,8 @@ const fetchData = async url => {
                         <ul class="menu-horizontal text-left">
 
         
-                            <li class="dropdown">
-                                <span class="dropdown__trigger color--black" style="color: #000;">Distribution</span> <!-- type--uppercase -->
-                                <div class="dropdown__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="dropdown__content col-lg-2 col-md-2">
-                                                <ul class="menu-vertical">
-                           
-                                                    <li>
-                                                        <a href="/distribution">Distribution records</a>
-                                                    </li>
-
-                                                    <hr style="margin-top: 5px; margin-bottom: 7px; border: none; height: 1px; background: #b5b5b5; background: repeating-linear-gradient(90deg,#b5b5b5,#b5b5b5 3px,transparent 3px,transparent 6px);">
-                                                    <li>
-                                                    <a href="/species-richness-marine-forests">Species richness</a>
-                                                  </li>
-
-                                                    <li>
-                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
-                                                    </li>
-
-                                                    <li>
-                                                      <a href="/future-climate-impacts-on-marine-forests">
-                                                        <span class="dropdown__trigger">Future impacts</span>
-                                                      </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <li>
+                                <a href="/distribution2/" style="color: #000;">Distribution</a>
                             </li>
 
 
@@ -305,7 +291,8 @@ const fetchData = async url => {
                                       var map = L.map( 'map', {
                                         center: [38, -8],
                                         minZoom: 6,
-                                        zoom: 6
+                                        zoom: 6,
+                                        fullscreenControl: true
                                       });
 
                                       L.tileLayer( 'https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
@@ -332,11 +319,6 @@ const fetchData = async url => {
                                       var popup = marker.bindPopup('&nbsp;&nbsp;&nbsp;<b>Site: Ria de Alvor</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
 
                                       map.scrollWheelZoom.disable();
-
-                                      //  -----------------------------------------------------
-                                      //  Hide loading loadingPanel
-                                          document.getElementById('loadingPanel').style.visibility="hidden";
-                                      //  -----------------------------------------------------
 
                                   };
 

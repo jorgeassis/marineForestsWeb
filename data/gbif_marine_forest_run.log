@@ -1,0 +1,78 @@
+warning: Rhodophyta exclusion not resolved: Pneophyllum cetinaensis (SPECIES): no GBIF backbone match for the requested kingdom and family
+warning: Phaeophyceae exclusion not resolved: Sphacelaria fluviatilis (SPECIES): no GBIF backbone match for the requested kingdom and family
+warning: Phaeophyceae exclusion not resolved: Sphacelaria lacustris (SPECIES): no GBIF backbone match for the requested kingdom and family
+warning: Green algae exclusion not resolved: Ignatiales (ORDER): no GBIF backbone match for the requested kingdom and family
+Seagrasses / Posidoniaceae [7680]
+  Posidoniaceae 7680: 20 species read (offset 0, reported 20)
+Seagrasses / Cymodoceaceae [9640]
+  Cymodoceaceae 9640: 26 species read (offset 0, reported 26)
+Seagrasses / Zosteraceae [3725]
+  Zosteraceae 3725: 29 species read (offset 0, reported 29)
+Seagrasses / Thalassia [2864083, 7431622, 10947571]
+  Thalassia 2864083: 3 species read (offset 0, reported 3)
+  Thalassia 7431622: 0 species read (offset 0, reported 0)
+  Thalassia 10947571: 0 species read (offset 0, reported 0)
+Seagrasses / Enhalus [2866112]
+  Enhalus 2866112: 1 species read (offset 0, reported 1)
+Seagrasses / Halophila [2866030]
+  Halophila 2866030: 20 species read (offset 0, reported 20)
+Seagrasses / Ruppiaceae [3722]
+  Ruppiaceae 3722: 15 species read (offset 0, reported 15)
+Seagrasses / Althenia [6386021]
+  Althenia 6386021: 11 species read (offset 0, reported 11)
+Seagrasses / Lepilaena [2653036, 6386021, 9612266]
+  Lepilaena 2653036: 0 species read (offset 0, reported 0)
+  Lepilaena 6386021: 11 species read (offset 0, reported 11)
+  Lepilaena 9612266: 1 species read (offset 0, reported 1)
+Porifera / Porifera [105]
+  Porifera 105: 1000 species read (offset 0, reported 12651)
+  Porifera 105: 2000 species read (offset 1000, reported 12651)
+  Porifera 105: 3000 species read (offset 2000, reported 12651)
+  Porifera 105: 4000 species read (offset 3000, reported 12651)
+  Porifera 105: 5000 species read (offset 4000, reported 12651)
+  Porifera 105: 6000 species read (offset 5000, reported 12651)
+  Porifera 105: 7000 species read (offset 6000, reported 12651)
+  Porifera 105: 8000 species read (offset 7000, reported 12651)
+  Porifera 105: 9000 species read (offset 8000, reported 12651)
+  Porifera 105: 10000 species read (offset 9000, reported 12651)
+Traceback (most recent call last):
+  File "/Users/jorgeassis/CCMAR Dropbox/Jorge Assis/biodiversityDS/externalServices/webApplication [Marine Forests]/marineForestsWeb/scripts/gbif_marine_forest_taxa.py", line 1039, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/jorgeassis/CCMAR Dropbox/Jorge Assis/biodiversityDS/externalServices/webApplication [Marine Forests]/marineForestsWeb/scripts/gbif_marine_forest_taxa.py", line 1005, in main
+    rows, excluded_counts, examples = collect_group(client, group, includes, excludes)
+                                      ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jorgeassis/CCMAR Dropbox/Jorge Assis/biodiversityDS/externalServices/webApplication [Marine Forests]/marineForestsWeb/scripts/gbif_marine_forest_taxa.py", line 748, in collect_group
+    fetched = fetch_accepted_species(client, int(taxon_key), f"{source['query_name']} {taxon_key}")
+  File "/Users/jorgeassis/CCMAR Dropbox/Jorge Assis/biodiversityDS/externalServices/webApplication [Marine Forests]/marineForestsWeb/scripts/gbif_marine_forest_taxa.py", line 599, in fetch_accepted_species
+    payload = client.get(
+        "/species/search",
+    ...<7 lines>...
+        },
+    )
+  File "/Users/jorgeassis/CCMAR Dropbox/Jorge Assis/biodiversityDS/externalServices/webApplication [Marine Forests]/marineForestsWeb/scripts/gbif_marine_forest_taxa.py", line 383, in get
+    payload = self._request(url)
+  File "/Users/jorgeassis/CCMAR Dropbox/Jorge Assis/biodiversityDS/externalServices/webApplication [Marine Forests]/marineForestsWeb/scripts/gbif_marine_forest_taxa.py", line 398, in _request
+    return json.load(response)
+           ~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+                 ~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 478, in read
+    return self._read_chunked(amt)
+           ~~~~~~~~~~~~~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 608, in _read_chunked
+    value.append(self._safe_read(chunk_left))
+                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 648, in _safe_read
+    data = self.fp.read(cursize)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out

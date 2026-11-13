@@ -77,6 +77,21 @@ const fetchData = async url => {
 
 </style>
 
+<script>
+  function hideLoadingPanel() {
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = 'hidden';
+    }
+  }
+
+  window.addEventListener('load', function () {
+    if (!window.keepLoadingPanel) {
+      hideLoadingPanel();
+    }
+  });
+</script>
+
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <a id="start"></a>
@@ -119,37 +134,8 @@ const fetchData = async url => {
                         <ul class="menu-horizontal text-left">
 
         
-                            <li class="dropdown">
-                                <span class="dropdown__trigger color--black" style="color: #000;">Distribution</span> <!-- type--uppercase -->
-                                <div class="dropdown__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="dropdown__content col-lg-2 col-md-2">
-                                                <ul class="menu-vertical">
-                           
-                                                    <li>
-                                                        <a href="/distribution">Distribution records</a>
-                                                    </li>
-
-                                                    <hr style="margin-top: 5px; margin-bottom: 7px; border: none; height: 1px; background: #b5b5b5; background: repeating-linear-gradient(90deg,#b5b5b5,#b5b5b5 3px,transparent 3px,transparent 6px);">
-                                                    <li>
-                                                    <a href="/species-richness-marine-forests">Species richness</a>
-                                                  </li>
-
-                                                    <li>
-                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
-                                                    </li>
-
-                                                    <li>
-                                                      <a href="/future-climate-impacts-on-marine-forests">
-                                                        <span class="dropdown__trigger">Future impacts</span>
-                                                      </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <li>
+                                <a href="/distribution2/" style="color: #000;">Distribution</a>
                             </li>
 
 
@@ -204,9 +190,7 @@ const fetchData = async url => {
 
 
 <script>
-  window.addEventListener('load', function () {
-    document.getElementById('loadingPanel').style.visibility = 'hidden';
-  });
+  window.keepLoadingPanel = true;
 </script>
 
 <section class="container text-center">
@@ -655,35 +639,32 @@ const fetchData = async url => {
       return d.getUTCDate() + ' ' + monthShort[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
     }
 
-    function countDistinctSpecies(observations) {
-      if (!observations || !observations.length) { return 0; }
+    function distinctSpeciesNames(observations) {
       var names = {};
       var i;
+      if (!observations) { return []; }
       for (i = 0; i < observations.length; i += 1) {
         var obs = observations[i];
         var sp = (obs && obs.taxon && obs.taxon.name) ? String(obs.taxon.name).trim() : '';
         if (!sp) { continue; }
         names[sp] = true;
       }
-      return Object.keys(names).length;
+      return Object.keys(names).sort();
     }
 
-    function formatAllSpecies(observations) {
-      if (!observations || !observations.length) { return 'marine forests'; }
-      var names = {};
-      var i;
-      for (i = 0; i < observations.length; i += 1) {
-        var obs = observations[i];
-        var sp = (obs && obs.taxon && obs.taxon.name) ? String(obs.taxon.name).trim() : '';
-        if (!sp) { continue; }
-        names[sp] = true;
-      }
-      var list = Object.keys(names).sort();
-      if (!list.length) { return 'marine forests'; }
+    function joinSpeciesNames(list) {
+      if (!list || !list.length) { return ''; }
       if (list.length === 1) { return list[0]; }
       if (list.length === 2) { return list[0] + ' and ' + list[1]; }
-      var last = list.pop();
-      return list.join(', ') + ', and ' + last;
+      return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+    }
+
+    function formatForestPhrase(observations) {
+      var list = distinctSpeciesNames(observations);
+      if (!list.length) { return 'marine forests'; }
+      if (list.length === 1) { return 'the forest of ' + list[0]; }
+      if (list.length < 5) { return 'the forests of ' + joinSpeciesNames(list); }
+      return formatNumber(list.length) + ' marine forests, including species of ' + joinSpeciesNames(list.slice(0, 4));
     }
 
     function inferFirstMonitoringDate(observations) {
@@ -730,20 +711,18 @@ const fetchData = async url => {
     function updateAdopterSummary(login, totalRecords, observations) {
       if (!adopterSummaryEl) { return; }
       var adopterName = formatAdopterName(login);
-      var allSpecies = formatAllSpecies(observations);
-      var distinctSpecies = countDistinctSpecies(observations);
+      var forestPhrase = formatForestPhrase(observations);
       var firstDate = inferFirstMonitoringDate(observations);
       var datePart = firstDate || 'unknown date';
       var count = Number(totalRecords || 0);
       var countText = formatNumber(count);
       var timeWord = count === 1 ? 'time' : 'times';
-      var forestWord = distinctSpecies === 1 ? 'forest' : 'forests';
       var introWord = areAllObservationsInSameMonthYear(observations) ? 'In' : 'Since';
 
       adopterSummaryEl.innerHTML =
         introWord + ' ' + datePart + ', ' + adopterName +
-        ' monitored <span style="color:#e9525c;"><b>' + countText + ' ' + timeWord + '</b></span>' +
-        ' the ' + forestWord + ' of ' + allSpecies + '.';
+        ' monitored <span style="color:#e9525c;"><b>' + countText + ' ' + timeWord + '</b></span> ' +
+        forestPhrase + '.';
     }
 
     function getLevel(recordCount) {
@@ -1049,7 +1028,8 @@ const fetchData = async url => {
 
       var map = L.map('adopters-map', {
         minZoom: 2,
-        zoomControl: true
+        zoomControl: true,
+        fullscreenControl: true
       });
 
       L.tileLayer('https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
@@ -1256,6 +1236,7 @@ const fetchData = async url => {
         userRecordImagesEl.innerHTML = '<div class="col-md-12">Missing parameter: add ?user=<iNaturalist login> to the URL.</div>';
       }
       drawEmptyTimeCharts();
+      hideLoadingPanel();
       return;
     }
 
@@ -1326,6 +1307,9 @@ const fetchData = async url => {
         setPicturesSectionUsername(normalizedUserLogin);
         drawEmptyTimeCharts();
         console.error('Adopter personal dashboard fetch error:', error);
+      })
+      .then(function () {
+        hideLoadingPanel();
       });
   })();
 </script>

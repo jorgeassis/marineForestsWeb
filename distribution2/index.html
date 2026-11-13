@@ -1,0 +1,2594 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66ZBZDBMP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q66ZBZDBMP');
+</script>
+
+<meta charset="utf-8">
+<title>Marine Forests</title>
+<meta name="description" content="Scientists, coastal managers and the general public helping sunderstanding the global distribution of Marine Forests">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/css/leaflet.css" rel="stylesheet" />
+<link href="/assets/css/leaflet.fullscreen.css" rel="stylesheet" />
+
+<script src="/assets/js/leaflet.js"></script>
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/Leaflet.fullscreen.min.js"></script>
+<script src="/assets/js/leaflet-providers.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+
+const fetchData = async url => {
+  try {
+    const jsonData = await fetch(url)
+    const data = await jsonData.json()
+    return data
+  } catch (err) {
+    alert('Could not load data:')
+    return null
+  }
+};
+
+</script>
+
+</head>
+
+<body class=" ">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Header and Navigation -->
+
+<div id="loadingPanel"></div>
+
+<style>
+
+#loadingPanel{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:9999;
+    background: #fff url("/assets/img/loading.gif") no-repeat center center
+}
+
+</style>
+
+<script>
+  function hideLoadingPanel() {
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = 'hidden';
+    }
+  }
+
+  window.addEventListener('load', function () {
+    if (!window.keepLoadingPanel) {
+      hideLoadingPanel();
+    }
+  });
+</script>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<a id="start"></a>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="nav-container ">
+
+    <div class="bar bar--sm visible-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="logo" src="/assets/img/mf_logo.png" />
+                        <img class="logo logo-light" alt="logo" src="/assets/img/mf_logo.png" />
+                    </a>
+                </div>
+                <div class="col-9 col-md-10 text-right">
+                    <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                        <i class="icon icon--sm stack-interface stack-menu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="menu2" class="bar bar-2 hidden-xs ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
+                    <div class="bar__module">
+                        <a href="/">
+                            <img class="logo logo-dark" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                            <img class="logo logo-light" style="min-width: 105px; min-height: 105px;" alt="logo" src="/assets/img/mf_logo.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1">
+                    <div class="bar__module">
+                        <ul class="menu-horizontal text-left">
+
+        
+                            <li>
+                                <a href="/distribution2/" style="color: #000;">Distribution</a>
+                            </li>
+
+
+
+                            <li class="dropdown">
+                                <span class="dropdown__trigger color--black" style="color: #000;">Project links</span> <!-- type--uppercase -->
+                                <div class="dropdown__container">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="dropdown__content col-lg-2 col-md-2">
+                                                <ul class="menu-vertical">
+                                                   
+                                                    </li>
+
+                                                    <li>
+                                                    <a href="/restoreseagrass">Restoreseagrass</a>
+                                                  </li>
+
+        
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/citizen-science">Citizen science</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--end module-->
+                </div>
+                <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+                    <div class="bar__module">
+              
+                        <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt">
+                             <span class="btn__text">
+                                Adopt
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+<script>
+  window.keepLoadingPanel = true;
+</script>
+
+<section class="container text-center distribution-query">
+  <div>
+    <div class="col-md-8">
+      <h2 class="color--dark">Distribution of Marine Forests</h2>
+      <p class="lead top-spacer-10" id="distribution-catalogue">
+        Catalogue of <span class="color--redish" id="catalogue-records">…</span> records of <span class="color--redish" id="catalogue-species">…</span> marine forest species.
+      </p>
+    </div>
+  </div>
+
+  <form id="distribution-form" action="/distribution2/" method="get">
+    <div class="distribution-controls">
+      <div class="distribution-source">
+        <select id="distribution-source" name="source" aria-label="Source">
+          <option value="" disabled>Source</option>
+          <option value="gbif" selected>GBIF</option>
+          <option value="citizen">Citizen science</option>
+        </select>
+      </div>
+      <div class="distribution-years">
+        <span class="distribution-years-label">Years</span>
+        <input id="distribution-year-start" name="yearStart" type="number" value="1900" min="1500" aria-label="Start year">
+        <span class="distribution-years-sep">–</span>
+        <input id="distribution-year-end" name="yearEnd" type="number" value="2026" min="1500" aria-label="End year">
+      </div>
+      <div class="distribution-search">
+          <input id="distribution-taxon" name="taxon" type="text" value="Phaeophyceae" aria-label="Taxon" placeholder="Search a species or group" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="distribution-suggestions">
+        <div id="distribution-suggestions" class="distribution-suggestions" role="listbox" hidden></div>
+      </div>
+      <button type="submit" class="btn btn--sm btn--primary-2 type--uppercase">Search</button>
+    </div>
+  </form>
+</section>
+
+<section class="unpad distribution-map-section">
+  <style>
+    .distribution-query {
+      position: relative;
+      z-index: 30;
+      overflow: visible;
+    }
+    .distribution-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      max-width: 1080px;
+      margin: 28px auto 0;
+      text-align: left;
+    }
+    .distribution-source {
+      flex: 0 0 190px;
+    }
+    .distribution-years {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 0 0 auto;
+      color: #6c6c6c;
+      font-size: 13px;
+    }
+    .distribution-years-label {
+      white-space: nowrap;
+    }
+    .distribution-years input {
+      width: 72px;
+      padding-left: 8px;
+      padding-right: 4px;
+    }
+    .distribution-search {
+      position: relative;
+      flex: 1 1 auto;
+      min-width: 0;
+      text-align: left;
+    }
+    .distribution-controls select,
+    .distribution-controls input,
+    #distribution-form .distribution-controls button[type="submit"] {
+      height: 39px;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .distribution-controls select,
+    .distribution-controls input {
+      width: 100%;
+      color: #6c6c6c;
+    }
+    .distribution-controls .distribution-years input {
+      width: 72px;
+    }
+    #distribution-form .distribution-controls button[type="submit"],
+    #distribution-form .distribution-controls button[type="submit"]:hover,
+    #distribution-form .distribution-controls button[type="submit"]:focus,
+    #distribution-form .distribution-controls button[type="submit"]:active {
+      flex: 0 0 auto;
+      width: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.6em;
+      font-size: 14px;
+      line-height: 1;
+      white-space: nowrap;
+      background: #4183d7;
+      border-color: #4183d7;
+      color: #fff;
+    }
+    .distribution-map-section {
+      position: relative;
+    }
+    #distribution-map {
+      position: relative;
+      z-index: 0;
+    }
+    a.distribution-mode-link.btn,
+    a.distribution-mode-link.btn:hover,
+    a.distribution-mode-link.btn:focus,
+    a.distribution-mode-link.btn:visited,
+    a.distribution-mode-link.btn .btn__text,
+    a.distribution-mode-link.btn:hover .btn__text,
+    a.distribution-mode-link.btn:focus .btn__text,
+    a.distribution-mode-link.btn:visited .btn__text {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1001;
+      margin: 0;
+      text-decoration: none;
+      background: #d6d6d6;
+      border-color: #d6d6d6;
+      color: #000 !important;
+    }
+    a.distribution-mode-link.btn .btn__text,
+    a.distribution-mode-link.btn:hover .btn__text,
+    a.distribution-mode-link.btn:focus .btn__text,
+    a.distribution-mode-link.btn:visited .btn__text {
+      position: static;
+    }
+    a.distribution-mode-link.btn[hidden] {
+      display: none;
+    }
+    #distribution-map.has-mode-link .leaflet-top.leaflet-right {
+      top: 49px;
+    }
+    #distribution-map.leaflet-fullscreen-on,
+    #distribution-map.leaflet-pseudo-fullscreen {
+      z-index: 99999;
+    }
+    .distribution-suggestions {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 4px);
+      z-index: 40;
+      margin: 0;
+      padding: 6px 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(31, 45, 61, 0.14);
+      max-height: 320px;
+      overflow: auto;
+      text-align: left;
+    }
+    @media all and (max-width: 767px) {
+      .distribution-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .distribution-source,
+      .distribution-years {
+        flex-basis: auto;
+        width: 100%;
+      }
+      .distribution-years input {
+        flex: 1 1 auto;
+        width: auto;
+      }
+      #distribution-form .distribution-controls button[type="submit"] {
+        width: 100%;
+      }
+    }
+    .distribution-suggestion,
+    .distribution-suggestion-empty {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 8px 14px;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      text-align: left;
+      text-transform: none;
+      line-height: 1.35;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .distribution-suggestion-empty {
+      color: #888888;
+      cursor: default;
+    }
+    .distribution-suggestion.is-active,
+    .distribution-suggestion:hover {
+      background: #f4f6fb;
+    }
+    .distribution-suggestion-name {
+      display: block;
+      color: #222222;
+      font-weight: 600;
+    }
+    .distribution-suggestion-meta {
+      display: block;
+      color: #888888;
+      font-size: 0.85em;
+    }
+    .leaflet-popup-content-wrapper {
+      padding: 1px;
+      text-align: left;
+      border-radius: 8px;
+    }
+    .leaflet-popup-content {
+      margin: 0;
+      padding: 2px;
+    }
+    .forest-popup {
+      width: 240px;
+    }
+    .forest-popup .forest-popup-body {
+      padding: 8px 12px 10px 12px;
+    }
+    .forest-popup .forest-popup-species {
+      margin: 0 0 4px 0;
+      font-style: italic;
+      font-weight: 700;
+      color: #e9525c;
+      font-size: 1.2em;
+    }
+    .forest-popup .forest-popup-meta {
+      margin: 0 0 3px 0;
+      color: #444444;
+      font-size: 1.02em;
+    }
+    .forest-popup .forest-popup-meta.muted {
+      color: #888888;
+    }
+    .forest-popup .forest-popup-link {
+      display: inline-block;
+      margin-top: 2px;
+      color: #e9525c;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.02em;
+    }
+    #distribution-note:empty {
+      display: none;
+    }
+    #distribution-note {
+      margin-top: 8px;
+    }
+    .distribution-map-note {
+      margin: 8px 16px 0;
+      text-align: center;
+      font-size: 0.85em;
+      font-style: italic;
+      color: #888888;
+    }
+    #distribution-photos-heading[hidden],
+    #distribution-photos[hidden],
+    #distribution-charts[hidden] {
+      display: none;
+    }
+    #distribution-charts {
+      margin-top: 28px;
+    }
+    #distribution-charts .chart-wrap {
+      border: 1px solid #ececec;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 18px;
+      background: #fff;
+      text-align: left;
+    }
+    #distribution-charts .chart-wrap h5 {
+      text-align: center;
+    }
+    #distribution-charts .chart-wrap canvas {
+      width: 100%;
+      height: 160px;
+      display: block;
+    }
+    #distribution-charts .chart-subtitle {
+      font-weight: 400;
+      font-size: 0.85em;
+      color: #666666;
+    }
+    .distribution-photos-title {
+      margin: 75px 0 6px;
+    }
+    #distribution-photos .forest-grid-item {
+      margin-bottom: 35px;
+    }
+    #distribution-photos .forest-grid-item .thumb {
+      height: 210px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+      background: #f5f5f5;
+    }
+    #distribution-photos .forest-grid-species {
+      margin: 0;
+      font-style: italic;
+      font-weight: 700;
+      color: #222222;
+    }
+    #distribution-photos .forest-grid-region {
+      margin: 0;
+      color: #666666;
+      font-size: 0.92em;
+    }
+    #distribution-photos .forest-grid-count {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 1px 10px;
+      background: #f1f1f1;
+      color: #e9525c;
+      font-size: 0.78em;
+      font-weight: 700;
+      border-radius: 999px;
+    }
+  </style>
+  <div id="distribution-map" class="custom-popup" style="height: 450px;"></div>
+  <a id="distribution-mode-link" class="distribution-mode-link btn btn--sm btn--primary-2 type--uppercase" hidden><span class="btn__text">Point records</span></a>
+  <p id="distribution-map-note" class="distribution-map-note"></p>
+</section>
+
+<section class="container text-center" style="padding-top: 24px;">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h4 id="distribution-summary"></h4>
+      <p class="lead" id="distribution-note"></p>
+    </div>
+  </div>
+  <div id="distribution-charts" hidden>
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="chart-wrap">
+          <h5><span id="distribution-year-title">Records per year</span> <span class="chart-subtitle" id="distribution-year-subtitle"></span></h5>
+          <canvas id="distribution-records-per-year-chart"></canvas>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="chart-wrap">
+          <h5>Records per month <span class="chart-subtitle" id="distribution-month-subtitle"></span></h5>
+          <canvas id="distribution-records-per-month-chart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <p class="lead" id="distribution-peak-summary"></p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center" id="distribution-photos-heading" hidden>
+    <div class="col-md-10">
+      <h3 class="color--dark distribution-photos-title">Random pictures from records</h3>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 20px;" id="distribution-photos" hidden></div>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <a id="distribution-explore" class="btn btn--primary-2 type--uppercase" style="display: none; text-decoration: none;" target="_blank" rel="noopener">
+        <span class="btn__text">Explore records</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="top-spacer-40"></div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Bottom message -->
+
+<section class="feature-large switchable bg--secondary-2">
+
+        <div class="container">
+
+          <div class="row justify-content-around top-spacer-20">
+              <div class="col-lg-6 col-md-6">
+                  <img alt="Image" class="border--round box-shadow-wide" src="/assets/img/main_header.jpg" style="margin-bottom: 30px" />
+              </div>
+              <div class="col-lg-5 col-md-6">
+                  <div class="top-spacer-10">
+                      <h2>Scientific team</h2>
+                  </div>
+                  <div class="text-block" style="font-size: 15px; margin-bottom: 8px;">
+
+                    The team of the project is composed by scientists and volunteer citizens from all around the world, which are contributing to expand knowlege about the diversity and distribution of Marine Forests.
+
+                  </div>
+
+                  <div class="text-block" style="font-size: 15px; margin-top: 0; margin-bottom: 0;">
+
+                    Encourage conservation, understanding and appreciation of local marine environments by adopting a marine forest.
+
+                  </div>
+
+                  <div class="top-spacer-20">
+                    <a class="btn btn--sm btn--primary-2 type--uppercase" href="/adopt">
+                      <span class="btn__text">Adopt a marine forest</span>
+                    </a>
+                  </div>
+
+              </div>
+          </div>
+
+        </div>
+
+</section>
+
+
+<script>
+  (function () {
+    var INAT_DATASET_KEY = '50c9509d-22c7-4a22-a47d-8c48425ef4a7';
+    var GBIF_PREDICATE_URL = 'https://api.gbif.org/v1/occurrence/search/predicate';
+
+    var sourceSelect = document.getElementById('distribution-source');
+    var taxonInput = document.getElementById('distribution-taxon');
+    var form = document.getElementById('distribution-form');
+    var suggestionList = document.getElementById('distribution-suggestions');
+    var summaryEl = document.getElementById('distribution-summary');
+    var noteEl = document.getElementById('distribution-note');
+    var exploreEl = document.getElementById('distribution-explore');
+
+    var catalog = [];
+    var selectedItem = null;
+    var matches = [];
+    var activeIndex = -1;
+    var listOpen = false;
+    var requestToken = 0;
+    var searchController = null;
+    var cataloguePending = null;
+    var densityLayer = null;
+    var emptyMapTile = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    var inatTaxonCache = {};
+    var map = null;
+
+    function showLoadingPanel() {
+      var panel = document.getElementById('loadingPanel');
+      if (panel) panel.style.visibility = 'visible';
+    }
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function parseCsv(text) {
+      var rows = [];
+      var row = [];
+      var cell = '';
+      var inQuotes = false;
+      var i;
+      for (i = 0; i < text.length; i += 1) {
+        var character = text.charAt(i);
+        if (inQuotes) {
+          if (character === '"') {
+            if (text.charAt(i + 1) === '"') {
+              cell += '"';
+              i += 1;
+            } else {
+              inQuotes = false;
+            }
+          } else {
+            cell += character;
+          }
+        } else if (character === '"') {
+          inQuotes = true;
+        } else if (character === ',') {
+          row.push(cell);
+          cell = '';
+        } else if (character === '\n') {
+          row.push(cell);
+          rows.push(row);
+          row = [];
+          cell = '';
+        } else if (character !== '\r') {
+          cell += character;
+        }
+      }
+      if (cell.length || row.length) {
+        row.push(cell);
+        rows.push(row);
+      }
+      if (!rows.length) return [];
+      var header = rows[0].map(function (name) {
+        return String(name || '').replace(/^\uFEFF/, '').trim();
+      });
+      var objects = [];
+      for (i = 1; i < rows.length; i += 1) {
+        var blank = rows[i].every(function (value) { return !String(value || '').trim(); });
+        if (blank) continue;
+        var obj = {};
+        var c;
+        for (c = 0; c < header.length; c += 1) obj[header[c]] = rows[i][c] || '';
+        objects.push(obj);
+      }
+      return objects;
+    }
+
+    function taxonIdentity(row) {
+      return {
+        name: row.canonical_name || row.query_name || row.scientific_name,
+        rank: String(row.gbif_rank || row.query_rank || '').toLowerCase(),
+        kingdom: row.kingdom || '',
+        taxonKey: row.gbif_taxon_key || ''
+      };
+    }
+
+    function buildCatalog(rows, speciesRows) {
+      var includes = [];
+      var excludesByGroup = {};
+      rows.forEach(function (row) {
+        var group = row.group || '';
+        if (row.role === 'exclude') {
+          var excluded = taxonIdentity(row);
+          if (!excluded.name) return;
+          if (!excludesByGroup[group]) excludesByGroup[group] = [];
+          excludesByGroup[group].push(excluded);
+          return;
+        }
+        if (row.role === 'include' && row.gbif_taxon_key) includes.push(row);
+      });
+
+      var membersByGroup = {};
+      var groupOrder = [];
+      includes.forEach(function (row) {
+        if (!membersByGroup[row.group]) {
+          membersByGroup[row.group] = [];
+          groupOrder.push(row.group);
+        }
+        membersByGroup[row.group].push(row);
+      });
+
+      var items = [];
+      groupOrder.forEach(function (group) {
+        var members = membersByGroup[group];
+        var excludes = excludesByGroup[group] || [];
+        if (members.length > 1) {
+          items.push({
+            kind: 'group',
+            label: group,
+            rank: 'group',
+            group: group,
+            featured: true,
+            taxonKeys: members.map(function (row) { return row.gbif_taxon_key; }),
+            taxa: members.map(taxonIdentity),
+            excludes: excludes,
+            searchText: group.toLowerCase()
+          });
+        }
+        members.forEach(function (row) {
+          var identity = taxonIdentity(row);
+          items.push({
+            kind: 'taxon',
+            label: identity.name,
+            labelLower: identity.name.toLowerCase(),
+            rank: identity.rank,
+            group: row.group,
+            family: row.family || '',
+            featured: members.length === 1,
+            taxonKeys: [row.gbif_taxon_key],
+            taxa: [identity],
+            excludes: excludes
+          });
+        });
+      });
+
+      var seenKeys = {};
+      items.forEach(function (item) {
+        if (!item.labelLower) item.labelLower = item.label.toLowerCase();
+        (item.taxonKeys || []).forEach(function (key) { seenKeys[String(key)] = true; });
+      });
+      function addRank(name, key, rank, row) {
+        name = String(name || '').trim();
+        key = String(key || '').trim();
+        if (!name || !key || seenKeys[key]) return;
+        seenKeys[key] = true;
+        items.push({
+          kind: 'taxon',
+          label: name,
+          labelLower: name.toLowerCase(),
+          rank: rank,
+          group: row.group || '',
+          family: rank === 'genus' ? (row.family || '') : '',
+          featured: false,
+          taxonKeys: [key],
+          taxa: [{
+            name: name,
+            rank: rank,
+            kingdom: row.kingdom || '',
+            taxonKey: key
+          }],
+          excludes: []
+        });
+      }
+      (speciesRows || []).forEach(function (row) {
+        var key = row.taxon_key;
+        var name = row.species;
+        if (!key || !name || seenKeys[key]) return;
+        if (String(row.extinct || '').toLowerCase() === 'true') return;
+        addRank(row.phylum, row.phylum_key, 'phylum', row);
+        addRank(row['class'], row.class_key, 'class', row);
+        addRank(row.order, row.order_key, 'order', row);
+        addRank(row.family, row.family_key, 'family', row);
+        addRank(row.genus, row.genus_key, 'genus', row);
+        seenKeys[key] = true;
+        items.push({
+          kind: 'taxon',
+          label: name,
+          labelLower: name.toLowerCase(),
+          rank: 'species',
+          group: row.group || '',
+          family: row.family || '',
+          featured: false,
+          taxonKeys: [key],
+          taxa: [{
+            name: name,
+            rank: 'species',
+            kingdom: row.kingdom || '',
+            taxonKey: key
+          }],
+          excludes: []
+        });
+      });
+      return items;
+    }
+
+    function itemMeta(item) {
+      if (item.kind === 'group') {
+        var count = item.taxonKeys.length;
+        return 'group · ' + count + (count === 1 ? ' taxon' : ' taxa');
+      }
+      var context = '';
+      if (item.family && item.family.toLowerCase() !== item.label.toLowerCase()) context = item.family;
+      else if (item.group && item.group.toLowerCase() !== item.label.toLowerCase()) context = item.group;
+      return context ? (item.rank + ' · ' + context) : item.rank;
+    }
+
+    var rankOrder = {
+      group: 0,
+      kingdom: 1,
+      phylum: 2,
+      class: 3,
+      order: 4,
+      family: 5,
+      genus: 6,
+      species: 7
+    };
+
+    function byRankThenLabel(a, b) {
+      var rankA = Object.prototype.hasOwnProperty.call(rankOrder, a.rank) ? rankOrder[a.rank] : 8;
+      var rankB = Object.prototype.hasOwnProperty.call(rankOrder, b.rank) ? rankOrder[b.rank] : 8;
+      if (rankA !== rankB) return rankA - rankB;
+      if (a.labelLower < b.labelLower) return -1;
+      if (a.labelLower > b.labelLower) return 1;
+      return 0;
+    }
+
+    function filterItems(query) {
+      var q = String(query || '').trim().toLowerCase();
+      if (!q) return catalog.filter(function (item) { return item.featured; });
+      var exact = [];
+      var prefix = [];
+      var contains = [];
+      var i;
+      for (i = 0; i < catalog.length; i += 1) {
+        var item = catalog[i];
+        var label = item.labelLower;
+        if (label === q) exact.push(item);
+        else if (label.indexOf(q) === 0) prefix.push(item);
+        else if (q.length >= 3 && label.indexOf(q) !== -1) contains.push(item);
+      }
+      exact.sort(byRankThenLabel);
+      prefix.sort(byRankThenLabel);
+      contains.sort(byRankThenLabel);
+      return exact.concat(prefix, contains).slice(0, 12);
+    }
+
+    function hideSuggestions() {
+      listOpen = false;
+      activeIndex = -1;
+      suggestionList.hidden = true;
+      taxonInput.setAttribute('aria-expanded', 'false');
+    }
+
+    function renderSuggestions(items) {
+      matches = items;
+      activeIndex = items.length ? 0 : -1;
+      if (!items.length) {
+        suggestionList.innerHTML = '<div class="distribution-suggestion-empty">No matching taxon</div>';
+      } else {
+        suggestionList.innerHTML = items.map(function (item, index) {
+          var name = item.kind === 'taxon'
+            ? '<em>' + escapeHtml(item.label) + '</em>'
+            : escapeHtml(item.label);
+          return '<button type="button" class="distribution-suggestion' + (index === activeIndex ? ' is-active' : '') + '" role="option" data-index="' + index + '" aria-selected="' + (index === activeIndex ? 'true' : 'false') + '">' +
+            '<span class="distribution-suggestion-name">' + name + '</span>' +
+            '<span class="distribution-suggestion-meta">' + escapeHtml(itemMeta(item)) + '</span>' +
+          '</button>';
+        }).join('');
+      }
+      suggestionList.hidden = false;
+      listOpen = true;
+      taxonInput.setAttribute('aria-expanded', 'true');
+    }
+
+    function moveActive(step) {
+      if (!matches.length) return;
+      activeIndex = (activeIndex + step + matches.length) % matches.length;
+      var buttons = suggestionList.querySelectorAll('.distribution-suggestion');
+      Array.prototype.forEach.call(buttons, function (button, index) {
+        var active = index === activeIndex;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      if (buttons[activeIndex] && buttons[activeIndex].scrollIntoView) {
+        buttons[activeIndex].scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    function findExactItem(value) {
+      var q = String(value || '').trim().toLowerCase();
+      if (selectedItem && selectedItem.labelLower === q) return selectedItem;
+      var found = null;
+      catalog.forEach(function (item) {
+        if (!found && item.labelLower === q) found = item;
+      });
+      return found;
+    }
+
+    function chooseItem(item) {
+      selectedItem = item;
+      taxonInput.value = item.label;
+      hideSuggestions();
+      runSearch();
+    }
+
+    function submitSearch() {
+      var exact = findExactItem(taxonInput.value);
+      if (exact) {
+        chooseItem(exact);
+        return;
+      }
+      if (selectedItem && selectedItem.label.toLowerCase() === taxonInput.value.trim().toLowerCase()) {
+        runSearch();
+        return;
+      }
+      renderSuggestions(filterItems(taxonInput.value));
+      setMessage('Choose a taxon from the list.', '');
+    }
+
+    function setMessage(summary, note) {
+      summaryEl.innerHTML = summary;
+      noteEl.textContent = note || '';
+      exploreEl.style.display = 'none';
+      exploreEl.removeAttribute('href');
+      hideDistributionCharts();
+      hideDistributionPhotos();
+    }
+
+    function setResult(summary, note, href, linkText) {
+      summaryEl.innerHTML = summary;
+      noteEl.textContent = note || '';
+      if (href) {
+        exploreEl.href = href;
+        exploreEl.style.display = 'inline-block';
+        var label = exploreEl.querySelector('.btn__text');
+        if (label) label.textContent = linkText;
+      } else {
+        exploreEl.style.display = 'none';
+      }
+    }
+
+    function summaryHtml(total, sourceLabel, taxonLabel) {
+      var taxon = '<span class="color--redish"><em>' + escapeHtml(taxonLabel) + '</em></span>';
+      return '<span class="color--redish">' + formatNumber(total) + '</span><span class="color--dark"> ' +
+        sourceLabel + (total === 1 ? ' record of ' : ' records of ') + '</span>' + taxon + '<span class="color--dark">.</span>';
+    }
+
+    function setupMap() {
+      var mapElement = document.getElementById('distribution-map');
+      if (!mapElement || !window.L || typeof window.L.map !== 'function') return;
+      map = L.map(mapElement, {
+        minZoom: 2,
+        zoomControl: true,
+        fullscreenControl: true,
+        preferCanvas: true
+      });
+      map.on('fullscreenchange', function () {
+        setTimeout(function () { map.invalidateSize(); }, 0);
+      });
+      L.tileLayer('https://tile.gbif.org/3857/omt/{z}/{x}/{y}@2x.png?style=gbif-light', {
+        attribution: '&copy; <a href="https://www.openmaptiles.org/copyright">OpenMapTiles</a>',
+        maxZoom: 18
+      }).addTo(map);
+      if (opensOnNorthAtlantic()) frameNorthAtlantic();
+      else map.setView([20, 0], 2);
+      map.scrollWheelZoom.disable();
+      setTimeout(function () { map.invalidateSize(); }, 0);
+      window.addEventListener('load', function () { map.invalidateSize(); });
+      window.addEventListener('pageshow', function () { map.invalidateSize(); });
+    }
+
+    function fetchMapTile(url, attempt, signal) {
+      return fetch(url, { signal: signal }).then(function (response) {
+        if (response.status === 204 || response.status === 404) return emptyMapTile;
+        if (response.status === 429 || response.status >= 500) {
+          return response.blob().catch(function () { return null; }).then(function () {
+            if (attempt >= 2) return emptyMapTile;
+            return delay(700 * (attempt + 1), signal).then(function () {
+              return fetchMapTile(url, attempt + 1, signal);
+            });
+          });
+        }
+        if (!response.ok) return emptyMapTile;
+        return response.blob().then(function (blob) {
+          if (!blob || !blob.size || String(blob.type || '').indexOf('image/') !== 0) return emptyMapTile;
+          return URL.createObjectURL(blob);
+        });
+      }, function (error) {
+        if (error && error.name === 'AbortError') throw error;
+        if (attempt >= 2) return emptyMapTile;
+        return delay(700 * (attempt + 1), signal).then(function () {
+          return fetchMapTile(url, attempt + 1, signal);
+        });
+      });
+    }
+
+    function showDensityLayer(url) {
+      if (!map) return;
+      if (densityLayer) {
+        map.removeLayer(densityLayer);
+        densityLayer = null;
+      }
+      var QuietTiles = L.TileLayer.extend({
+        createTile: function (coords, done) {
+          var tile = document.createElement('img');
+          tile.alt = '';
+          var controller = typeof AbortController === 'function' ? new AbortController() : null;
+          tile._abortTile = controller;
+          var tileUrl = this.getTileUrl(coords);
+          var settled = false;
+          function finish(src) {
+            if (settled) return;
+            tile.onload = function () {
+              if (String(src).indexOf('blob:') === 0) {
+                setTimeout(function () { URL.revokeObjectURL(src); }, 1500);
+              }
+              if (settled) return;
+              settled = true;
+              done(null, tile);
+            };
+            tile.onerror = function () {
+              tile.onerror = null;
+              if (settled) return;
+              settled = true;
+              tile.src = emptyMapTile;
+              done(null, tile);
+            };
+            tile.src = src;
+          }
+          fetchMapTile(tileUrl, 0, controller && controller.signal).then(finish, function (error) {
+            if (error && error.name === 'AbortError') return;
+            finish(emptyMapTile);
+          });
+          return tile;
+        }
+      });
+      densityLayer = new QuietTiles(url, {
+        opacity: 0.9,
+        maxZoom: 18,
+        maxNativeZoom: 16,
+        zIndex: 450
+      });
+      densityLayer.on('tileunload', function (event) {
+        var tile = event.tile;
+        if (tile && tile._abortTile) tile._abortTile.abort();
+      });
+      densityLayer.addTo(map);
+      setTimeout(function () { map.invalidateSize(); }, 0);
+    }
+
+    function clearDensityLayer() {
+      if (map && densityLayer) {
+        map.removeLayer(densityLayer);
+        densityLayer = null;
+      }
+      setMapNote('');
+    }
+
+    function gbifKeyQuery(item) {
+      return item.taxonKeys.map(function (key) {
+        return 'taxonKey=' + encodeURIComponent(key);
+      }).join('&');
+    }
+
+    function taxonPredicate(keys) {
+      var equals = keys.map(function (key) {
+        return { type: 'equals', key: 'TAXON_KEY', value: String(key) };
+      });
+      if (equals.length === 1) return equals[0];
+      return { type: 'or', predicates: equals };
+    }
+
+    function gbifSearchPredicate(keys, options) {
+      var predicates = [
+        taxonPredicate(keys),
+        { type: 'equals', key: 'HAS_COORDINATE', value: 'true' },
+        { type: 'equals', key: 'OCCURRENCE_STATUS', value: 'PRESENT' },
+        { type: 'not', predicate: { type: 'equals', key: 'DATASET_KEY', value: INAT_DATASET_KEY } }
+      ];
+      if (options && options.years) {
+        predicates.push({ type: 'greaterThanOrEquals', key: 'YEAR', value: String(options.years.start) });
+        predicates.push({ type: 'lessThanOrEquals', key: 'YEAR', value: String(options.years.end) });
+      }
+      if (options && options.stillImage) {
+        predicates.push({ type: 'equals', key: 'MEDIA_TYPE', value: 'StillImage' });
+      }
+      return { type: 'and', predicates: predicates };
+    }
+
+    var gbifChain = Promise.resolve();
+
+    function postGbif(url, body, signal) {
+      var task = gbifChain.then(function () {
+        return fetchJson(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(body),
+          signal: signal
+        }, 0);
+      });
+      gbifChain = task.then(function () {
+        return delay(400);
+      }, function () {
+        return delay(700);
+      });
+      return task;
+    }
+
+    function gbifMapMode(item) {
+      return item.taxonKeys.length > 1 ? 'adhoc' : 'density';
+    }
+
+    function clampYears(edited) {
+      var startInput = document.getElementById('distribution-year-start');
+      var endInput = document.getElementById('distribution-year-end');
+      if (!startInput || !endInput) return;
+      var maxYear = new Date().getFullYear();
+      var minYear = 1500;
+      startInput.max = String(maxYear);
+      endInput.max = String(maxYear);
+      function normalize(input, fallback) {
+        var value = parseInt(input.value, 10);
+        if (!isFinite(value)) value = fallback;
+        if (value < minYear) value = minYear;
+        if (value > maxYear) value = maxYear;
+        return value;
+      }
+      var start = normalize(startInput, 1900);
+      var end = normalize(endInput, maxYear);
+      if (start > end) {
+        if (edited === 'start') start = end;
+        else end = start;
+      }
+      startInput.value = String(start);
+      endInput.value = String(end);
+    }
+
+    function yearSpan() {
+      clampYears();
+      return {
+        start: parseInt(document.getElementById('distribution-year-start').value, 10),
+        end: parseInt(document.getElementById('distribution-year-end').value, 10)
+      };
+    }
+
+    function gbifYearQuery() {
+      var span = yearSpan();
+      return '&year=' + span.start + ',' + span.end;
+    }
+
+    function inatYearQuery() {
+      var span = yearSpan();
+      return '&d1=' + span.start + '-01-01&d2=' + span.end + '-12-31';
+    }
+
+    function setMapNote(text) {
+      var note = document.getElementById('distribution-map-note');
+      if (note) note.textContent = text || '';
+    }
+
+    function gbifTileUrl(item) {
+      return 'https://api.gbif.org/v2/map/occurrence/' + gbifMapMode(item) + '/{z}/{x}/{y}@2x.png?srs=EPSG:3857&' +
+        gbifKeyQuery(item) + gbifYearQuery() + '&bin=square&squareSize=64&style=purpleYellow-noborder.poly';
+    }
+
+    function inatTileUrl(taxonIds) {
+      return 'https://api.inaturalist.org/v1/grid/{z}/{x}/{y}.png?taxon_id=' +
+        taxonIds.join(',') + inatYearQuery() + '&color=%23e9525c';
+    }
+
+    function delay(ms, signal) {
+      return new Promise(function (resolve, reject) {
+        var timer = setTimeout(function () { resolve(); }, ms);
+        if (!signal) return;
+        if (signal.aborted) {
+          clearTimeout(timer);
+          var aborted = new Error('Aborted');
+          aborted.name = 'AbortError';
+          reject(aborted);
+          return;
+        }
+        signal.addEventListener('abort', function () {
+          clearTimeout(timer);
+          var error = new Error('Aborted');
+          error.name = 'AbortError';
+          reject(error);
+        });
+      });
+    }
+
+    function fetchJson(url, options, attempt) {
+      function retryAfterWait(response) {
+        var retryAfter = response ? Number(response.headers.get('Retry-After')) : NaN;
+        var wait = isFinite(retryAfter) && retryAfter > 0
+          ? Math.max(1000, retryAfter * 1000)
+          : Math.min(12000, 1500 * Math.pow(2, attempt));
+        var drained = response ? response.text().catch(function () { return ''; }) : Promise.resolve('');
+        return drained.then(function () {
+          return delay(wait, options && options.signal);
+        }).then(function () {
+          return fetchJson(url, options, attempt + 1);
+        });
+      }
+      return fetch(url, options).then(function (response) {
+        if ((response.status === 429 || response.status >= 500) && attempt < 8) {
+          return retryAfterWait(response);
+        }
+        if (!response.ok) throw new Error('Request failed (' + response.status + ')');
+        return response.json();
+      }, function (error) {
+        if (error && error.name === 'AbortError') throw error;
+        if (attempt < 8) return retryAfterWait(null);
+        throw error;
+      });
+    }
+
+    function gbifCount(item, signal) {
+      var body = {
+        predicate: gbifSearchPredicate(item.taxonKeys, { years: yearSpan() }),
+        limit: 0,
+        facets: ['year', 'month'],
+        facetLimit: 400
+      };
+      return postGbif(GBIF_PREDICATE_URL, body, signal).then(function (data) {
+        var facets = data.facets || [];
+        return {
+          total: Number(data.count || 0),
+          yearMap: numericFacetMap(facets, 'YEAR'),
+          monthMap: numericFacetMap(facets, 'MONTH')
+        };
+      });
+    }
+
+    function pickInatTaxon(results, taxon) {
+      var name = String(taxon.name || '').toLowerCase();
+      var exact = (results || []).filter(function (entry) {
+        return String(entry.name || '').toLowerCase() === name;
+      });
+      if (taxon.rank) {
+        var ranked = exact.filter(function (entry) {
+          return String(entry.rank || '').toLowerCase() === taxon.rank;
+        });
+        if (ranked.length) exact = ranked;
+      }
+      if (taxon.kingdom) {
+        var kingdom = taxon.kingdom.toLowerCase();
+        var matchedKingdom = exact.filter(function (entry) {
+          return String(entry.iconic_taxon_name || '').toLowerCase() === kingdom;
+        });
+        if (matchedKingdom.length) exact = matchedKingdom;
+      }
+      exact.sort(function (a, b) {
+        return Number(b.observations_count || 0) - Number(a.observations_count || 0);
+      });
+      return exact[0] || null;
+    }
+
+    function resolveInatTaxon(taxon, signal) {
+      var key = [taxon.name, taxon.rank, taxon.kingdom].join('|').toLowerCase();
+      if (Object.prototype.hasOwnProperty.call(inatTaxonCache, key)) {
+        return Promise.resolve(inatTaxonCache[key]);
+      }
+      var url = 'https://api.inaturalist.org/v1/taxa?q=' + encodeURIComponent(taxon.name) + '&per_page=10';
+      return fetchJson(url, { signal: signal }, 0).then(function (data) {
+        var match = pickInatTaxon(data.results, taxon);
+        var id = match ? match.id : null;
+        inatTaxonCache[key] = id;
+        return id;
+      });
+    }
+
+    function resolveInatIds(item, signal) {
+      return Promise.all(item.taxa.map(function (taxon) {
+        return resolveInatTaxon(taxon, signal);
+      })).then(function (ids) {
+        return ids.filter(function (id, index, all) {
+          return id && all.indexOf(id) === index;
+        });
+      });
+    }
+
+    function inatSummary(taxonIds, signal) {
+      var url = 'https://api.inaturalist.org/v1/observations?geo=true&per_page=0&return_bounds=true&taxon_id=' +
+        taxonIds.join(',') + inatYearQuery();
+      return fetchJson(url, { signal: signal }, 0).then(function (data) {
+        var box = data.total_bounds || null;
+        var extent = null;
+        if (box && [box.swlat, box.swlng, box.nelat, box.nelng].every(function (value) {
+          return value !== null && value !== '' && isFinite(Number(value));
+        })) {
+          extent = {
+            south: Number(box.swlat),
+            north: Number(box.nelat),
+            west: Number(box.swlng),
+            east: Number(box.nelng)
+          };
+        }
+        return { total: Number(data.total_results || 0), extent: extent };
+      });
+    }
+
+    function abortError() {
+      var error = new Error('Aborted');
+      error.name = 'AbortError';
+      return error;
+    }
+
+    function loadTile(url, signal) {
+      if (signal && signal.aborted) return Promise.reject(abortError());
+      return fetchMapTile(url, 0, signal).then(function (src) {
+        if (!src || src === emptyMapTile) return null;
+        return new Promise(function (resolve, reject) {
+          var img = new Image();
+          var settled = false;
+          function finish(value) {
+            if (settled) return;
+            settled = true;
+            if (String(src).indexOf('blob:') === 0) {
+              setTimeout(function () { URL.revokeObjectURL(src); }, 0);
+            }
+            resolve(value);
+          }
+          function onAbort() {
+            img.src = '';
+            if (!settled) {
+              settled = true;
+              reject(abortError());
+            }
+          }
+          img.onload = function () { finish(img); };
+          img.onerror = function () { finish(null); };
+          if (signal) signal.addEventListener('abort', onAbort);
+          img.src = src;
+        });
+      });
+    }
+
+    function pixelsToHits(img, z, tileX, tileY) {
+      var width = img.naturalWidth;
+      var height = img.naturalHeight;
+      if (!width || !height) return [];
+      var canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      var context = canvas.getContext('2d');
+      if (!context) return [];
+      context.drawImage(img, 0, 0);
+      var pixels;
+      try {
+        pixels = context.getImageData(0, 0, width, height).data;
+      } catch (error) {
+        return [];
+      }
+      var hits = [];
+      var n = Math.pow(2, z);
+      var step = 4;
+      var py;
+      var px;
+      for (py = 0; py < height; py += step) {
+        for (px = 0; px < width; px += step) {
+          if (pixels[(py * width + px) * 4 + 3] < 24) continue;
+          var worldX = (tileX + (px + 0.5) / width) / n;
+          var worldY = (tileY + (py + 0.5) / height) / n;
+          hits.push({
+            lat: Math.atan(Math.sinh(Math.PI * (1 - 2 * worldY))) * 180 / Math.PI,
+            lng: worldX * 360 - 180
+          });
+        }
+      }
+      return hits;
+    }
+
+    function extentFromHits(hits) {
+      if (!hits.length) return null;
+      var binCount = 72;
+      var binSize = 360 / binCount;
+      var counts = [];
+      var index;
+      for (index = 0; index < binCount; index += 1) counts.push(0);
+      hits.forEach(function (hit) {
+        var shifted = ((hit.lng + 180) % 360 + 360) % 360;
+        hit.bin = Math.min(binCount - 1, Math.floor(shifted / binSize));
+        counts[hit.bin] += 1;
+      });
+      var need = Math.max(1, Math.ceil(hits.length * 0.85));
+      var prefix = [0];
+      for (index = 0; index < binCount * 2; index += 1) prefix.push(prefix[index] + counts[index % binCount]);
+      var bestStart = 0;
+      var bestEnd = binCount - 1;
+      var bestWidth = binCount;
+      var start;
+      var end;
+      for (start = 0; start < binCount; start += 1) {
+        end = start;
+        while (end < start + binCount && prefix[end + 1] - prefix[start] < need) end += 1;
+        if (end >= start + binCount) continue;
+        if (end - start + 1 < bestWidth) {
+          bestWidth = end - start + 1;
+          bestStart = start;
+          bestEnd = end;
+        }
+      }
+      var endBin = bestEnd % binCount;
+      var wraps = bestEnd >= binCount;
+      var kept = hits.filter(function (hit) {
+        if (!wraps) return hit.bin >= bestStart && hit.bin <= bestEnd;
+        return hit.bin >= bestStart || hit.bin <= endBin;
+      });
+      if (!kept.length) kept = hits.slice();
+      kept.sort(function (a, b) { return a.lat - b.lat; });
+      var low = Math.floor((kept.length - 1) * 0.02);
+      var high = Math.ceil((kept.length - 1) * 0.98);
+      var west = bestWidth >= binCount - 1 ? -180 : bestStart * binSize - 180;
+      var east = bestWidth >= binCount - 1 ? 180 : (endBin + 1) * binSize - 180;
+      if (east > 180) east -= 360;
+      return { south: kept[low].lat, north: kept[high].lat, west: west, east: east };
+    }
+
+    function scanTiles(urlAt, signal) {
+      var zoom = 2;
+      var tiles = Math.pow(2, zoom);
+      var jobs = [];
+      var x;
+      var y;
+      for (x = 0; x < tiles; x += 1) {
+        for (y = 0; y < tiles; y += 1) jobs.push({ x: x, y: y });
+      }
+      return mapPool(jobs, 2, function (job) {
+        return loadTile(urlAt(zoom, job.x, job.y), signal).then(function (img) {
+          return img ? pixelsToHits(img, zoom, job.x, job.y) : [];
+        });
+      }).then(function (groups) {
+        var hits = [];
+        groups.forEach(function (group) {
+          Array.prototype.push.apply(hits, group);
+        });
+        return extentFromHits(hits);
+      });
+    }
+
+    function gbifExtent(item, signal) {
+      var query = gbifKeyQuery(item);
+      var mode = gbifMapMode(item);
+      return scanTiles(function (zoom, x, y) {
+        return 'https://api.gbif.org/v2/map/occurrence/' + mode + '/' + zoom + '/' + x + '/' + y +
+          '@1x.png?srs=EPSG:3857&' + query + gbifYearQuery() + '&bin=square&squareSize=8&style=purpleYellow-noborder.poly';
+      }, signal);
+    }
+
+    function inatExtent(taxonIds, signal) {
+      var ids = taxonIds.join(',');
+      return scanTiles(function (zoom, x, y) {
+        return 'https://api.inaturalist.org/v1/grid/' + zoom + '/' + x + '/' + y +
+          '.png?taxon_id=' + ids + inatYearQuery() + '&color=%23e9525c';
+      }, signal);
+    }
+
+    function mercatorY(lat) {
+      var clamped = Math.max(-85, Math.min(85, lat));
+      var sine = Math.sin(clamped * Math.PI / 180);
+      return 0.5 - Math.log((1 + sine) / (1 - sine)) / (4 * Math.PI);
+    }
+
+    function opensOnNorthAtlantic() {
+      var params = new URLSearchParams(window.location.search);
+      var taxon = String(params.get('taxon') || 'Phaeophyceae').trim().toLowerCase();
+      return taxon === 'phaeophyceae';
+    }
+
+    function frameNorthAtlantic() {
+      if (!map) return;
+      map.invalidateSize({ animate: false, pan: false });
+      map.setView([45, -30], 3, { animate: false });
+    }
+
+    function frameExtent(extent) {
+      if (!map || !extent) return;
+      map.invalidateSize({ animate: false, pan: false });
+      var south = Math.min(extent.south, extent.north);
+      var north = Math.max(extent.south, extent.north);
+      var west = extent.west;
+      var east = extent.east;
+      var latSpan = Math.max(north - south, 0);
+      var lngSpan = east >= west ? east - west : 360 - west + east;
+      if (!isFinite(latSpan) || !isFinite(lngSpan)) return;
+      if (lngSpan >= 330 && latSpan >= 100) {
+        map.setView([20, 0], 2, { animate: false });
+        return;
+      }
+      var midLat = (south + north) / 2;
+      var midLng = west + lngSpan / 2;
+      if (midLng > 180) midLng -= 360;
+      var container = map.getContainer();
+      var width = container.clientWidth;
+      var height = container.clientHeight;
+      if (width < 80) width = document.documentElement.clientWidth || window.innerWidth || 1100;
+      if (height < 80) height = 450;
+      var innerWidth = Math.max(width - 56, 240);
+      var innerHeight = Math.max(height - 56, 240);
+      var ySpan = mercatorY(Math.max(-85, south)) - mercatorY(Math.min(85, north));
+      var zoomLng = Math.log((innerWidth / 256) * (360 / Math.max(lngSpan, 2))) / Math.LN2;
+      var zoomLat = ySpan > 0.002 ? Math.log((innerHeight / 256) / ySpan) / Math.LN2 : 6;
+      var zoom = Math.floor(Math.min(zoomLng, zoomLat) + 0.3);
+      if (!isFinite(zoom)) zoom = 2;
+      zoom = Math.max(2, Math.min(6, zoom));
+      map.setView([midLat, midLng], zoom, { animate: false });
+    }
+
+    function exploreUrl(source, item, taxonIds) {
+      if (source === 'gbif') {
+        var keys = item.taxonKeys.map(function (key) {
+          return 'taxonKey=' + encodeURIComponent(key);
+        }).join('&');
+        return 'https://www.gbif.org/occurrence/search?' + keys +
+          '&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&hasCoordinate=true&occurrenceStatus=present' +
+          gbifYearQuery() + '&datasetKey=!' + encodeURIComponent(INAT_DATASET_KEY);
+      }
+      if (!taxonIds || !taxonIds.length) return '';
+      return 'https://www.inaturalist.org/observations?taxon_id=' + taxonIds.join(',') + '&verifiable=any' + inatYearQuery();
+    }
+
+    function pageQuery(source, label) {
+      var params = new URLSearchParams();
+      var span = yearSpan();
+      params.set('source', source);
+      params.set('taxon', label);
+      params.set('yearStart', String(span.start));
+      params.set('yearEnd', String(span.end));
+      return params;
+    }
+
+    function updatePointLink(item) {
+      var link = document.getElementById('distribution-mode-link');
+      var mapElement = document.getElementById('distribution-map');
+      if (!link) return;
+      var species = item && item.rank === 'species';
+      if (!species) {
+        link.hidden = true;
+        if (mapElement) mapElement.classList.remove('has-mode-link');
+        return;
+      }
+      var source = sourceSelect.value === 'citizen' ? 'citizen' : 'gbif';
+      link.href = '/distribution/?' + pageQuery(source, item.label).toString();
+      link.hidden = false;
+      if (mapElement) mapElement.classList.add('has-mode-link');
+    }
+
+    function rememberSearch(source, label) {
+      if (!window.history || !history.replaceState) return;
+      history.replaceState(null, '', window.location.pathname + '?' + pageQuery(source, label).toString());
+    }
+
+    function finishSearch() {
+      hideLoadingPanel();
+      if (map) setTimeout(function () { map.invalidateSize(); }, 0);
+    }
+
+    function startCatalogueFill() {
+      if (!cataloguePending) return;
+      var pending = cataloguePending;
+      cataloguePending = null;
+      fillCatalogueRecords(pending.taxaRows, pending.signature);
+    }
+
+    function catalogueSpeciesCount(speciesRows) {
+      var seen = {};
+      var count = 0;
+      (speciesRows || []).forEach(function (row) {
+        var key = String(row.taxon_key || '').trim();
+        if (!key || seen[key]) return;
+        seen[key] = true;
+        count += 1;
+      });
+      return count;
+    }
+
+    function taxonKeyOf(row) {
+      return String(row.gbif_taxon_key || '').trim();
+    }
+
+    function rowTaxon(row) {
+      return {
+        name: row.canonical_name || row.query_name || '',
+        rank: String(row.gbif_rank || row.query_rank || '').toLowerCase(),
+        kingdom: row.kingdom || ''
+      };
+    }
+
+    function taxonStamp(taxon) {
+      return [taxon.name, taxon.rank, taxon.kingdom].join('|').toLowerCase();
+    }
+
+    function excludeIsInside(exclude, includes) {
+      return includes.some(function (include) {
+        var rank = String(include.gbif_rank || include.query_rank || '').toUpperCase();
+        var name = include.canonical_name || include.query_name || '';
+        if (rank === 'PHYLUM') return exclude.phylum === name;
+        if (rank === 'CLASS') return exclude['class'] === name;
+        if (rank === 'ORDER') return exclude.order === name;
+        if (rank === 'FAMILY') return exclude.family === name;
+        if (rank === 'GENUS') return exclude.genus === name;
+        if (rank === 'SPECIES') return (exclude.canonical_name || exclude.query_name) === name;
+        return false;
+      });
+    }
+
+    function catalogueGroups(taxaRows) {
+      var byName = {};
+      var order = [];
+      (taxaRows || []).forEach(function (row) {
+        var name = row.group || '';
+        if (!name) return;
+        if (!byName[name]) {
+          byName[name] = { include: [], exclude: [] };
+          order.push(name);
+        }
+        if (row.role === 'include' && taxonKeyOf(row)) byName[name].include.push(row);
+        else if (row.role === 'exclude') byName[name].exclude.push(row);
+      });
+      return order.map(function (name) {
+        var group = byName[name];
+        return {
+          include: group.include,
+          exclude: group.exclude.filter(function (row) {
+            return taxonKeyOf(row) && excludeIsInside(row, group.include);
+          })
+        };
+      }).filter(function (group) { return group.include.length; });
+    }
+
+    function catalogueSignature(taxaRows) {
+      return catalogueGroups(taxaRows).map(function (group) {
+        var include = group.include.map(taxonKeyOf).join(',');
+        var exclude = group.exclude.map(taxonKeyOf).join(',');
+        return include + '-' + exclude;
+      }).join('|');
+    }
+
+    function readCatalogueCache(signature) {
+      var keys = ['mf-distribution-catalogue-v2'];
+      var stores = [sessionStorage, localStorage];
+      var i;
+      var j;
+      for (i = 0; i < stores.length; i += 1) {
+        for (j = 0; j < keys.length; j += 1) {
+          try {
+            var saved = JSON.parse(stores[i].getItem(keys[j]) || 'null');
+            if (!saved || saved.signature !== signature) continue;
+            if (Date.now() - Number(saved.at || 0) > 12 * 60 * 60 * 1000) continue;
+            if (!isFinite(Number(saved.total))) continue;
+            return Number(saved.total);
+          } catch (error) {}
+        }
+      }
+      return null;
+    }
+
+    function writeCatalogueCache(signature, total) {
+      var payload = JSON.stringify({
+        signature: signature,
+        total: total,
+        at: Date.now()
+      });
+      try { sessionStorage.setItem('mf-distribution-catalogue-v2', payload); } catch (error) {}
+      try { localStorage.setItem('mf-distribution-catalogue-v2', payload); } catch (error) {}
+    }
+
+    function mapPool(items, limit, fn) {
+      var index = 0;
+      var results = new Array(items.length);
+      function worker() {
+        if (index >= items.length) return Promise.resolve();
+        var current = index;
+        index += 1;
+        return Promise.resolve(fn(items[current])).then(function (value) {
+          results[current] = value;
+          return worker();
+        });
+      }
+      var workers = [];
+      var count = Math.min(limit, items.length);
+      var i;
+      for (i = 0; i < count; i += 1) workers.push(worker());
+      if (!workers.length) return Promise.resolve(results);
+      return Promise.all(workers).then(function () { return results; });
+    }
+
+    function uniqueKeys(rows) {
+      var keys = [];
+      rows.forEach(function (row) {
+        var key = taxonKeyOf(row);
+        if (key && keys.indexOf(key) === -1) keys.push(key);
+      });
+      return keys;
+    }
+
+    function gbifKeysCount(keys) {
+      if (!keys.length) return Promise.resolve(0);
+      var body = {
+        predicate: gbifSearchPredicate(keys),
+        limit: 0
+      };
+      return postGbif(GBIF_PREDICATE_URL, body).then(function (data) {
+        return delay(500).then(function () {
+          return Number(data.count || 0);
+        });
+      });
+    }
+
+    function gbifGroupRecords(group) {
+      return gbifKeysCount(uniqueKeys(group.include)).then(function (includeCount) {
+        return gbifKeysCount(uniqueKeys(group.exclude)).then(function (excludeCount) {
+          return Math.max(0, includeCount - excludeCount);
+        });
+      });
+    }
+
+    function inatCount(ids) {
+      if (!ids.length) return Promise.resolve(0);
+      var url = 'https://api.inaturalist.org/v1/observations?geo=true&per_page=0&taxon_id=' + ids.join(',');
+      return fetchJson(url, {}, 0).then(function (data) {
+        return Number(data.total_results || 0);
+      });
+    }
+
+    function inatIds(rows, idMap) {
+      var ids = [];
+      rows.forEach(function (row) {
+        var id = idMap[taxonStamp(rowTaxon(row))];
+        if (id && ids.indexOf(id) === -1) ids.push(id);
+      });
+      return ids;
+    }
+
+    function inatGroupRecords(group, idMap) {
+      return Promise.all([
+        inatCount(inatIds(group.include, idMap)),
+        inatCount(inatIds(group.exclude, idMap))
+      ]).then(function (parts) {
+        return Math.max(0, parts[0] - parts[1]);
+      });
+    }
+
+    function catalogueRecordTotal(taxaRows) {
+      var groups = catalogueGroups(taxaRows);
+      return mapPool(groups, 1, gbifGroupRecords).then(function (gbifTotals) {
+        var gbif = gbifTotals.reduce(function (sum, value) { return sum + value; }, 0);
+        var taxa = [];
+        var seen = {};
+        groups.forEach(function (group) {
+          group.include.concat(group.exclude).forEach(function (row) {
+            var taxon = rowTaxon(row);
+            var stamp = taxonStamp(taxon);
+            if (!taxon.name || seen[stamp]) return;
+            seen[stamp] = true;
+            taxa.push(taxon);
+          });
+        });
+        var idMap = {};
+        return mapPool(taxa, 2, function (taxon) {
+          return resolveInatTaxon(taxon).then(function (id) {
+            idMap[taxonStamp(taxon)] = id || null;
+          });
+        }).then(function () {
+          return mapPool(groups, 2, function (group) {
+            return inatGroupRecords(group, idMap);
+          }).then(function (inatTotals) {
+            var inat = inatTotals.reduce(function (sum, value) { return sum + value; }, 0);
+            return gbif + inat;
+          });
+        });
+      });
+    }
+
+    function prepareCatalogue(taxaRows, speciesRows, savedCatalogue) {
+      var speciesEl = document.getElementById('catalogue-species');
+      if (speciesEl) speciesEl.textContent = formatNumber(catalogueSpeciesCount(speciesRows));
+      var signature = catalogueSignature(taxaRows);
+      var cached = readCatalogueCache(signature);
+      var recordsEl = document.getElementById('catalogue-records');
+      var savedTotal = savedCatalogue ? Number(savedCatalogue.records) : NaN;
+      if (recordsEl) {
+        if (cached != null) recordsEl.textContent = formatNumber(cached);
+        else if (isFinite(savedTotal) && savedTotal > 0) recordsEl.textContent = formatNumber(savedTotal);
+      }
+      if (cached != null) return;
+      cataloguePending = { taxaRows: taxaRows, signature: signature };
+    }
+
+    function fillCatalogueRecords(taxaRows, signature, attempt) {
+      var recordsEl = document.getElementById('catalogue-records');
+      catalogueRecordTotal(taxaRows).then(function (total) {
+        if (!isFinite(total) || !recordsEl) return;
+        recordsEl.textContent = formatNumber(total);
+        writeCatalogueCache(signature, total);
+      }).catch(function () {
+        var next = (attempt || 0) + 1;
+        if (next > 3) return;
+        setTimeout(function () {
+          fillCatalogueRecords(taxaRows, signature, next);
+        }, 2500 * next);
+      });
+    }
+
+    var MONTH_LABELS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var MONTH_LABELS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var distributionChart = null;
+
+    function findFacet(facets, field) {
+      var wanted = String(field || '').toUpperCase();
+      var found = null;
+      (facets || []).forEach(function (facet) {
+        if (!found && String(facet.field || '').toUpperCase() === wanted) found = facet;
+      });
+      return found;
+    }
+
+    function numericFacetMap(facets, field) {
+      var facet = findFacet(facets, field);
+      var map = {};
+      if (!facet || !facet.counts) return map;
+      facet.counts.forEach(function (entry) {
+        var raw = String(entry.name == null ? '' : entry.name).trim();
+        var value = Number(entry.count || 0);
+        if (!raw || !isFinite(value)) return;
+        if (field === 'YEAR') {
+          var year = raw.match(/^(\d{4})/);
+          if (!year) return;
+          map[year[1]] = (map[year[1]] || 0) + value;
+          return;
+        }
+        var number = Number(raw);
+        if (!isFinite(number)) return;
+        var key = String(number);
+        map[key] = (map[key] || 0) + value;
+      });
+      return map;
+    }
+
+    function histogramBuckets(data) {
+      var results = data && data.results;
+      if (!results || typeof results !== 'object') return {};
+      var inner = results;
+      var keys = Object.keys(results);
+      if (keys.length === 1 && results[keys[0]] && typeof results[keys[0]] === 'object') inner = results[keys[0]];
+      var map = {};
+      Object.keys(inner).forEach(function (key) {
+        var value = Number(inner[key] || 0);
+        if (!isFinite(value)) return;
+        var text = String(key);
+        var monthOnly = text.match(/^(\d{1,2})$/);
+        if (monthOnly) {
+          var month = Number(monthOnly[1]);
+          if (month >= 1 && month <= 12) map[String(month)] = value;
+          return;
+        }
+        var year = text.match(/^(\d{4})/);
+        if (!year) return;
+        map[year[1]] = (map[year[1]] || 0) + value;
+      });
+      return map;
+    }
+
+    function inatHistogram(taxonIds, interval, signal) {
+      var url = 'https://api.inaturalist.org/v1/observations/histogram?geo=true&taxon_id=' +
+        taxonIds.join(',') + '&interval=' + encodeURIComponent(interval) + inatYearQuery();
+      return fetchJson(url, { signal: signal }, 0).then(histogramBuckets, function (error) {
+        if (error && error.name === 'AbortError') throw error;
+        return {};
+      });
+    }
+
+    function inatHistories(taxonIds, signal) {
+      return Promise.all([
+        inatHistogram(taxonIds, 'year', signal),
+        inatHistogram(taxonIds, 'month_of_year', signal)
+      ]).then(function (maps) {
+        return { yearMap: maps[0], monthMap: maps[1] };
+      });
+    }
+
+    function yearSeries(yearMap) {
+      var years = [];
+      var dated = 0;
+      Object.keys(yearMap || {}).forEach(function (key) {
+        var year = Number(key);
+        var count = Number(yearMap[key] || 0);
+        if (!isFinite(count) || count <= 0) return;
+        dated += count;
+        if (!isFinite(year) || year < 1500 || year > 2100) return;
+        years.push(year);
+      });
+      years.sort(function (a, b) { return a - b; });
+      if (!years.length) return { labels: [], values: [], dated: dated, min: 0, max: 0, mode: 'year' };
+      var min = years[0];
+      var max = years[years.length - 1];
+      var labels = [];
+      var values = [];
+      var y;
+      if (max - min + 1 <= 12) {
+        for (y = min; y <= max; y += 1) {
+          labels.push(String(y));
+          values.push(Number(yearMap[String(y)] || 0));
+        }
+        return { labels: labels, values: values, dated: dated, min: min, max: max, mode: 'year' };
+      }
+      var decade;
+      for (decade = Math.floor(min / 10) * 10; decade <= Math.floor(max / 10) * 10; decade += 10) {
+        var sum = 0;
+        for (y = decade; y < decade + 10; y += 1) sum += Number(yearMap[String(y)] || 0);
+        labels.push(String(decade) + 's');
+        values.push(sum);
+      }
+      return { labels: labels, values: values, dated: dated, min: min, max: max, mode: 'decade' };
+    }
+
+    function monthSeries(monthMap) {
+      var values = [];
+      var dated = 0;
+      var month;
+      for (month = 1; month <= 12; month += 1) {
+        var count = Number((monthMap || {})[String(month)] || 0);
+        values.push(count);
+        dated += count;
+      }
+      return { labels: MONTH_LABELS_SHORT.slice(), values: values, dated: dated };
+    }
+
+    function topIndex(values) {
+      var best = -1;
+      var index = -1;
+      var i;
+      for (i = 0; i < values.length; i += 1) {
+        if (values[i] > best) {
+          best = values[i];
+          index = i;
+        }
+      }
+      return best > 0 ? index : -1;
+    }
+
+    function peakText(year, month, total) {
+      var sentences = [];
+      var yearIndex = topIndex(year.values);
+      var monthIndex = topIndex(month.values);
+      if (yearIndex >= 0 && monthIndex >= 0) {
+        var when = year.mode === 'decade' ? ('the ' + year.labels[yearIndex]) : year.labels[yearIndex];
+        sentences.push('Most records were in ' + when + ' and in ' + MONTH_LABELS[monthIndex] + '.');
+      } else if (yearIndex >= 0) {
+        var whenYear = year.mode === 'decade' ? ('the ' + year.labels[yearIndex]) : year.labels[yearIndex];
+        sentences.push('Most records were in ' + whenYear + '.');
+      } else if (monthIndex >= 0) {
+        sentences.push('Most records were in ' + MONTH_LABELS[monthIndex] + '.');
+      }
+      if (year.dated > 0 && total > year.dated) {
+        sentences.push(formatNumber(year.dated) + ' of ' + formatNumber(total) + ' records have a year.');
+      }
+      return sentences.join(' ');
+    }
+
+    function yearSubtitle(series) {
+      if (!series.min || !series.max) return '';
+      var span = series.min === series.max ? String(series.min) : (series.min + '\u2013' + series.max);
+      return series.mode === 'decade' ? ('by decade, ' + span) : span;
+    }
+
+    function hideDistributionCharts() {
+      distributionChart = null;
+      var section = document.getElementById('distribution-charts');
+      if (section) section.hidden = true;
+      var peak = document.getElementById('distribution-peak-summary');
+      if (peak) peak.textContent = '';
+    }
+
+    function chartCountLabel(value) {
+      var count = Number(value || 0);
+      if (count < 10000) return String(count);
+      if (count < 1000000) return Math.round(count / 1000) + 'k';
+      var millions = Math.round((count / 1000000) * 10) / 10;
+      return String(millions) + 'M';
+    }
+
+    function drawRoundedRect(ctx, x, y, width, height, radius, color) {
+      var r = Math.min(radius, Math.max(width, 0) / 2, Math.max(height, 0) / 2);
+      if (width <= 0 || height <= 0) return;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + width - r, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+      ctx.lineTo(x + width, y + height - r);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+      ctx.lineTo(x + r, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    function drawVerticalBarChart(canvas, labels, values, options) {
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      canvas.style.width = '100%';
+      canvas.style.height = '160px';
+      var dpr = window.devicePixelRatio || 1;
+      var cssWidth = canvas.clientWidth || 520;
+      var cssHeight = canvas.clientHeight || 160;
+      canvas.width = Math.round(cssWidth * dpr);
+      canvas.height = Math.round(cssHeight * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      var width = cssWidth;
+      var height = cssHeight;
+      var leftPad = 42;
+      var rightPad = 14;
+      var topPad = 16;
+      var bottomPad = 34;
+      var barGap = 6;
+      var plotWidth = width - leftPad - rightPad;
+      var plotHeight = height - topPad - bottomPad;
+      var maxValue = 1;
+      var i;
+
+      for (i = 0; i < values.length; i += 1) {
+        if (values[i] > maxValue) maxValue = values[i];
+      }
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, width, height);
+
+      if (!labels.length) {
+        ctx.fillStyle = '#666666';
+        ctx.font = '14px Open Sans, Arial, sans-serif';
+        ctx.fillText('No data available', 20, 40);
+        return;
+      }
+
+      var slotWidth = plotWidth / labels.length;
+      var barWidth = Math.max(8, slotWidth - barGap);
+      if (barWidth > slotWidth - 1) barWidth = Math.max(1, slotWidth - 1);
+      var minLabelWidth = String(labels[0] || '').length > 3 ? 36 : 24;
+      var labelStep = Math.max(1, Math.ceil(minLabelWidth / Math.max(slotWidth, 1)));
+      var showValues = labels.length <= 12;
+
+      for (i = 0; i < labels.length; i += 1) {
+        var x = leftPad + i * slotWidth + (slotWidth - barWidth) / 2;
+        var barHeight = (values[i] / maxValue) * plotHeight;
+        var y = topPad + (plotHeight - barHeight);
+        var showLabel = i === labels.length - 1 || i % labelStep === 0;
+        if (showLabel && i !== labels.length - 1 && labels.length - 1 - i < labelStep) showLabel = false;
+
+        ctx.fillStyle = '#edf1ff';
+        ctx.fillRect(x, topPad, barWidth, plotHeight);
+        drawRoundedRect(ctx, x, y, barWidth, barHeight, 4, options.barColor || '#e9525c');
+
+        if (showLabel) {
+          ctx.fillStyle = '#333333';
+          ctx.font = '10px Open Sans, Arial, sans-serif';
+          ctx.textAlign = 'center';
+          var axisLabel = String(labels[i]);
+          var axisWidth = ctx.measureText(axisLabel).width;
+          var axisX = Math.min(width - 2 - axisWidth / 2, Math.max(2 + axisWidth / 2, x + barWidth / 2));
+          ctx.fillText(axisLabel, axisX, height - 10);
+        }
+
+        if ((showValues || values[i] === maxValue) && barHeight >= 18) {
+          ctx.fillStyle = '#222222';
+          ctx.font = '11px Open Sans, Arial, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(chartCountLabel(values[i]), x + barWidth / 2, Math.max(11, y - 6));
+        }
+        ctx.textAlign = 'left';
+      }
+    }
+
+    function paintDistributionCharts(attempt) {
+      if (!distributionChart) return;
+      var yearCanvas = document.getElementById('distribution-records-per-year-chart');
+      if (yearCanvas && yearCanvas.clientWidth < 80 && (attempt || 0) < 5) {
+        requestAnimationFrame(function () { paintDistributionCharts((attempt || 0) + 1); });
+        return;
+      }
+      var yearTitle = document.getElementById('distribution-year-title');
+      var yearSubtitleEl = document.getElementById('distribution-year-subtitle');
+      if (yearTitle) yearTitle.textContent = distributionChart.year.mode === 'decade' ? 'Records per decade' : 'Records per year';
+      if (yearSubtitleEl) yearSubtitleEl.textContent = yearSubtitle(distributionChart.year);
+      drawVerticalBarChart(
+        document.getElementById('distribution-records-per-year-chart'),
+        distributionChart.year.labels,
+        distributionChart.year.values,
+        { barColor: '#e9525c' }
+      );
+      drawVerticalBarChart(
+        document.getElementById('distribution-records-per-month-chart'),
+        distributionChart.month.labels,
+        distributionChart.month.values,
+        { barColor: '#4183d7' }
+      );
+    }
+
+    function renderDistributionCharts(stats, total) {
+      var year = yearSeries(stats && stats.yearMap);
+      var month = monthSeries(stats && stats.monthMap);
+      var section = document.getElementById('distribution-charts');
+      var peak = document.getElementById('distribution-peak-summary');
+      if (!section || (!year.labels.length && topIndex(month.values) < 0)) {
+        hideDistributionCharts();
+        return;
+      }
+      distributionChart = { year: year, month: month };
+      if (peak) peak.textContent = peakText(year, month, total);
+      section.hidden = false;
+      requestAnimationFrame(paintDistributionCharts);
+    }
+
+    window.addEventListener('resize', function () {
+      if (distributionChart) paintDistributionCharts();
+    });
+
+    function previewImageUrl(url) {
+      return String(url || '').replace(
+        /\/(square|thumb|small|medium|large|original)(\.[a-z0-9]+)(\?.*)?$/i,
+        '/small$2$3'
+      );
+    }
+
+    function licenseLabel(license) {
+      var text = String(license || '').trim();
+      if (!text) return '';
+      var urlCode = text.match(/creativecommons\.org\/(?:licenses|publicdomain)\/([a-z0-9-]+)/i);
+      var code = (urlCode ? urlCode[1] : text).toLowerCase().replace(/^cc-?/, '').replace(/\/.*$/, '').trim();
+      if (!code || code === '0' || code === 'zero') return 'CC0';
+      return 'CC ' + code.toUpperCase();
+    }
+
+    function personName(value) {
+      var text = String(value || '');
+      var anchor = text.match(/<a\b[^>]*>([\s\S]*?)<\/a>/i);
+      if (anchor) text = anchor[1];
+      text = text.replace(/<[^>]+>/g, ' ');
+      text = text
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;|&apos;/g, "'")
+        .replace(/&nbsp;/g, ' ');
+      text = text.replace(/\s*\|\s*questagame\.com\s*$/i, '');
+      text = text.replace(/\s+/g, ' ').trim();
+      if (!text || /^https?:\/\//i.test(text)) return '';
+      return text;
+    }
+
+    function gbifPhotos(item, signal) {
+      var body = {
+        predicate: gbifSearchPredicate(item.taxonKeys, { years: yearSpan(), stillImage: true }),
+        limit: 30
+      };
+      return postGbif(GBIF_PREDICATE_URL, body, signal).then(function (data) {
+        var photos = [];
+        (data.results || []).forEach(function (record) {
+          if (photos.length >= 30 || !record || record.datasetKey === INAT_DATASET_KEY) return;
+          var media = null;
+          (record.media || []).some(function (entry) {
+            if (!entry || !entry.identifier) return false;
+            if (entry.type && String(entry.type).toLowerCase() !== 'stillimage') return false;
+            media = entry;
+            return true;
+          });
+          if (!media) return;
+          photos.push({
+            src: previewImageUrl(media.identifier),
+            href: record.key ? ('https://www.gbif.org/occurrence/' + record.key) : (media.references || media.identifier),
+            author: personName(media.creator || record.recordedBy || ''),
+            license: licenseLabel(media.license),
+            alt: record.species || item.label || 'GBIF record'
+          });
+        });
+        return photos;
+      });
+    }
+
+    function inatPhotos(taxonIds, signal) {
+      var url = 'https://api.inaturalist.org/v1/observations?photos=true&geo=true&per_page=30&order_by=observed_on&order=desc&taxon_id=' +
+        taxonIds.join(',') + inatYearQuery();
+      return fetchJson(url, { signal: signal }, 0).then(function (data) {
+        var photos = [];
+        (data.results || []).forEach(function (observation) {
+          if (photos.length >= 30) return;
+          var photo = observation.observation_photos && observation.observation_photos[0] && observation.observation_photos[0].photo;
+          var raw = photo && (photo.url || photo.small_url || photo.medium_url || '');
+          if (!raw) return;
+          var user = observation.user || {};
+          photos.push({
+            src: previewImageUrl(raw),
+            href: observation.id ? ('https://www.inaturalist.org/observations/' + observation.id) : raw,
+            author: user.name || user.login || '',
+            license: licenseLabel(photo.license_code || observation.license_code),
+            alt: (observation.taxon && observation.taxon.name) || 'iNaturalist observation'
+          });
+        });
+        return photos;
+      });
+    }
+
+    function hideDistributionPhotos() {
+      var grid = document.getElementById('distribution-photos');
+      var heading = document.getElementById('distribution-photos-heading');
+      if (heading) heading.hidden = true;
+      if (!grid) return;
+      grid.innerHTML = '';
+      grid.hidden = true;
+    }
+
+    function renderDistributionPhotos(photos) {
+      var grid = document.getElementById('distribution-photos');
+      if (!grid || !photos || !photos.length) {
+        hideDistributionPhotos();
+        return;
+      }
+      grid.innerHTML = photos.slice(0, 30).map(function (photo) {
+        var species = photo.alt
+          ? '<p class="forest-grid-species">' + escapeHtml(photo.alt) + '</p>'
+          : '';
+        var author = photo.author
+          ? '<p class="forest-grid-region">' + escapeHtml(photo.author) + '</p>'
+          : '';
+        var license = photo.license
+          ? '<span class="forest-grid-count">' + escapeHtml(photo.license) + '</span>'
+          : '';
+        return '<div class="col-md-4 forest-grid-item">' +
+          '<a href="' + escapeHtml(photo.href) + '" target="_blank" rel="noopener">' +
+            '<div class="card box-shadow-wide">' +
+              '<img class="thumb" src="' + escapeHtml(photo.src) + '" alt="' + escapeHtml(photo.alt || 'Record photo') + '" loading="lazy" decoding="async">' +
+            '</div>' +
+          '</a>' +
+          species + author + license +
+        '</div>';
+      }).join('');
+      Array.prototype.forEach.call(grid.querySelectorAll('img'), function (img) {
+        img.addEventListener('error', function () {
+          var card = img.closest ? img.closest('.forest-grid-item') : null;
+          if (card && card.parentNode) card.parentNode.removeChild(card);
+          if (!grid.querySelector('.forest-grid-item')) hideDistributionPhotos();
+        });
+      });
+      var heading = document.getElementById('distribution-photos-heading');
+      if (heading) heading.hidden = false;
+      grid.hidden = false;
+    }
+
+    function loadDistributionPhotos(request, token) {
+      request.then(function (photos) {
+        if (token !== requestToken) return;
+        renderDistributionPhotos(photos);
+      }).catch(function (error) {
+        if (error && error.name === 'AbortError') return;
+        if (token !== requestToken) return;
+        hideDistributionPhotos();
+      });
+    }
+
+    function runSearch() {
+      if (!selectedItem) {
+        setMessage('Choose a taxon from the list.', '');
+        return;
+      }
+      var token = requestToken + 1;
+      requestToken = token;
+      if (searchController) searchController.abort();
+      searchController = new AbortController();
+      var signal = searchController.signal;
+      var item = selectedItem;
+      var source = sourceSelect.value === 'citizen' ? 'citizen' : 'gbif';
+      var sourceLabel = source === 'gbif' ? 'GBIF' : 'citizen science';
+      var note = source === 'gbif'
+        ? 'Squares show GBIF record density and change size as you zoom.'
+        : 'Squares show iNaturalist record density and change size as you zoom.';
+      showLoadingPanel();
+      hideDistributionCharts();
+      hideDistributionPhotos();
+      updatePointLink(item);
+      setMapNote(note);
+      rememberSearch(source, item.label);
+
+      function keepTiles(error) {
+        if (token !== requestToken || (error && error.name === 'AbortError')) return;
+        setResult(
+          '<span class="color--dark">Density of </span><span class="color--redish"><em>' + escapeHtml(item.label) + '</em></span>',
+          'The record total could not be loaded. The squares still show where records occur.',
+          exploreUrl(source, item, source === 'gbif' ? null : item._inatIds),
+          source === 'gbif' ? 'Explore on GBIF' : 'Explore on iNaturalist'
+        );
+      }
+
+      if (source === 'gbif') {
+        showDensityLayer(gbifTileUrl(item));
+        finishSearch();
+        loadDistributionPhotos(gbifPhotos(item, signal), token);
+        if (String(item.label || '').toLowerCase() === 'phaeophyceae') {
+          frameNorthAtlantic();
+        } else {
+          delay(900, signal).then(function () {
+            return gbifExtent(item, signal);
+          }).then(function (extent) {
+            if (token !== requestToken || !extent) return;
+            frameExtent(extent);
+          }).catch(function (error) {
+            if (error && error.name === 'AbortError') return;
+          });
+        }
+        gbifCount(item, signal).then(function (result) {
+          if (token !== requestToken) return;
+          var total = Number(result && result.total || 0);
+          if (!total) {
+            clearDensityLayer();
+            setMessage(
+              'No georeferenced records of <span class="color--redish"><em>' + escapeHtml(item.label) + '</em></span> were found.',
+              ''
+            );
+            return;
+          }
+          setResult(
+            summaryHtml(total, sourceLabel, item.label),
+            '',
+            exploreUrl(source, item, null),
+            'Explore on GBIF'
+          );
+          renderDistributionCharts(result, total);
+        }).catch(keepTiles);
+        return;
+      }
+
+      resolveInatIds(item, signal).then(function (taxonIds) {
+        if (token !== requestToken) return null;
+        if (!taxonIds.length) {
+          clearDensityLayer();
+          setMessage(
+            'No iNaturalist taxon matched <span class="color--redish"><em>' + escapeHtml(item.label) + '</em></span>.',
+            ''
+          );
+          finishSearch();
+          return null;
+        }
+        item._inatIds = taxonIds;
+        showDensityLayer(inatTileUrl(taxonIds));
+        finishSearch();
+        loadDistributionPhotos(inatPhotos(taxonIds, signal), token);
+        var chartState = { total: null, stats: null };
+        function publishCharts() {
+          if (token !== requestToken || chartState.total == null || !chartState.stats) return;
+          if (!chartState.total) return;
+          renderDistributionCharts(chartState.stats, chartState.total);
+        }
+        inatHistories(taxonIds, signal).then(function (stats) {
+          if (token !== requestToken) return;
+          chartState.stats = stats;
+          publishCharts();
+        }).catch(function (error) {
+          if (error && error.name === 'AbortError') return;
+        });
+        return inatSummary(taxonIds, signal).then(function (summary) {
+          if (token !== requestToken) return;
+          if (!summary.total) {
+            clearDensityLayer();
+            setMessage(
+              'No georeferenced records of <span class="color--redish"><em>' + escapeHtml(item.label) + '</em></span> were found.',
+              ''
+            );
+            return;
+          }
+          if (String(item.label || '').toLowerCase() === 'phaeophyceae') frameNorthAtlantic();
+          else if (summary.extent) frameExtent(summary.extent);
+          setResult(
+            summaryHtml(summary.total, sourceLabel, item.label),
+            '',
+            exploreUrl(source, item, taxonIds),
+            'Explore on iNaturalist'
+          );
+          chartState.total = summary.total;
+          publishCharts();
+        });
+      }).catch(function (error) {
+        if (token !== requestToken || (error && error.name === 'AbortError')) return;
+        if (item._inatIds) {
+          keepTiles(error);
+          return;
+        }
+        clearDensityLayer();
+        setMessage('The map could not be loaded. Try the search again.', '');
+        finishSearch();
+      });
+    }
+
+    function readInitialSource() {
+      var params = new URLSearchParams(window.location.search);
+      var source = String(params.get('source') || '').toLowerCase();
+      if (source === 'citizen' || source === 'inaturalist' || source === 'citizen-science') return 'citizen';
+      return 'gbif';
+    }
+
+    taxonInput.addEventListener('focus', function () {
+      renderSuggestions(filterItems(taxonInput.value));
+    });
+    taxonInput.addEventListener('input', function () {
+      if (!selectedItem || selectedItem.label !== taxonInput.value) selectedItem = findExactItem(taxonInput.value);
+      renderSuggestions(filterItems(taxonInput.value));
+    });
+    taxonInput.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (!listOpen) renderSuggestions(filterItems(taxonInput.value));
+        else moveActive(1);
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (listOpen) moveActive(-1);
+      } else if (event.key === 'Escape') {
+        hideSuggestions();
+      } else if (event.key === 'Enter') {
+        event.preventDefault();
+        if (listOpen && matches[activeIndex]) chooseItem(matches[activeIndex]);
+        else submitSearch();
+      }
+    });
+    taxonInput.addEventListener('blur', function () {
+      hideSuggestions();
+    });
+    suggestionList.addEventListener('mousedown', function (event) {
+      event.preventDefault();
+    });
+    suggestionList.addEventListener('click', function (event) {
+      var button = event.target.closest ? event.target.closest('.distribution-suggestion') : null;
+      if (!button) return;
+      var index = Number(button.getAttribute('data-index'));
+      if (matches[index]) chooseItem(matches[index]);
+    });
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      hideSuggestions();
+      submitSearch();
+    });
+    sourceSelect.addEventListener('change', function () {
+      if (selectedItem && selectedItem.label.toLowerCase() === taxonInput.value.trim().toLowerCase()) runSearch();
+    });
+    ['distribution-year-start', 'distribution-year-end'].forEach(function (id) {
+      var input = document.getElementById(id);
+      if (!input) return;
+      input.addEventListener('change', function () {
+        clampYears(id === 'distribution-year-start' ? 'start' : 'end');
+        if (selectedItem && selectedItem.label.toLowerCase() === taxonInput.value.trim().toLowerCase()) runSearch();
+      });
+    });
+
+    clampYears();
+    setupMap();
+    showLoadingPanel();
+    function loadCsv(url) {
+      return fetch(url).then(function (response) {
+        if (!response.ok) throw new Error('The taxon list could not be loaded.');
+        return response.text();
+      }).then(parseCsv);
+    }
+
+    Promise.all([
+      loadCsv('/data/gbif_marine_forest_taxa.csv'),
+      loadCsv('/data/gbif_marine_forest_species.csv'),
+      fetch('/data/marine_forest_catalogue.json').then(function (response) {
+        return response.ok ? response.json() : null;
+      }).catch(function () { return null; })
+    ]).then(function (tables) {
+      catalog = buildCatalog(tables[0], tables[1]);
+      if (!catalog.length) throw new Error('The taxon list could not be loaded.');
+      prepareCatalogue(tables[0], tables[1], tables[2]);
+      sourceSelect.value = readInitialSource();
+      var params = new URLSearchParams(window.location.search);
+      var startYear = params.get('yearStart');
+      var endYear = params.get('yearEnd');
+      var startInput = document.getElementById('distribution-year-start');
+      var endInput = document.getElementById('distribution-year-end');
+      if (startInput && startYear) startInput.value = startYear;
+      if (endInput && endYear) endInput.value = endYear;
+      clampYears();
+      var requested = params.get('taxon') || 'Phaeophyceae';
+      selectedItem = findExactItem(requested) || findExactItem('Phaeophyceae');
+      if (!selectedItem) throw new Error('Phaeophyceae is missing from the taxon list.');
+      taxonInput.value = selectedItem.label;
+      runSearch();
+      startCatalogueFill();
+    }).catch(function (error) {
+      setMessage(escapeHtml(error && error.message ? error.message : 'The taxon list could not be loaded.'), '');
+      hideLoadingPanel();
+      if (!cataloguePending) return;
+      var pending = cataloguePending;
+      cataloguePending = null;
+      fillCatalogueRecords(pending.taxaRows, pending.signature);
+    });
+  })();
+</script>
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Footer -->
+
+<footer class="space--sm footer-2 bg--dark">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <span class="type--fine-print">
+
+                              &copy;<span class="update-year"></span> Centre of Marine Sciences \\ web developed by <a href="https://www.biodiversitydatascience.com" target="_blank" style="text-decoration: none;">biodiversityDataScience</a>
+                             <!--  <a class="type--fine-print" href="#">Privacy Policy</a> -->
+                            <!--     <a class="type--fine-print" href="#">Legal</a> -->
+
+                            <br>
+                            Funding from the Pew Charitable Trusts (USA), EU LIFE program, Biodiversa (EU), Euromarine and by various projects of the Foundation for Science and Technology (FCT).
+                          </div>
+
+                      </div>
+                  </div>
+              </footer>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Scripts -->
+
+        <script src="/assets/js/flickity.min.js"></script>
+        <script src="/assets/js/easypiechart.min.js"></script>
+        <script src="/assets/js/datepicker.js"></script>
+        <script src="/assets/js/lightbox.min.js"></script>
+        <script src="/assets/js/jquery.steps.min.js"></script>
+        <script src="/assets/js/smooth-scroll.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/read-more.min.js"></script>
+        <script src="/assets/js/pack-of-scripts.js"></script>
+
+    </body>
+</html>
+

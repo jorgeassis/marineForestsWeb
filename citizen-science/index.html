@@ -77,6 +77,21 @@ const fetchData = async url => {
 
 </style>
 
+<script>
+  function hideLoadingPanel() {
+    var loadingPanel = document.getElementById('loadingPanel');
+    if (loadingPanel) {
+      loadingPanel.style.visibility = 'hidden';
+    }
+  }
+
+  window.addEventListener('load', function () {
+    if (!window.keepLoadingPanel) {
+      hideLoadingPanel();
+    }
+  });
+</script>
+
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <a id="start"></a>
@@ -119,37 +134,8 @@ const fetchData = async url => {
                         <ul class="menu-horizontal text-left">
 
         
-                            <li class="dropdown">
-                                <span class="dropdown__trigger color--black" style="color: #000;">Distribution</span> <!-- type--uppercase -->
-                                <div class="dropdown__container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="dropdown__content col-lg-2 col-md-2">
-                                                <ul class="menu-vertical">
-                           
-                                                    <li>
-                                                        <a href="/distribution">Distribution records</a>
-                                                    </li>
-
-                                                    <hr style="margin-top: 5px; margin-bottom: 7px; border: none; height: 1px; background: #b5b5b5; background: repeating-linear-gradient(90deg,#b5b5b5,#b5b5b5 3px,transparent 3px,transparent 6px);">
-                                                    <li>
-                                                    <a href="/species-richness-marine-forests">Species richness</a>
-                                                  </li>
-
-                                                    <li>
-                                                      <a href="/genetic-diversity-marine-forests">Genetic diversity</a>
-                                                    </li>
-
-                                                    <li>
-                                                      <a href="/future-climate-impacts-on-marine-forests">
-                                                        <span class="dropdown__trigger">Future impacts</span>
-                                                      </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <li>
+                                <a href="/distribution2/" style="color: #000;">Distribution</a>
                             </li>
 
 
@@ -209,7 +195,7 @@ const fetchData = async url => {
 
 <section class="container text-center">
 <div>
-    <div class="col-md-8">
+    <div class="col-md-10">
 
         <h2 class="color--dark">
             Citizens monitoring Marine Forests
@@ -254,7 +240,7 @@ const fetchData = async url => {
         </div>
 
         <div class="row justify-content-center top-spacer-10">
-            <div class="col-md-8">
+            <div class="col-md-10">
               <h4><span class="color--redish" id="total_results_records"></span><span class="color--dark"> records of </span><span class="color--redish" id="total_results_species"></span> <span class="color--dark">species </span><span class="color--dark">were reported by <span class="color--redish" id="total_users"></span><span class="color--dark"> citizen scientists worldwide.</span></h4>
 
               <span class="lead block">
@@ -263,7 +249,7 @@ const fetchData = async url => {
 
               </span>
 
-              <a class="btn btn--primary-2 type--uppercase" href="https://www.inaturalist.org/projects/marine-forests?tab=observations" target="_blank">
+              <a class="btn btn--primary-2 type--uppercase" href="/distribution2/">
                     <span class="btn__text">
                         Explore all records
                     </span>
@@ -295,6 +281,8 @@ const fetchData = async url => {
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <script>
+
+  window.keepLoadingPanel = true;
 
   //  - - - - - - - - -
 
@@ -354,14 +342,11 @@ const fetchData = async url => {
 
         };
 
-    //  -----------------------------------------------------
-    //  Hide loading loadingPanel
-        document.getElementById('loadingPanel').style.visibility="hidden";
-    //  -----------------------------------------------------
+    hideLoadingPanel();
 
   };
 
-  mainFunct();
+  mainFunct().catch(function () { hideLoadingPanel(); });
 
 </script>
 
